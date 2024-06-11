@@ -12,13 +12,12 @@ Cd genomes/
 #Define Genomes as an array (had success with the following on Mac from /Users/polly)
 GENOMES=(`ls Documents/Github/Phylogenomic-study/Genomes/*.fasta`) 
 
-#Define 'file' as an array
+#Set up loop to go through each FASTA file and run prokka. 
+#Variable genomes is all the files which matched with GENOMES [@] equals each of them one at a time. If did [*] it would do all of the inputs in the array at one time. 
+#Define 'file' as an array.
 #basename is a command used to strip suffix information from a filename, which leaves only the file name itself.
-File=(`basename ${INPUT} .fasta`) 
-
-#Set up loop to go through each FASTA file and run prokka 
-for File in *.fasta ; do \
-
-#Script to run prokkka on all megalocytivirus and iridovirus genomes
 #If an out directory using --outdir isn't specified Prokka will put the out directory in the same directory as the input files 
-prokka --kingdom viruses --outdir /Desktop/MCV_pipeline/Prokka_outputs/${File} --prefix ${File} --locustag ${File} ; done
+for INPUT in ${GENOMES[@]} ; do 
+	File=(`basename ${INPUT} .fasta`) 
+	prokka --kingdom viruses --outdir /Desktop/MCV_pipeline/Prokka_outputs/${File} --prefix ${File} --locustag ${File}
+done
