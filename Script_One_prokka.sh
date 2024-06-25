@@ -1,16 +1,16 @@
 #!/bin/Bash
 
 # Navigate to the directory where you want to store prokka outputs 
-Cd Desktop/MCV_pipeline
+cd desktop/mcv_pipeline
 
 # Create a directory to store the Prokka outputs
-Mkdir prokka_outputs
+mkdir prokka_outputs
 
 # Navigate to the directory with the input .fasta files. Prokka automatically uses the files contained in the directory you run thr program from, as input.
-Cd genomes/
+cd genomes/
 
 #Define Genomes as an array (had success with the following on Mac from /Users/polly)
-GENOMES=(`ls /Users/Polly/Documents/Github/Phylogenomic-study/Genomes/*.fasta`) 
+GENOMES=(`ls /users/polly/documents/github/phylogenomic-study/genomes/*.fasta`) 
 
 #Set up 'For-Do' loop to go through each FASTA file and run Prokka program on each. 
 #Variable 'GENOMES' is all the files which matched with GENOMES array, and [@] means each of them one at a time. If did {GENOMES[*]} it would do all of the inputs in the array at one time. 
@@ -22,5 +22,5 @@ GENOMES=(`ls /Users/Polly/Documents/Github/Phylogenomic-study/Genomes/*.fasta`)
 #If an out directory using --outdir isn't specified Prokka will put the out directory in the same directory as the input files 
 for INPUT in ${GENOMES[@]} ; do 
 	File=(`basename ${INPUT} .fasta`) 
-	prokka ${INPUT} --kingdom viruses --outdir /Users/Polly/Desktop/MCV_pipeline/Prokka_outputs/${File} --prefix ${File} --locustag ${File}
+	prokka ${INPUT} --kingdom viruses --outdir /users/polly/desktop/mcv_pipeline/prokka_outputs/${File} --prefix ${File} --locustag ${File}
 done

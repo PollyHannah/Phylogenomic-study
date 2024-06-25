@@ -13,7 +13,7 @@
 
 #Do not re-create a Directory for the Orthofinder results. Orthofinder creates the output folder as part of the script below.
 #Below is for running on Mac desktop
-orthofinder -p /Users/Polly/Desktop/MCV_pipeline/tempdir -M msa -T iqtree -ot -f /Users/Polly/Desktop/MCV_pipeline/Prokka_outputs/Proteome -o /Users/Polly/Desktop/MCV_pipeline/Orthofinder
+orthofinder -p /users/polly/desktop/mcv_pipeline/tempdir -M msa -T iqtree -ot -f /users/polly/desktop/mcv_pipeline/prokka_outputs/proteome -o /users/polly/desktop/mcv_pipeline/orthofinder
 
 
 #If running on Rob's server using 14 CPUs change to: orthofinder -t 14 -a 14 -p /data/polly/megalocytivirus-project/tempdir -M msa -T iqtree -ot -f /data/polly/megalocytivirus-project/Proteome -o /data/polly/megalocytivirus-project/Orthofinder
