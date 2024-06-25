@@ -14,5 +14,6 @@ conda install -c bioconda orthofinder
 Alternatively, you can set it up with the YAML file in this repository as follows:
 
 ```bash
-conda env create -f mcv_environment.yml 
+conda env create -f mcv_environment.yml
+conda activate mcv
 ```
