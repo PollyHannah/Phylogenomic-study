@@ -36,3 +36,23 @@ conda activate mcv
 conda install -c bioconda prokka 
 conda install -c bioconda orthofinder
 ```
+### Annotate genomes using Prokka 
+
+```bash
+bash script_one_prokka.sh
+```
+
+### Save proteome files to a central folder.
+This step is done in preparation for running Orthofinder, a program which uses proteomes files.
+
+```bash
+bash script_two_collect_proteome_files.sh
+```
+
+### Run Orthofinder 
+
+Orthifinder is a program which identifies orthogroups and orthologs between genomes. It also infers rooted gene trees for all orthogroups and a rooted species tree for the species included in the analysis.
+
+```bash
+bash script_three_orthofinder.sh
+```
