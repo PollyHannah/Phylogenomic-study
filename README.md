@@ -24,7 +24,7 @@ chmod +x Anaconda3-2024.06-1-Linux-x86_64.sh
 Run installer script
 
 ```bash
-./Anaconda3-2024.02-1-Linux-s390x.sh
+./Anaconda3-2024.06-1-Linux-x86_64.sh
 ```
 
 ### Set up conda environment
