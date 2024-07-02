@@ -49,6 +49,16 @@ cd mcv
 bash script_one_prokka.sh
 ```
 
+If you get an error from prokka saying that you need a later version of blast, here's a fix for that:
+
+```bash
+conda install -c conda-forge libgcc-ng
+conda update blast
+```
+
+Then retry the prokka script.
+
+
 ### Save proteome files to a central folder.
 This step is done in preparation for running Orthofinder, a program which uses proteomes files.
 
