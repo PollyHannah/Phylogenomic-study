@@ -43,9 +43,9 @@ mkdir mcv
 cd mcv
 ```
 
-### Save Genomes to mcv directory
+### Save genomes to mcv directory
 
-Download Genomes folder and save to mcv directory by using software such as Cyberduck whic you can download here 
+Download Genomes folder and contents from this repository tp use as input files for this pipieline. Save the folder and contents to mcv directory by using software such as Cyberduck which you can download here 
 https://cyberduck.io/download/.
 
 To transfer files follow the instructions here
