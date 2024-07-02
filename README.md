@@ -53,7 +53,7 @@ If you get an error from prokka saying that you need a later version of blast, h
 
 ```bash
 conda install -c conda-forge libgcc-ng
-conda update blast
+conda install -c bioconda blast=2.9.0
 ```
 
 Then retry the prokka script.
