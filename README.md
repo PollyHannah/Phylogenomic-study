@@ -35,6 +35,14 @@ conda activate mcv
 conda install -c bioconda prokka 
 conda install -c bioconda orthofinder
 ```
+
+### Set up directory for this work
+
+```bash
+mkdir mcv
+cd mcv
+```
+
 ### Annotate genomes using Prokka 
 
 ```bash
