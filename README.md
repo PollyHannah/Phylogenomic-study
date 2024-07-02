@@ -12,13 +12,13 @@ Install conda via https://www.anaconda.com/download/success.
 Download the installer script using wget command. You can find the installer script URL by right-clicking on the relevant link from the Anaconda website linked above.
 
 ```bash
-wget https://repo.anaconda.com/archive/Anaconda3-2024.02-1-Linux-s390x.sh
+wget (https://repo.anaconda.com/archive/Anaconda3-2024.06-1-Linux-x86_64.sh)
 ```
 
 Make script executable
 
 ```bash
-chmod +x Anaconda3-2024.02-1-Linux-s390x.sh
+chmod +x Anaconda3-2024.06-1-Linux-x86_64.sh
 ```
 
 Run installer script
