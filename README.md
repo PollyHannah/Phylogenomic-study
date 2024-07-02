@@ -49,7 +49,7 @@ Download Genomes folder and save to mcv directory by using software such as Cybe
 https://cyberduck.io/download/.
 
 To transfer files follow the instructions here
-https://www.exavault.com/docs/cyberduck-connecting. Make sure you are using SFTP (SSH File Transfer Protocol)
+https://www.exavault.com/docs/cyberduck-connecting. Make sure you are using SFTP 'SSH File Transfer Protocol'.
 
 
 ### Annotate genomes using Prokka 
