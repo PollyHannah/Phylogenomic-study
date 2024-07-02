@@ -1,20 +1,10 @@
 #!/bin/Bash
 
-# Navigate to the directory where you want to store prokka outputs. Example: cd desktop/mcv_pipeline
-
 # Create a directory to store the Prokka outputs
 mkdir prokka_outputs
 
-# Navigate to the directory with the input genome .fasta files. Prokka automatically uses the files contained in the directory you run the program from, as input. 
-
-#For exmaple: cd genomes/
-
-#If running on Rob Lanfear's Soma server, cd ~/data/polly/megalocytivirus-project/genomes
-
 #Define Genomes as an array (had success with the following on Mac from /Users/polly). 
-#If running on Rob's Soma Server GENOMES=(`ls ~/data/polly/megalocytivirus-project/genomes/*.fasta`) 
-#If running after cloning my Github reprository to your home directory run the following: 
-GENOMES=(`ls ~/genomes/*.fasta`) 
+GENOMES=(`ls ./Genomes/*.fasta`) 
 
 #Set up 'For-Do' loop to go through each FASTA file and run Prokka program on each. 
 #Variable 'GENOMES' is all the files which matched with GENOMES array, and [@] means each of them one at a time. If did {GENOMES[*]} it would do all of the inputs in the array at one time. 
