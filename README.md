@@ -45,11 +45,11 @@ cd mcv
 
 ### Save Genomes to mcv directory
 
-Download Genomes folder and save to mcv directory by using software such as Cyberduck whic you can download here [
-](https://cyberduck.io/download/). 
+Download Genomes folder and save to mcv directory by using software such as Cyberduck whic you can download here 
+https://cyberduck.io/download/.
 
-To transfer files follow the instructions here [
-](https://www.exavault.com/docs/cyberduck-connecting). Make sure you are using SFTP (SSH File Transfer Protocol)
+To transfer files follow the instructions here
+https://www.exavault.com/docs/cyberduck-connecting. Make sure you are using SFTP (SSH File Transfer Protocol)
 
 
 ### Annotate genomes using Prokka 
