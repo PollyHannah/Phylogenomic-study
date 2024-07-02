@@ -1,3 +1,5 @@
+#!/bin/Bash
+
 #OrthoFinder will look for input fasta files with any of the following filename extensions: .fa, .faa, .fasta, .fas or .pep.
 
 #OrthoFinder already knows how to call modules mafft, muscle, iqtree, raxml, raxml-ng, fasttree
@@ -12,8 +14,7 @@
 # '-o' option allows the user to indicate the directory the results files should be saved to.
 
 #Do not re-create a Directory for the Orthofinder results. Orthofinder creates the output folder as part of the script below.
-#Below can be used if you have cloned my reprository from my Github direct to your home directory.
-orthofinder -p ~/tempdir -M msa -T iqtree -ot -f ~/prokka_outputs/proteome -o ~/orthofinder
+orthofinder -p ./tempdir -M msa -T iqtree -ot -f ./prokka_outputs/proteome -o ./orthofinder
 
 
 #If running on Rob's server using 14 CPUs change to: orthofinder -t 14 -a 14 -p /data/polly/megalocytivirus-project/tempdir -M msa -T iqtree -ot -f /data/polly/megalocytivirus-project/Proteome -o /data/polly/megalocytivirus-project/Orthofinder

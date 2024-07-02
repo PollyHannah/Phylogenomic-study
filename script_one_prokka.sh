@@ -17,5 +17,5 @@ GENOMES=(`ls ./Genomes/*.fasta`)
 #If running after cloning my github repository to your home directory run the following
 for INPUT in ${GENOMES[@]} ; do 
 	File=(`basename ${INPUT} .fasta`) 
-	prokka ${INPUT} --kingdom viruses --outdir ~/prokka_outputs/${File} --prefix ${File} --locustag ${File}
+	prokka ${INPUT} --kingdom viruses --outdir ./prokka_outputs/${File} --prefix ${File} --locustag ${File}
 done
