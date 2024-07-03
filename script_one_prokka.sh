@@ -3,7 +3,7 @@
 # Create a directory to store the Prokka outputs
 mkdir prokka_outputs
 
-#Define Genomes as an array (had success with the following on Mac from /Users/polly). 
+#Define Genomes as an array
 GENOMES=(`ls ./Genomes/*.fasta`) 
 
 #Set up 'For-Do' loop to go through each FASTA file and run Prokka program on each. 
