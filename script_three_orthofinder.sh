@@ -14,6 +14,8 @@
 # '-o' option allows the user to indicate the directory the results files should be saved to.
 
 #Do not re-create a Directory for the Orthofinder results. Orthofinder creates the output folder as part of the script below.
+
+#Run Orthofinder on proteomes
 orthofinder -p ./tempdir -M msa -T iqtree -ot -f ./prokka_outputs/proteome -o ./orthofinder
 
 
