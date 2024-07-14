@@ -48,13 +48,13 @@ cd mcv
 Download 'Genomes' folder and its contents from this repository, to use as input files. Save the folder 'Genomes' and contents to mcv directory. You can do this by using software such as Cyberduck which you can download here 
 https://cyberduck.io/download/.
 
+Iridovirid genomes in Genomes folder follow the naming convention: genera_species_GenBank-organism-name_accession-number.
+
 To transfer files follow the instructions here
 https://www.exavault.com/docs/cyberduck-connecting. If using Cyberduck, make sure you are using SFTP 'SSH File Transfer Protocol'.
 
 
 ### Annotate genomes using Prokka 
-
-Genomes folder in repository contains Megalocytivirus and select Iridovirid genomes with the following naming convention: genera_species_GenBank-organism-name_accession-number.
 
 ```bash
 bash script_one_prokka.sh
