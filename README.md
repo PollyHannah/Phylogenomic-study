@@ -54,6 +54,8 @@ https://www.exavault.com/docs/cyberduck-connecting. If using Cyberduck, make sur
 
 ### Annotate genomes using Prokka 
 
+Genomes folder in repository contains Megalocytivirus and select Iridovirid genomes with the following naming convention: genera_species_GenBank-organism-name_accession-number.
+
 ```bash
 bash script_one_prokka.sh
 ```
