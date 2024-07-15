@@ -71,7 +71,7 @@ Delete prokka_outputs folder
 ```bash
 rm -r prokka_outputs
 ```
-Then retry the prokka script. If run successfully, the prokka_outputs folder created in script_one_prokka.sh in the mcv directory will contain multiple outputs therein.
+Then retry the prokka script. If run successfully, the prokka_outputs folder created in script_one_prokka.sh in the mcv directory will contain multiple outputs.
 
 
 ### Save proteome files to a central folder.
