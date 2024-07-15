@@ -10,13 +10,14 @@
 #'M msa' option asks Orthofinder to make multiple sequence alignments. The default program OrthoFinder uses is MAFFT.
 # '-T option allows the user to choose the tree inference program used to make gene trees'
 #'-ot' option asks Orthofinder to Stop the program running after gene trees have been inferred.
+# -z OrthoFinder automatically trims alignments (find more detail at https://github.com/davidemms/OrthoFinder). This option stops the trimming in order to 'sanity check' the alignment before the gene trees are produced based on the alignments.
 #'-f' option allows the user to indicate which directory of FASTA files Orthfinder should start the analysis from
 # '-o' option allows the user to indicate the directory the results files should be saved to.
 
 #Do not re-create a Directory for the Orthofinder results. Orthofinder creates the output folder as part of the script below.
 
 #Run Orthofinder on proteomes
-orthofinder -p ./tempdir -M msa -T iqtree -ot -f ./prokka_outputs/proteome -o ./orthofinder
+orthofinder -p ./tempdir -M msa -T iqtree -ot -z -f ./prokka_outputs/proteome -o ./orthofinder
 
 
 #If running on Rob's server using 14 CPUs change to: orthofinder -t 14 -a 14 -p /data/polly/megalocytivirus-project/tempdir -M msa -T iqtree -ot -f /data/polly/megalocytivirus-project/Proteome -o /data/polly/megalocytivirus-project/Orthofinder
