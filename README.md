@@ -66,7 +66,7 @@ If you get an error from prokka saying that you need a later version of blast, h
 conda install -c conda-forge libgcc-ng
 conda install -c bioconda blast=2.9.0
 ```
-Delete prokka_outputs folder 
+If you've used the fix above, delete prokka_outputs folder before running script again.
 
 ```bash
 rm -r prokka_outputs
