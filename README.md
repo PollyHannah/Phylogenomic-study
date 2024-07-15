@@ -67,7 +67,7 @@ conda install -c conda-forge libgcc-ng
 conda install -c bioconda blast=2.9.0
 ```
 
-Then retry the prokka script.
+Then retry the prokka script. If ran successfully, the prokka_outputs folder you created in the mcv directory will contain a folder for each genome with multiple outputs therein.
 
 
 ### Save proteome files to a central folder.
