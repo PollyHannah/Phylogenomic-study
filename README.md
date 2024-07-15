@@ -66,8 +66,12 @@ If you get an error from prokka saying that you need a later version of blast, h
 conda install -c conda-forge libgcc-ng
 conda install -c bioconda blast=2.9.0
 ```
+Delete prokka_outputs folder 
 
-Then retry the prokka script. If ran successfully, the prokka_outputs folder you created in the mcv directory will contain a folder for each genome with multiple outputs therein.
+```bash
+rm -r prokka_outputs
+```
+Then retry the prokka script. If run successfully, the prokka_outputs folder created in script_one_prokka.sh in the mcv directory will contain multiple outputs therein.
 
 
 ### Save proteome files to a central folder.
