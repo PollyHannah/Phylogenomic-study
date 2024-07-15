@@ -1,4 +1,4 @@
-# Phylogenomic analysis for megalocytiviruses 
+# Phylogenomic analysis 
 
 ## About 
 This project aims to conduct a whole-genome, phylogenetic analyses of megalocytiviruses, a group of fish pathogens exotic to Australia, providing robust information with which to revise the taxonomy and nomenclature of this group. This is a pipeline designed to produce a phylogeny of megalocytiviruses and closely related viruses by concatonating a set of core genes present across all genomes. 
@@ -47,6 +47,8 @@ cd mcv
 
 Download 'Genomes' folder and its contents from this repository, to use as input files. Save the folder 'Genomes' and contents to mcv directory. You can do this by using software such as Cyberduck which you can download here 
 https://cyberduck.io/download/.
+
+Iridovirid genomes in Genomes folder follow the naming convention: genera_species_GenBank-organism-name_accession-number.
 
 To transfer files follow the instructions here
 https://www.exavault.com/docs/cyberduck-connecting. If using Cyberduck, make sure you are using SFTP 'SSH File Transfer Protocol'.
