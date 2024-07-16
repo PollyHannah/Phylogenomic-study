@@ -8,21 +8,15 @@ This project aims to conduct a whole-genome, phylogenetic analyses of megalocyti
 Install conda via https://www.anaconda.com/download/success.
 
 ### Download the Installer Script
-
 Download the installer script using wget command. You can find the installer script URL by right-clicking on the relevant link from the Anaconda website linked above.
-
 ```bash
 wget https://repo.anaconda.com/archive/Anaconda3-2024.06-1-Linux-x86_64.sh
 ```
-
 Make script executable
-
 ```bash
 chmod +x Anaconda3-2024.06-1-Linux-x86_64.sh
 ```
-
 Run installer script
-
 ```bash
 ./Anaconda3-2024.06-1-Linux-x86_64.sh
 ```
@@ -31,13 +25,10 @@ Run installer script
 The .condarc is an optional configuration file that stores custom conda settings, which you will need to write to. 
 
 Locate the .condarc file. 
-
 ```bash
-find /path/to/search -name *.condarc
+find -name *.condarc
 ```
-
 Navigate to the directory the file is located in.
-
 ```bash
 cd /path/to/file
 ```
@@ -48,7 +39,6 @@ chmod 777 condarc
 ```
 
 ### Set up conda environment
-
 ```bash
 conda create --name mcv
 conda activate mcv
@@ -57,7 +47,6 @@ conda install -c bioconda orthofinder
 ```
 
 ### Set up directory for this work
-
 ```bash
 mkdir mcv
 cd mcv
@@ -73,7 +62,6 @@ Iridovirid genomes in Genomes folder follow the naming convention: genera_specie
 To transfer files follow the instructions here
 https://www.exavault.com/docs/cyberduck-connecting. If using Cyberduck, make sure you are using SFTP 'SSH File Transfer Protocol'.
 
-
 ### Annotate genomes using Prokka 
 
 ```bash
@@ -81,13 +69,11 @@ bash script_one_prokka.sh
 ```
 
 If you get an error from prokka saying that you need a later version of blast, here's a fix for that:
-
 ```bash
 conda install -c conda-forge libgcc-ng
 conda install -c bioconda blast=2.9.0
 ```
 If you've used the fix above, delete prokka_outputs folder before running script again.
-
 ```bash
 rm -r prokka_outputs
 ```
@@ -110,10 +96,9 @@ Run script.
 bash script_three_orthofinder.sh
 ```
 
-If you get an error indicating a problem with a dependency of Orthofinder (for example, DIAMOND), manually install the lastest version of the dependency. 
+If you get an error indicating a problem with a dependency (for example, DIAMOND), manually install the lastest version of the dependency. 
 
 Find the location of the dependency in the system path.
-
 ```bash
 which diamond 
 ```
@@ -122,9 +107,7 @@ Copy the file path to your clipboard and download the latest version of the depe
 ```bash
 wget https://github.com/bbuchfink/diamond/releases/latest/download/diamond-linux64.tar.gz
 ```
-
 Extract the contents of a compressed file (a tarbell file in this instance).
-
 ```bash
 tar xzf diamond-linux64.tar.gz
 ```
