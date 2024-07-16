@@ -38,8 +38,9 @@ find /path/to/search -name "*.condarc".
 
 Navigate to the directory the file is located in.
 
+```bash
 cd /path/to/file
-
+```
 Change permissions on the file.
 
 ```bash
