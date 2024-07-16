@@ -130,4 +130,6 @@ tar xzf diamond-linux64.tar.gz
 ```
 Copy the executable to the relevant directory in your system path
 
-sudo cp diamond /file/path/saved/to/clipboard.
+```bash
+sudo cp diamond /file/path/saved/to/clipboard
+```
