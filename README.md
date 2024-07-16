@@ -33,7 +33,7 @@ The .condarc is an optional configuration file that stores custom conda settings
 Locate the .condarc file. 
 
 ```bash
-find /path/to/search -name *.condarc.
+find /path/to/search -name *.condarc
 ```
 
 Navigate to the directory the file is located in.
