@@ -21,7 +21,7 @@ Run installer script
 ./Anaconda3-2024.06-1-Linux-x86_64.sh
 ```
 
-### Make sure you can write to .condarc file
+### Ensure you can write to .condarc file
 The .condarc is an optional configuration file that stores custom conda settings, which you will need to write to. 
 
 Locate the .condarc file. 
@@ -115,4 +115,12 @@ Copy the executable to the relevant directory in your system path
 
 ```bash
 sudo cp diamond /file/path/saved/to/clipboard
+```
+
+### Remove trailing spaces in .fa files 
+To visualise Multiple Sequence Alignment (MSA) outputs from Orthofinder in Geneious, the trailing spaces at the end of the MSA need to be removed. Otherwise, Geneious will report an error 'some sequences contain gaps, but not all sequences are of the same length'. 
+
+Remove trailing spaces from MSAs
+```bash
+remove_trailing_spaces.sh
 ```
