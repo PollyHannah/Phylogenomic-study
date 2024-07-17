@@ -20,8 +20,3 @@
 
 #Run Orthofinder on proteomes
 orthofinder -p ./tempdir -M msa -T iqtree -ot -z -t -a -f ./prokka_outputs/proteome -o ./orthofinder
-
-
-#If running on Rob's server using 14 CPUs change to: orthofinder -t 14 -a 14 -p /data/polly/megalocytivirus-project/tempdir -M msa -T iqtree -ot -f /data/polly/megalocytivirus-project/Proteome -o /data/polly/megalocytivirus-project/Orthofinder
-# '-t' option is number of threads for sequence search, MSA & tree inference [Default is number of cores on machine]
-# '-a' option is number of parallel analysis threads for internal, RAM intensive tasks [Default = 1]
