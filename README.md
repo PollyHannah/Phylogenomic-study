@@ -92,7 +92,7 @@ Orthofinder is a program which identifies orthogroups and orthologs between geno
 
 Open 'script_three_orthofinder.sh' and nominate values for options -t (-t number_of_threads) and -a (-a number_of_orthofinder_threads). These options control the parallelisation of OrthoFinder to decrease the runtime. For -t, choose the  number of cores on your computer. For -a, put 1/4 of the value of -t. 
 
-Run script.
+Run updated script.
 
 ```bash
 bash script_three_orthofinder.sh
