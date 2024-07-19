@@ -90,6 +90,8 @@ bash script_two_collect_proteome_files.sh
 
 Orthofinder is a program which identifies orthogroups and orthologs between genomes. It also infers rooted gene trees for all orthogroups and a rooted species tree for the species included in the analysis.
 
+Open 'script_three_orthofinder.sh' and nominate values for options -t (-t number_of_threads) and -a (-a number_of_orthofinder_threads). These options control the parallelisation of OrthoFinder to decrease the runtime. For -t, choose the  number of cores on your computer. For -a, put 1/4 of the value of -t. 
+
 Run script.
 
 ```bash
