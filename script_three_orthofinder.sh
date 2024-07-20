@@ -14,10 +14,8 @@
 # -a Specified the number of threads for the BLAST/DIAMOND steps. If the '-a' parameter is not specified (as is not done here) it will default to 16 or one eighth of the '-t' parameter (whichever is smaller), which is reccomended by the Orthofinder developer.
 #'-f' option allows the user to indicate which directory of FASTA files Orthfinder should start the analysis from
 # '-o' option allows the user to indicate the directory the results files should be saved to.
-# -n Option specifies the name of the results directory
 
 # Do not re-create a Directory for the Orthofinder results. Orthofinder creates the output folder as part of the script below.
 
 #Run Orthofinder on proteomes
-orthofinder -p ./tempdir -M msa -oa -z -t 24 -a 6 -f ./prokka_outputs/proteome -o ./orthofinder -n Results 
-
+orthofinder -p ./tempdir -M msa -oa -z -t 24 -a 6 -f ./prokka_outputs/proteome -o ./orthofinder
