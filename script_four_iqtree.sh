@@ -23,7 +23,7 @@ output_dir="iqtree"
 #Create function
 run_iqtree() {
     local file=$1
-    local basefile=$(basename "$file".fa)
+    local basefile=$(basename "$file")
     iqtree2 -s "$file" -B 1000 -m MFP -T 1 -pre "$output_dir/$basefile"
 }
 
