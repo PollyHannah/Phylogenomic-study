@@ -44,6 +44,7 @@ conda create --name mcv
 conda activate mcv
 conda install -c bioconda prokka 
 conda install -c bioconda orthofinder
+conda install conda-forge::parallel
 ```
 
 ### Set up directory for this work
@@ -53,7 +54,6 @@ cd mcv
 ```
 
 ### Save genomes to mcv directory
-
 Download 'Genomes' folder and its contents from this repository, to use as input files. Save the folder 'Genomes' and contents to mcv directory. You can do this by using software such as Cyberduck which you can download here 
 https://cyberduck.io/download/.
 
@@ -63,7 +63,6 @@ To transfer files follow the instructions here
 https://www.exavault.com/docs/cyberduck-connecting. If using Cyberduck, make sure you are using SFTP 'SSH File Transfer Protocol'.
 
 ### Annotate genomes using Prokka 
-
 ```bash
 bash script_one_prokka.sh
 ```
@@ -149,3 +148,17 @@ for filename in "$directory"/*.fa; do
         fi
     fi
 done
+
+### Generate gene trees
+To generate gene trees for each MSA, first remove MSAs for orthgroups for which you do not want to genertae a gene tree for (i.e. orthogroups not containing core genes of interest). Then, open the script attached to this repository titled 'script_four_iqtree.sh' and insert the file path to your MSA directory in the relevant sections (as indicated in the script). Then, run updated script:
+
+```bash
+script_four_iqtree.sh
+```
+
+### Sort output files 
+iqtree will generate several outputs for each input file with a variety of extensions. All outputs will be saved in the one output directory. You will need to please sort the output files into seperate directories based on orthogroup. Open the script saved to this repository 'script_five_sort_files.sh'and update the file path to where the outputs are saved. Then, run the updated script.
+
+```bash
+script_five_sort_files.sh
+```
