@@ -148,9 +148,10 @@ for filename in "$directory"/*.fa; do
         fi
     fi
 done
+```
 
 ### Generate gene trees
-To generate gene trees for each MSA, first remove MSAs for orthgroups for which you do not want to genertae a gene tree for (i.e. orthogroups not containing core genes of interest). Then, open the script attached to this repository titled 'script_four_iqtree.sh' and insert the file path to your MSA directory in the relevant sections (as indicated in the script). Then, run updated script:
+To generate gene trees for each MSA using iqtree, first remove MSAs for orthgroups for which you do not want to genertae a gene tree for (i.e. orthogroups not containing core genes of interest). Then, open the script attached to this repository titled 'script_four_iqtree.sh' and insert the file path to your MSA directory in the relevant sections (as indicated in the script). Then, run updated script:
 
 ```bash
 script_four_iqtree.sh
