@@ -118,6 +118,11 @@ Copy the executable to the relevant directory in your system path
 sudo cp diamond /file/path/saved/to/clipboard
 ```
 
+If you get an error that one of the installed Orthofinder dependencies (i.e. modules) cannot be located, load the module yourself. For example
+
+```module load blast+
+```
+
 ### Remove trailing spaces in .fa files 
 To visualise Multiple Sequence Alignment (MSA) outputs from Orthofinder in Geneious, the trailing spaces at the end of the MSA need to be removed. Otherwise, Geneious will report an error 'some sequences contain gaps, but not all sequences are of the same length'. 
 
