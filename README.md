@@ -62,6 +62,12 @@ Iridovirid genomes in Genomes folder follow the naming convention: genera_specie
 To transfer files follow the instructions here
 https://www.exavault.com/docs/cyberduck-connecting. If using Cyberduck, make sure you are using SFTP 'SSH File Transfer Protocol'.
 
+### Reformat to Unix 
+If at any time you get an error indicating a command is not recognised in any of the scipts above, try this command:
+```bash
+dos2unix file_name
+```
+
 ### Annotate genomes using Prokka 
 ```bash
 bash script_one_prokka.sh
