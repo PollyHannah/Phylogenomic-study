@@ -1,7 +1,7 @@
 # Phylogenomic analysis 
 
 ## About 
-This project aims to conduct a phylogenetic analyses of megalocytiviruses, a group of fish pathogens exotic to Australia, providing robust information with which to propose a clear and simple nomenclature of this group. This is a pipeline designed to produce a Maximum Liklihood species tree for megalocytiviruses and closely related viruses by concatonating a set of core genes present across all genomes. 
+This project aims to conduct a phylogenetic analyses of megalocytiviruses, a group of fish pathogens exotic to Australia, providing robust information with which to propose a clear and simple nomenclature of this group. This is a pipeline designed to produce a Maximum Likelihood species tree for megalocytiviruses and closely related viruses by concatonating a set of core genes present across all genomes. 
 
 ## Set up environment
 
@@ -91,9 +91,11 @@ This step is done in preparation for running Orthofinder, a program which uses p
 bash script_two_collect_proteome_files.sh
 ```
 
-### Run Orthofinder 
+### Run OrthoFinder 
 
-Orthofinder is a program which identifies orthogroups and orthologs between genomes. It also infers rooted gene trees for all orthogroups and a rooted species tree for the species included in the analysis.
+OrthoFinder is a program which identifies orthogroups containing a set of orthologs (genes) from various genomes. For the purpose of this analysis, orthogroups which contain an orthologs from every Megalocytivirus genome are considered core megalocytivirus genes, and orthogroups containing an ortholog from every genome across the Iridoviridae family are considered Iridoviridae core genes. 
+
+OrthoFinder also infers rooted gene trees for all orthogroups and a rooted species tree for the species included in the analysis. For this analysis, we're only interested in the Orthogroups, Orthologues and gene trees produced.
 
 Open 'script_three_orthofinder.sh' and nominate values for options -t (-t number_of_threads) and -a (-a number_of_orthofinder_threads). These options control the parallelisation of OrthoFinder to decrease the runtime. For -t, choose the  number of cores on your computer. For -a, put 1/4 of the value of -t. 
 
