@@ -127,9 +127,10 @@ Copy the executable to the relevant directory in your system path
 sudo cp diamond /file/path/saved/to/clipboard
 ```
 
-If you get an error that one of the installed Orthofinder dependencies (i.e. modules) cannot be located, load the module yourself. For example
+If you get an error that one of the installed Orthofinder dependencies (i.e. modules, like DIAMOND or blast+) cannot be located, load the module yourself. For example
 
-```module load blast+
+```bash
+module load blast+
 ```
 
 ### Remove trailing spaces in .fa files 
