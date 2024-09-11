@@ -82,7 +82,7 @@ If you've used the fix above, delete prokka_outputs folder before running script
 ```bash
 rm -r prokka_outputs
 ```
-Then retry the prokka script. If run successfully, the prokka_outputs folder created in script_one_prokka.sh in the mcv directory will contain multiple outputs.
+Then retry the prokka script. If run successfully, the prokka_outputs folder created in the mcv directory will contain multiple outputs.
 
 ### Save proteome files to a central folder.
 This step is done in preparation for running Orthofinder, a program which uses proteomes files.
