@@ -1,7 +1,7 @@
 # Phylogenomic analysis 
 
 ## About 
-This project aims to conduct a whole-genome, phylogenetic analyses of megalocytiviruses, a group of fish pathogens exotic to Australia, providing robust information with which to revise the taxonomy and nomenclature of this group. This is a pipeline designed to produce a phylogeny of megalocytiviruses and closely related viruses by concatonating a set of core genes present across all genomes. 
+This project aims to conduct a phylogenetic analyses of megalocytiviruses, a group of fish pathogens exotic to Australia, providing robust information with which to propose a clear and simple nomenclature of this group. This is a pipeline designed to produce a Maximum Liklihood species tree for megalocytiviruses and closely related viruses by concatonating a set of core genes present across all genomes. 
 
 ## Set up environment
 
