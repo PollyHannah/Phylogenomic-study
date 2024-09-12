@@ -86,7 +86,7 @@ rm -r prokka_outputs
 Then retry the prokka script. If run successfully, the prokka_outputs folder created in the mcv directory will contain multiple outputs.
 
 ### Save proteome files to a central folder.
-This step is done in preparation for running Orthofinder, a program which uses proteomes files.
+Collect the proteome files from the prokka_outputs directory and save them to 1_prokka directory.This step is done in preparation for running Orthofinder, a program which uses proteomes files.
 
 ```bash
 bash script_two_collect_proteome_files.sh
