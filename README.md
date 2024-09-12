@@ -187,8 +187,9 @@ Red sea bream iridovirus
 * MT798582 
 
  Turbot reddish bodied iridovirus 
+ 
  **GQ273492**
- None (only one complete genome).
+*  None (only one complete genome).
 
 For every iridoviridae genome from genera other than Megalocytivirus, I completed the manual curation process as described above, but only for the iridoviridae core genes (i.e. genes with have an ortholoug present in every Iridoviridae genome included in the analysis).
 
