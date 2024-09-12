@@ -1,8 +1,9 @@
 # Phylogenomic analysis 
 
 ## About 
-This project aims to conduct a whole-genome, phylogenetic analyses of megalocytiviruses, a group of fish pathogens exotic to Australia, providing robust information with which to revise the taxonomy and nomenclature of this group. This is a pipeline designed to produce a phylogeny of megalocytiviruses and closely related viruses by concatonating a set of core genes present across all genomes. 
+This project aims to conduct a phylogenetic analyses of megalocytiviruses, a group of fish pathogens exotic to Australia, providing robust information with which to propose a clear and simple nomenclature of this group. This is a pipeline designed to produce a Maximum Likelihood species tree for megalocytiviruses and closely related viruses by concatonating a set of core genes present across all genomes. 
 
+Megalocytivirus is a genus of fish pathogens belonging to the family of viruses the Iridoviridae.
 ## Set up environment
 
 Install conda via https://www.anaconda.com/download/success.
@@ -82,18 +83,20 @@ If you've used the fix above, delete prokka_outputs folder before running script
 ```bash
 rm -r prokka_outputs
 ```
-Then retry the prokka script. If run successfully, the prokka_outputs folder created in script_one_prokka.sh in the mcv directory will contain multiple outputs.
+Then retry the prokka script. If run successfully, the prokka_outputs folder created in the mcv directory will contain multiple outputs.
 
 ### Save proteome files to a central folder.
-This step is done in preparation for running Orthofinder, a program which uses proteomes files.
+Collect the proteome files from the prokka_outputs directory and save them to 1_prokka directory.This step is done in preparation for running OrthoFinder, a program which uses proteomes files.
 
 ```bash
 bash script_two_collect_proteome_files.sh
 ```
 
-### Run Orthofinder 
+### Run OrthoFinder 
 
-Orthofinder is a program which identifies orthogroups and orthologs between genomes. It also infers rooted gene trees for all orthogroups and a rooted species tree for the species included in the analysis.
+OrthoFinder is a program which identifies orthogroups containing a set of orthologs (genes) from various genomes. For the purpose of this analysis, orthogroups which contain an orthologs from every Megalocytivirus genome are considered core megalocytivirus genes, and orthogroups containing an ortholog from every genome across the Iridoviridae family are considered Iridoviridae core genes. 
+
+OrthoFinder also infers rooted gene trees for all orthogroups and a rooted species tree for the species included in the analysis. For this analysis, we're only interested in the Orthogroups, Orthologues and gene trees produced.
 
 Open 'script_three_orthofinder.sh' and nominate values for options -t (-t number_of_threads) and -a (-a number_of_orthofinder_threads). These options control the parallelisation of OrthoFinder to decrease the runtime. For -t, choose the  number of cores on your computer. For -a, put 1/4 of the value of -t. 
 
@@ -124,13 +127,16 @@ Copy the executable to the relevant directory in your system path
 sudo cp diamond /file/path/saved/to/clipboard
 ```
 
-If you get an error that one of the installed Orthofinder dependencies (i.e. modules) cannot be located, load the module yourself. For example
+If you get an error that one of the installed OrthoFinder dependencies (i.e. modules, like DIAMOND or blast+) cannot be located, load the module yourself. For example
 
-```module load blast+
+```bash
+module load blast+
 ```
 
 ### Remove trailing spaces in .fa files 
-To visualise Multiple Sequence Alignment (MSA) outputs from Orthofinder in Geneious, the trailing spaces at the end of the MSA need to be removed. Otherwise, Geneious will report an error 'some sequences contain gaps, but not all sequences are of the same length'. 
+To visualise Multiple Sequence Alignment (MSA) outputs from OrthoFinder in Geneious, the trailing spaces at the end of the MSA need to be removed. Otherwise, Geneious will report an error 'some sequences contain gaps, but not all sequences are of the same length'. Try and drag and drop the MSA files into Geneious, if it rejects them and returns the error states (i.e. 'some sequences contain gaps...'), use the script below to remove the trailing spaces from all MSAs. 
+
+**Note** Before runnning this script you will need to update the directory file path to match your file path. This path will change with every OrthoFinder run due to the naming convention for the 'Results_date' file. 
 
 Remove trailing spaces from MSAs
 ```bash
