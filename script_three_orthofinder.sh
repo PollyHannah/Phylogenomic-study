@@ -19,4 +19,4 @@
 # You will need to create the 'tempdir' directory.
 
 #Run Orthofinder on proteomes
-orthofinder -p ./tempdir -M msa -ot -z -t 24 -a 6 -f ./prokka_outputs/1_prokka-o ./orthofinder
+orthofinder -p ./tempdir -M msa -ot -z -t 24 -a 6 -f ./prokka_outputs/1_prokka -o ./orthofinder
