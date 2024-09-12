@@ -194,7 +194,7 @@ Red sea bream iridovirus
 
 For every iridoviridae genome from genera other than Megalocytivirus, I completed the manual curation process as described above, but only for the iridoviridae core genes (i.e. genes with have an ortholoug present in every Iridoviridae genome included in the analysis).
 
-### Run Ortofinder again
+### Run OrtoFinder again
 Now, run Orthofinder on the manually curated annotation files. The output files will be saved into a directory '2_orthofionder'. 
 ```bash
 script_four_orthofinder.sh
@@ -246,7 +246,7 @@ I manually curate the OrthoFinder-generated MSA files using Geneious Prime (Vers
 ### Re-align sequences with PRANK
 Run PRANK on the .fasta (not aligned) files. 
 ```bash
-script_five_orank.sh
+script_five_prank.sh
 ```
 
 ### Generate gene trees
