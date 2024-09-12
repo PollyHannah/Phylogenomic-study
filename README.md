@@ -86,7 +86,7 @@ rm -r prokka_outputs
 Then retry the prokka script. If run successfully, the prokka_outputs folder created in the mcv directory will contain multiple outputs.
 
 ### Save proteome files to a central folder.
-Collect the proteome files from the prokka_outputs directory and save them to 1_prokka directory.This step is done in preparation for running Orthofinder, a program which uses proteomes files.
+Collect the proteome files from the prokka_outputs directory and save them to 1_prokka directory.This step is done in preparation for running OrthoFinder, a program which uses proteomes files.
 
 ```bash
 bash script_two_collect_proteome_files.sh
@@ -127,14 +127,14 @@ Copy the executable to the relevant directory in your system path
 sudo cp diamond /file/path/saved/to/clipboard
 ```
 
-If you get an error that one of the installed Orthofinder dependencies (i.e. modules, like DIAMOND or blast+) cannot be located, load the module yourself. For example
+If you get an error that one of the installed OrthoFinder dependencies (i.e. modules, like DIAMOND or blast+) cannot be located, load the module yourself. For example
 
 ```bash
 module load blast+
 ```
 
 ### Remove trailing spaces in .fa files 
-To visualise Multiple Sequence Alignment (MSA) outputs from Orthofinder in Geneious, the trailing spaces at the end of the MSA need to be removed. Otherwise, Geneious will report an error 'some sequences contain gaps, but not all sequences are of the same length'. Try and drag and drop the MSA files into Geneious, if it rejects them and returns the error states (i.e. 'some sequences contain gaps...'), use the script below to remove the trailing spaces from all MSAs. 
+To visualise Multiple Sequence Alignment (MSA) outputs from OrthoFinder in Geneious, the trailing spaces at the end of the MSA need to be removed. Otherwise, Geneious will report an error 'some sequences contain gaps, but not all sequences are of the same length'. Try and drag and drop the MSA files into Geneious, if it rejects them and returns the error states (i.e. 'some sequences contain gaps...'), use the script below to remove the trailing spaces from all MSAs. 
 
 **Note** Before runnning this script you will need to update the directory file path to match your file path. This path will change with every OrthoFinder run due to the naming convention for the 'Results_date' file. 
 
