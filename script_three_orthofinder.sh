@@ -8,7 +8,6 @@
 # OrthoFinder infers orthologs from rooted gene trees. However, tree interence methods create unrooted gene trees/ OrthoFinder requires a rooted species tree to root the gene trees before ortholog inference can begin. The default species tree method is STAG.
 # '-p' option houses the temporary 'pickles files' into an allocated directory.
 #'-M msa' option asks Orthofinder to make multiple sequence alignments. The default program OrthoFinder uses is MAFFT.
-#'-oa' option asks Orthofinder to Stop the program running after MSAs have been generated.
 #'-ot' option asks Orthofinder to stop the program running after gene trees have ben inferred for Othogroups. 
 # -z OrthoFinder automatically trims alignments. This option stops the trimming in order to 'sanity check' the alignment before the gene trees are produced based on the alignments.
 # -t Specifies the number of processes which are done in parallel for the BLAST/DIAMOND searches and tree inference steps. It is advised that you use as many threads as there are cores available on your computer, which is the default if another value is not specified (as in here).
