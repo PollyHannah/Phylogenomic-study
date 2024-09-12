@@ -194,7 +194,7 @@ Red sea bream iridovirus
 
 For every iridoviridae genome from genera other than Megalocytivirus, I completed the manual curation process as described above, but only for the iridoviridae core genes (i.e. genes with have an ortholoug present in every Iridoviridae genome included in the analysis).
 
-### Run OrtoFinder again
+### Run OrthoFinder again
 Now, run Orthofinder on the manually curated annotation files. The output files will be saved into a directory '2_orthofionder'. 
 ```bash
 script_four_orthofinder.sh
