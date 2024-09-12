@@ -193,6 +193,12 @@ Red sea bream iridovirus
 
 For every iridoviridae genome from genera other than Megalocytivirus, I completed the manual curation process as described above, but only for the iridoviridae core genes (i.e. genes with have an ortholoug present in every Iridoviridae genome included in the analysis).
 
+### Run Ortofinder again
+Now, run Orthofinder on the manually curated annotation files.
+```bash
+script_four_orthofinder.sh
+```
+
 ### Remove trailing spaces in .fa files 
 To visualise Multiple Sequence Alignment (MSA) outputs from OrthoFinder in Geneious, the trailing spaces at the end of the MSA need to be removed. Otherwise, Geneious will report an error 'some sequences contain gaps, but not all sequences are of the same length'. Try and drag and drop the MSA files into Geneious, if it rejects them and returns the error states (i.e. 'some sequences contain gaps...'), use the script below to remove the trailing spaces from all MSAs. 
 
@@ -229,14 +235,12 @@ done
 
 ### Generate gene trees
 To generate gene trees for each MSA using iqtree, first remove MSAs for orthgroups for which you do not want to genertae a gene tree for (i.e. orthogroups not containing core genes of interest). Then, open the script attached to this repository titled 'script_four_iqtree.sh' and insert the file path to your MSA directory in the relevant sections (as indicated in the script). Then, run updated script:
-
 ```bash
 script_four_iqtree.sh
 ```
 
 ### Sort output files 
 iqtree will generate several outputs for each input file with a variety of extensions. All outputs will be saved in the one output directory. You will need to please sort the output files into seperate directories based on orthogroup. Open the script saved to this repository 'script_five_sort_files.sh'and update the file path to where the outputs are saved. Then, run the updated script.
-
 ```bash
 script_five_sort_files.sh
 ```
