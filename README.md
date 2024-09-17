@@ -159,11 +159,13 @@ For the Megalocytivirus genomes for which i did not complete this process I tran
 Listed below are the genotypes i transferred annotation from (in **bold**), and beneathe them, the genomes the annotations from that genotype were tranferred to. 
 
 **Scale drop disease virus**
+
 **OM037668**
 * MN562489 
 * MT521409 
 
 **Infectious spleen and kidney necrosis virus**
+
 **AF371960** 
 * MK689685 
 * MN432490 
@@ -172,6 +174,7 @@ Listed below are the genotypes i transferred annotation from (in **bold**), and 
 * OP009387 
 
 **Red sea bream iridovirus**
+
 **MK689686**
 * AY894343 
 * BD143114 
@@ -192,6 +195,7 @@ Listed below are the genotypes i transferred annotation from (in **bold**), and 
 * MT798582 
 
  **Turbot reddish bodied iridovirus** 
+
  **GQ273492**
 *  None (only one complete genome).
 
