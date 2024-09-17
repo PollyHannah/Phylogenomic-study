@@ -1,7 +1,7 @@
 #!/bin/Bash
 
 # Create a directory to store the Prokka outputs
-mkdir prokka_outputs
+mkdir 1_prokka
 
 #Define Genomes as an array
 GENOMES=(`ls ./Genomes/*.fasta`) 
@@ -17,5 +17,5 @@ GENOMES=(`ls ./Genomes/*.fasta`)
 #If running after cloning my github repository to your home directory run the following
 for INPUT in ${GENOMES[@]} ; do 
 	File=(`basename ${INPUT} .fasta`) 
-	prokka ${INPUT} --kingdom viruses --outdir ./prokka_outputs/${File} --prefix ${File} --locustag ${File}
+	prokka ${INPUT} --kingdom viruses --outdir ./1_prokka/${File} --prefix ${File} --locustag ${File}
 done
