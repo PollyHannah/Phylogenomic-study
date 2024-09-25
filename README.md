@@ -250,7 +250,8 @@ I manually curate the OrthoFinder-generated MSA files using Geneious Prime (Vers
 3. Create a directory in the mcv directory named 3_mafft_alignments.
 4. Save all the manually curated MSA files for all genomes.
 
-#### Clean MSA files
+### Clean MSA files
+Clean each MSA file using CIAlign.
 ```bash
 script_five_cialign.sh
 ```
