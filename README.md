@@ -250,8 +250,10 @@ I manually curate the OrthoFinder-generated MSA files using Geneious Prime (Vers
 3. Create a directory in the mcv directory named 3_mafft_alignments.
 4. Save all the manually curated MSA files for all genomes.
 
-#### INERT HERE POLLY INSTRUCTIONS FOR CLEANING MSAs
-3_mafft alignments > 3_mafft_alignments_clean
+#### Clean MSA files
+```bash
+script_five_cialign.sh
+```
 
 ### Generate gene trees
 To generate gene trees for each MSA using iqtree, first remove MSAs for orthogroups for which you do not want to generate a gene tree (i.e. orthogroups not containing core genes of interest). 
