@@ -6,10 +6,10 @@ module load parallel
 mkdir -p iqtree
 
 # Establish files directory for input into parallel n
-files=$(ls ./3_mafft_alignments/*.fa)
+files=$(ls ./3_mafft_alignments_clean/*.fasta)
 
 # Establish input and output directories
-input_dir="./3_mafft_alignments"
+input_dir="./3_mafft_alignments_clean"
 output_dir="iqtree"
 
 # Run iqtree
