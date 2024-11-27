@@ -16,7 +16,9 @@ cd mcv
 ```
 
 ### Save genomes to mcv directory
-Download 'Genomes' folder and its contents from this repository, to use as input files. Save the folder 'Genomes' and contents to mcv directory. You can do this by using software such as Cyberduck which you can download here 
+Download 'genomes' folder and its contents from this repository, to use as input files. Save the folder 'genomes' and contents to mcv directory. For information on where I got the genomes from go to 'genome_source'.
+
+You can do this by using software such as Cyberduck which you can download here 
 https://cyberduck.io/download/.
 
 Iridovirid genomes in Genomes folder follow the naming convention: genera_species_GenBank-organism-name_accession-number.
