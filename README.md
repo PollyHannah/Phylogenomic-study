@@ -6,7 +6,7 @@ This project aims to conduct a phylogenetic analyses of megalocytiviruses, a gro
 Megalocytivirus is a genus of fish pathogens belonging to the family of viruses the Iridoviridae.
 
 ## Set up environment
-Go to the file setup.md in this repository for information about how to set-up the conda environment. 
+Go to the file 'setup.md' in this repository, for information about how to set-up the conda environment. 
 
 
 ### Set up directory for this work
