@@ -15,4 +15,10 @@ cd mcv
 ```
 
 ### Save genomes to mcv directory
-Download 'genomes_1' folder and its contents from this repository and save the folder and contents to the mcv directory. This folder contains 35 megalocytivirus and 10 iridoviridae genomes in FASTA format downloaded directly from GenBank. Details about each genome can be found in the taxonomy.csv file in this repository. 
+Download 'genomes_1' folder and its contents from this repository and save the folder and contents to the mcv directory. This folder contains 35 megalocytivirus and 10 iridoviridae genomes in FASTA format. Details about each genome can be found in the taxonomy.csv file in this repository.
+
+#### How did i decide on these genomes?
+I included all megalocytivirus genomes saved as 'complete' genomes under 'Megalocytivirus' in NCBI GenBank the Taxonomy Browser. This included whole megalocytivirus genomes housed in NCBI Genbank as ‘unclassified’ (i.e. genomes which were not classified at the species level).I also identified ten representative genomes from each of the six other iridovirid genera including two genomes from each genus where multiple genomes are available (two each from of the genera Ranavirus, Lymphocystivirus, Iridovirus, and Chloriridovirus; one each from of the genera Decapodiridovirus and Daphniairidovirus). These genomes were chosen to span the deepest node of the given clade shown in Zhao et al. (2022). 
+
+## References
+Zhao, R., Gu, C., Zou, X., Zhao, M., Xiao, W., He, M., He, L., Yang, Q., Geng, Y., & Yu, Z. (2022). Comparative genomic analysis reveals new evidence of genus boundary for family Iridoviridae and explores qualified hallmark genes. Computational and Structural Biotechnology Journal, 20, 3493–3502. https://doi.org/10.1016/j.csbj.2022.06.049
