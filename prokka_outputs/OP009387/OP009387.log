@@ -1,0 +1,109 @@
+[12:44:03] This is prokka 1.14.5
+[12:44:03] Written by Torsten Seemann <torsten.seemann@gmail.com>
+[12:44:03] Homepage is https://github.com/tseemann/prokka
+[12:44:03] Local time is Fri Nov 29 12:44:03 2024
+[12:44:03] You are han394
+[12:44:03] Operating system is linux
+[12:44:03] You have BioPerl 1.7.8
+[12:44:03] System has 64 cores.
+[12:44:03] Will use maximum of 8 cores.
+[12:44:03] Annotating as >>> Viruses <<<
+[12:44:03] Creating new output folder: ./prokka_outputs/OP009387
+[12:44:03] Running: mkdir -p \.\/prokka_outputs\/OP009387
+[12:44:03] Using filename prefix: OP009387.XXX
+[12:44:03] Setting HMMER_NCPU=1
+[12:44:03] Writing log to: ./prokka_outputs/OP009387/OP009387.log
+[12:44:03] Command: /apps/prokka/1.14.5/bin/prokka ./genomes_1/OP009387.fasta --kingdom viruses --outdir ./prokka_outputs/OP009387 --prefix OP009387 --locustag OP009387
+[12:44:03] Appending to PATH: /apps/prokka/1.14.5/bin/../binaries/linux
+[12:44:03] Appending to PATH: /apps/prokka/1.14.5/bin/../binaries/linux/../common
+[12:44:03] Appending to PATH: /apps/prokka/1.14.5/bin
+[12:44:03] Looking for 'aragorn' - found /apps/prokka/1.14.5/binaries/linux/aragorn
+[12:44:03] Determined aragorn version is 001002 from 'ARAGORN v1.2.38 Dean Laslett'
+[12:44:03] Looking for 'blastp' - found /apps/prokka/1.14.5/binaries/linux/blastp
+[12:44:03] Determined blastp version is 002009 from 'blastp: 2.9.0+'
+[12:44:03] Looking for 'cmpress' - found /apps/prokka/1.14.5/binaries/linux/cmpress
+[12:44:03] Determined cmpress version is 001001 from '# INFERNAL 1.1.2 (July 2016)'
+[12:44:03] Looking for 'cmscan' - found /apps/prokka/1.14.5/binaries/linux/cmscan
+[12:44:03] Determined cmscan version is 001001 from '# INFERNAL 1.1.2 (July 2016)'
+[12:44:03] Looking for 'egrep' - found /usr/bin/egrep
+[12:44:03] Looking for 'find' - found /usr/bin/find
+[12:44:03] Looking for 'grep' - found /usr/bin/grep
+[12:44:03] Looking for 'hmmpress' - found /apps/hmmer/3.4.0/bin/hmmpress
+[12:44:03] Determined hmmpress version is 003004 from '# HMMER 3.4 (Aug 2023); http://hmmer.org/'
+[12:44:03] Looking for 'hmmscan' - found /apps/hmmer/3.4.0/bin/hmmscan
+[12:44:03] Determined hmmscan version is 003004 from '# HMMER 3.4 (Aug 2023); http://hmmer.org/'
+[12:44:03] Looking for 'java' - found /apps/amazon-corretto/21.0.0.35.1/bin/java
+[12:44:03] Looking for 'makeblastdb' - found /apps/prokka/1.14.5/binaries/linux/makeblastdb
+[12:44:04] Determined makeblastdb version is 002009 from 'makeblastdb: 2.9.0+'
+[12:44:04] Looking for 'minced' - found /apps/prokka/1.14.5/binaries/common/minced
+[12:44:04] Determined minced version is 002000 from 'minced 0.2.0'
+[12:44:04] Looking for 'parallel' - found /apps/parallel/20210322/bin/parallel
+[12:44:04] Determined parallel version is 20210322 from 'GNU parallel 20210322'
+[12:44:04] Looking for 'prodigal' - found /apps/prokka/1.14.5/binaries/linux/prodigal
+[12:44:04] Determined prodigal version is 002006 from 'Prodigal V2.6.3: February, 2016'
+[12:44:04] Looking for 'prokka-genbank_to_fasta_db' - found /apps/prokka/1.14.5/bin/prokka-genbank_to_fasta_db
+[12:44:04] Looking for 'sed' - found /usr/bin/sed
+[12:44:04] Looking for 'tbl2asn' - found /apps/prokka/1.14.5/binaries/linux/tbl2asn
+[12:44:04] Determined tbl2asn version is 025008 from 'tbl2asn 25.8   arguments:'
+[12:44:04] Using genetic code table 1.
+[12:44:04] Loading and checking input file: ./genomes_1/OP009387.fasta
+[12:44:04] Wrote 1 contigs totalling 112248 bp.
+[12:44:04] Predicting tRNAs and tmRNAs
+[12:44:04] Running: aragorn -l -gc1  -w \.\/prokka_outputs\/OP009387\/OP009387\.fna
+[12:44:04] Found 0 tRNAs
+[12:44:04] Disabling rRNA search: --kingdom=Viruses or --norrna=0
+[12:44:04] Skipping ncRNA search, enable with --rfam if desired.
+[12:44:04] Total of 0 tRNA + rRNA features
+[12:44:04] Searching for CRISPR repeats
+[12:44:04] CRISPR1 OP009387.1 21601 with 4 spacers
+[12:44:04] Found 1 CRISPRs
+[12:44:04] Predicting coding sequences
+[12:44:04] Contigs total 112248 bp, so using single mode
+[12:44:04] Running: prodigal -i \.\/prokka_outputs\/OP009387\/OP009387\.fna -c -m -g 1 -p single -f sco -q
+[12:44:04] Excluding CDS which overlaps existing RNA (CRISPR) at OP009387.1:19475..22051 on + strand
+[12:44:04] Found 123 CDS
+[12:44:04] Connecting features back to sequences
+[12:44:04] Not using genus-specific database. Try --usegenus to enable it.
+[12:44:04] Annotating CDS, please be patient.
+[12:44:04] Will use 8 CPUs for similarity searching.
+[12:44:04] There are still 123 unannotated CDS left (started with 123)
+[12:44:04] Will use blast to search against /apps/prokka/1.14.5/db/kingdom/Viruses/sprot with 8 CPUs
+[12:44:04] Running: cat \.\/prokka_outputs\/OP009387\/OP009387\.sprot\.tmp\.5428\.faa | parallel --gnu --plain -j 8 --block 2206 --recstart '>' --pipe blastp -query - -db /apps/prokka/1.14.5/db/kingdom/Viruses/sprot -evalue 1e-09 -qcov_hsp_perc 80 -num_threads 1 -num_descriptions 1 -num_alignments 1 -seg no > \.\/prokka_outputs\/OP009387\/OP009387\.sprot\.tmp\.5428\.blast 2> /dev/null
+[12:44:05] Deleting unwanted file: ./prokka_outputs/OP009387/OP009387.sprot.tmp.5428.faa
+[12:44:05] Deleting unwanted file: ./prokka_outputs/OP009387/OP009387.sprot.tmp.5428.blast
+[12:44:05] Labelling remaining 120 proteins as 'hypothetical protein'
+[12:44:05] Found 2 unique /gene codes.
+[12:44:05] Fixed 0 colliding /gene names.
+[12:44:05] Adding /locus_tag identifiers
+[12:44:05] Assigned 123 locus_tags to CDS and RNA features.
+[12:44:05] Writing outputs to ./prokka_outputs/OP009387/
+[12:44:05] Generating annotation statistics file
+[12:44:05] Generating Genbank and Sequin files
+[12:44:05] Running: tbl2asn -V b -a r10k -l paired-ends -M n -N 1 -y 'Annotated using prokka 1.14.5 from https://github.com/tseemann/prokka' -Z \.\/prokka_outputs\/OP009387\/OP009387\.err -i \.\/prokka_outputs\/OP009387\/OP009387\.fsa 2> /dev/null
+[12:44:06] Deleting unwanted file: ./prokka_outputs/OP009387/errorsummary.val
+[12:44:06] Deleting unwanted file: ./prokka_outputs/OP009387/OP009387.dr
+[12:44:06] Deleting unwanted file: ./prokka_outputs/OP009387/OP009387.fixedproducts
+[12:44:06] Deleting unwanted file: ./prokka_outputs/OP009387/OP009387.ecn
+[12:44:06] Deleting unwanted file: ./prokka_outputs/OP009387/OP009387.val
+[12:44:06] Repairing broken .GBK output that tbl2asn produces...
+[12:44:06] Running: sed 's/COORDINATES: profile/COORDINATES:profile/' < \.\/prokka_outputs\/OP009387\/OP009387\.gbf > \.\/prokka_outputs\/OP009387\/OP009387\.gbk
+[12:44:06] Deleting unwanted file: ./prokka_outputs/OP009387/OP009387.gbf
+[12:44:06] Output files:
+[12:44:06] ./prokka_outputs/OP009387/OP009387.faa
+[12:44:06] ./prokka_outputs/OP009387/OP009387.fsa
+[12:44:06] ./prokka_outputs/OP009387/OP009387.txt
+[12:44:06] ./prokka_outputs/OP009387/OP009387.log
+[12:44:06] ./prokka_outputs/OP009387/OP009387.fna
+[12:44:06] ./prokka_outputs/OP009387/OP009387.err
+[12:44:06] ./prokka_outputs/OP009387/OP009387.tsv
+[12:44:06] ./prokka_outputs/OP009387/OP009387.ffn
+[12:44:06] ./prokka_outputs/OP009387/OP009387.sqn
+[12:44:06] ./prokka_outputs/OP009387/OP009387.gff
+[12:44:06] ./prokka_outputs/OP009387/OP009387.tbl
+[12:44:06] ./prokka_outputs/OP009387/OP009387.gbk
+[12:44:06] Annotation finished successfully.
+[12:44:06] Walltime used: 0.05 minutes
+[12:44:06] If you use this result please cite the Prokka paper:
+[12:44:06] Seemann T (2014) Prokka: rapid prokaryotic genome annotation. Bioinformatics. 30(14):2068-9.
+[12:44:06] Type 'prokka --citation' for more details.
+[12:44:06] Share and enjoy!

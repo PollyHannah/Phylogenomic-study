@@ -1,5 +1,8 @@
 #!/bin/Bash
 
+# Load Prokka
+module load prokka
+
 # Create a directory to store the Prokka outputs
 mkdir prokka_outputs
 
@@ -14,7 +17,6 @@ GENOMES=(`ls ./genomes_1/*.fasta`)
 #Specified viruses as the kingdom for Prokka to use to annotate the genomes. 
 #Specified the outdirectory, prefix and locus tag. 
 #If an out directory using --outdir isn't specified Prokka will put the out directory in the same directory as the input files. 
-#If running after cloning my github repository to your home directory run the following
 for INPUT in ${GENOMES[@]} ; do 
 	File=(`basename ${INPUT} .fasta`) 
 	prokka ${INPUT} --kingdom viruses --outdir ./prokka_outputs/${File} --prefix ${File} --locustag ${File}
