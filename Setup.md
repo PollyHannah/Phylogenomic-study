@@ -42,3 +42,30 @@ conda install -c bioconda orthofinder
 conda install conda-forge::parallel
 conda install -c bioconda iqtree
 ```
+### How to save genomes to a directory
+You can do this by using software such as Cyberduck which you can download here 
+https://cyberduck.io/download/.
+
+Iridovirid genomes in Genomes folder follow the naming convention: genera_species_GenBank-organism-name_accession-number.
+
+To transfer files follow the instructions here
+https://www.exavault.com/docs/cyberduck-connecting. If using Cyberduck, make sure you are using SFTP 'SSH File Transfer Protocol'.
+
+### Reformat to Unix 
+If at any time you get an error indicating a command is not recognised in any of the scipts above, try this command:
+```bash
+dos2unix file_name
+```
+
+### Prokka bugs
+
+If you get an error from prokka saying that you need a later version of blast, here's a fix for that:
+```bash
+conda install -c conda-forge libgcc-ng
+conda install -c bioconda blast=2.9.0
+```
+If you've used the fix above, delete prokka_outputs folder before running script again.
+```bash
+rm -r prokka_outputs
+```
+Then retry the prokka script. If run successfully, the prokka_outputs folder created in the mcv directory will contain multiple outputs.
