@@ -29,5 +29,12 @@ These genomes were chosen to span the deepest node of the given clade shown in Z
 bash script_one_prokka.sh
 ```
 
+### Save proteome files to a central folder.
+Collect the proteome files from the prokka_outputs directory and save them to proteome directory. This step is done in preparation for running OrthoFinder, a program which uses the proteome files as inputs.
+
+```bash
+bash script_two_collect_proteome_files.sh
+```
+
 ## References
 Zhao, R., Gu, C., Zou, X., Zhao, M., Xiao, W., He, M., He, L., Yang, Q., Geng, Y., & Yu, Z. (2022). Comparative genomic analysis reveals new evidence of genus boundary for family Iridoviridae and explores qualified hallmark genes. Computational and Structural Biotechnology Journal, 20, 3493–3502. https://doi.org/10.1016/j.csbj.2022.06.049
