@@ -1,4 +1,4 @@
-#!/bin/Bash
+#!/bin/bash
 
 # Load Prokka
 module load prokka
