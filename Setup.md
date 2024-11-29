@@ -51,14 +51,15 @@ Iridovirid genomes in Genomes folder follow the naming convention: genera_specie
 To transfer files follow the instructions here
 https://www.exavault.com/docs/cyberduck-connecting. If using Cyberduck, make sure you are using SFTP 'SSH File Transfer Protocol'.
 
-### Reformat to Unix 
+
+### General bugs 
+#### Reformat to Unix 
 If at any time you get an error indicating a command is not recognised in any of the scipts above, try this command:
 ```bash
 dos2unix file_name
 ```
 
 ### Prokka bugs
-
 If you get an error from prokka saying that you need a later version of blast, here's a fix for that:
 ```bash
 conda install -c conda-forge libgcc-ng
@@ -69,3 +70,31 @@ If you've used the fix above, delete prokka_outputs folder before running script
 rm -r prokka_outputs
 ```
 Then retry the prokka script. If run successfully, the prokka_outputs folder created in the mcv directory will contain multiple outputs.
+
+### Orthofinder bugs 
+If you get an error indicating a problem with a dependency (for example, DIAMOND), manually install the lastest version of the dependency. 
+
+Find the location of the dependency in the system path.
+```bash
+which diamond
+
+```
+Copy the file path to your clipboard and download the latest version of the dependency.
+```bash
+wget https://github.com/bbuchfink/diamond/releases/latest/download/diamond-linux64.tar.gz
+```
+
+Extract the contents of a compressed file (a tarbell file in this instance).
+```bash
+tar xzf diamond-linux64.tar.gz
+```
+
+Copy the executable to the relevant directory in your system path
+```bash
+sudo cp diamond /file/path/saved/to/clipboard
+```
+
+If you get an error that one of the installed OrthoFinder dependencies (i.e. modules, like DIAMOND or blast+) cannot be located, load the module yourself. For example
+```bash
+module load blast+
+```
