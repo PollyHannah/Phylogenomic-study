@@ -5,7 +5,7 @@ This repository houses the details of my bioinformatic pipeline for my phylogene
 
 Go to the file 'setup.md' in this repository, for information about how to set-up a conda environment. The same file houses information on how to complete basic tasks like transfering files and fixing errors you might receive while completeing this analysis.
 
-## Part one: annotation and quality check
+## Part one: re-annotation and quality check
 Part one is where we quality check and re-annotate genomes for input into Part two: core gene analysis. 
 
 ### Create a directory for this work
@@ -31,9 +31,23 @@ bash script_one_prokka.sh
 
 ### Save proteome files to a central folder.
 Collect the proteome files from the prokka_outputs directory and save them to proteome directory. This step is done in preparation for running OrthoFinder, a program which uses the proteome files as inputs.
-
 ```bash
 bash script_two_collect_proteome_files.sh
+```
+
+### Run OrthoFinder
+OrthoFinder is a program which identifies genes highly conserved between genomes. I manually check and edit (where necessary) the prokka-assigned annotations.
+
+We run this program later in the analysis to identify a final set of 'core genes' at the species, genus and family level. Right now, we're just running it to identify a set of highly conserved genes to target for checking and editing (as explained a bit later on). 
+
+#### Nominate values for OrthoFinder options
+Open 'script_three_orthofinder.sh' and nominate values for options -t (-t number_of_threads) and -a (-a number_of_orthofinder_threads). These options control the parallelisation of OrthoFinder to decrease the runtime. For -t, choose the  number of cores on your computer. For -a, put 1/4 of the value of -t. 
+
+This script will take the proteome files from the directory 'proteome' and store the output files in a directory 'orthofinder_1'.
+
+Run updated script.
+```bash
+bash script_three_orthofinder.sh
 ```
 
 ## References
