@@ -98,3 +98,39 @@ If you get an error that one of the installed OrthoFinder dependencies (i.e. mod
 ```bash
 module load blast+
 ```
+
+### Geneious bugs
+
+Not able to visualise multiple sequence alignments in Geneious Prime? 
+
+To visualise Multiple Sequence Alignment (MSA) outputs from OrthoFinder in Geneious, the trailing spaces at the end of the MSA need to be removed. Otherwise, Geneious will report an error 'some sequences contain gaps, but not all sequences are of the same length'. Try and drag and drop the MSA files into Geneious, if it rejects them and returns the error states (i.e. 'some sequences contain gaps...'), use the script below to remove the trailing spaces from all MSAs. 
+**Note** Before runnning this script you will need to update the directory file path to match your file path. This path will change with every OrthoFinder run due to the naming convention for the 'Results_date' file. 
+
+Remove trailing spaces from MSAs
+```bash
+#!/bin/bash
+
+# Directory containing .fa files
+directory="Path/To/Directory/MultipleSequenceAlignments"
+
+# Loop through files in the directory
+for filename in "$directory"/*.fa; do
+    # Check if filename ends with .fa
+    if [ -f "$filename" ]; then
+        # Read file contents
+        content=$(<"$filename")
+
+        # Check and remove trailing space if present
+        if [[ "$content" == *' '* ]]; then
+            content=$(echo "$content" | sed 's/[[:space:]]*$//')
+
+            # Write modified content back to file
+            echo "$content" > "$filename"
+
+            echo "Trailing space removed from: $(basename "$filename")"
+        else
+            echo "No trailing space found in: $(basename "$filename")"
+        fi
+    fi
+done
+```
