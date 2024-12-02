@@ -22,4 +22,4 @@
 module load orthofinder
 
 #Run Orthofinder on proteomes
-orthofinder -p ./tempdir -og -t 24 -a 6 -f ./proteome -o ./1_orthofinder
+orthofinder -p ./tempdir -og -t 24 -a 6 -f ./proteome_1 -o ./orthofinder_1

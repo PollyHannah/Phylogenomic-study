@@ -4,7 +4,7 @@
 module load prokka
 
 # Create a directory to store the Prokka outputs
-mkdir prokka_outputs
+mkdir prokka_outputs_1
 
 #Define Genomes as an array
 GENOMES=(`ls ./genomes_1/*.fasta`) 
@@ -19,5 +19,5 @@ GENOMES=(`ls ./genomes_1/*.fasta`)
 #If an out directory using --outdir isn't specified Prokka will put the out directory in the same directory as the input files. 
 for INPUT in ${GENOMES[@]} ; do 
 	File=(`basename ${INPUT} .fasta`) 
-	prokka ${INPUT} --kingdom viruses --outdir ./prokka_outputs/${File} --prefix ${File} --locustag ${File}
+	prokka ${INPUT} --kingdom viruses --outdir ./prokka_outputs_1/${File} --prefix ${File} --locustag ${File}
 done
