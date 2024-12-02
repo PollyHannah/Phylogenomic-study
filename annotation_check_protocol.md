@@ -11,13 +11,13 @@ At each stage of the analysis, I removed genomes if I thought there were sequenc
 ## Where are your results? 
 Most of the files used/generated for each stage of the process above can be found in this repository.
 1. The **45** General Feature Files can be found in the prokka_outputs_1 directory. The NCBI GenBank files (.gb) were downloaded directory from NCBI. 
-* One genome (OL310752) was removed at this stage (OL310752).
+   * One genome (OL310752) was removed at this stage (OL310752).
 2. The **44** GenBank (.gb) files before the stop codon check can be found in this repository at annotation_check_results/1_genomes_before_stop_codon_check.
-* Three genomes were removed as part of the stop codon check step (AY532606, AY779031 and NC_027778). 
+   * Three genomes were removed as part of the stop codon check step (AY532606, AY779031 and NC_027778). 
 3. The **41** Genbank (.gb) files post stop codon check can be found in this repository at annotation_check_results/1_genomes_post_stop_codon_check.
 4. The **41** Genbank (.gb) files as lists of annotations post stop codon check can be found in this repository at annotation_check_results/3_annotations_post_stop_codon_check.
 5. The **41** Genbank (.txt) files as lists of annotations post stop codon check can be found in this repository at annotation_check_results/3_annotations_post_stop_codon_check.
-* Sometimes, I found pesky stop codons after I'd converted the file to a .txt file. I removed the stop codons where there were ≤3 and removed the annotation where there were >3 stop codons (as done previously). 
+   * Sometimes, I found pesky stop codons after I'd converted the file to a .txt file. I removed the stop codons where there were ≤3 and removed the annotation where there were >3 stop codons (as done previously). 
 
 ## Megalocytivirus genomes - which annotations did I manually check?
 I completed this process for one genome from each megalocytivirus genotype and species, as well as for every one of the megalocytivirus 'Unclassified' genomes (genomes entered into NCBI GenBank Taxonomy Browser under the genus 'megalocytivirus' as 'Unclassified'). 
