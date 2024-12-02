@@ -60,63 +60,7 @@ Computers are great but they're not perfect. This is why, in theis pipeline, I m
 4. Create a directory proteome_2.
 5. Save all the manually curated proteome files for all genomes as .faa files into the proteome_2 directory.
 
-##### How did I make decisions? 
-I compared the prokka-annotated genome with the reference genome, and made decisions as to wheather to keep the prokka-annotations 'as-is', or edit them, based on whether the prokka annotations matched the annotations in the reference genome. Where the annotations did not match, I reviewed both options and decided on the best annotation to keep based on:
-* A BLASTp search of annotations on the the National Centre for Biotechnology Information (NCBI) GenBank Database. I favoured annotations with a higher number of matches, % identity to matches, and % query cover.
-* I also checked whether stop codons were present in the annotation. If a 'favoured annotation' (as described above) had ≤3 stop codons I kept the annotation and removed the stop codons. Yet if a 'favoured annotation' had >3 stop codons I kept the less-favoured annotation (if there was one). If the annotation had >3 stop codons and there was no 'favored annotation' (i.e. there was no alternative annotation option in the .gff file or .gb file) I deleted the annotation all together. 
-
-##### Megalocytivirus genomes - which annotations did I manually check?
-I completed this process for one genome from each megalocytivirus genotype and species, as well as for every one of the megalocytivirus 'Unclassified' genomes (genomes entered into NCBI GenBank Taxonomy Browser under the genus 'megalocytivirus' as 'Unclassified'). 
-
-For the megalocytivirus genomes for which i did not complete this process, I transferred the manually curated annotations with 85% similarity from the relevant genotype. I did this using the 'Annotate From' option in the'Live Annotate and Predict tab' in Geneious Prime (Version 2020.2.5). I then manually curated the transfered annotations checking for stop codons following the same decision-making process as described above. 
-
-Listed below are the genotypes i transferred annotations from (in **bold**), and beneathe them, the genomes the annotations from that genotype were tranferred to. 
-
-**Scale drop disease virus**
-
-**OM037668**
-* MN562489 
-* MT521409 
-
-**Infectious spleen and kidney necrosis virus**
-
-**AF371960** 
-* MK689685 
-* MN432490 
-* MT926123 
-* MT986830 
-* OP009387 
-
-**Red sea bream iridovirus**
-
-**MK689686**
-* AY894343 
-* BD143114 
-* KC244182 
-* KT804738 
-* MK098187 
-* MK098185 
-* MK098186 
-* MW139932 
-* OK042108 
-* OK042109 
-* ON075463 
-* ON740976 
-* ON743042 
-* OL774653 
-* OL774654 
-* OL774655 
-* MT798582 
-
- **Turbot reddish bodied iridovirus** 
-
- **GQ273492**
-*  None (only one complete genome).
-
-##### Iridoviridae genomes (other than megalocytivirus) - which annotations did I manually check?
-For every iridoviridae genome from genera other than *Megalocytivirus*, I completed the manual curation process as described above, but only for a small set of highly conserved genes. This was done to save time. The genes I chose to manually curate were identified through the OrthoFinder run above. For each of these genomes, I manually curated the genes assigned to orthogroups containing orthologs from 100% of genomes part of the analysis. 
-
-The genes I chose for manual curation for each genome, was based on different OrthoFinder runs. The results for each OrthoFinder run can be found in the directory 'orthofinder_1'. The OrthoFinder run, from which the set of highly conserved genes were chosen for manual curation, is provided for each genome in the file 'Manual Check_Nucleotide alignment Annotation' in this repository.
+To understand how I made decisions as part of step 3 above, and which annotations i checked and edited for which genomes, see file 'annotation_check_protocol' in this repository. 
 
 
 
