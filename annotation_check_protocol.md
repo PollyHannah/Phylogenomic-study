@@ -19,6 +19,8 @@ Most of the files used/generated for each stage of the process above can be foun
 5. The **41** Genbank (.txt) files as lists of annotations post stop codon check can be found in this repository at annotation_check_results/3_annotations_post_stop_codon_check.
    * Sometimes, I found pesky stop codons after I'd converted the file to a .txt file. I removed the stop codons where there were ≤3 and removed the annotation where there were >3 stop codons (as done previously). 
 
+All edits made for each annotations are can be found in the file annotation_check_results/YYYY_annotations_manual_file.xlsx. 
+
 ## Megalocytivirus genomes - which annotations did I manually check?
 I completed this process for one genome from each megalocytivirus genotype and species, as well as for every one of the megalocytivirus 'Unclassified' genomes (genomes entered into NCBI GenBank Taxonomy Browser under the genus 'megalocytivirus' as 'Unclassified'). 
 
@@ -70,4 +72,4 @@ Listed below are the genotypes i transferred annotations from (in **bold**), and
 ## Iridoviridae genomes (other than megalocytivirus) - which annotations did I manually check?
 For every iridoviridae genome from genera other than *Megalocytivirus*, I completed the manual curation process as described above, but only for a small set of highly conserved genes. This was done to save time. The genes I chose to manually curate were identified through the OrthoFinder run above. For each of these genomes, I manually curated the genes assigned to orthogroups containing orthologs from 100% of genomes part of the analysis. 
 
-The genes I chose for manual curation for each genome, was based on different OrthoFinder runs. The results for each OrthoFinder run can be found in the directory 'orthofinder_1'. The OrthoFinder run, from which the set of highly conserved genes were chosen for manual curation, is provided for each genome in the file 'Manual Check_Nucleotide alignment Annotation' in this repository.
+The genes I chose for manual curation for each genome, was based on different OrthoFinder runs. The results for each OrthoFinder run can be found in the directory 'orthofinder_1'. The OrthoFinder run, from which the set of highly conserved genes were chosen for manual curation, is provided for each genome in the file annotation_check_results/YYYY_annotations_manual_file.xlsx in this repository.
