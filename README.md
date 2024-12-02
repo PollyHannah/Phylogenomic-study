@@ -5,7 +5,7 @@ This repository houses the details of my bioinformatic pipeline for my phylogene
 
 Go to the file 'setup.md' in this repository, for information about how to set-up a conda environment. The same file houses information on how to complete basic tasks like transfering files and fixing errors you might receive while completeing this analysis.
 
-To identify the genetic sequence information for inclusion in this study i generated a database of available sequence data for the genus *Megalocytivirus* and other members of the family *Iridoviridae*. That data base can be found in this repository named '20242811_megalocytivirus_sequence_data.xlsx'.
+To identify the genetic sequence information for inclusion in this study i generated a database of available sequence data for the genus *Megalocytivirus* and other members of the family *Iridoviridae*. That data base can be found in this repository named 'YYYYMMDD_megalocytivirus_sequence_data.xlsx'.
 
 ## Part one: re-annotation and quality check
 Part one is where we quality check and re-annotate genomes for input into Part two: core gene analysis. 
