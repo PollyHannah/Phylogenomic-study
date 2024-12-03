@@ -27,7 +27,7 @@ I also included ten representative genomes from each of the six other iridovirid
 These genomes were chosen to span the deepest node of the given clade shown in Zhao et al. (2022) except for the genus *Lymphocystivirus*. One of the lymphocystivirus genomes initally chosen for inclusion, L63545, was half the expected length. I replaced L63545 with another genome from the same genus (KX643370) which was the expected length. 
 
 ##### Novel genomes
-I've sequenced and am currently assembling and annotating novel genomes for inclusion in this study, as tabulated below. The directory in this repository 'novel_genomes' houses the raw reads for the novel genomes. These genomes are not yet included in the analysis.
+I've sequenced and am currently assembling and annotating novel genomes for inclusion in this study, as tabulated below. The directory in this repository 'novel_genomes' houses data associated with the assembly and annotation of these genomes. The raw reads are not stored in this repository as they are too large. These genomes are not yet included in the analysis.
 | Genome | Accession |Identification number  | Collection date | Host |
 |--------|-----------|-----------------------|-----------------|------|
 | 1 | Not yet created | 23-04361-0003 | 2 November 2023 | Swordtail ornamental fish (*Xiphophorus helleri*) |
