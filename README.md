@@ -31,7 +31,7 @@ I've sequenced and am currently assembling and annotating novel genomes for incl
 | Genome | Accession |Identification number  | Collection date | Host |
 |--------|-----------|-----------------------|-----------------|------|
 | 1 | Not yet created | 23-04361-0003 | 2 November 2023 | Swordtail ornamental fish (*Xiphophorus helleri*) |
-| 2 | Note yet created | 23-04361-0005 | 2 November |  Platys (*Xiphophorus maculatus*) |
+| 2 | Not yet created | 23-04361-0005 | 2 November |  Platys (*Xiphophorus maculatus*) |
 
 
 
