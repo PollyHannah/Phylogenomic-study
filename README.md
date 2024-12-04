@@ -71,7 +71,7 @@ Computers are great but they're not perfect. This is why, in theis pipeline, I m
 4. Create a directory proteome_2.
 5. Save all the manually curated proteome files for all genomes as .faa files into the proteome_2 directory.
 
-To understand how I made decisions as part of step 3 above, and which annotations i checked and edited for which genomes, see file 'annotation_check' in this repository. 
+To understand how I made decisions as part of step 3 above, which annotations i checked and edited for which genomes, and my results, see directory 'annotation_check' in this repository. 
 
 ### Run OrthoFinder again
 Now, run Orthofinder on the manually curated annotation files. The input files will be take from the 2_prokka_manual directory. The output files will be saved into a directory '2_orthofinder'. 
