@@ -39,7 +39,6 @@ I've sequenced and am currently assembling and annotating novel genomes for incl
 ```bash
 bash script_one_prokka.sh
 ```
-
 ### Save proteome files to a central folder.
 Collect the proteome files from the prokka_outputs_1 directory and save them to proteome_1 directory. This step is done in preparation for running OrthoFinder, a program which uses the proteome files as inputs.
 ```bash
@@ -72,6 +71,9 @@ Computers are great but they're not perfect. This is why, in theis pipeline, I m
 5. Save all the manually curated proteome files for all genomes as .faa files into the proteome_2 directory.
 
 To understand how I made decisions as part of step 3 above, which annotations i checked and edited for which genomes, and my results, see directory 'annotation_check' in this repository. 
+
+## Part Two: Core gene analysis
+This is where we take the freshly re-annotated sequences and identify a set of core genes using OrthoFinder (again).  
 
 ### Run OrthoFinder again
 Now, run Orthofinder on the manually curated annotation files. The input files will be take from the 2_prokka_manual directory. The output files will be saved into a directory '2_orthofinder'. 
