@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # FastQC is a program which you can use assess the quality of basecalls from raw sequence reads for a sample, before attempting to assemble a genome.
 
 # Load module
