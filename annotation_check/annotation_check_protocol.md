@@ -76,8 +76,7 @@ The genes I chose for manual curation for each genome, was based on different Or
 
 ## How did you process the files? 
 The freshly re-annotated sequences are used to identify core genes as part of Part Two: core gene analysis. To do this, you have to get the annotations out of Geneious Prime and into a format which OrthoFinder recognises. Below is how i achieved this:
-1. Go to the annotations tab in Genenious Prime for the freshly re-annotated genome. Format the table - go to columns and sort them by clicking th smallest 'min' to largest 'min' to make sure the locus tags are all in order. Move the columns around to ensure they're in the following order: 
-* 1, Locus tag 2, Product Name 3, Product sequence.  
+1. Go to the annotations tab in Genenious Prime for the freshly re-annotated genome. Format the table - go to columns and sort them by clicking th smallest 'min' to largest 'min' to make sure the locus tags are all in order. Move the columns around to ensure they're in the following order: 1, Locus tag 2, Product Name 3, Product sequence.  
 
 2. The go ‘Export Table’. Save it to desktop. It will be a .csv file. 
 
