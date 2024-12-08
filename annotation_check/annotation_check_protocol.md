@@ -1,19 +1,17 @@
 # How did I make decisions? 
-To decide whether to keep, edit, or delete annotations, I compared the prokka-annotated genome with the reference genome, and made decisions as to whether to keep the prokka-annotations 'as-is', or edit them, based on whether the prokka annotations matched the annotations in the reference genome.
+To decide whether to keep, edit, or delete annotations, I compared the prokka-annotated genome with the reference genome, and made decisions as to whether to keep the prokka-annotations 'as-is', or edit them, based on whether the prokka annotations matched the annotations in the reference genome. At each of the stages listed below, I removed genomes if I thought there were sequencing or assemby errors in those genomes. 
 1. I downloaded the General Feature File (.gff) produced by Prokka (version 1. 14. 5) for every genome and pairwise aligned the file in Genenious Prime (version 2020.2.5) with the GenBank (.gb) file from National Centre for Biotechnology Information (NCBI) GenBank Database for the corresponding genome. 
 2. Where the Prokka and GenBank annotations matched, I kept the annotation as-is. Where the annotations did not match, I did a A BLASTp search of both annotations on the the NCBI GenBank Database. I favoured annotations with a higher number of matches, % identity to matches, and % query cover.
 3. I then checked whether stop codons were present in the annotation. If a 'favoured annotation' (as described above) had ≤3 stop codons I kept the annotation and removed the stop codons. Yet if a 'favoured annotation' had >3 stop codons I kept the less-favoured annotation (if there was one). If the annotation had >3 stop codons and there was no 'favored annotation' (i.e. there was no alternative annotation option in the .gff file or .gb file) I deleted the annotation all together. 
 4. I exported a list of the annotations (amino acid sequences) for each genome from Geneious Prime (version 2020.2.5). 
 5. I then exported the list as a .csv file and converted it to a .txt file. I used this text file to input into the next Orthofinder run. 
 
-At each stage of the analysis, I removed genomes if I thought there were sequencing or assemby errors in those genomes. 
-
 ## Where are your results? 
 Most of the files used/generated for each stage of the process above can be found in this repository.
 1. The **45** General Feature Files can be found in the prokka_outputs_1 directory. The NCBI GenBank files (.gb) were downloaded directory from NCBI. 
-   * One genome (OL310752) was removed at this stage (OL310752).
+   * One genome (OL310752) was removed at this stage due to an assumed sequencing or assembly error.
 2. The **44** GenBank (.gb) files before the stop codon check can be found in this repository at annotation_check_results/1_genomes_before_stop_codon_check.
-   * Three genomes were removed as part of the stop codon check step (AY532606, AY779031 and NC_027778). 
+   * Three genomes were removed as part of this step for having too mnay stop codons in some annotations (AY532606, AY779031 and NC_027778). 
 3. The **41** Genbank (.gb) files post stop codon check can be found in this repository at annotation_check_results/1_genomes_post_stop_codon_check.
 4. The **41** Genbank (.gb) files as lists of annotations post stop codon check can be found in this repository at annotation_check_results/3_annotations_post_stop_codon_check.
 5. The **41** Genbank (.txt) files as lists of annotations post stop codon check can be found in this repository at annotation_check_results/3_annotations_post_stop_codon_check.
@@ -32,7 +30,8 @@ Listed below are the genotypes i transferred annotations from (in **bold**), and
 
 **OM037668**
 * MN562489 
-* MT521409 
+* MT521409
+* NC_027778 - removed during stop codon check.
 
 **Infectious spleen and kidney necrosis virus**
 
@@ -62,7 +61,9 @@ Listed below are the genotypes i transferred annotations from (in **bold**), and
 * OL774653 
 * OL774654 
 * OL774655 
-* MT798582 
+* MT798582
+* AY532606 - removed during stop codon check.
+* AY779031 - removed during stop codon check.
 
  **Turbot reddish bodied iridovirus** 
 
