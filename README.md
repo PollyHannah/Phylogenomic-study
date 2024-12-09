@@ -30,19 +30,11 @@ I also included ten representative genomes from each of the six other iridovirid
 These genomes were chosen to span the deepest node of the given clade shown in Zhao et al. (2022) except for the genus *Lymphocystivirus*. One of the lymphocystivirus genomes initally chosen for inclusion, L63545, was half the expected length at 102,653 bp long. Lymphocystivirus genomes are typically around 200,000 bp in length. I replaced L63545 with another genome from the same genus (KX643370) which was the expected length (208,501 bp). 
 
 ##### Novel genomes
-I've sequenced and am currently assembling and annotating novel genomes for inclusion in this study, as tabulated below. The directory in this repository 'novel_genomes' houses data associated with the assembly and annotation of these genomes. The raw reads are not stored in this repository as they are too large. These genomes are not yet included in the analysis.
+I've sequenced and am currently assembling and annotating novel genomes for inclusion in this study, as tabulated below. The directory in this repository `novel_genomes` houses data associated with the assembly and annotation of these genomes, including the software I'm using. The raw reads are not stored in this repository as they are too large. These genomes are not yet included in the analysis.
 | Genome | Accession |Identification number  | Collection date | Host |
 |--------|-----------|-----------------------|-----------------|------|
 | 1 | Not yet created | 23-04361-0003 | 2 November 2023 | Swordtail ornamental fish (*Xiphophorus helleri*) |
-| 2 | Not yet created | 23-04361-0005 | 2 November |  Platys (*Xiphophorus maculatus*) |
-
-To assemble my genomes I'm using the following software:
-* FastQC (version version 0.12.1)
-* Fastp (version version 0.23.2)
-* Bowtie (version 2.5.4)
-* samtools (version 1.18.0)
-* SPAdes 
-* Unicycler
+| 2 | Not yet created | 23-04361-0005 | 2 November |  Platys (*Xiphophorus maculatus*) 
 
 ### Run Prokka on genomes
 ```bash
