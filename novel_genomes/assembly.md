@@ -1,4 +1,6 @@
 # Assembly steps 
+This repository outlines how I sequences, assembled, and annotation novel megalocytivirus genomes to include in this study. It also houses data asspciated with the squening, assembly and annotation process (although some files were too big to upload here). 
+
 To assemble novel genomes I'm using the following software:
 * FastQC (version version 0.12.1)
 * Fastp (version version 0.23.2)
