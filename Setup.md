@@ -65,11 +65,11 @@ If you get an error from prokka saying that you need a later version of blast, h
 conda install -c conda-forge libgcc-ng
 conda install -c bioconda blast=2.9.0
 ```
-If you've used the fix above, delete prokka_outputs folder before running script again.
+If you've used the fix above, delete `prokka_outputs` directory before running script again.
 ```bash
 rm -r prokka_outputs
 ```
-Then retry the prokka script. If run successfully, the prokka_outputs folder created in the mcv directory will contain multiple outputs.
+Then retry the prokka script. If run successfully, the `prokka_outputs` directory created in the mcv directory will contain multiple outputs.
 
 ### Orthofinder bugs 
 If you get an error indicating a problem with a dependency (for example, DIAMOND), manually install the lastest version of the dependency. 
