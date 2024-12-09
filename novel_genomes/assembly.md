@@ -1,4 +1,11 @@
 # Assembly steps 
+To assemble novel genomes I'm using the following software:
+* FastQC (version version 0.12.1)
+* Fastp (version version 0.23.2)
+* Bowtie (version 2.5.4)
+* samtools (version 1.18.0)
+* SPAdes 
+* Unicycler
 
 ## Check quality
 I first assessed the quality of the basecalls for the raw Illumina reads using FastQC (version 0.12.1). To run FastQC on the command line you have to specify a list of files to process. You can specify multiple files to process in a single run. FastQC will create an HTML report for each file, with embedded graphs detailing the quality of various aspects of the data.
