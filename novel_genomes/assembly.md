@@ -1,6 +1,6 @@
 # Assembly steps 
 
-## Check quality of raw reads
+## Check quality
 I first assessed the quality of the basecalls for the raw Illumina reads using FastQC (version 0.12.1). To run FastQC on the command line you have to specify a list of files to process. You can specify multiple files to process in a single run. FastQC will create an HTML report for each file, with embedded graphs detailing the quality of various aspects of the data.
 
 ```bash
