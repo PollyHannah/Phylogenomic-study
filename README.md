@@ -3,7 +3,11 @@
 ## About 
 This repository houses the details of my bioinformatic pipeline for my phylogenetic analyses of megalocytiviruses, a group of fish pathogens exotic to Australia, and other members of the family *Iridoviridae*. A set of core genes are first identified followed by phylogenetic analysis of the core genes. 
 
-Go to the file `setup.md` in this repository, for information about how to set-up a conda environment. The same file houses information on how to complete basic tasks like transfering files and fixing errors you might receive while completeing this analysis.
+Go to the file `setup.md` in this repository, for information about how to set-up a conda environment. The same file houses information on how to complete basic tasks like transfering files and fixing errors you might receive while completeing this analysis. You will need the following software:
+* Prokka (version 1.14.5)
+* OrthoFinder (version 2.5.4)
+* IQ-TREE2 (version 2.2.0.5)
+* CIAlign (available in python/3.12.3)
 
 To identify the genetic sequence information for inclusion in this study i generated a database of available sequence data for the genus *Megalocytivirus* and other members of the family *Iridoviridae*. That data base can be found in this repository named `megalocytivirus_sequence_data.xlsx`.
 
@@ -31,6 +35,14 @@ I've sequenced and am currently assembling and annotating novel genomes for incl
 |--------|-----------|-----------------------|-----------------|------|
 | 1 | Not yet created | 23-04361-0003 | 2 November 2023 | Swordtail ornamental fish (*Xiphophorus helleri*) |
 | 2 | Not yet created | 23-04361-0005 | 2 November |  Platys (*Xiphophorus maculatus*) |
+
+To assemble my genomes I used the following modules:
+* FastQC (version version 0.12.1)
+* Fastp (version version 0.23.2)
+* Bowtie (version 2.5.4)
+* samtools (version 1.18.0)
+* SPAdes 
+* Unicycler
 
 ### Run Prokka on genomes
 ```bash
