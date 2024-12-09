@@ -36,7 +36,7 @@ I've sequenced and am currently assembling and annotating novel genomes for incl
 | 1 | Not yet created | 23-04361-0003 | 2 November 2023 | Swordtail ornamental fish (*Xiphophorus helleri*) |
 | 2 | Not yet created | 23-04361-0005 | 2 November |  Platys (*Xiphophorus maculatus*) |
 
-To assemble my genomes I used the following modules:
+To assemble my genomes I'm using the following software:
 * FastQC (version version 0.12.1)
 * Fastp (version version 0.23.2)
 * Bowtie (version 2.5.4)
