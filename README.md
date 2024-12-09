@@ -8,7 +8,7 @@ Go to the file 'setup.md' in this repository, for information about how to set-u
 To identify the genetic sequence information for inclusion in this study i generated a database of available sequence data for the genus *Megalocytivirus* and other members of the family *Iridoviridae*. That data base can be found in this repository named 'megalocytivirus_sequence_data.xlsx'.
 
 ## Part one: re-annotation and quality check
-Part one is where we quality check and re-annotate genomes for input into Part two: core gene analysis. The genomes in NCBI Genbank have annotations, but they are of differing quality, and done using various methods. This part aims to check and update annotations to maximise the quality of the data for phylogenetic inference.
+Part one is where we collect, quality check, and re-annotate genomes for input into Part two: core gene analysis. The genomes in NCBI Genbank have annotations, but they are of differing quality, and done using various methods. This part aims to check and update annotations to maximise the quality of the data for phylogenetic inference.
 
 ### Create a directory for this work
 ```bash
@@ -20,11 +20,11 @@ cd mcv
 Download 'genomes_1' folder and its contents from this repository and save the folder and contents to the mcv directory. This folder contains 35 megalocytivirus and 10 iridoviridae genomes in FASTA format. Details about each genome can be found in the taxonomy.csv file in this repository.
 
 #### Which genomes are included and exluded from the genomes_1 directory?
-I included all megalocytivirus genomes saved as 'complete' genomes under the genus *Megalocytivirus* in the NCBI GenBank the Taxonomy Browser, which were the expected length. This included genomes entered into NCBI Genbank as ‘unclassified’ at the species level. One megalocytivirus genome was not included given it was smaller than the expected length (accession KC138895I). 
+I included all megalocytivirus genomes saved as 'complete' genomes under the genus *Megalocytivirus* in the NCBI GenBank the Taxonomy Browser, which were the expected length. Genomes which were not the expected length meant genomes which were half or twice the length of other *Megalocytivirus* genomes. This included genomes entered into NCBI Genbank as ‘unclassified’ at the species level. One megalocytivirus genome was not included given it was smaller than the expected length (accession KC138895). KC138895 is was 903 base pairs (bp) in length whereas megalocytiviruses are between 110,000 and 140,000 bp in length. 
 
-I also included ten representative genomes from each of the six other iridovirid genera including two genomes from each genus where multiple genomes are available (two each from of the genera *Ranavirus*, *Lymphocystivirus*, *Iridovirus*, and *Chloriridovirus*; one each from of the genera *Decapodiridovirus* and *Daphniairidovirus*). 
+I also included ten representative genomes from each of the six other iridovirid genera including two genomes from each genus where multiple genomes are available (two each from of the genera *Ranavirus*, *Lymphocystivirus*, *Iridovirus*, and *Chloriridovirus*; one each from of the genera *Decapodiridovirus* and *Daphniairidovirus*). I also ensured these genomes were the expected length. Genomes which were not the expected length meant genomes which were half or twice the length of other genomes in the same genus. 
 
-These genomes were chosen to span the deepest node of the given clade shown in Zhao et al. (2022) except for the genus *Lymphocystivirus*. One of the lymphocystivirus genomes initally chosen for inclusion, L63545, was half the expected length. I replaced L63545 with another genome from the same genus (KX643370) which was the expected length. 
+These genomes were chosen to span the deepest node of the given clade shown in Zhao et al. (2022) except for the genus *Lymphocystivirus*. One of the lymphocystivirus genomes initally chosen for inclusion, L63545, was half the expected length at 102,653 bp long. Lymphocystivirus genomes are typically around 200,000 bp in length. I replaced L63545 with another genome from the same genus (KX643370) which was the expected length (208,501 bp). 
 
 ##### Novel genomes
 I've sequenced and am currently assembling and annotating novel genomes for inclusion in this study, as tabulated below. The directory in this repository 'novel_genomes' houses data associated with the assembly and annotation of these genomes. The raw reads are not stored in this repository as they are too large. These genomes are not yet included in the analysis.
