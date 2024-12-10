@@ -60,7 +60,7 @@ Run updated script.
 bash script_three_orthofinder.sh
 ```
 
-### Manually check and edit annotations 
+### Manual check of annotations and identification of sequencing or assembly errors
 Computers are great but they're not perfect. This is why, in theis pipeline, I manually curate the prokka-assigned annotations using Geneious Prime. I recorded all changes i made in the spreadsheet 'annotations_manual_changes.xlsx' in the `prokka_outputs_1` directory in this repository.
 
 #### Steps to follow
