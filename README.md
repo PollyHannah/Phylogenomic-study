@@ -71,7 +71,7 @@ Computers are great but they're not perfect. This is why I manually curate the p
 5. Save all the manually curated proteome files for all genomes as .faa files into the `proteome_2` directory.
 6. If at any stage you spy somethinf you think is an assembly or sequencing error in a genome - remove it from the analysis all-together. 
 
-To save time, I didn't manually check every annotation for every genome. Head to `annotation_check` for information including; the annotations I manually checked for each genomes, a list of annotations which I edited or removed, the genome(s) removed from my analysis due to assumed sequencing or assembly errors (and why), and how I processed proteome files to get them into a format ready for the next step of the pipeline. 
+To save time, I didn't manually check every annotation for every genome. Head to the directory `annotation_check` for information including; the annotations I manually checked for each genomes, a list of annotations which I edited or removed, the genome(s) removed from my analysis due to assumed sequencing or assembly errors (and why), and how I processed proteome files to get them into a format ready for the next step of the pipeline. 
 
 ## Part Two: Core gene analysis
 This is where we take the freshly re-annotated sequences and identify a set of core genes using OrthoFinder (again).  
