@@ -66,7 +66,7 @@ Throughout this manual annotation check process, I identified four genomes which
 
 | Genome (accession number) | Genotype | Reason excluded from analysis |
 |---------------------------|----------------------------|-------------------------------|
-| OL310752 | Unclassified | Two genes were assigned to orthogroup G000000 in the OrthoFinder output 'Results_Jul07' which was one gene in all other genomes. It appeared the gene was split in OL310752 and each section was located in two very different locations in the genome. I believe this may be indicative of a sequencing or assembly error and so i removed the genome from my analysis | 
+| OL310752 | Unclassified | Two genes were assigned to orthogroup G000000 in the OrthoFinder output 'Results_Jul07' which was one gene in all other genomes. I could tell this by looking at the multiple sequence alignment for this orthogroup in the OrthoFinder 'Results_Jul07' output. It appeared the gene was split in OL310752 and each section was located in two very different locations in the genome. I believe this may be indicative of a sequencing or assembly error and so i removed the genome from my analysis. | 
 | AY532606 | RSIV | Too many stop codons in annotations |
 | AY779031 | RSIV | Too many stop codons in annotations |
 | NC_027778 | SDDV | Too many stop codons in annotations |
