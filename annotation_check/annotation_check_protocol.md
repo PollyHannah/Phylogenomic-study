@@ -47,7 +47,7 @@ I manually checked the annotations for every megalocytivirus genome entered into
 | OQ475017 |
 | OL3100752* |
 
-*Removed due to assumed sequencing or assembly error.
+*Genome removed due to assumed sequencing or assembly error.
 
 ### Iridoviridae gemomes (not from the genus *Megalocytivirus*)
 For every iridoviridae genome from genera other than *Megalocytivirus*, I completed the manual curation process as described above, but only for a small set of highly conserved genes. The genes I chose to manually curate were identified through the OrthoFinder run described in the `README.md` (Part one: re-annotation and quality check). Looking at the OrthoFinder output I manually curated the genes (or orthologs) which were assigned to orthogroups containing orthologs from 100% of genomes part of the analysis. 
