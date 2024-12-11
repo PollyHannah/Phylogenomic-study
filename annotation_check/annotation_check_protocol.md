@@ -1,4 +1,52 @@
-# How did I make decisions? 
+# Annotation check
+This page includes on the annotations I manually checked and for which genomes, how I decided on which annotations I would keep, edit or remove, a list of the annotations which I edited or removed, the genomes which I removed from my analysis due to assumed sequencing or assembly errors (and why), and how I processed proteome files to get them into a format ready for the next step of the pipeline.
+
+## Which annotations did I manually check?
+The annotations I chose to manually check differed depending on whether the genome was a megalocytivirus genome, an 'unclassified' megalocytivirus genome (genomes entered into NCBI GenBank Taxonomy Browser under the genus 'megalocytivirus' as 'Unclassified'), or a genome from a different iridovirid genus (i.e. not a megalocytivirus). The annotations I checked for each of these groups is provided below.
+
+I didn't check every annotation for every genomes in order to save time. 
+
+### Megalocytivirus genomes
+#### Classified genomes
+I picked four genomes (tabulated below) one from each of the three *Megalocytivirus pagrus1* genotypes (infectious spleen and kidney necrosis virus or 'ISKNV', red sea bream iridovirus or 'RSIV', and turbot reddish body iridovirus or 'TRBIV') and one *Megalocytivirus lates1* or 'scale drop disease syndrome' genome. I checked every annotation which Prokka had assigned for each of these four genomes. I chose these genomes given they were published in a peer reviewed journals and were available on NCBI Genbank as fully annotated genomes.
+
+| Genotype / species | Accession | Publication DOI |
+| ISKNV | AF371960 | https://doi.org/10.1006/viro.2001.1208 |
+| RSIV | MK689686 | https://doi.org/10.3354/dao03499 |
+| TRBIV | GQ273492 | 10.1186/1743-422X-7-159 |
+| SDDV | OM037668 | https://doi.org/10.3390/v13081617 |
+
+I transferred the annotations from the manually curated genomes (above) onto the remaining genomes of the same genotype (i.e. I transferred the manually curated  ISKNV annotations onto the remaining ISKNV genomes, and all the manually curated SDDV annotations onto the remaining SDDV gemomes etc.). A list of all the genomes included in the analysis can be found at `taxonomy.csv`. 
+
+I transferred annotations using the 'Annotate From' option in the'Live Annotate and Predict tab' in Geneious Prime (Version 2020.2.5). I set the transfer threshold for percent similarity at 85%. This meant that annotated sequences which were less than 85% similar to the sequence being annotated did not transfer. 
+
+Once the annotations were transferred, checked each transferred annotation for stop codons and ensured the annotation started with the amino acid Methionine (M). 
+* If the annotation did not start with M I removed it.
+* If there were three stop codons maximum in an annotation, I removed the stop codons from the annotation. If there were more than three stop codons in an annotation, I removed the annotation.
+* If there were >5 annotations with stop codons throughout the annotation i removed the genome from the analysis due to assumed sequencing or assembly errors. 
+
+Listed below are the genotypes I transferred annotations from and to.
+
+| Genotype / species | Annotations tranferred from (accession number) | Annotations transferred to (accession number) |
+| ISKNV | AF371960 |  MK689685, MN432490, MT926123, MT986830, OP009387 |
+| RSIV | MK689686 | AY894343, BD143114, KC244182, KT804738, MK098187, MK098185, MK098186, MW139932, OK042108, OK042109, ON075463, ON740976, ON743042, OL774653, OL774654, OL774655, MT798582, AY532606*, AY779031* |
+| TRBIV | GQ273492 | none |
+| SDDV | OM037668 | MN562489, MT521409, NC_027778* |
+* Genome removed due to stop codons being present in >5 annotations.
+
+#### Unclassified genomes
+I manually checked the annotations for every megalocytivirus genome entered into NCBI genbank as 'unclassified' at the species and genus level. These were
+| Unclassified megalocytivirus genomes (accession number) |
+| MG570131 |
+| MG570132 |
+| OQ475017 |
+
+### Iridoviridae gemomes (not from the genus *Megalocytivirus*)
+For every iridoviridae genome from genera other than *Megalocytivirus*, I completed the manual curation process as described above, but only for a small set of highly conserved genes. The genes I chose to manually curate were identified through the OrthoFinder run described in the `README.md` (Part one: re-annotation and quality check). Looking at the OrthoFinder output I manually curated the genes (or orthologs) which were assigned to orthogroups containing orthologs from 100% of genomes part of the analysis. 
+
+I have run OrthoFinder multiple times with different sets of genomes (ones added, ones removed etc.). For each run, the output has been slightly different. The OrthoFinder run, from which the set of highly conserved genes were chosen for manual curation, is provided for each genome in the file `annotation_check_results`/`annotations_manual_file.xlsx`. The results files for each run can be found in the `orthofinder_1` directory. 
+
+## How did I make decisions? 
 To decide whether to keep, edit, or delete annotations, I compared the prokka-annotated genome with the reference genome, and made decisions as to whether to keep the prokka-annotations 'as-is', or edit them, based on whether the prokka annotations matched the annotations in the reference genome. At each of the stages listed below, I removed genomes if I thought there were sequencing or assemby errors in those genomes. 
 1. I downloaded the General Feature File (.gff) produced by Prokka (version 1. 14. 5) for every genome and pairwise aligned the file in Genenious Prime (version 2020.2.5) with the GenBank (.gb) file from National Centre for Biotechnology Information (NCBI) GenBank Database for the corresponding genome. 
 2. Where the Prokka and GenBank annotations matched, I kept the annotation as-is. Where the annotations did not match, I did a A BLASTp search of both annotations on the the NCBI GenBank Database. I favoured annotations with a higher number of matches, % identity to matches, and % query cover.
@@ -19,61 +67,6 @@ Most of the files used/generated for each stage of the process above can be foun
 
 All edits made for each annotations are can be found in the file `annotation_check_results`/annotations_manual_file`.xlsx. 
 
-## Megalocytivirus genomes - which annotations did I manually check?
-I completed this process for one genome from each megalocytivirus genotype and species, as well as for every one of the megalocytivirus 'Unclassified' genomes (genomes entered into NCBI GenBank Taxonomy Browser under the genus 'megalocytivirus' as 'Unclassified'). 
-
-For the megalocytivirus genomes for which i did not complete this process, I transferred the manually curated annotations with 85% similarity from the relevant genotype. I did this using the 'Annotate From' option in the'Live Annotate and Predict tab' in Geneious Prime (Version 2020.2.5). I then manually curated the transfered annotations checking for stop codons following the same decision-making process as described above. 
-
-Listed below are the genotypes i transferred annotations from (in **bold**), and beneathe them, the genomes the annotations from that genotype were tranferred to. 
-
-**Scale drop disease virus**
-
-**OM037668**
-* MN562489 
-* MT521409
-* NC_027778 - removed during stop codon check.
-
-**Infectious spleen and kidney necrosis virus**
-
-**AF371960** 
-* MK689685 
-* MN432490 
-* MT926123 
-* MT986830 
-* OP009387 
-
-**Red sea bream iridovirus**
-
-**MK689686**
-* AY894343 
-* BD143114 
-* KC244182 
-* KT804738 
-* MK098187 
-* MK098185 
-* MK098186 
-* MW139932 
-* OK042108 
-* OK042109 
-* ON075463 
-* ON740976 
-* ON743042 
-* OL774653 
-* OL774654 
-* OL774655 
-* MT798582
-* AY532606 - removed during stop codon check.
-* AY779031 - removed during stop codon check.
-
- **Turbot reddish bodied iridovirus** 
-
- **GQ273492**
-*  None (only one complete genome).
-
-## Iridoviridae genomes (other than megalocytivirus) - which annotations did I manually check?
-For every iridoviridae genome from genera other than *Megalocytivirus*, I completed the manual curation process as described above, but only for a small set of highly conserved genes. This was done to save time. The genes I chose to manually curate were identified through the OrthoFinder run above. For each of these genomes, I manually curated the genes assigned to orthogroups containing orthologs from 100% of genomes part of the analysis. 
-
-The genes I chose for manual curation for each genome, was based on different OrthoFinder runs. The results for each OrthoFinder run can be found in the directory `orthofinder_1`. The OrthoFinder run, from which the set of highly conserved genes were chosen for manual curation, is provided for each genome in the file `annotation_check_results`/`annotations_manual_file.xlsx` in this repository.
 
 ## How did you process the files? 
 The freshly re-annotated sequences are used to identify core genes as part of Part Two: core gene analysis. To do this, you have to get the annotations out of Geneious Prime and into a format which OrthoFinder recognises. Below is how i achieved this:
