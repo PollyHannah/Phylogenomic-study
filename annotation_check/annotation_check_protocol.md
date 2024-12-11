@@ -10,7 +10,7 @@ I didn't check every annotation for every genomes in order to save time.
 #### Classified genomes
 I picked four genomes (tabulated below) one from each of the three *Megalocytivirus pagrus1* genotypes (infectious spleen and kidney necrosis virus or 'ISKNV', red sea bream iridovirus or 'RSIV', and turbot reddish body iridovirus or 'TRBIV') and one *Megalocytivirus lates1* or 'scale drop disease syndrome' genome. I checked every annotation which Prokka had assigned for each of these four genomes. I chose these genomes given they were published in a peer reviewed journals and were available on NCBI Genbank as fully annotated genomes.
 
-| Genotype / species | Accession | Publication DOI |
+| Genotype or species | Accession | Publication DOI |
 |--------------------|-----------|-----------------|
 | ISKNV | AF371960 | https://doi.org/10.1006/viro.2001.1208 |
 | RSIV | MK689686 | https://doi.org/10.3354/dao03499 |
@@ -28,13 +28,14 @@ Once the annotations were transferred, checked each transferred annotation for s
 
 Listed below are the genotypes I transferred annotations from and to.
 
-| Genotype / species | Annotations tranferred from (accession number) | Annotations transferred to (accession number) |
+| Genotype or species | Annotations tranferred from (accession number) | Annotations transferred to (accession number) |
 |--------------------|------------------------------------------------|-----------------------------------------------|
 | ISKNV | AF371960 |  MK689685, MN432490, MT926123, MT986830, OP009387 |
 | RSIV | MK689686 | AY894343, BD143114, KC244182, KT804738, MK098187, MK098185, MK098186, MW139932, OK042108, OK042109, ON075463, ON740976, ON743042, OL774653, OL774654, OL774655, MT798582, AY532606*, AY779031* |
 | TRBIV | GQ273492 | none |
 | SDDV | OM037668 | MN562489, MT521409, NC_027778* |
-* Genome removed due to stop codons being present in >5 annotations.
+
+*Genome removed due to stop codons being present in >5 annotations.
 
 #### Unclassified genomes
 I manually checked the annotations for every megalocytivirus genome entered into NCBI genbank as 'unclassified' at the species and genus level. These genomes are tabulated below. 
@@ -45,6 +46,7 @@ I manually checked the annotations for every megalocytivirus genome entered into
 | MG570132 |
 | OQ475017 |
 | OL3100752* |
+
 *Removed due to assumed sequencing or assembly error.
 
 ### Iridoviridae gemomes (not from the genus *Megalocytivirus*)
@@ -62,7 +64,7 @@ I started by downloading the General Feature File (.gff) produced by Prokka (ver
 ## Which genomes were removed due to sequencing or assembly errors? 
 Throughout this manual annotation check process, I identified four genomes which I removed from my analysis due to assumed sequencing or assembly errors. These genomes, and the reasons I removed them, are tabulated below. 
 
-| Genome (accession number) | Genotype or 'unclassified' | Reason excluded from analysis |
+| Genome (accession number) | Genotype | Reason excluded from analysis |
 |---------------------------|----------------------------|-------------------------------|
 | OL310752 | Unclassified | DNA polymerase gene (orthogroup G000000 in the OrthoFinder output 'Results_Jul07') was split and each section was located in two different locations in the genome. I believe this may be indicative of a sequencing or assembly error | 
 | AY532606 | RSIV | Too many stop codons in annotations |
