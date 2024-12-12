@@ -35,7 +35,7 @@ fastANI --ql query_list.txt --rl reference_list.txt -o fastani.out
 ```
 
 ### FastANI Output
-Fast ANI will output a file `fastani.out`. The output file will contain tab delimited rows with query genome, reference genome, ANI value, count of bidirectional fragment mappings, and total query fragments. Alignment fraction  is the ratio of mappings and total fragments. 
+Fast ANI will output a file `fastani.out`. The output file will contain tab delimited rows with query genome, reference genome, ANI value, count of bidirectional fragment mappings, and total query fragments.The ANI value is the ratio of mappings and total fragments. 
 Importantly, no output is reported for a genome pair if ANI value is much below 80%. Such case should be computed at amino acid level.
 
 ### Classification 
