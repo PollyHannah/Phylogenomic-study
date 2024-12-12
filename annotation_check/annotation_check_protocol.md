@@ -8,7 +8,7 @@ I didn't check every annotation for every genomes in order to save time.
 
 ### Megalocytivirus genomes
 #### Classified genomes
-I picked four genomes (tabulated below) one from each of the three *Megalocytivirus pagrus1* genotypes (infectious spleen and kidney necrosis virus or 'ISKNV', red sea bream iridovirus or 'RSIV', and turbot reddish body iridovirus or 'TRBIV') and one *Megalocytivirus lates1* or 'scale drop disease syndrome' genome. I checked every annotation which Prokka had assigned for each of these four genomes. I chose these genomes given they were published in a peer reviewed journals and were available on NCBI Genbank as fully annotated genomes.
+I picked four genomes (tabulated below) one from each of the three *Megalocytivirus pagrus1* genotypes (infectious spleen and kidney necrosis virus or 'ISKNV', red sea bream iridovirus or 'RSIV', and turbot reddish body iridovirus or 'TRBIV') and one *Megalocytivirus lates1* or 'scale drop disease syndrome' genome. I checked every annotation which Prokka had assigned for each of these four genomes. I chose these genomes given they were published in a peer reviewed journals and were available on NCBI Genbank as fully annotated genomes. These are the same genomes I chose as refernece genomes to classify genomes down to the species / genotype level as desribed in the `classification` directory.
 
 | Genotype or species | Accession | Publication DOI |
 |--------------------|-----------|-----------------|
