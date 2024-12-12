@@ -31,7 +31,7 @@ The script I used is saved to this directory. To run it, you will need:
 
 Upload the above files to your directory and run:
 ```bash
-script_fastani.sh
+fastANI --ql query_list.txt --rl reference_list.txt -o fastani.out
 ```
 
 ### FastANI Output
