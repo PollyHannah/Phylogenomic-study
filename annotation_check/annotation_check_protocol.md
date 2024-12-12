@@ -8,7 +8,7 @@ I didn't check every annotation for every genomes in order to save time.
 
 ### Megalocytivirus genomes
 #### Classified genomes
-I picked four genomes (tabulated below) one from each of the three *Megalocytivirus pagrus1* genotypes (infectious spleen and kidney necrosis virus or 'ISKNV', red sea bream iridovirus or 'RSIV', and turbot reddish body iridovirus or 'TRBIV') and one *Megalocytivirus lates1* or 'scale drop disease syndrome' genome. I checked every annotation which Prokka had assigned for each of these four genomes. I chose these genomes given they were published in a peer reviewed journals and were available on NCBI Genbank as fully annotated genomes.
+I picked four genomes (tabulated below) one from each of the three *Megalocytivirus pagrus1* genotypes (infectious spleen and kidney necrosis virus or 'ISKNV', red sea bream iridovirus or 'RSIV', and turbot reddish body iridovirus or 'TRBIV') and one *Megalocytivirus lates1* or 'scale drop disease syndrome' genome. I checked every annotation which Prokka had assigned for each of these four genomes. I chose these genomes given they were published in a peer reviewed journals and were available on NCBI Genbank as fully annotated genomes. These are the same genomes I chose as refernece genomes to classify genomes down to the species / genotype level as desribed in the `classification` directory.
 
 | Genotype or species | Accession | Publication DOI |
 |--------------------|-----------|-----------------|
@@ -17,16 +17,7 @@ I picked four genomes (tabulated below) one from each of the three *Megalocytivi
 | TRBIV | GQ273492 | 10.1186/1743-422X-7-159 |
 | SDDV | OM037668 | https://doi.org/10.3390/v13081617 |
 
-I transferred the annotations from the manually curated genomes (above) onto the remaining genomes of the same genotype (i.e. I transferred the manually curated  ISKNV annotations onto the remaining ISKNV genomes, and all the manually curated SDDV annotations onto the remaining SDDV gemomes etc.). A list of all the genomes included in the analysis can be found at `taxonomy.csv`. 
-
-I transferred annotations using the 'Annotate From' option in the'Live Annotate and Predict tab' in Geneious Prime (Version 2020.2.5). I set the transfer threshold for percent similarity at 85%. This meant that annotated sequences which were less than 85% similar to the sequence being annotated did not transfer. 
-
-Once the annotations were transferred, checked each transferred annotation for stop codons and ensured the annotation started with the amino acid Methionine (M). 
-* If the annotation did not start with M I removed it.
-* If there were three stop codons maximum in an annotation, I removed the stop codons from the annotation. If there were more than three stop codons in an annotation, I removed the annotation.
-* If there were >5 annotations with stop codons throughout the annotation i removed the genome from the analysis due to assumed sequencing or assembly errors. 
-
-Listed below are the genotypes I transferred annotations from and to.
+I transferred the annotations from the manually curated genomes (above) onto the remaining genomes of the same genotype (i.e. I transferred the manually curated  ISKNV annotations onto the remaining ISKNV genomes, and all the manually curated SDDV annotations onto the remaining SDDV gemomes etc.). Below is a table showing the genomes which I transferred annotations from/to.
 
 | Genotype or species | Annotations tranferred from (accession number) | Annotations transferred to (accession number) |
 |--------------------|------------------------------------------------|-----------------------------------------------|
@@ -36,6 +27,13 @@ Listed below are the genotypes I transferred annotations from and to.
 | SDDV | OM037668 | MN562489, MT521409, NC_027778* |
 
 *Genome removed due to stop codons being present in >5 annotations.
+
+I transferred annotations using the 'Annotate From' option in the'Live Annotate and Predict tab' in Geneious Prime (Version 2020.2.5). I set the transfer threshold for percent similarity at 85%. This meant that annotated sequences which were less than 85% similar to the sequence being annotated did not transfer. 
+
+Once the annotations were transferred, checked each transferred annotation for stop codons and ensured the annotation started with the amino acid Methionine (M). 
+* If the annotation did not start with M I removed it.
+* If there were three stop codons maximum in an annotation, I removed the stop codons from the annotation. If there were more than three stop codons in an annotation, I removed the annotation.
+* If there were >5 annotations with stop codons throughout the annotation i removed the genome from the analysis due to assumed sequencing or assembly errors. 
 
 #### Unclassified genomes
 I manually checked the annotations for every megalocytivirus genome entered into NCBI genbank as 'unclassified' at the species and genus level. These genomes are tabulated below. 
