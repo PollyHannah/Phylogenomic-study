@@ -29,7 +29,12 @@ The script I used is saved to this directory. To run it, you will need:
 * a text file with the paths to each reference genome (see `reference_list.txt` in this directory)
 * a text tile with the paths to each query genome (see `query_list.txt` in th is directory)
 
-Upload the above files to your directory and run:
+First up, load the module
+```bash
+module load fastani
+```
+
+Second up, upload the above files to your mcv directory and from the mcv directory run:
 ```bash
 fastANI --ql query_list.txt --rl reference_list.txt -o fastani.out
 ```
