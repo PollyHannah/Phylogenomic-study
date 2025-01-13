@@ -1,7 +1,10 @@
 #!/bin/bash
 
+# Make the output directory
+mkdir ./proteome_2
+
 # Output directory
-output_dir="/scratch3/han394/mcv/prokka_outputs/proteome"
+output_dir="/scratch3/han394/mcv/proteome_2"
 
 # Loop through all .txt files in the current directory
 for input_file in *.txt; do
