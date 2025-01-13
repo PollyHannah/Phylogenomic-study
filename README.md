@@ -20,7 +20,7 @@ mkdir mcv
 cd mcv
 ```
 ### Save genomes to mcv directory
-Download `genomes_1` directory and its contents from this repository and save the folder and contents to the mcv directory. This folder contains 64 megalocytivirus and 10 iridoviridae genomes in FASTA format (74 genomes total). Details about each genome can be found in the `taxonomy.csv` file in this repository.
+Download `genomes_1` directory and its contents from this repository and save the folder and contents to the mcv directory. This folder contains 64 megalocytivirus and 10 iridoviridae genomes in FASTA format (74 genomes total). Details about each genome can be found in the `taxonomy.csv` file in this repository (there is information for 75 genomes in this .csv file given L63545 is included which was not included in the genomes_1 folder due to it not being the expected length).
 
 #### Which genomes are included and exluded from the genomes_1 directory?
 I included all megalocytivirus genomes saved as 'complete' genomes under the genus *Megalocytivirus* in the NCBI GenBank the Taxonomy Browser, which were the expected length. This included genomes entered into NCBI Genbank as 'unclassified' at the species level. Genomes which were not the expected length meant genomes which were half or twice the length of other *Megalocytivirus* genomes. One megalocytivirus genome was not included given it was smaller than the expected length (accession KC138895). KC138895 is was 903 base pairs (bp) in length whereas megalocytiviruses are between 110,000 and 140,000 bp in length. 
