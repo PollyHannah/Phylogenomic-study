@@ -6,9 +6,11 @@ The annotations I chose to manually check differed depending on whether the geno
 
 ### Megalocytivirus genomes
 #### Classified genomes
-I collected five genomes (tabulated below) one from each of the three *Megalocytivirus pagrus1* genotypes (infectious spleen and kidney necrosis virus or 'ISKNV', red sea bream iridovirus or 'RSIV', and turbot reddish body iridovirus or 'TRBIV') and one *Megalocytivirus lates1* or 'scale drop disease syndrome' genome. I also included the only whole genome published for a three-spined stickleback virus, which is is a megalocytivirus which infects threespine stickleback (*Gasterosteus aculeatus*). TSIV has not yet been classified into one of the two existing species. Based on phylogenetic analysis of iridovirus core genes (Yoximer et al. 2023), TSIV may represent a novel species of megalocytivirus. Where there were multiple genomes published, I chose a representitive genome which was published in a peer reviewed journal and was available on NCBI Genbank as fully annotated. 
+I collected five genomes (tabulated below). For each of these five genomes, I checked every annotation which Prokka had assigned. I chose one genome from each of the three *Megalocytivirus pagrus1* genotypes (infectious spleen and kidney necrosis virus or 'ISKNV', red sea bream iridovirus or 'RSIV', and turbot reddish body iridovirus or 'TRBIV') and one *Megalocytivirus lates1* or 'scale drop disease syndrome' genome. 
 
-For each of these five genomes, I checked every annotation which Prokka had assigned. I used these genomes as refererece genomes to classify genomes down to the species / genotype level as desribed in the `classification` directory.
+I also included the only whole genome published for a three-spined stickleback virus (TSIV), which is is a megalocytivirus which infects threespine stickleback (*Gasterosteus aculeatus*). Based on phylogenetic analysis of iridovirus core genes (Yoximer et al. 2023), TSIV does not group with either of the existing megalocytivirus species and may represent a novel species of megalocytivirus. 
+
+Where there were multiple genomes published, I chose a representitive genome which was published in a peer reviewed journal and was available on NCBI Genbank as fully annotated. I used these genomes as refererece genomes to classify the remaining genomes down to the species / genotype level as desribed in the `classification` directory.
 
 
 | Genotype or species | Accession | Publication DOI |
@@ -19,7 +21,7 @@ For each of these five genomes, I checked every annotation which Prokka had assi
 | TSIV | PQ335173_PQ335174 | https://doi.org/10.3390/v16111663 |
 | SDDV | OM037668 | https://doi.org/10.3390/v13081617 |
 
-I transferred the annotations from the manually curated genomes (above) onto the remaining genomes of the same genotype if there were any (i.e. I transferred the manually curated  ISKNV annotations onto the remaining ISKNV genomes, and all the manually curated SDDV annotations onto the remaining SDDV gemomes etc.). Below is a table showing the genomes which I transferred annotations from/to. There is only one published TRBIV and TSIV genome therefore the annotations curated for these genomes were not transferred onto any other genomes.
+I transferred the annotations from the manually curated genomes (above) onto the remaining genomes of the same genotype (if there were any).For example, I transferred the manually curated  ISKNV annotations onto the remaining ISKNV genomes, and all the manually curated SDDV annotations onto the remaining SDDV gemomes. Below is a table showing the genomes which I transferred annotations from/to. There is only one published TRBIV and TSIV genome therefore the annotations curated for these genomes were not transferred onto any other genomes.
 
 | Genotype or species | Annotations tranferred from (accession number) | Annotations transferred to (accession number) |
 |--------------------|------------------------------------------------|-----------------------------------------------|
