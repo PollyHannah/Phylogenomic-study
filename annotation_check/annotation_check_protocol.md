@@ -93,4 +93,7 @@ The freshly re-annotated sequences are used to identify core genes as part of Pa
 4. Change the file type to .txt file.
 5. Open up the .txt file and Ctrl F ‘*’ which indicates a stop codon.  
 6. Follow the rules with regard to which genes you remove and those which you delete the stop codons from (as per above in the lab book). Record changes. This file is the file which you will transform to be input into Orthofinder.
-7. Run `script_reformat_proteome` to get the .txt file into a format which OrthoFinder recognises. 
+7. Run `script_reformat_proteome` to get the .txt file into a format which OrthoFinder recognises.
+
+## References
+Yoxsimer, A. M., Offenberg, E. G., Katzer, A. W., Bell, M. A., Massengill, R. L., & Kingsley, D. M. (2024). Genomic Sequence of the Threespine Stickleback Iridovirus (TSIV) from Wild Gasterosteus aculeatus in Stormy Lake, Alaska. Viruses, 16(11), 1663.
