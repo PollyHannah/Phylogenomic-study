@@ -97,7 +97,7 @@ The freshly re-annotated sequences are used to identify core genes as part of Pa
 6. Follow the rules with regard to which genes you remove and those which you delete the stop codons from (as per above in the lab book). Record changes. This file is the file which you will transform to be input into Orthofinder.
 7. Run `script_reformat_proteome` to get the .txt file into a format which OrthoFinder recognises.
 
-* You will also find a script in this repository named `script_reformat_annotations` which reformats annotations in the form of nucleotide sequences (instead of amino acid sequences). This script isn't used as part of my pipeline but may come in useful if you want to do further analysis using nucleotide sequences.
+   * You will also find a script in this repository named `script_reformat_annotations` which reformats annotations in the form of nucleotide sequences (instead of amino acid sequences). This script isn't used as part   of my pipeline but may come in useful if you want to do further analysis using nucleotide sequences.
 
 ## References
 Yoxsimer, A. M., Offenberg, E. G., Katzer, A. W., Bell, M. A., Massengill, R. L., & Kingsley, D. M. (2024). Genomic Sequence of the Threespine Stickleback Iridovirus (TSIV) from Wild Gasterosteus aculeatus in Stormy Lake, Alaska. Viruses, 16(11), 1663.
