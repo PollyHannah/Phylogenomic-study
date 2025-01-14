@@ -84,7 +84,7 @@ To do this, run the below script which will copy the proteomes in the directory 
 ```bash
 script_TBC_sort_proteome_files.sh
 ```
-You should now have 70 files in `proteome_2_family`, 60 files in `proteome_2_genus`, and 56 files in `proteome_2_species.
+You should now have 70 files in `proteome_2_family`, 60 files in `proteome_2_genus`, and 56 files in `proteome_2_species`.
 
 ### Run OrthoFinder again
 Now, run Orthofinder on the manually curated annotation files. The input files will be take from the `proteome_2` directory. The output files will be saved into a directory `orthofinder_2`. 
