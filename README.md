@@ -75,7 +75,16 @@ Computers are great but they're not perfect. This is why I manually curate the p
 To save time, I didn't manually check every annotation for every genome. Head to the directory [`annotation_check`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/annotation_check) for information including; the annotations I manually checked for each genomes, how i decided which annotations I kept, edited or removed, a list of the annotations which I edited or removed, the genomes removed from my analysis due to assumed sequencing or assembly errors (and why), and how I processed proteome files to get them into a format ready for the next step of the pipeline. 
 
 ## Part Two: Core gene analysis
-This is where we take the freshly re-annotated sequences and identify a set of core genes using OrthoFinder (again).  
+This is where we take the freshly re-annotated sequences and identify a set of core genes using OrthoFinder (again).
+
+### Sort proteome files by taxonomic level
+We run Orthofinder three times - once each with genomes at the family, genus and species level. To do this we need to sort the proteomes we generated as part of 'Part One: re-annotation and quality check' into three sperate directories. 
+
+To do this, run the below script which will copy the proteomes in the directory `proteome_2_family` and save the the species proteomes to the `proteome_2_species` and the genus proteomes to `proteome_2_genus`. The script uses the text files `file_list_genus.txt` and `file_list_species` to do this.  
+```bash
+script_TBC_sort_proteome_files.sh
+```
+You should now have 70 files in `proteome_2_family`, 60 files in `proteome_2_genus`, and 56 files in `proteome_2_species.
 
 ### Run OrthoFinder again
 Now, run Orthofinder on the manually curated annotation files. The input files will be take from the `proteome_2` directory. The output files will be saved into a directory `orthofinder_2`. 
