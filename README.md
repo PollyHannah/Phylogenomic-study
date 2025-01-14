@@ -87,7 +87,7 @@ script_TBC_sort_proteome_files.sh
 You should now have 70 files in `proteome_2_family`, 60 files in `proteome_2_genus`, and 56 files in `proteome_2_species`.
 
 ### Run OrthoFinder again
-Now, run Orthofinder on the manually curated annotation files. The input files will be take from the `proteome_2` directory. The output files will be saved into a directory `orthofinder_2`. 
+Now, run Orthofinder three times, once each on the proteome files in the `directories proteome_2_family` `proteome_2_genus`, and `proteome_2_species`. The output files will be saved into three new directories `orthofinder_2_family`, `orthofinder_2_genus`, and `orthofinder_2_species`, respectively.
 ```bash
 script_TBC_orthofinder.sh
 ```
