@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Make the output directory
-mkdir ./proteome_2
+mkdir ./proteome_2_iridoviridae
 
 # Output directory
-output_dir="/scratch3/han394/mcv/proteome_2"
+output_dir="/scratch3/han394/mcv/proteome_2_iridoviridae"
 
 # Loop through all .txt files in the current directory
 for input_file in *.txt; do
