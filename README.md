@@ -80,11 +80,15 @@ This is where we take the freshly re-annotated sequences and identify a set of c
 ### Sort proteome files by taxonomic level
 We run Orthofinder three times - once each with genomes at the family, genus and species level. To do this we need to sort the proteomes we generated as part of 'Part One: re-annotation and quality check' into three sperate directories. 
 
-To do this, run the below script which will copy the proteomes in the directory `proteome_2_family` and save the the species proteomes to the `proteome_2_species` and the genus proteomes to `proteome_2_genus`. The script uses the text files `file_list_genus.txt` and `file_list_species` to do this.  
+To do this, run the below script which will copy the proteomes in the directory `proteome_2_family` and save the the species proteomes to the `proteome_2_species` and the genus proteomes to `proteome_2_genus`. 
+The script uses the text files `file_list_genus.txt` and `file_list_species.txt` to do this.  
 ```bash
 script_TBC_sort_proteome_files.sh
 ```
-You should now have 70 files in `proteome_2_family`, 60 files in `proteome_2_genus`, and 56 files in `proteome_2_species`.
+You should have:
+* 70 files in the directory `proteome_2_family`, and
+* 60 files in a directory `proteome_2_genus`, and
+* 56 files in a directory `proteome_2_species`.
 
 ### Run OrthoFinder again
 Now, run Orthofinder three times, once each on the proteome files in the `directories proteome_2_family` `proteome_2_genus`, and `proteome_2_species`. The output files will be saved into three new directories `orthofinder_2_family`, `orthofinder_2_genus`, and `orthofinder_2_species`, respectively.
