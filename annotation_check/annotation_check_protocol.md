@@ -95,7 +95,7 @@ The freshly re-annotated sequences are used to identify core genes as part of Pa
 4. Change the file type to .txt file.
 5. Open up the .txt file and Ctrl F ‘*’ which indicates a stop codon.  
 6. Follow the rules with regard to which genes you remove and those which you delete the stop codons from (as per above in the lab book). Record changes. This file is the file which you will transform to be input into Orthofinder.
-7. Run `script_reformat_proteome` to transform the text file (.txt) into a FASTA sequence file (.faa) of amino acid sequences, which the format OrthoFinder requires for input files.
+7. Run `script_reformat_proteome` to transform the text file (.txt) into a FASTA sequence file (.faa) of amino acid sequences, which the format OrthoFinder requires for input files. This script will save the .faa files into the directory in this repository `proteome_2_iridoviridae`.
 
    * You will also find a script in this repository named `script_reformat_annotations` which reformats annotations in the form of nucleotide sequences (instead of amino acid sequences). This script isn't used as part   of my pipeline but may come in useful if you want to do further analysis using nucleotide sequences.
 
