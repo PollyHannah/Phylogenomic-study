@@ -1,9 +1,13 @@
 #!/bin/bash
 
+# The modules to load:
+
+module load orthofinder
+
+# The job command(s):
+
 #OrthoFinder will look for input fasta files with any of the following filename extensions: .fa, .faa, .fasta, .fas or .pep.
-
 #OrthoFinder already knows how to call modules mafft, muscle, iqtree, raxml, raxml-ng, fasttree etc.
-
 # Trees can be inferred using multiple sequence alignments (MSA) by using the option '-M msa' option. MAFFT is used to generate the MSAs as default.
 # OrthoFinder infers orthologs from rooted gene trees. However, tree interence methods create unrooted gene trees/ OrthoFinder requires a rooted species tree to root the gene trees before ortholog inference can begin. The default species tree method is STAG.
 # '-p' option houses the temporary 'pickles files' into an allocated directory.
@@ -18,5 +22,26 @@
 # Do not re-create a Directory for the Orthofinder results. Orthofinder creates the output folder as part of the script below.
 # You will need to create the 'tempdir' directory.
 
-#Run Orthofinder on proteomes
-orthofinder -p ./tempdir -M msa -ot -z -t 24 -a 6 -f ./prokka_outputs/proteome_2 -o ./orthofinder_2
+#make a directory tempdir
+mkdir ./tempdir
+
+#Run Orthofinder on family proteomes
+orthofinder -p ./tempdir -M msa -ot -z -t 24 -a 6 -f ./proteome_2_family -o ./orthofinder_2_family
+
+#remove tempdir directory 
+rm ./tempdir
+
+#make a directory tempdir
+mkdir ./tempdir
+
+#Run Orthofinder on genus proteomes
+orthofinder -p ./tempdir -M msa -ot -z -t 24 -a 6 -f ./proteome_2_genus -o ./orthofinder_2_genus
+
+#remove tempdir directory 
+rm ./tempdir
+
+#make a directory tempdir
+mkdir ./tempdir
+
+#Run Orthofinder on species proteomes
+orthofinder -p ./tempdir -M msa -ot -z -t 24 -a 6 -f ./proteome_2_species -o ./orthofinder_2_species
