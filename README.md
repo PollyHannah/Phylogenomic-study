@@ -106,7 +106,7 @@ The output files will be saved (respectively) into three new directories
 script_TBC_orthofinder.sh
 ```
 ### Identify core genes 
-We now use R (version 4.0.5) to identify a set of core genes using the Orthofinder output. First we analyse using the script `orthogroup_analysis.R. Then, we filter out set of core genes using he script `filter_orthogroups.R`. We do this three times, to identify a set of core genes at each of the three taxonomic levels we ran Orthofinder in the earlier step.
+We now use R (version 4.0.5) to identify a set of core genes using the Orthofinder output. First we analyse using the script `orthogroup_analysis.R. Then, we filter out set of core genes using he script `filter_orthogroups.R`. We do this three times, to identify a set of core genes at each of the three taxonomic levels we ran Orthofinder in the earlier step. Below steps you through the process for 
 
 #### Analyse
 First we analyse the Orthofinder output to help us make a decision about which genes we consider to be 'core genes'. To do this, move the files `taxonomy.csv`and `Orthogroups.tsv` (an output file from Orthofinder), and scripts `orthogroup_analysis.R` and `filter_orthogroups.R` into a directory. 
@@ -115,7 +115,8 @@ Load R module
 ```bash
 module load R
 ```
-From the directory containing the above files, run the R first script in this repository. To do this, you will need to specify the taxonomic level you want to analyse using option -l. The option can be either Genus, Species, or Genotype. If you want all genera included in the analysis (i.e. family level analysis) choose Genus (as is shown in below). If you want only megalocytivirus species included, choose Species. If you want genotypes of *Megalocytivirus pagrus1* included, choose Genotype. 
+From the directory containing the above files, run the R first script in this repository. To do this, you will need to specify the taxonomic level you want to analyse using option -l. The option can be either Genus, Species, or Genotype. If you want analyse data at the genus level specify the option Genus (as is shown in below). If want to analyse the data at the species level, specify 'Species', and so on.. Remember they'll only be one genus included in the data for the genus and species level, so you'll want to specify 'Species' or 'Genotype' for the genus level data, and Genotype for the species level data.
+
 ```bash
 Rscript orthogroup_analysis.R -o Orthogroups.tsv -t taxonomy.csv -l Genus
 ```
@@ -127,14 +128,16 @@ The `faceted_histogram_by_Genus.pdf` file should look something like the image b
 The `orthogroups_with_Genus_completeness.tsv` shoudl look something like the image below. It includes the raw data used to generate the histogram along with other informative data such as the genera missing from each orthogroup.
 ![R script output](https://github.com/user-attachments/assets/5e71f5ee-b6c2-4b68-8a52-36acc6abe271)
 
-Have the files as shown below? Yay! Now run the same analysis for the remaining two taxonomic levels, and analyse your results. You want to decide on how you want to define a core gene. The next step will filter out the core genes for you based on the parameters you choose. Check out the histogram and decide on the the minimim Occupancy Threshold a core gene should have, as well as the minimin number of taxa where that core gene is present. Once you've decided on that you can move on to the filtering step below. 
+Have the files as shown above? Yay! Now run the same analysis for the remaining two taxonomic levels (specifying the options as described above), and decide on a core gene criteria based on your results. 
 
-##### Filter
+##### Decide on core gene criteria
+Based on the output files from the 'analyse' step, you want to decide should and shouldn't be included in your set of 'core genes'. The next step will filter out the core genes for you based on the parameters you choose. But first, check out the histogram and decide on the the minimim Occupancy Threshold all 'core genes' should have, as well as the number taxa a gene needs to be present in, to qualify as a core gene. Once you've decided on those two parameters you can move on to the filtering step below to identify the genes which match your criteria. 
+
+#### Filter
 Now we filter out the core genes using the second script in this repository. Run the below script specifying the relevant taxonomic level with the option -1 (Genus, Species, or Genotype), the Occupancy Threshold chosen with option -a (anywhere between 1 and 100), and the minimum number of taxa you want included in each orthogroup with the option -r .  
 ```bash
 Rscript filter_orthogroups.R -o Orthogroups.tsv -t taxonomy.csv -l Genus -a 50 -r 5
 ```
-
 
 ### Manually check and edit Multiple Sequence Alignments
 I manually curate the OrthoFinder-generated MSA files using Geneious Prime (Version 2020.2.5). 
