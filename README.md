@@ -93,7 +93,15 @@ You should have:
 * 56 files in a directory `proteome_2_species`.
 
 ### Run OrthoFinder (again)
-Now, run Orthofinder three times, once each on the proteome files in the `directories proteome_2_family` `proteome_2_genus`, and `proteome_2_species`. The output files will be saved into three new directories `orthofinder_2_family`, `orthofinder_2_genus`, and `orthofinder_2_species`, respectively.
+Now, run Orthofinder three times, once each on the proteome files in the 
+* `directories proteome_2_family`,
+* `proteome_2_genus`, and
+* `proteome_2_species`.
+  
+The output files will be saved (respectively) into three new directories 
+* `orthofinder_2_family`,
+* `orthofinder_2_genus`, and
+* `orthofinder_2_species`.
 ```bash
 script_TBC_orthofinder.sh
 ```
