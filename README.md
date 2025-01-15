@@ -20,7 +20,9 @@ mkdir mcv
 cd mcv
 ```
 ### Save genomes to mcv directory
-Download `genomes_1` directory and its contents from this repository and save the folder and contents to the mcv directory. This folder contains 64 megalocytivirus and 10 iridoviridae genomes in FASTA format (74 genomes total). Details about each genome can be found in the `taxonomy.csv` file in this repository (there is information for 75 genomes in this .csv file given L63545 is included which was not included in the genomes_1 folder due to it not being the expected length).
+Download `genomes_1` directory and its contents from this repository and save the folder and contents to the mcv directory. This folder contains 64 megalocytivirus and 10 iridoviridae genomes in FASTA format (74 genomes total). 
+
+Details about each genome can be found in the `taxonomy.csv` file in this repository (there is information for 75 genomes in this .csv file given L63545 is included which was not included in the genomes_1 folder due to it not being the expected length).
 
 #### Which genomes are included and exluded from the genomes_1 directory?
 I included all megalocytivirus genomes saved as 'complete' genomes under the genus *Megalocytivirus* in the NCBI GenBank the Taxonomy Browser, which were the expected length. This included genomes entered into NCBI Genbank as 'unclassified' at the species level. Genomes which were not the expected length meant genomes which were half or twice the length of other *Megalocytivirus* genomes. One megalocytivirus genome was not included given it was smaller than the expected length (accession KC138895). KC138895 is was 903 base pairs (bp) in length whereas megalocytiviruses are between 110,000 and 140,000 bp in length. 
@@ -49,7 +51,7 @@ bash script_two_collect_proteome_files.sh
 ### Run OrthoFinder
 OrthoFinder is a program which identifies genes highly conserved between genomes. I manually check and edit (where necessary) the prokka-assigned annotations.
 
-We run this program later in the analysis to identify a final set of 'core genes' at the species, genus and family level. Right now, we're just running it to identify a set of highly conserved genes to target for checking and editing (as explained a bit later on). 
+We run this program later in the analysis to identify a final set of 'core genes' at the species, genus and family level. Right now, we're just running it at the family level to identify a set of highly conserved genes to target for checking and editing (as explained a bit later on). 
 
 #### Nominate values for OrthoFinder options
 Open `script_three_orthofinder.sh` and nominate values for options `-t` (`-t` number_of_threads) and `-a` (`-a` number_of_orthofinder_threads). These options control the parallelisation of OrthoFinder to decrease the runtime. For `-t`, choose the  number of cores on your computer. For `-a`, put 1/4 of the value of `-t`. 
@@ -90,7 +92,7 @@ You should have:
 * 60 files in a directory `proteome_2_genus`, and
 * 56 files in a directory `proteome_2_species`.
 
-### Run OrthoFinder again
+### Run OrthoFinder (again)
 Now, run Orthofinder three times, once each on the proteome files in the `directories proteome_2_family` `proteome_2_genus`, and `proteome_2_species`. The output files will be saved into three new directories `orthofinder_2_family`, `orthofinder_2_genus`, and `orthofinder_2_species`, respectively.
 ```bash
 script_TBC_orthofinder.sh
