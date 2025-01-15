@@ -108,7 +108,7 @@ script_TBC_orthofinder.sh
 ### Identify core genes 
 We now use R (version 4.0.5) to identify a set of core genes using the Orthofinder output. First we analyse using the script `orthogroup_analysis.R. Then, we filter out set of core genes using he script `filter_orthogroups.R`. We do this three times, to identify a set of core genes at each of the three taxonomic levels we ran Orthofinder in the earlier step. Below steps you through the process for 
 
-#### Analyse
+#### 1. Analyse
 First we analyse the Orthofinder output to help us make a decision about which genes we consider to be 'core genes'. To do this, move the files `taxonomy.csv`and `Orthogroups.tsv` (an output file from Orthofinder), and scripts `orthogroup_analysis.R` and `filter_orthogroups.R` into a directory. 
 
 Load R module 
@@ -122,11 +122,11 @@ Rscript orthogroup_analysis.R -o Orthogroups.tsv -t taxonomy.csv -l Genus
 ```
 Two output files should now be saved in your current directory. If you did a Genus-level analysis they will be called `faceted_histogram_by_Genus.pdf` and `orthogroups_with_Genus_completeness.tsv`.
 
-##### Histogram 
+##### Output file: Histogram 
 The `faceted_histogram_by_Genus.pdf` file should look something like the image below. It contains several histograms showing the number of orthogroups on the Y axis and Occupancy Threshold (%) on the x axis. The Occupany Threhold is the proportion of genomes with orthologs in orthogroups.
 ![Occupany threshold histogram](https://github.com/user-attachments/assets/33a36c34-78ed-4471-9aa3-c656d8c96561)
 
-##### Orthogroups 
+##### Output file: Orthogroup data
 The `orthogroups_with_Genus_completeness.tsv` shoudl look something like the image below. It includes the raw data used to generate the histogram along with other informative data such as the genera missing from each orthogroup.
 ![R script output](https://github.com/user-attachments/assets/5e71f5ee-b6c2-4b68-8a52-36acc6abe271)
 
@@ -135,7 +135,7 @@ Have the files as shown above? Yay! Now run the same analysis for the remaining 
 ##### Decide on core gene criteria
 Based on the output files from the 'analyse' step above, you now need to decide on which genes should and shouldn't be included in your set of 'core genes'. The next step will filter out the core genes for you based on a couple of parameters you choose. These parameters are the firstly the 'Occupancy Threshold' which is the minimum proprtion of genomes where a gene is present, to qualify as a core gene. Secondly, the minimum number taxa in which a gene needs to be present to qualify as a core gene. Once you've decided on those two parameters you can move on to the filtering step below to identify the genes which match your criteria. 
 
-#### Filter
+#### 2. Filter
 Now we filter out the core genes using the second script in this repository. Run the below script specifying the relevant taxonomic level with the option -1 (Genus, Species, or Genotype), the Occupancy Threshold chosen with option -a (anywhere between 1 and 100), and the minimum number of taxa you want included in each orthogroup with the option -r .  
 ```bash
 Rscript filter_orthogroups.R -o Orthogroups.tsv -t taxonomy.csv -l Genus -a 50 -r 5
