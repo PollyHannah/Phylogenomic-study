@@ -51,7 +51,7 @@ bash script_two_collect_proteome_files.sh
 ### Run OrthoFinder
 OrthoFinder is a program which identifies genes highly conserved between genomes. I manually check and edit (where necessary) the prokka-assigned annotations.
 
-We run this program later in the analysis to identify a final set of 'core genes' at the species, genus and family level. Right now, we're just running it at the family level to identify a set of highly conserved genes to target for checking and editing (as explained a bit later on). 
+We use this program later in the analysis to identify a final set of 'core genes' at the species, genus and family level. Right now, we're just running it at the family level to identify a set of highly conserved genes to target for checking and editing (as explained a bit later on). 
 
 #### Nominate values for OrthoFinder options
 Open `script_three_orthofinder.sh` and nominate values for options `-t` (`-t` number_of_threads) and `-a` (`-a` number_of_orthofinder_threads). These options control the parallelisation of OrthoFinder to decrease the runtime. For `-t`, choose the  number of cores on your computer. For `-a`, put 1/4 of the value of `-t`. 
@@ -77,7 +77,7 @@ Computers are great but they're not perfect. This is why I manually curate the p
 To save time, I didn't manually check every annotation for every genome. Head to the directory [`annotation_check`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/annotation_check) for information including; the annotations I manually checked for each genomes, how i decided which annotations I kept, edited or removed, a list of the annotations which I edited or removed, the genomes removed from my analysis due to assumed sequencing or assembly errors (and why), and how I processed proteome files to get them into a format ready for the next step of the pipeline. 
 
 ## Part Two: Core gene analysis
-This is where we take the freshly re-annotated sequences and identify a set of core genes using OrthoFinder (again).
+This is where we take the freshly re-annotated sequences and identify a set of core genes with the help of OrthoFinder.
 
 ### Sort proteome files by taxonomic level
 We run Orthofinder three times - once each with genomes at the family, genus and species level. To do this we need to sort the proteomes we generated as part of 'Part One: re-annotation and quality check' into three sperate directories. 
@@ -105,6 +105,36 @@ The output files will be saved (respectively) into three new directories
 ```bash
 script_TBC_orthofinder.sh
 ```
+### Identify core genes 
+We now use R (version 4.0.5) to identify a set of core genes using the Orthofinder output. First we analyse using the script `orthogroup_analysis.R. Then, we filter out set of core genes using he script `filter_orthogroups.R`. We do this three times, to identify a set of core genes at each of the three taxonomic levels we ran Orthofinder in the earlier step.
+
+#### Analyse
+First we analyse the Orthofinder output to help us make a decision about which genes we consider to be 'core genes'. To do this, move the files `taxonomy.csv`and `Orthogroups.tsv` (an output file from Orthofinder), and scripts `orthogroup_analysis.R` and `filter_orthogroups.R` into a directory. 
+
+Load R module 
+```bash
+module load R
+```
+From the directory containing the above files, run the R first script in this repository. To do this, you will need to specify the taxonomic level you want to analyse using option -l. The option can be either Genus, Species, or Genotype. If you want all genera included in the analysis (i.e. family level analysis) choose Genus (as is shown in below). If you want only megalocytivirus species included, choose Species. If you want genotypes of *Megalocytivirus pagrus1* included, choose Genotype. 
+```bash
+Rscript orthogroup_analysis.R -o Orthogroups.tsv -t taxonomy.csv -l Genus
+```
+Two output files should now be saved in your current directory. If you did a Genus-level analysis they will be called `faceted_histogram_by_Genus.pdf` and `orthogroups_with_Genus_completeness.tsv`.
+
+The `faceted_histogram_by_Genus.pdf` file should look something like the image below. It contains several histograms showing the number of orthogroups on the Y axis and Occupancy Threshold (%) on the x axis. The Occupany Threhold is the proportion of genomes with orthologs in orthogroups.
+![Occupany threshold histogram](https://github.com/user-attachments/assets/33a36c34-78ed-4471-9aa3-c656d8c96561)
+
+The `orthogroups_with_Genus_completeness.tsv` shoudl look something like the image below. It includes the raw data used to generate the histogram along with other informative data such as the genera missing from each orthogroup.
+![R script output](https://github.com/user-attachments/assets/5e71f5ee-b6c2-4b68-8a52-36acc6abe271)
+
+Have the files as shown below? Yay! Now run the same analysis for the remaining two taxonomic levels, and analyse your results. You want to decide on how you want to define a core gene. The next step will filter out the core genes for you based on the parameters you choose. Check out the histogram and decide on the the minimim Occupancy Threshold a core gene should have, as well as the minimin number of taxa where that core gene is present. Once you've decided on that you can move on to the filtering step below. 
+
+##### Filter
+Now we filter out the core genes using the second script in this repository. Run the below script specifying the relevant taxonomic level with the option -1 (Genus, Species, or Genotype), the Occupancy Threshold chosen with option -a (anywhere between 1 and 100), and the minimum number of taxa you want included in each orthogroup with the option -r .  
+```bash
+Rscript filter_orthogroups.R -o Orthogroups.tsv -t taxonomy.csv -l Genus -a 50 -r 5
+```
+
 
 ### Manually check and edit Multiple Sequence Alignments
 I manually curate the OrthoFinder-generated MSA files using Geneious Prime (Version 2020.2.5). 
