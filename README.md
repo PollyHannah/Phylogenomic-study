@@ -118,7 +118,7 @@ module load R
 From the directory containing the above files, run the R first script in this repository. To do this, you will need to specify the taxonomic level you want to analyse using option -l. The option can be either Genus, Species, or Genotype. If you want analyse data at the genus level specify the option Genus (as is shown in below). If want to analyse the data at the species level, specify 'Species', and so on.. Remember they'll only be one genus included in the data for the genus and species level, so you'll want to specify 'Species' or 'Genotype' for the genus level data, and Genotype for the species level data.
 
 ```bash
-Rscript orthogroup_analysis.R -o Orthogroups.tsv -t taxonomy.csv -l Genus
+Rscript script_TBC_orthogroup_analysis.R -o Orthogroups.tsv -t taxonomy.csv -l Genus
 ```
 Two output files should now be saved in your current directory. If you did a Genus-level analysis they will be called `faceted_histogram_by_Genus.pdf` and `orthogroups_with_Genus_completeness.tsv`.
 
@@ -140,7 +140,7 @@ Once you've decided on those two parameters you can move on to the filtering ste
 #### 2. Filter
 Now we filter out the core genes using the second script in this repository. Run the below script specifying the relevant taxonomic level with the option -1 (Genus, Species, or Genotype), the Occupancy Threshold chosen with option -a (anywhere between 1 and 100), and the minimum number of taxa you want included in each orthogroup with the option -r .  
 ```bash
-Rscript filter_orthogroups.R -o Orthogroups.tsv -t taxonomy.csv -l Genus -a 50 -r 5
+Rscript script_TBC_filter_orthogroups.R -o Orthogroups.tsv -t taxonomy.csv -l Genus -a 50 -r 5
 ```
 
 ### Manually check and edit Multiple Sequence Alignments
