@@ -133,7 +133,9 @@ The `orthogroups_with_Genus_completeness.tsv` shoudl look something like the ima
 Have the files as shown above? Yay! Now run the same analysis for the remaining two taxonomic levels (specifying the options as described above), and decide on a core gene criteria based on your results. 
 
 ##### Decide on core gene criteria
-Based on the output files from the 'analyse' step above, you now need to decide on which genes should and shouldn't be included in your set of 'core genes'. The next step will filter out the core genes for you based on a couple of parameters you choose. These parameters are the firstly the 'Occupancy Threshold' which is the minimum proprtion of genomes where a gene is present, to qualify as a core gene. Secondly, the minimum number taxa in which a gene needs to be present to qualify as a core gene. Once you've decided on those two parameters you can move on to the filtering step below to identify the genes which match your criteria. 
+Based on the output files from the 'analyse' step above, you can decide on a couple of parameters for your 'core genes'. The first parameter is the 'Occupancy Threshold' which is the minimum proprtion of genomes where a gene is present, for it to be considered a core gene. The higher the occupancy threshold (i.e. the more genomes with the gene present) the less core genes you'll have. The second parameter is the minimum number of taxa in which a gene is present for it to be considered a core gene. Once again, the higher you set this parameter, the the less core genes you will have. 
+
+Once you've decided on those two parameters you can move on to the filtering step below to identify the genes which match your criteria. 
 
 #### 2. Filter
 Now we filter out the core genes using the second script in this repository. Run the below script specifying the relevant taxonomic level with the option -1 (Genus, Species, or Genotype), the Occupancy Threshold chosen with option -a (anywhere between 1 and 100), and the minimum number of taxa you want included in each orthogroup with the option -r .  
