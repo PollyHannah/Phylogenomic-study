@@ -20,19 +20,21 @@ mkdir mcv
 cd mcv
 ```
 ### Save genomes to mcv directory
-Download `genomes_1` directory and its contents from this repository and save the folder and contents to the mcv directory. This folder contains 64 megalocytivirus and 10 iridoviridae genomes in FASTA format (74 genomes total). 
+Download `genomes_1` directory and its contents from this repository and save the folder and contents to the mcv directory. This folder contains 66 megalocytivirus and 10 iridoviridae genomes in FASTA format (76 genomes total). 
 
-Details about each genome can be found in the `taxonomy.csv` file in this repository (there is information for 75 genomes in this .csv file given L63545 is included which was not included in the genomes_1 folder due to it not being the expected length).
+Details about each genome can be found in the `taxonomy.csv` file in this repository. There is information for 78 genomes in `taxonomy.csv` given genomes L63545 and KC138895 are included which are not included in the `genomes_1` directory due to them not being the expected length. You can read more about this in the next section. Please read my [`Classification protocol`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/classification/classification%20protocol.md) to understand how i classified megalocytivirus genomes included in this study.
 
-#### Which genomes are included and exluded from the genomes_1 directory?
+#### Which genomes are included and exluded from the `genomes_1` directory?
 I included all megalocytivirus genomes saved as 'complete' genomes under the genus *Megalocytivirus* in the NCBI GenBank the Taxonomy Browser, which were the expected length. This included genomes entered into NCBI Genbank as 'unclassified' at the species level. Genomes which were not the expected length meant genomes which were half or twice the length of other *Megalocytivirus* genomes. One megalocytivirus genome was not included given it was smaller than the expected length (accession KC138895). KC138895 is was 903 base pairs (bp) in length whereas megalocytiviruses are between 110,000 and 140,000 bp in length. 
 
 I also included ten representative genomes from each of the six other iridovirid genera including two genomes from each genus where multiple genomes are available (two each from of the genera *Ranavirus*, *Lymphocystivirus*, *Iridovirus*, and *Chloriridovirus*; one each from of the genera *Decapodiridovirus* and *Daphniairidovirus*). I also ensured these genomes were the expected length. Genomes which were not the expected length meant genomes which were half or twice the length of other genomes in the same genus. 
 
 These genomes were chosen to span the deepest node of the given clade shown in Zhao et al. (2022) except for the genus *Lymphocystivirus*. One of the lymphocystivirus genomes initally chosen for inclusion, L63545, was half the expected length at 102,653 bp long. Lymphocystivirus genomes are typically around 200,000 bp in length. I replaced L63545 with another genome from the same genus (KX643370) which was the expected length (208,501 bp). 
 
+The information for KX643370 and L63545 can be found in the `taxonomy.csv` file in this repository.
+
 ##### Novel genomes
-I've sequenced and am currently assembling and annotating novel genomes for inclusion in this study, as tabulated below. The GitHub repository [`novel_genomes`](https://github.com/PollyHannah/novel_genomes) houses data associated with the assembly and annotation of these genomes, including the software I'm using. These genomes are not yet included in the analysis as the assemblyis not yet complete.
+I've sequenced, assembled and annotated two novel genomes for inclusion in this study, as tabulated below. The GitHub repository [`novel_genomes`](https://github.com/PollyHannah/novel_genomes) houses data associated with the assembly and annotation of these genomes, including the script and software I used. 
 
 | Genome | Accession |Identification number  | Collection date | Host |
 |--------|-----------|-----------------------|-----------------|------|
@@ -40,14 +42,17 @@ I've sequenced and am currently assembling and annotating novel genomes for incl
 | 2 | Not yet created | 23-04361-0005 | 2 November |  Platys (*Xiphophorus maculatus*) 
 
 ### Run Prokka on genomes
+Now we've collected and have checked the length of the genomes, we re-annotate them using Prokka using the below script.
 ```bash
 bash script_one_prokka.sh
 ```
+
 ### Save proteome files to a central folder.
 Collect the proteome files from the `prokka_outputs_1` directory and save them to `proteome_1` directory. This step is done in preparation for running OrthoFinder, a program which uses the proteome files as inputs.
 ```bash
 bash script_two_collect_proteome_files.sh
 ```
+
 ### Run OrthoFinder
 OrthoFinder is a program which identifies genes highly conserved between genomes. I manually check and edit (where necessary) the prokka-assigned annotations.
 
@@ -70,8 +75,8 @@ Computers are great but they're not perfect. This is why I manually curate the p
 1. Export the .gff file generated by prokka and drag and drop it into Geneious Prime (Version 2020.2.5).
 2. Pairwise align the file with the .gb (Genbank Full) file in GenBank, for the same genome.
 3. Check each prokka annotation and decide to either keep it as-is, edit it or remove it.
-4. Create a directory `proteome_2`.
-5. Save all the manually curated proteome files for all genomes as .faa files into the `proteome_2` directory.
+4. Create a directory `proteome_2_family`.
+5. Save all the manually curated proteome files for all genomes as .faa files into the `proteome_2_family` directory.
 6. If at any stage you spy something you think is an assembly or sequencing error in a genome - remove it from the analysis all-together. 
 
 To save time, I didn't manually check every annotation for every genome. Head to the directory [`annotation_check`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/annotation_check) for information including; the annotations I manually checked for each genomes, how i decided which annotations I kept, edited or removed, a list of the annotations which I edited or removed, the genomes removed from my analysis due to assumed sequencing or assembly errors (and why), and how I processed proteome files to get them into a format ready for the next step of the pipeline. 
