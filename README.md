@@ -42,7 +42,7 @@ I've sequenced, assembled and annotated two novel genomes for inclusion in this 
 | 2 | Not yet created | 23-04361-0005 | 2 November |  Platys (*Xiphophorus maculatus*) 
 
 ### Run Prokka on genomes
-Now we've collected and quality-checked out genomes, we re-annotate them using Prokka using the below script.
+Now we've collected and have checked the length of the genomes, we re-annotate them using Prokka using the below script.
 ```bash
 bash script_one_prokka.sh
 ```
