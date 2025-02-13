@@ -53,21 +53,6 @@ Collect the proteome files from the `prokka_outputs_1` directory and save them t
 bash script_two_collect_proteome_files.sh
 ```
 
-### Run OrthoFinder
-OrthoFinder is a program which identifies genes highly conserved between genomes. I manually check and edit (where necessary) the prokka-assigned annotations.
-
-We use this program later in the analysis to identify a final set of 'core genes' at the species, genus and family level. Right now, we're just running it at the family level to identify a set of highly conserved genes to target for checking and editing (as explained a bit later on). 
-
-#### Nominate values for OrthoFinder options
-Open `script_three_orthofinder.sh` and nominate values for options `-t` (`-t` number_of_threads) and `-a` (`-a` number_of_orthofinder_threads). These options control the parallelisation of OrthoFinder to decrease the runtime. For `-t`, choose the  number of cores on your computer. For `-a`, put 1/4 of the value of `-t`. 
-
-This script will take the proteome files from the directory `proteome_1` and store the output files in a directory using the naming convention Results_MONTHDAY. This folder will be saved in a directory called `orthofinder_1`. 
-
-Run updated script.
-```bash
-bash script_three_orthofinder.sh
-```
-
 ### Manual check of annotations and identification of sequencing or assembly errors
 Computers are great but they're not perfect. This is why I manually curate the prokka-assigned annotations using Geneious Prime. This process will also reveal possible sequencing or assembly errors in genomes, allowing you to remove such genomes from the analysis to avoid them impacting the results of the study. 
 
