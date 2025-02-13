@@ -119,7 +119,7 @@ The `faceted_histogram_by_Genus.pdf` file should look something like the image b
 ![Occupany threshold histogram](https://github.com/user-attachments/assets/33a36c34-78ed-4471-9aa3-c656d8c96561)
 
 ##### Output file: Orthogroup data
-The `orthogroups_with_Genus_completeness.tsv` shoudl look something like the image below. It includes the raw data used to generate the histogram along with other informative data such as the genera missing from each orthogroup.
+The `orthogroups_with_Genus_completeness.tsv` should look something like the image below. It includes the raw data used to generate the histogram along with other informative data such as the genera missing from each orthogroup.
 ![R script output](https://github.com/user-attachments/assets/5e71f5ee-b6c2-4b68-8a52-36acc6abe271)
 
 Have the files as shown above? Yay! Now run the same analysis for the remaining two taxonomic levels (specifying the options as described above), and decide on a core gene criteria based on your results. 
