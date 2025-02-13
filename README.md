@@ -83,7 +83,7 @@ You should have:
 * 58 files in a directory `proteome_2_species`.
 
 ### Run OrthoFinder (again)
-Now, run Orthofinder three times, once each on the proteome files in the directories 
+Now, using one script, we run Orthofinder three times (once each on the proteome files in the directories). 
 * `proteome_2_family`,
 * `proteome_2_genus`, and
 * `proteome_2_species`.
@@ -96,7 +96,7 @@ The output files will be saved (respectively) into three new directories
 script_TBC_orthofinder.sh
 ```
 ### Identify core genes 
-We now use R (version 4.0.5) to identify a set of core genes using the Orthofinder output. First we analyse using the script `orthogroup_analysis.R. Then, we filter out set of core genes using he script `filter_orthogroups.R`. We do this three times, to identify a set of core genes at each of the three taxonomic levels we ran Orthofinder in the earlier step. Below steps you through the process for 
+We now use R (version 4.0.5) to identify a set of core genes using the Orthofinder output. First we analyse using the script `orthogroup_analysis.R`. Then, we filter out set of core genes using the script `filter_orthogroups.R`. 
 
 #### 1. Analyse
 First we analyse the Orthofinder output to help us make a decision about which genes we consider to be 'core genes'. To do this, move the files `taxonomy.csv`and `Orthogroups.tsv` (an output file from Orthofinder), and scripts `orthogroup_analysis.R` and `filter_orthogroups.R` into a directory. 
