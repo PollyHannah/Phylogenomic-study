@@ -53,9 +53,24 @@ I manually checked the annotations for every megalocytivirus genome entered into
 *Genome removed due to assumed sequencing or assembly error.
 
 ### Iridoviridae gemomes (not from the genus *Megalocytivirus*)
-For every iridoviridae genome from genera other than *Megalocytivirus*, I completed the manual curation process as described above, but only for a small set of highly conserved genes. The genes I chose to manually curate were identified through the OrthoFinder run described in the `README.md` (Part one: re-annotation and quality check). Looking at the OrthoFinder output I manually curated the genes (or orthologs) which were assigned to orthogroups containing orthologs from 100% of genomes part of the analysis. 
+For every iridoviridae genome from genera other than *Megalocytivirus*, I completed the manual curation process as described above, but only for a small set of highly conserved genes. The genes I chose to manually curate were identified through the OrthoFinder run (see below). Looking at the OrthoFinder output I manually curated the genes (or orthologs) which were assigned to orthogroups containing orthologs from 100% of genomes part of the analysis. 
 
 I have run OrthoFinder multiple times with different sets of genomes (ones added, ones removed etc.). For each run, the output has been slightly different. The OrthoFinder run, from which the set of highly conserved genes were chosen for manual curation, is provided for each genome in the file `annotation_check_results`/`annotations_manual_file.xlsx`. The results files for each run can be found in the `orthofinder_1` directory. OrthoFinder names results directories based on the date the results were produced (Results_Jul07, Results_Nov29 etc.)
+
+#### OrthoFinder
+OrthoFinder is a program which identifies genes highly conserved between genomes. I manually check and edit (where necessary) the prokka-assigned annotations.
+
+We use this program in thi sphylogenetic analysis to identify a final set of 'core genes' at the species, genus and family level. Right now, we're just running it at the family level to identify a set of highly conserved genes to target for checking and editing.
+
+#### Nominate values for OrthoFinder options
+Open `script_three_orthofinder.sh` and nominate values for options `-t` (`-t` number_of_threads) and `-a` (`-a` number_of_orthofinder_threads). These options control the parallelisation of OrthoFinder to decrease the runtime. For `-t`, choose the  number of cores on your computer. For `-a`, put 1/4 of the value of `-t`. 
+
+This script will take the proteome files from the directory `proteome_1` and store the output files in a directory using the naming convention Results_MONTHDAY. This folder will be saved in a directory called `orthofinder_1`. 
+
+Run updated script.
+```bash
+bash script_three_orthofinder.sh
+```
 
 ## How did I decide whether to keep, edit, or delete annotations?
 I started by downloading the General Feature File (.gff) produced by Prokka (version 1. 14. 5) for every genome I annotated and pairwise aligned the file in Genenious Prime (version 2020.2.5) with the GenBank (.gb) file from NCBI GenBank Database for the corresponding genome. I moved through the genome looking at each annotation and did the following:
