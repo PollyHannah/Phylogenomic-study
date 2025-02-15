@@ -101,18 +101,33 @@ We now use R (version 4.0.5) to identify a set of core genes using the Orthofind
 #### 1. Analyse
 First we analyse the Orthofinder output to help us make a decision about which genes we consider to be 'core genes'. To do this, move the files `taxonomy.csv`and `Orthogroups.tsv` (an output file from Orthofinder), and scripts `orthogroup_analysis.R` and `filter_orthogroups.R` into a directory. 
 
+Before we do this analysis, set up three directories to store the results at each taxonomic level:
+```bash
+mkdir -p r_analysis_results/{family,genus,species}
+```
+
+The load R:
 Load R module 
 ```bash
 module load R
 ```
-From the directory containing the above files, run the R first script in this repository. To do this, you will need to specify the taxonomic level you want to analyse using option -l. The option can be either Genus, Species, or Genotype. If you want analyse data at the genus level specify the option Genus (as is shown in below). If want to analyse the data at the species level, specify 'Species', and so on.. 
+Run the first R script in this repository. To do this, you will need the `Orthogroups.tsv` file in the directory from which you run the script (I reccomend running it from the mcv directory). Use the cp command to copy the .tsv file from the relevant directory either orthofinder_2_family`, `orthofinder_2_genus`, or `orthofinder_2_species`) to the mcv directory. For example, if you were doing the analysis at the family level:
+``` bash
+cp ./orthofinder_2_family/Results_*/Orthogroups/Orthogroups.tsv .
+```
 
-Remember they'll only be one genus included in the data for the genus and species level, so you'll want to specify 'Species' or 'Genotype' for the genus level data, and Genotype for the species level data.
-
+Now that's done, you need to specify the taxonomic level you want to analyse with the first R script using option -l. The option can be either Genus, Species, or Genotype. If you want analyse data at the genus level specify the option Genus (as is shown in below). If want to analyse the data at the species level, specify 'Species', and so on. Remember they'll only be one genus included in the data for the genus and species level, so you'll want to specify 'Species' or 'Genotype' for the genus level data, and Genotype for the species level data.
 ```bash
 Rscript script_TBC_orthogroup_analysis.R -o Orthogroups.tsv -t taxonomy.csv -l Genus
 ```
-Two output files should now be saved in your current directory. Each filename will be specific to the input variables. For example, if you did a Genus-level analysis they will be called `faceted_histogram_by_Genus.pdf` and `orthogroups_with_Genus_completeness.tsv`. Saved in the directory `r_analysis_results` you'll find my results for each taxonomic level. 
+
+Two output files should now be saved in your current directory. Each filename will be specific to the input variables. For example, if you did a Genus-level analysis they will be called `faceted_histogram_by_Genus.pdf` and `orthogroups_with_Genus_completeness.tsv`. 
+As you go, use the 'mv' command to save your .pdf and .tsv files into the relevant directory in the newly created `r_analysis_results` directory. For exmaple, if you have just ran the first R script using family level data, go:
+```bash
+mv *.pdf *.tsv ./r_analysis_results/family
+```
+
+Saved in the directory `r_analysis_results` you'll find my results for each taxonomic level. 
 
 ##### Output file: Histogram 
 The `faceted_histogram_by_Genus.pdf` file should look something like the image below. It contains several histograms showing the number of orthogroups on the Y axis and Occupancy Threshold (%) on the x axis. The Occupany Threhold is the proportion of genomes with orthologs in orthogroups. They Y axis corresponds to the number of orthogroups at each Occupancy Threshold. 
