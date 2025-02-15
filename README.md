@@ -111,7 +111,9 @@ Load R module
 ```bash
 module load R
 ```
-Run the first R script in this repository. To do this, you will need the `Orthogroups.tsv` file in the directory from which you run the script (I reccomend running it from the mcv directory). Use the cp command to copy the .tsv file from the relevant directory either orthofinder_2_family`, `orthofinder_2_genus`, or `orthofinder_2_species`) to the mcv directory. For example, if you were doing the analysis at the family level:
+Run the first R script in this repository. To do this, you will need the `Orthogroups.tsv` file in the directory from which you run the script. I reccomend running it from the mcv directory. Use the cp (copy) command to copy the .tsv file from the relevant directory (either the `orthofinder_2_family`, `orthofinder_2_genus`, or `orthofinder_2_species` directory) to the mcv directory. 
+
+For example, if you were doing the analysis at the family level:
 ``` bash
 cp ./orthofinder_2_family/Results_*/Orthogroups/Orthogroups.tsv .
 ```
@@ -122,7 +124,8 @@ Rscript script_TBC_orthogroup_analysis.R -o Orthogroups.tsv -t taxonomy.csv -l G
 ```
 
 Two output files should now be saved in your current directory. Each filename will be specific to the input variables. For example, if you did a Genus-level analysis they will be called `faceted_histogram_by_Genus.pdf` and `orthogroups_with_Genus_completeness.tsv`. 
-As you go, use the 'mv' command to save your .pdf and .tsv files into the relevant directory in the newly created `r_analysis_results` directory. For exmaple, if you have just ran the first R script using family level data, go:
+
+Each time you run the script, use the mv (move) command to save your .pdf and .tsv files into the relevant directory in the newly created `r_analysis_results` directory. For exmaple, if you have just ran the first R script using family level data, go:
 ```bash
 mv *.pdf *.tsv ./r_analysis_results/family
 ```
