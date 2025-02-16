@@ -182,7 +182,7 @@ The output file should look something like this:
 Now, run TAPER on each file using the script below. The trimmed multiple sequence alignments will be saved in a newly created directory. 
 ```bash 
 script_TBC_taper.sh
-```bash
+```
 
 Check the output directory. You should have a bunch of .fa files saved in there (the same number of files as you had an input).
 
