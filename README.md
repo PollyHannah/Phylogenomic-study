@@ -152,6 +152,39 @@ Now we filter out the core genes using the second script in this repository. Run
 ```bash
 Rscript script_TBC_filter_orthogroups.R -o Orthogroups.tsv -t taxonomy.csv -l Genus -a 50 -r 5
 ```
+Each time you filter out orthogroups using the script above, collect the multiple sequence alignments for each orthogroup and store them in a directory. To do this, run the scripts below. Before you run them though, ensure you open up each script and change the names of the input and output files accordingly. 
+
+We use R to do this, so first load the module. 
+```bash
+module load R
+```
+
+Run the script below to create a list of the multiple sequence alignment files (.fa files) for each orthogroup:
+```bash
+Rscript script_TBC_extract_orthogroups_names.R
+```
+
+Move each of the .fa files to a new directory:
+```bash
+bash script_TBC_move_msa.sh
+```
+
+#### 3. Trim alignments 
+Now use [TAPER](https://github.com/chaoszhang/TAPER) (Zhang et al. 2021) to trim the multiple sequence alignments according to quality by running the script below. TAPER will use multiple sequence alignment files you have moved into the new directory above, as input.	
+
+Create input file required by TAPER to trim the multiple sequence alignment files by quality. This script will produce a text file (.txt) which lists the file patho to each input file (multiple sequence alignment) and output file. All the output files will be saved in a new directory. 
+```bash
+bash script_TBC_make_input_taper.sh
+```
+
+The output file should look something like this:
+
+Now, run TAPER on each file using the script below. The trimmed multiple sequence alignments will be saved in a newly created directory. 
+```bash 
+script_TBC_taper.sh
+```bash
+
+Check the output directory. You should have a bunch of .fa files saved in there (the same number of files as you had an input).
 
 ### Manually check and edit Multiple Sequence Alignments
 I manually curate the OrthoFinder-generated MSA files using Geneious Prime (Version 2020.2.5). 
@@ -161,12 +194,6 @@ I manually curate the OrthoFinder-generated MSA files using Geneious Prime (Vers
 2. Check each file and make edits where neccessary. 
 3. Create a directory in the mcv directory `3_mafft_alignments`.
 4. Save all the manually curated MSA files for all genomes.
-
-### Clean MSA files
-Clean each MSA file using CIAlign.
-```bash
-script_TBC_cialign.sh
-```
 
 ### Generate gene trees
 To generate gene trees for each MSA using iqtree, first remove MSAs for orthogroups for which you do not want to generate a gene tree (i.e. orthogroups not containing core genes of interest). 
@@ -188,5 +215,7 @@ iqtree will generate several outputs for each input file with a variety of exten
 ```bash
 script_TBC_sort_files.sh
 ```
+
 ## References
+Zhang, C., Zhao, Y., Braun, E. L., & Mirarab, S. (2021). TAPER: Pinpointing errors in multiple sequence alignments despite varying rates of evolution. Methods in Ecology and Evolution, 00, 1– 14. https://doi.org/10.1111/2041-210X.13696
 Zhao, R., Gu, C., Zou, X., Zhao, M., Xiao, W., He, M., He, L., Yang, Q., Geng, Y., & Yu, Z. (2022). Comparative genomic analysis reveals new evidence of genus boundary for family Iridoviridae and explores qualified hallmark genes. Computational and Structural Biotechnology Journal, 20, 3493–3502. https://doi.org/10.1016/j.csbj.2022.06.049
