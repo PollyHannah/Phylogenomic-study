@@ -4,10 +4,10 @@
 This repository houses the details of my bioinformatic pipeline for my phylogenetic analyses of megalocytiviruses, a group of fish pathogens exotic to Australia, and other members of the family *Iridoviridae*. A set of core genes are first identified followed by phylogenetic analysis of the core genes. 
 
 Go to the file `setup.md` in this repository, for information about how to set-up a conda environment. The same file houses information on how to complete basic tasks like transfering files and fixing errors you might receive while completeing this analysis. You will need the following software:
-* Prokka (version 1.14.5)
-* OrthoFinder (version 2.5.4)
-* IQ-TREE2 (version 2.2.0.5)
-* CIAlign (available in python/3.12.3)
+* [Prokka](https://github.com/tseemann/prokka) (version 1.14.5)
+* [OrthoFinder](https://github.com/davidemms/OrthoFinder) (version 2.5.4)
+* [IQ-TREE2](https://github.com/iqtree/iqtree2) (version 2.2.0.5)
+* [TAPER](https://github.com/chaoszhang/TAPER) (version 1.0.0)
 
 To identify the genetic sequence information for inclusion in this study i generated a database of available sequence data for the genus *Megalocytivirus* and other members of the family *Iridoviridae*. That data base can be found in this repository named `megalocytivirus_sequence_data.xlsx`.
 
