@@ -150,7 +150,7 @@ Once you've decided on those two parameters you can move on to the filtering ste
 #### 2. Filter
 Now we filter out the core genes using the second script in this repository. Run the below script specifying the relevant taxonomic level with the option -1 (Genus, Species, or Genotype), the Occupancy Threshold chosen with option -a (anywhere between 1 and 100), and the minimum number of taxa you want included in each orthogroup with the option -r .  
 ```bash
-Rscript script_TBC_filter_orthogroups.R -o Orthogroups.tsv -t taxonomy.csv -l Genus -a 50 -r 5
+Rscript script_TBC_filter_orthogroups.R -o Orthogroups.tsv -t taxonomy.csv -l Genus -a 75 -r 5
 ```
 Each time you filter out orthogroups using the script above, collect the multiple sequence alignments for each orthogroup and store them in a directory. To do this, run the scripts below. Before you run them though, ensure you open up each script and change the names of the input and output files accordingly. 
 
