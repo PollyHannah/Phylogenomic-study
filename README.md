@@ -152,7 +152,13 @@ Now we filter out the core genes using the second script in this repository. Run
 ```bash
 Rscript script_TBC_filter_orthogroups.R -o Orthogroups.tsv -t taxonomy.csv -l Genus -a 75 -r 5
 ```
-Each time you filter out orthogroups using the script above, collect the multiple sequence alignments for each orthogroup and store them in a directory. To do this, run the scripts below. Before you run them though, ensure you open up each script and change the names of the input and output files accordingly. 
+Make a directory called `filtered_orthogroups`
+```bash
+mkdir filtered_orthogroups
+```
+Each time you filter out orthogroups using the script above, collect the.tsv file and store them in the `filtered_orthogroups` directory. 
+
+Now we'll collevct the multiple sequence alignment files which match the shortlist we've generated in with the .tsv files. To do this, first ensure you open up each script below and change the names of the input and output files accordingly before running them (in order). 
 
 We use R to do this, so first load the module. 
 ```bash
