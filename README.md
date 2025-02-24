@@ -118,7 +118,7 @@ For example, if you were doing the analysis at the family level:
 cp ./orthofinder_2_family/Results_*/Orthogroups/Orthogroups.tsv .
 ```
 
-Now that's done, you need to specify the taxonomic level you want to analyse with the first R script using option -l. The option can be either Genus, Species, or Genotype. If you want analyse data at the genus level specify the option Genus (as is shown in below). If want to analyse the data at the species level, specify 'Species', and so on. Remember they'll only be one genus included in the data for the genus and species level, so you'll want to specify 'Species' or 'Genotype' for the genus level data, and Genotype for the species level data.
+Now that's done, you need to specify the taxonomic level you want to analyse with the first R script using option -l. The option can be either Genus, Species, or Genotype. If you want analyse data at the genus level specify the option Genus (as is shown in below). If want to analyse the data at the species level, specify 'Species', and so on.
 ```bash
 Rscript script_TBC_orthogroup_analysis.R -o Orthogroups.tsv -t taxonomy.csv -l Genus
 ```
