@@ -168,6 +168,7 @@ bash script_TBC_make_input_taper.sh
 ```
 
 The output file should look something like this:
+
 ![output_taper_text_file](https://github.com/user-attachments/assets/bb4c9a9a-c8c9-4e12-b94d-4515a3dbfa4a)
 
 Now, run TAPER on each file using the script below. The trimmed multiple sequence alignments will be saved in the newly created directories `alignments_family_corrected`, `alignments_genus_corrected`, and `alignments_species_corrected`. 
