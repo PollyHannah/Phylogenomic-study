@@ -99,7 +99,7 @@ script_TBC_orthofinder.sh
 We now use R (version 4.0.5) to identify a set of core genes using the Orthofinder output. First we analyse using the script `orthogroup_analysis.R`. Then, we filter out set of core genes using the script `filter_orthogroups.R`. 
 
 #### 1. Analyse
-First we analyse the Orthofinder output to help us make a decision about which genes we consider to be 'core genes'. To do this, move the files `taxonomy.csv`and `Orthogroups.tsv` (an output file from Orthofinder), and scripts `orthogroup_analysis.R` and `filter_orthogroups.R` into a directory. 
+First we analyse the Orthofinder output to help us make a decision about which genes we consider to be 'core genes'. To do this, move the files `taxonomy.csv`and `Orthogroups.tsv` (an output file from Orthofinder), and script `script_TBC_r_analysis.R` into a directory. 
 
 Before we do this analysis, set up three directories to store the results at each taxonomic level:
 ```bash
@@ -111,81 +111,67 @@ Load R module
 ```bash
 module load R
 ```
-Run the first R script in this repository. To do this, you will need the `Orthogroups.tsv` file in the directory from which you run the script. I reccomend running it from the mcv directory. Use the cp (copy) command to copy the .tsv file from the relevant directory (either the `orthofinder_2_family`, `orthofinder_2_genus`, or `orthofinder_2_species` directory) to the mcv directory. 
+
+Run the R script in this repository. To do this, you will need the `Orthogroups.tsv` file in the directory from which you run the script. I reccomend running it from the mcv directory. Use the cp (copy) command to copy the .tsv file from the relevant directory (either the `orthofinder_2_family`, `orthofinder_2_genus`, or `orthofinder_2_species` directory) to the mcv directory. 
 
 For example, if you were doing the analysis at the family level:
 ``` bash
 cp ./orthofinder_2_family/Results_*/Orthogroups/Orthogroups.tsv .
 ```
 
-Now that's done, you need to specify the taxonomic level you want to analyse with the first R script using option -l. The option can be either Genus, Species, or Genotype. If you want analyse data at the genus level specify the option Genus (as is shown in below). If want to analyse the data at the species level, specify 'Species', and so on.
+Now that's done, run the script as so:
 ```bash
-Rscript script_TBC_orthogroup_analysis.R -o Orthogroups.tsv -t taxonomy.csv -l Genus
+Rscript script_TBC_r_analysis.R -o Orthogroups.tsv -t taxonomy.csv
 ```
 
-Two output files should now be saved in your current directory. Each filename will be specific to the input variables. For example, if you did a Genus-level analysis they will be called `faceted_histogram_by_Genus.pdf` and `orthogroups_with_Genus_completeness.tsv`. 
+An output file should now be saved in your current directory. The file will be `orthogroups_occpancy.tsv`. This .tsv file contains the Orthofinder output for the relevant taxonomic level (family, genus or species) as well as a column on the far right which provided the 'Occupancy' for each Orthogroup. The Occupancy is provided for each orthogroup, and is the percentage of genomes with an ortholog assigned to the orthogroup. 
 
-Each time you run the script, use the mv (move) command to save your .pdf and .tsv files into the relevant directory in the newly created `r_analysis_results` directory. For exmaple, if you have just ran the first R script using family level data, go:
+Each time you run the script, use the mv (move) command to save your output files into the relevant directory in the newly created `r_analysis_results` directory. For exmaple, if you have just ran the first R script using family level data, go:
 ```bash
-mv *.pdf *.tsv ./r_analysis_results/family
+mv *.tsv ./r_analysis_results/family
 ```
 
 Saved in the directory `r_analysis_results` you'll find my results for each taxonomic level. 
 
 ##### Output file: Histogram 
-The `faceted_histogram_by_Genus.pdf` file should look something like the image below. It contains several histograms showing the number of orthogroups on the Y axis and Occupancy Threshold (%) on the x axis. The Occupany Threhold is the proportion of genomes with orthologs in orthogroups. They Y axis corresponds to the number of orthogroups at each Occupancy Threshold. 
-![Occupany threshold histogram](https://github.com/user-attachments/assets/33a36c34-78ed-4471-9aa3-c656d8c96561)
+The `orthogroups_occpancy_histogram.pdf` file should look something like the image below. It contains a histogram showing the number of orthogroups on the Y axis and Occupancy (%) on the x axis. The Y axis corresponds to the number of orthogroups at each level of Occupancy. 
+![Histogram exmaple for Github](https://github.com/user-attachments/assets/e87b1aad-b5a6-4c4d-b6ad-0691eb8f90b0)
+
 
 ##### Output file: Orthogroup data
-The `orthogroups_with_Genus_completeness.tsv` should look something like the image below. It includes the raw data used to generate the histogram along with other informative data such as the genera missing from each orthogroup.
+The `orthogroups_occpancy.tsv` should look something like the image below. It includes the raw data used to generate the histogram along with the 'Occupancy' for each orthogroup.
 ![R script output](https://github.com/user-attachments/assets/5e71f5ee-b6c2-4b68-8a52-36acc6abe271)
 
 Have the files as shown above? Yay! Now run the same analysis for the remaining two taxonomic levels (specifying the options as described above), and decide on a core gene criteria based on your results. 
 
 ##### Decide on core gene criteria
-Based on the output files from the 'analyse' step above, you can decide on a couple of parameters for your 'core genes'. The first parameter is the 'Occupancy Threshold' which is the minimum proprtion of genomes where a gene is present, for it to be considered a core gene. The higher the occupancy threshold (i.e. the more genomes with the gene present) the less core genes you'll have. The second parameter is the minimum number of taxa in which a gene is present for it to be considered a core gene. Once again, the higher you set this parameter, the the less core genes you will have. 
+Based on the output files from the 'analyse' step above, you can decide on which orthogroups you would like to retain for further analysis. I did this based on the 'Occupancy Threshold' which is the minimum proprtion of genomes where a gene is present, for it to be retained for further analysis. The higher the occupancy threshold (i.e. the more genomes with the gene present) the less genes you'll retain. 
 
-Once you've decided on those two parameters you can move on to the filtering step below to identify the genes which match your criteria. 
+Once you've decided on the occupancy threshold you can move on to next step.
 
-#### 2. Filter
-Now we filter out the core genes using the second script in this repository. Run the below script specifying the relevant taxonomic level with the option -1 (Genus, Species, or Genotype), the Occupancy Threshold chosen with option -a (anywhere between 1 and 100), and the minimum number of taxa you want included in each orthogroup with the option -r .  
+#### 2. Collect multiple sequence alignments
+Now collect the multiple sequence alignment files for each orthogroup based on occupancy. 
+
+First make three directories:
 ```bash
-Rscript script_TBC_filter_orthogroups.R -o Orthogroups.tsv -t taxonomy.csv -l Genus -a 75 -r 5
-```
-Make a directory called `filtered_orthogroups`
-```bash
-mkdir filtered_orthogroups
-```
-Each time you filter out orthogroups using the script above, collect the.tsv file and store them in the `filtered_orthogroups` directory. 
-
-Now we'll collevct the multiple sequence alignment files which match the shortlist we've generated in with the .tsv files. To do this, first ensure you open up each script below and change the names of the input and output files accordingly before running them (in order). 
-
-We use R to do this, so first load the module. 
-```bash
-module load R
+mkdir alignments_family alignments_genus alignments_species
 ```
 
-Run the script below to create a list of the multiple sequence alignment files (.fa files) for each orthogroup:
-```bash
-Rscript script_TBC_extract_orthogroups_names.R
-```
-
-Move each of the .fa files to a new directory:
-```bash
-bash script_TBC_move_msa.sh
-```
+Then, look at the `orthogroups_occpancy.tsv` for each taxonomic level and check out the occupany of each orthogroup. If the occupancy of an orthogroup is above or equal to the occupancy threshold you chose, them move it into the newly created directory for the relevant taxonomic level.  
 
 #### 3. Trim alignments 
 Now use [TAPER](https://github.com/chaoszhang/TAPER) (Zhang et al. 2021) to trim the multiple sequence alignments according to quality by running the script below. TAPER will use multiple sequence alignment files you have moved into the new directory above, as input.	
 
-Create input file required by TAPER to trim the multiple sequence alignment files by quality. This script will produce a text file (.txt) which lists the file patho to each input file (multiple sequence alignment) and output file. All the output files will be saved in a new directory. 
+Create input file required by TAPER to trim the multiple sequence alignment files by quality. This script will produce three text files (.txt) which lists the file paths to each input file (multiple sequence alignment) and output file. It will generate one for each of the three taxonomic levels. It will also generate three directories (`alignments_family_corrected`, `alignments_genus_corrected`, and `alignments_species_corrected`) for the trimmed alignments to be saved into when you run the next script.  
 ```bash
 bash script_TBC_make_input_taper.sh
 ```
 
 The output file should look something like this:
 
-Now, run TAPER on each file using the script below. The trimmed multiple sequence alignments will be saved in a newly created directory. 
+![output_taper_text_file](https://github.com/user-attachments/assets/bb4c9a9a-c8c9-4e12-b94d-4515a3dbfa4a)
+
+Now, run TAPER on each file using the script below. The trimmed multiple sequence alignments will be saved in the newly created directories `alignments_family_corrected`, `alignments_genus_corrected`, and `alignments_species_corrected`. 
 ```bash 
 script_TBC_taper.sh
 ```
