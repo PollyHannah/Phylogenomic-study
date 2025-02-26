@@ -42,7 +42,7 @@ I've sequenced, assembled and annotated two novel genomes for inclusion in this 
 | 2 | Not yet created | 23-04361-0005 | 2 November |  Platys (*Xiphophorus maculatus*) |
 
 ### Run Prokka on genomes
-Now we've collected and have checked the length of the genomes, we re-annotate them using Prokka using the below script. This script will save the output files to a directory `prokka_outputs_1`. This directory (including the outputs) can be found in this repository. As I added new genomes to my analysis I re-ran Prokka. That's why there are multiple results files in the `prokka_outputs_1` directory.
+Now we've collected and have checked the length of the genomes, we re-annotate them using Prokka using the below script. This script will save the output files to a directory `prokka_outputs_1`. This directory (including the outputs) can be found in this repository. The directory contains 76 Prokka output directories for for 76 genomes.
 ```bash
 bash script_one_prokka.sh
 ```
