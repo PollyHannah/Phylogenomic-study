@@ -91,14 +91,13 @@ Throughout this manual annotation check process, I identified four genomes which
 
 ## Where are my results? 
 Most of the files used/generated for each stage of the process above can be found in this repository.
-1. The **74** Genbank (.gb) files included in this analysis initially can be found in genomes_1 directory.
+1. The **76** Genbank (.gb) files included in this analysis initially can be found in genomes_1 directory.
   * One genome (OL310752) was removed from the analysis due to assumed sequencing of assembly error. 
-3. The **73** GenBank (.gb) files before the stop codon check can be found in this repository at `annotation_check_results`/`1_genomes_before_stop_codon_check`.
+3. The **75** GenBank (.gb) files before the stop codon check can be found in this repository at `annotation_check_results`/`1_genomes_before_stop_codon_check`.
   * Three genomes were removed as part of this step for having too many stop codons in some annotations (AY532606, AY779031 and NC_027778). 
-4. The **70** Genbank (.gb) files post stop codon check can be found in this repository at `annotation_check_results`/`1_genomes_post_stop_codon_check`.
-5. The **70** Genbank (.gb) files as lists of annotations post stop codon check can be found in this repository at `annotation_check_results`/`3_annotations_post_stop_codon_check`.
-6. The **70** Genbank (.txt) files as lists of annotations post stop codon check can be found in this repository at `annotation_check_results`/`3_annotations_post_stop_codon_check`.
-   * Sometimes, I found pesky stop codons after I'd converted the file to a .txt file. I removed the stop codons where there were ≤5 and removed the annotation where there were >5 stop codons (as done previously). 
+4. The **72** Genbank (.gb) files post stop codon check can be found in this repository at `annotation_check_results`/`2_genomes_post_stop_codon_check`.
+5. The **72** Genbank (.gb) files as lists of annotations post stop codon check can be found in this repository at `annotation_check_results`/`3_annotations_post_stop_codon_check`.
+6. The **72** Genbank (.txt) files as lists of annotations post stop codon check can be found in this repository at `annotation_check_results`/`4_annotations_post_stop_codon_check_txt_files`.
 
 All edits made for each annotations are can be found in the file `annotation_check_results`/annotations_manual_file`.xlsx. 
 
