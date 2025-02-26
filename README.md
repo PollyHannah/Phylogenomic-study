@@ -162,12 +162,13 @@ Then, look at the `orthogroups_occpancy.tsv` for each taxonomic level and check 
 #### 3. Trim alignments 
 Now use [TAPER](https://github.com/chaoszhang/TAPER) (Zhang et al. 2021) to trim the multiple sequence alignments according to quality by running the script below. TAPER will use multiple sequence alignment files you have moved into the new directory above, as input.	
 
-Create input file required by TAPER to trim the multiple sequence alignment files by quality. This script will produce a text file (.txt) which lists the file patho to each input file (multiple sequence alignment) and output file. All the output files will be saved in a new directory. 
+Create input file required by TAPER to trim the multiple sequence alignment files by quality. This script will produce three text files (.txt) which lists the file paths to each input file (multiple sequence alignment) and output file. It will generate one for each of the three taxonomic levels. 
 ```bash
 bash script_TBC_make_input_taper.sh
 ```
 
 The output file should look something like this:
+![output_taper_text_file](https://github.com/user-attachments/assets/bb4c9a9a-c8c9-4e12-b94d-4515a3dbfa4a)
 
 Now, run TAPER on each file using the script below. The trimmed multiple sequence alignments will be saved in a newly created directory. 
 ```bash 
