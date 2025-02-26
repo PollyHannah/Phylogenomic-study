@@ -133,10 +133,10 @@ mv *.tsv ./r_analysis_results/family
 
 Saved in the directory `r_analysis_results` you'll find my results for each taxonomic level. 
 
-POLLY UPDATE THE DETAILS ON THE HISTOGRAM ONCE ROB UPDATES THE SCRIPT. I HAVE NOT UPDATED THE BELOW SECTION ON THE HISTOGRAM SINCE THE R SCRIPT WAS UPDATED. 
 ##### Output file: Histogram 
-The `faceted_histogram_by_Genus.pdf` file should look something like the image below. It contains several histograms showing the number of orthogroups on the Y axis and Occupancy Threshold (%) on the x axis. The Occupany Threhold is the proportion of genomes with orthologs in orthogroups. They Y axis corresponds to the number of orthogroups at each level of Occupancy. 
-![Occupany threshold histogram](https://github.com/user-attachments/assets/33a36c34-78ed-4471-9aa3-c656d8c96561)
+The `orthogroups_occpancy_histogram.pdf` file should look something like the image below. It contains a histogram showing the number of orthogroups on the Y axis and Occupancy (%) on the x axis. The Y axis corresponds to the number of orthogroups at each level of Occupancy. 
+![Histogram exmaple for Github](https://github.com/user-attachments/assets/e87b1aad-b5a6-4c4d-b6ad-0691eb8f90b0)
+
 
 ##### Output file: Orthogroup data
 The `orthogroups_occpancy.tsv` should look something like the image below. It includes the raw data used to generate the histogram along with the 'Occupancy' for each orthogroup.
