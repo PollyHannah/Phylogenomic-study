@@ -1,1 +1,0 @@
-./julia-1.11.3/bin/julia correction_multi.jl -l files2run_family.txt files2run_genus.txt files2run_species.txt
