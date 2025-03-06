@@ -6,9 +6,9 @@ library(stringr)
 library(readr)
 
 # Define directories
-dirs <- c("alignments_family_corrected_taper_trimal", 
-          "alignments_genus_corrected_taper_trimal", 
-          "alignments_species_corrected_taper_trimal")
+dirs <- c("alignments_family_corrected_taper", 
+          "alignments_genus_corrected_taper", 
+          "alignments_species_corrected_taper")
 
 # Load the taxonomy CSV file (make sure it's in the correct path)
 taxonomy_file <- "taxonomy.csv"  # Path to the taxonomy file
