@@ -20,7 +20,7 @@ accession_lookup <- setNames(paste(taxonomy$Species, taxonomy$Genotype, sep = "_
 # Function to update sequence names based on taxonomy
 update_sequence_names <- function(file_path, accession_lookup) {
   # Read the fasta file
-  seqs <- readDNAStringSet(file_path)
+  seqs <- readAAStringSet(file_path)
   
   # Update sequence names
   new_names <- sapply(names(seqs), function(name) {
