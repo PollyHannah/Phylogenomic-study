@@ -8,6 +8,7 @@ Go to the file `setup.md` in this repository, for information about how to set-u
 * [OrthoFinder](https://github.com/davidemms/OrthoFinder) (version 2.5.4)
 * [IQ-TREE2](https://github.com/iqtree/iqtree2) (version 2.2.0.5)
 * [TAPER](https://github.com/chaoszhang/TAPER) (version 1.0.0)
+* GNU Paralell 
 
 To identify the genetic sequence information for inclusion in this study i generated a database of available sequence data for the genus *Megalocytivirus* and other members of the family *Iridoviridae*. That data base can be found in this repository named `megalocytivirus_sequence_data.xlsx`.
 
@@ -209,5 +210,8 @@ script_TBC_sort_files.sh
 ```
 
 ## References
+Tange, O. (2021, March 22). GNU Parallel 20210322 ('2002-01-06').
+  Zenodo. https://doi.org/10.5281/zenodo.4628277
+
 Zhang, C., Zhao, Y., Braun, E. L., & Mirarab, S. (2021). TAPER: Pinpointing errors in multiple sequence alignments despite varying rates of evolution. Methods in Ecology and Evolution, 00, 1– 14. https://doi.org/10.1111/2041-210X.13696
 Zhao, R., Gu, C., Zou, X., Zhao, M., Xiao, W., He, M., He, L., Yang, Q., Geng, Y., & Yu, Z. (2022). Comparative genomic analysis reveals new evidence of genus boundary for family Iridoviridae and explores qualified hallmark genes. Computational and Structural Biotechnology Journal, 20, 3493–3502. https://doi.org/10.1016/j.csbj.2022.06.049
