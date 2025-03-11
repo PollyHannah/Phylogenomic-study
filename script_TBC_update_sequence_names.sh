@@ -4,13 +4,13 @@ library(stringr)
 library(readr)
 
 # Define input directories and corresponding output directories
-dirs <- c("alignments_family_corrected_taper", 
-          "alignments_genus_corrected_taper", 
-          "alignments_species_corrected_taper")
+dirs <- c("alignments_family", 
+          "alignments_genus", 
+          "alignments_species")
 
-output_dirs <- c("alignments_family_taper_sequence_updated", 
-                 "alignments_genus_taper_sequence_updated", 
-                 "alignments_species_taper_sequence_updated")
+output_dirs <- c("alignments_family_sequence_updated_2", 
+                 "alignments_genus_sequence_updated_2", 
+                 "alignments_species_sequence_updated_2")
 
 # Load the taxonomy CSV file (make sure it's in the correct path)
 taxonomy_file <- "taxonomy.csv"  # Path to the taxonomy file
@@ -21,30 +21,35 @@ accession_lookup <- setNames(paste(gsub(" ", "_", taxonomy$Species),
                                    gsub(" ", "_", taxonomy$Genotype), sep = "_"), 
                              taxonomy$Accession)
 
-# Function to update sequence names based on taxonomy
-update_sequence_names <- function(file_path, output_file_path, accession_lookup) {
+# Define manual replacements for specific sequence prefixes
+manual_replacements <- list(
+  "PQ335173_PQ335174" = "PQ335173_PQ335174_Threespine_stickleback_iridovirus_TSIV",
+  "NC_005946" = "NC_005946_Ranavirus_rana1_n/a",
+  "NC_003494" = "NC_003494_Megalocytivirus_pagrus1_ISKNV"
+)
+
+# Function to update sequence names
+update_sequence_names <- function(file_path, output_file_path, accession_lookup, manual_replacements) {
   # Read the fasta file
   seqs <- readAAStringSet(file_path)
   
   # Update sequence names
   new_names <- sapply(names(seqs), function(name) {
-    parts <- str_split(name, "_")[[1]]
-    accession1 <- parts[1]  # Extract Accession1
+    for (prefix in names(manual_replacements)) {
+      if (startsWith(name, prefix)) {
+        return(manual_replacements[[prefix]])  # Replace with the predefined name
+      }
+    }
     
-    # Check if Accession1 exists in the lookup table
+    # Standard case: Remove locus tag at the end
+    parts <- str_split(name, "_")[[1]]
+    accession1 <- parts[1]
+    
     if (accession1 %in% names(accession_lookup)) {
-      # Get Species and Genotype from the lookup table
       species_genotype <- accession_lookup[accession1]
-      
-      # Replace spaces with underscores
-      species_genotype <- gsub(" ", "_", species_genotype)
-      
-      # Construct the new sequence name while keeping all original parts
-      new_name <- paste(accession1, species_genotype, paste(parts[-1], collapse = "_"), sep = "_")
-      return(new_name)
+      return(paste(accession1, species_genotype, sep = "_"))
     } else {
-      # If no match found, return the original name
-      return(name)
+      return(paste(parts[-length(parts)], collapse = "_"))  # Remove last part (locus tag)
     }
   })
   
@@ -56,7 +61,7 @@ update_sequence_names <- function(file_path, output_file_path, accession_lookup)
 }
 
 # Function to process all .fa files in the given directories and save them in corresponding output directories
-process_files_in_dirs <- function(dirs, output_dirs, accession_lookup) {
+process_files_in_dirs <- function(dirs, output_dirs, accession_lookup, manual_replacements) {
   for (i in seq_along(dirs)) {
     input_dir <- dirs[i]
     output_dir <- output_dirs[i]
@@ -73,12 +78,12 @@ process_files_in_dirs <- function(dirs, output_dirs, accession_lookup) {
     for (file in fa_files) {
       output_file <- file.path(output_dir, basename(file))
       cat("Processing file:", file, "->", output_file, "\n")
-      update_sequence_names(file, output_file, accession_lookup)
+      update_sequence_names(file, output_file, accession_lookup, manual_replacements)
     }
   }
 }
 
 # Process the files
-process_files_in_dirs(dirs, output_dirs, accession_lookup)
+process_files_in_dirs(dirs, output_dirs, accession_lookup, manual_replacements)
 
 cat("Processing complete! Updated files saved in respective output directories.\n")
