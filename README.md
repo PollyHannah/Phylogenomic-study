@@ -165,7 +165,7 @@ You will now have three new directories containing multiple sequence alignment f
 Then, look at the `orthogroups_occpancy.tsv` for each taxonomic level and check out the occupany of each orthogroup. If the occupancy of an orthogroup is above or equal to the occupancy threshold you chose, them move it into the newly created directory for the relevant taxonomic level.  
 
 #### 3. Re-align alignments 
-I used [MUSCLE5](https://github.com/rcedgar/muscle)(muscle/5.0.1428)] to re-align the mafft alignments to imporve the accuracy of the alignments. The script to do this is in this repository which saved the re-aligned files into three new directories. Run it like this:
+I used [MUSCLE5](https://github.com/rcedgar/muscle) (version 5.0.1428) to re-align the mafft alignments to imporve the accuracy of the alignments. The script to do this is in this repository which saved the re-aligned files into three new directories. Run it like this:
 ```bash
 bash script_TBC_muscle.sh
 ```
