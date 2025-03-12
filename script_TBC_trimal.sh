@@ -1,35 +1,66 @@
 #!/bin/bash
 
-# Load module
-module load trimal 
+# load module 
+module load trimal
+module load seqkit
 
-# Define input and output directories
-declare -A directories=(
-    ["alignments_family_corrected_taper"]="alignments_family_corrected_taper_trimal"
-    ["alignments_genus_corrected_taper"]="alignments_genus_corrected_taper_trimal"
-    ["alignments_species_corrected_taper"]="alignments_species_corrected_taper_trimal"
-)
+# Directories
+input_dirs=("alignments_family_muscle5_edited" "alignments_genus_muscle5_edited" "alignments_species_muscle5_edited")
+output_dirs=("alignments_family_muscle5_edited_trimmed" "alignments_genus_muscle5_edited_trimmed" "alignments_species_muscle5_edited_trimmed")
 
-# Ensure trimal is available
-if ! command -v trimal &> /dev/null; then
-    echo "Error: trimal is not installed or not in PATH."
+threshold=0.05  # Minimum proportion of non-gap characters required (5%)
+
+# Ensure seqkit is installed
+if ! command -v seqkit &> /dev/null; then
+    echo "Error: seqkit is not installed. Install it with 'conda install -c bioconda seqkit' or 'brew install seqkit'."
     exit 1
 fi
 
-# Loop through each directory pair
-for input_dir in "${!directories[@]}"; do
-    output_dir="${directories[$input_dir]}"
-
-    # Create output directory if it does not exist
+# Process each directory
+for index in "${!input_dirs[@]}"; do
+    input_dir="${input_dirs[$index]}"
+    output_dir="${output_dirs[$index]}"
+    
+    # Create output directory if it doesn't exist
     mkdir -p "$output_dir"
+    
+    # Process each .fa file in the input directory
+    for input_file in "$input_dir"/*.fa; do
+        [ -e "$input_file" ] || continue  # Skip if no .fa files exist
 
-    # Process each alignment file
-    for file in "$input_dir"/*.fa; do
-        if [[ -f "$file" ]]; then
-            filename=$(basename "$file")
-            trimal -in "$file" -out "$output_dir/$filename" -automated1
-        fi
+        output_file="$output_dir/$(basename "$input_file")"
+
+        # Convert FASTA to tabular format (name \t sequence)
+        seqkit fx2tab "$input_file" | awk -v threshold="$threshold" '
+        {
+            headers[NR] = $1;  # Store sequence names
+            seqs[NR] = $2;     # Store sequences
+            len = length($2);
+        }
+        END {
+            for (i = 1; i <= len; i++) {
+                count = 0;
+                for (j = 1; j <= NR; j++) {
+                    char = substr(seqs[j], i, 1);
+                    if (char != "-") { count++ }
+                }
+                if (count / NR >= threshold) {
+                    keep[i] = 1;
+                }
+            }
+            for (j = 1; j <= NR; j++) {
+                new_seq = "";
+                for (i = 1; i <= len; i++) {
+                    if (keep[i]) {
+                        new_seq = new_seq substr(seqs[j], i, 1);
+                    }
+                }
+                print ">" headers[j] "\n" new_seq;  # Preserve original sequence names
+            }
+        }' > "$output_file"
+
+        echo "Processed: $input_file -> $output_file"
     done
 done
 
-echo "Trimming complete!"
+echo "All alignments trimmed and saved in respective directories."
