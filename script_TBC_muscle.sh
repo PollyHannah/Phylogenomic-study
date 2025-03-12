@@ -5,9 +5,9 @@ module load muscle
 
 # Define input and output directories
 declare -A DIRS=(
-    ["alignments_family"]="alignments_family_muscle5"
-    ["alignments_genus"]="alignments_genus_muscle5"
-    ["alignments_species"]="alignments_species_muscle5"
+    ["alignments_family"]="alignments_family_muscle"
+    ["alignments_genus"]="alignments_genus_muscle"
+    ["alignments_species"]="alignments_species_muscle"
 )
 
 # Create output directories if they don't exist
