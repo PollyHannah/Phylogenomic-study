@@ -157,11 +157,35 @@ First make three directories:
 ```bash
 mkdir alignments_family alignments_genus alignments_species
 ```
+You will now have three new directories containing multiple sequence alignment files (`.fa` files) as outlined below. 
+* alignments_family (contains 114 files)
+* alignments_genus (contains 155 files)
+* alignments_species (contains 155 files)
 
 Then, look at the `orthogroups_occpancy.tsv` for each taxonomic level and check out the occupany of each orthogroup. If the occupancy of an orthogroup is above or equal to the occupancy threshold you chose, them move it into the newly created directory for the relevant taxonomic level.  
 
-#### 3. Trim alignments 
-Now use [TAPER](https://github.com/chaoszhang/TAPER) (Zhang et al. 2021) to trim the multiple sequence alignments according to quality by running the script below. TAPER will use multiple sequence alignment files you have moved into the new directory above, as input.	
+#### 3. Re-align alignments 
+I used [MUSCLE5](https://github.com/rcedgar/muscle)(muscle/5.0.1428)] to re-align the mafft alignments to imporve the accuracy of the alignments. The script to do this is in this repository which saved the re-aligned files into three new directories. Run it like this:
+```bash
+bash script_TBC_muscle5.sh
+```
+You will now have three new directories containing re-aligned multiple sequence alignment files (`.fa` files) as outlined below. 
+* alignments_family_muscle5 (contains 114 files)
+* alignments_genus_muscle5 (contains 155 files)
+* alignments_species_muscle5 (contains 155 files)
+
+#### 4. Editing alignments (by eye)
+
+
+#### 5. Trim alignments 
+Now use [TrimAL ](https://github.com/inab/trimal) (version 1.4.1r22) to trim the multiple sequence alignments by removing columns where fewer than 5% of sequences contain an amino acid. I used a very low threshold given some taxa (for example, *Megalocytivirus lates1* have a very low representaion with only 3 genomes included in the analysis. I didn't want sequence information unique to taxa which are poorly represented in the dataset, to be removed. The script i wrote to complete this trimming is saved in this repository. To run it, go:
+```bash
+script_TBC_trimal.sh
+```
+You will now have three new directories containing trimmed multiple sequence alignment files (`.fa` files) as outlined below. 
+* alignments_family_muscle5_edited_trimmed (contains 114 files)
+* alignments_genus_muscle5_edited_trimmed (contains 155 files)
+* alignments_species_muscle5_edited_trimmed (contains 155 files)
 
 Create input file required by TAPER to trim the multiple sequence alignment files by quality. This script will produce three text files (.txt) which lists the file paths to each input file (multiple sequence alignment) and output file. It will generate one for each of the three taxonomic levels. It will also generate three directories (`alignments_family_corrected`, `alignments_genus_corrected`, and `alignments_species_corrected`) for the trimmed alignments to be saved into when you run the next script.  
 ```bash
