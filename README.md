@@ -177,6 +177,8 @@ You will now have three new directories containing re-aligned multiple sequence 
 #### 4. Editing alignments (by eye)
 I then uploaded the re-aligned multiple sequence alignments to Geneious Prime (version 2020.2.5) and edited them by eye. The changes I made and the reasons why can be found in [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx).
 
+Where there was a low level of sequence conservation in one sequence compared to other closely related seuqneces (sequences of the same genotype) and increases in the alignment quality was not able to be achieved, I deleted these sequences.
+
 I saved the hand-edited alignments in the following directories in this repository.
 * [alignments_family_muscle_edited](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited) (contains 114 files)
 * [alignments_genus_muscle_edited](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle_edited) (contains 155 files)
