@@ -5,10 +5,10 @@ module load trimal
 module load seqkit
 
 # Directories
-input_dirs=("alignments_family_muscle_edited" "alignments_genus_muscle_edited" "alignments_species_muscle_edited")
-output_dirs=("alignments_family_muscle_edited_trimmed" "alignments_genus_muscle_edited_trimmed" "alignments_species_muscle_edited_trimmed")
+input_dirs=("alignments_family_muscle5_edited" "alignments_genus_muscle5_edited" "alignments_species_muscle5_edited")
+output_dirs=("alignments_family_muscle5_edited_trimmed_25" "alignments_genus_muscle5_edited_trimmed_25" "alignments_species_muscle5_edited_trimmed_25")
 
-threshold=0.05  # Minimum proportion of non-gap characters required (5%)
+threshold=0.25  # Minimum proportion of non-gap characters required (25%)
 
 # Ensure seqkit is installed
 if ! command -v seqkit &> /dev/null; then
