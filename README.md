@@ -185,14 +185,17 @@ I saved the hand-edited alignments in the following directories in this reposito
 * [alignments_species_muscle_edited](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species_muscle_edited) (contains 155 files)
 
 #### 5. Trim alignments 
-Now use [TrimAL ](https://github.com/inab/trimal) (version 1.4.1r22) to trim the multiple sequence alignments by removing columns where fewer than 5% of sequences contain an amino acid. I used a very low threshold given some taxa (for example, *Megalocytivirus lates1* have a very low representaion with only 3 genomes included in the analysis. I didn't want sequence information unique to taxa which are poorly represented in the dataset, to be removed. The script i wrote to complete this trimming is saved in this repository. To run it, go:
+Now use [TrimAL ](https://github.com/inab/trimal) (version 1.4.1r22) to trim the multiple sequence alignments by removing columns where fewer than 25% of sequences contain an amino acid. The script I wrote to complete this trimming is saved in this repository. To run it, go:
 ```bash
 script_TBC_trimal.sh
 ```
 You will now have three new directories containing trimmed multiple sequence alignment files (`.fa` files) as outlined below. 
-* [alignments_family_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited_trimmed) (contains 114 files)
-* [alignments_genus_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle_edited_trimmed) (contains 155 files)
-* [alignments_species_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species_muscle_edited_trimmed) (contains 155 files)
+* [alignments_family_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle5_edited_trimmed_25) (contains 114 files)
+* [alignments_genus_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle5_edited_trimmed_25) (contains 155 files)
+* [alignments_species_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle5_edited_trimmed_25) (contains 155 files)
+
+Note that i removed the family-level alignments in the directory [alignments_family_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle5_edited_trimmed_25) which contained no taxa other than megalocytivirus taxa. That is because there is no additional information we can get from these alignments that aren't in the genus and species level alignments. The directory originally contained 114 files but i deleted X alignments. Now the directory has X alignments. 
+
 
 ### Generate gene trees
 To generate gene trees for each MSA using iqtree, first remove MSAs for orthogroups for which you do not want to generate a gene tree (i.e. orthogroups not containing core genes of interest). 
