@@ -143,9 +143,9 @@ The `orthogroups_occpancy_histogram.pdf` file should look something like the ima
 The `orthogroups_occpancy.tsv` should look something like the image below. It includes the raw data used to generate the histogram along with the 'Occupancy' for each orthogroup.
 ![R script output](https://github.com/user-attachments/assets/5e71f5ee-b6c2-4b68-8a52-36acc6abe271)
 
-Have the files as shown above? Yay! Now run the same analysis for the remaining two taxonomic levels (specifying the options as described above), and decide on a core gene criteria based on your results. 
+Have the files as shown above? Great! Now run the same analysis for the remaining two taxonomic levels (specifying the options as described above), and decide on a core gene criteria based on your results. 
 
-##### Decide on core gene criteria
+##### Decide on a core gene criteria (occupancy threshold)
 Based on the output files from the 'analyse' step above, you can decide on which orthogroups you would like to retain for further analysis. I did this based on the 'Occupancy Threshold' which is the minimum proprtion of genomes where a gene is present, for it to be retained for further analysis. The higher the occupancy threshold (i.e. the more genomes with the gene present) the less genes you'll retain. 
 
 Once you've decided on the occupancy threshold you can move on to next step.
@@ -158,24 +158,31 @@ First make three directories:
 mkdir alignments_family alignments_genus alignments_species
 ```
 You will now have three new directories containing multiple sequence alignment files (`.fa` files) as outlined below. 
-* alignments_family (contains 114 files)
-* alignments_genus (contains 155 files)
-* alignments_species (contains 155 files)
+* [alignments_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family) (contains 114 files)
+* [alignments_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus) (contains 155 files)
+* [alignments_species](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species) (contains 155 files)
 
 Then, look at the `orthogroups_occpancy.tsv` for each taxonomic level and check out the occupany of each orthogroup. If the occupancy of an orthogroup is above or equal to the occupancy threshold you chose, them move it into the newly created directory for the relevant taxonomic level.  
 
 #### 3. Re-align alignments 
-I used [MUSCLE5](https://github.com/rcedgar/muscle)(muscle/5.0.1428)] to re-align the mafft alignments to imporve the accuracy of the alignments. The script to do this is in this repository which saved the re-aligned files into three new directories. Run it like this:
+I used [MUSCLE5](https://github.com/rcedgar/muscle) (version 5.0.1428) to re-align the mafft alignments to imporve the accuracy of the alignments. The script to do this is in this repository which saved the re-aligned files into three new directories. Run it like this:
 ```bash
-bash script_TBC_muscle5.sh
+bash script_TBC_muscle.sh
 ```
 You will now have three new directories containing re-aligned multiple sequence alignment files (`.fa` files) as outlined below. 
-* alignments_family_muscle5 (contains 114 files)
-* alignments_genus_muscle5 (contains 155 files)
-* alignments_species_muscle5 (contains 155 files)
+* [alignments_family_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family__muscle) (contains 114 files)
+* [alignments_genus_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle) (contains 155 files)
+* [alignments_species_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species_muscle) (contains 155 files)
 
 #### 4. Editing alignments (by eye)
+I then uploaded the re-aligned multiple sequence alignments to Geneious Prime (version 2020.2.5) and edited them by eye. The changes I made and the reasons why can be found in [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx).
 
+Where there was a low level of sequence conservation in one sequence compared to other closely related seuqneces (sequences of the same genotype) and increases in the alignment quality was not able to be achieved, I deleted these sequences.
+
+I saved the hand-edited alignments in the following directories in this repository.
+* [alignments_family_muscle_edited](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited) (contains 114 files)
+* [alignments_genus_muscle_edited](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle_edited) (contains 155 files)
+* [alignments_species_muscle_edited](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species_muscle_edited) (contains 155 files)
 
 #### 5. Trim alignments 
 Now use [TrimAL ](https://github.com/inab/trimal) (version 1.4.1r22) to trim the multiple sequence alignments by removing columns where fewer than 5% of sequences contain an amino acid. I used a very low threshold given some taxa (for example, *Megalocytivirus lates1* have a very low representaion with only 3 genomes included in the analysis. I didn't want sequence information unique to taxa which are poorly represented in the dataset, to be removed. The script i wrote to complete this trimming is saved in this repository. To run it, go:
@@ -183,34 +190,9 @@ Now use [TrimAL ](https://github.com/inab/trimal) (version 1.4.1r22) to trim the
 script_TBC_trimal.sh
 ```
 You will now have three new directories containing trimmed multiple sequence alignment files (`.fa` files) as outlined below. 
-* alignments_family_muscle5_edited_trimmed (contains 114 files)
-* alignments_genus_muscle5_edited_trimmed (contains 155 files)
-* alignments_species_muscle5_edited_trimmed (contains 155 files)
-
-Create input file required by TAPER to trim the multiple sequence alignment files by quality. This script will produce three text files (.txt) which lists the file paths to each input file (multiple sequence alignment) and output file. It will generate one for each of the three taxonomic levels. It will also generate three directories (`alignments_family_corrected`, `alignments_genus_corrected`, and `alignments_species_corrected`) for the trimmed alignments to be saved into when you run the next script.  
-```bash
-bash script_TBC_make_input_taper.sh
-```
-
-The output file should look something like this:
-
-![output_taper_text_file](https://github.com/user-attachments/assets/bb4c9a9a-c8c9-4e12-b94d-4515a3dbfa4a)
-
-Now, run TAPER on each file using the script below. The trimmed multiple sequence alignments will be saved in the newly created directories `alignments_family_corrected`, `alignments_genus_corrected`, and `alignments_species_corrected`. 
-```bash 
-script_TBC_taper.sh
-```
-
-Check the output directory. You should have a bunch of .fa files saved in there (the same number of files as you had an input).
-
-### Manually check and edit Multiple Sequence Alignments
-I manually curate the OrthoFinder-generated MSA files using Geneious Prime (Version 2020.2.5). 
-
-#### Steps to take
-1. Export the MSA files generated by OrthoFinder and drag and drop it into Geneious Prime.
-2. Check each file and make edits where neccessary. 
-3. Create a directory in the mcv directory `3_mafft_alignments`.
-4. Save all the manually curated MSA files for all genomes.
+* [alignments_family_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited_trimmed) (contains 114 files)
+* [alignments_genus_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle_edited_trimmed) (contains 155 files)
+* [alignments_species_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species_muscle_edited_trimmed) (contains 155 files)
 
 ### Generate gene trees
 To generate gene trees for each MSA using iqtree, first remove MSAs for orthogroups for which you do not want to generate a gene tree (i.e. orthogroups not containing core genes of interest). 
