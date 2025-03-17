@@ -91,7 +91,7 @@ Now, using one script, we run Orthofinder three times (once each on the proteome
 * `proteome_2_family`,
 * `proteome_2_genus`, and
 * `proteome_2_species`.
-  ```bash
+```bash
 script_TBC_orthofinder.sh
 ```
 
