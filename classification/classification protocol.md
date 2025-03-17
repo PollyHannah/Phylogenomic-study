@@ -4,6 +4,7 @@ Not all *Megalocytivirus* genomes entered into the National Centre for Biotechno
 You will need the following software:
 * [FastANI](https://github.com/ParBLiSS/FastANI) (version 1.34).
 
+## Background
 There are currently two species of megalocytivirus recognised by the International Committe for the Taxonomy of Viruses. The two recognised species are *Megalocytivirus pagrus1* and *M. lates1*. *Megalocytivirus pagrus1* is further divided into three genotypes which are:
 * red sea bream iridovirus (RSIV), 
 * infectious spleen and kidney necrosis virus (ISKNV), 
