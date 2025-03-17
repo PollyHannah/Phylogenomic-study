@@ -1,8 +1,13 @@
 # Annotation check
 This page includes on the annotations I manually checked and for which genomes, how I decided on which annotations I would keep, edit or remove, a list of the annotations which I edited or removed, the genomes which I removed from my analysis due to assumed sequencing or assembly errors (and why), and how I processed proteome files to get them into a format ready for the next step of the pipeline.
 
+You will need the following software:
+* Geneious Prime (Version 2020.2.5).
+* [OrthoFinder](https://github.com/davidemms/OrthoFinder) (version 2.5.4)
+* [Prokka](https://github.com/tseemann/prokka) (version 1.14.5)
+
 ## Which annotations did I manually check?
-The annotations I chose to manually check differed depending on whether the genome was a megalocytivirus genome, an 'unclassified' megalocytivirus genome (genomes entered into National Centre for Biotechnology Information (NCBI) GenBank Taxonomy Browser under the genus 'megalocytivirus' as 'Unclassified'), or a genome from a different iridovirid genus (i.e. not a megalocytivirus). The annotations I checked for each of these groups is provided below. I didn't check every annotation for every genomes in order to save time. 
+The annotations I chose to manually check differed depending on whether the genome was a megalocytivirus genome, an 'unclassified' megalocytivirus genome (genomes entered into [National Centre for Biotechnology Information NCBI GenBank Taxonomy Browser](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi) under the genus 'megalocytivirus' as 'Unclassified'), or a genome from a different iridovirid genus (i.e. not a megalocytivirus). The annotations I checked for each of these groups is provided below. I didn't check every annotation for every genomes in order to save time. 
 
 ### Megalocytivirus genomes
 #### Classified genomes
@@ -33,7 +38,7 @@ I transferred the annotations from the manually curated genomes (above) onto the
 
 *Genome removed due to stop codons being present in >5 annotations.
 
-I transferred annotations using the 'Annotate From' option in the'Live Annotate and Predict tab' in Geneious Prime (Version 2020.2.5). I set the transfer threshold for percent similarity at 85%. This meant that annotated sequences which were less than 85% similar to the sequence being annotated did not transfer. 
+I transferred annotations using the 'Annotate From' option in the'Live Annotate and Predict tab' in Geneious Prime. I set the transfer threshold for percent similarity at 85%. This meant that annotated sequences which were less than 85% similar to the sequence being annotated did not transfer. 
 
 Once the annotations were transferred, checked each transferred annotation for stop codons and ensured the annotation started with the amino acid Methionine (M). 
 * If the annotation did not start with M I removed it.
@@ -60,7 +65,7 @@ I have run OrthoFinder multiple times with different sets of genomes (ones added
 #### OrthoFinder
 OrthoFinder is a program which identifies genes highly conserved between genomes. I manually check and edit (where necessary) the prokka-assigned annotations.
 
-We use this program in thi sphylogenetic analysis to identify a final set of 'core genes' at the species, genus and family level. Right now, we're just running it at the family level to identify a set of highly conserved genes to target for checking and editing.
+We use this program in this phylogenetic analysis to identify a final set of 'core genes' at the species, genus and family level. Right now, we're just running it at the family level to identify a set of highly conserved genes to target for checking and editing.
 
 #### Nominate values for OrthoFinder options
 Open `script_three_orthofinder.sh` and nominate values for options `-t` (`-t` number_of_threads) and `-a` (`-a` number_of_orthofinder_threads). These options control the parallelisation of OrthoFinder to decrease the runtime. For `-t`, choose the  number of cores on your computer. For `-a`, put 1/4 of the value of `-t`. 
@@ -73,7 +78,7 @@ bash script_three_orthofinder.sh
 ```
 
 ## How did I decide whether to keep, edit, or delete annotations?
-I started by downloading the General Feature File (.gff) produced by Prokka (version 1. 14. 5) for every genome I annotated and pairwise aligned the file in Genenious Prime (version 2020.2.5) with the GenBank (.gb) file from NCBI GenBank Database for the corresponding genome. I moved through the genome looking at each annotation and did the following:
+I started by downloading the General Feature File (.gff) produced by Prokka for every genome I annotated and pairwise aligned the file in Genenious Prime (version 2020.2.5) with the GenBank (.gb) file from NCBI GenBank Database for the corresponding genome. I moved through the genome looking at each annotation and did the following:
 * Where the Prokka and GenBank annotations matched, I kept the annotation as-is. Where the annotations did not match, I did a A BLASTp search of both annotations on the the NCBI GenBank Database. I favoured annotations with a higher number of matches, % identity to matches, and % query cover.
 * I then checked whether stop codons were present in the annotation. If a 'favoured annotation' (as described above) had ≤5 stop codons I kept the annotation and removed the stop codons. Yet if a 'favoured annotation' had >5 stop codons I kept the less-favoured annotation (if there was one). If the annotation had >5 stop codons and there was no 'favored annotation' (i.e. there was no alternative annotation option in the .gff file or .gb file) I deleted the annotation all together. 
 * I then exported out of from Geneious Prime (version 2020.2.5), a list of the annotations (amino acid sequences) for each genome. 
@@ -114,4 +119,6 @@ The freshly re-annotated sequences are used to identify core genes as part of Pa
    * You will also find a script in this repository named `script_reformat_annotations` which reformats annotations in the form of nucleotide sequences (instead of amino acid sequences). This script isn't used as part   of my pipeline but may come in useful if you want to do further analysis using nucleotide sequences.
 
 ## References
+Seemann T. Prokka: rapid prokaryotic genome annotation. Bioinformatics 2014 Jul 15;30(14):2068-9. PMID:24642063
+
 Yoxsimer, A. M., Offenberg, E. G., Katzer, A. W., Bell, M. A., Massengill, R. L., & Kingsley, D. M. (2024). Genomic Sequence of the Threespine Stickleback Iridovirus (TSIV) from Wild Gasterosteus aculeatus in Stormy Lake, Alaska. Viruses, 16(11), 1663.
