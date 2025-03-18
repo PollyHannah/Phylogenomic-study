@@ -13,7 +13,7 @@ Go to the file `setup.md` in this repository, for information about how to set-u
 * [R Script](https://www.r-project.org/) (version 4.0.5)
 * [GNU Parallel](https://github.com/gitGNU/gnu_parallel)  
 
-To identify the genetic sequence information for inclusion in this study i generated a database of available sequence data for the genus *Megalocytivirus* and other members of the family *Iridoviridae*. That data base can be found in this repository named `[megalocytivirus_sequence_data.xlsx](https://github.com/PollyHannah/Phylogenomic-study/blob/main/megalocytivirus_sequence_data.xlsx)`.
+To identify the genetic sequence information for inclusion in this study i generated a database of available sequence data for the genus *Megalocytivirus* and other members of the family *Iridoviridae*. That data base can be found in this repository named [megalocytivirus_sequence_data.xlsx](https://github.com/PollyHannah/Phylogenomic-study/blob/main/megalocytivirus_sequence_data.xlsx).
 
 ## Part one: re-annotation and quality check
 Part one is where we collect, quality check, and re-annotate genomes for input into Part two: core gene analysis. The genomes in National Centre for Biotechnology Information (NCBI) Genbank have annotations, but they are of differing quality, and done using various methods. This part aims to check and update annotations to maximise the quality of the data for phylogenetic inference.
