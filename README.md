@@ -6,12 +6,12 @@ This repository houses the details of my bioinformatic pipeline for my phylogene
 Go to the file `setup.md` in this repository, for information about how to set-up a conda environment. The same file houses information on how to complete basic tasks like transfering files and fixing errors you might receive while completeing this analysis. You will need the following software:
 * [Prokka](https://github.com/tseemann/prokka) (version 1.14.5)
 * [OrthoFinder](https://github.com/davidemms/OrthoFinder) (version 2.5.4)
-* Geneious Prime (version 2020.2.5).
+* Geneious Prime (version 2020.2.5)
 * [MUSCLE5](https://github.com/rcedgar/muscle) (version 5.0.1428)
 * [TrimAL ](https://github.com/inab/trimal) (version 1.4.1r22) 
 * [IQ-TREE2](https://github.com/iqtree/iqtree2) (version 2.2.0.5)
 * [R Script](https://www.r-project.org/) (version 4.0.5)
-* [GNU Paralell](https://github.com/gitGNU/gnu_parallel)  
+* [GNU Parallel](https://github.com/gitGNU/gnu_parallel)  
 
 To identify the genetic sequence information for inclusion in this study i generated a database of available sequence data for the genus *Megalocytivirus* and other members of the family *Iridoviridae*. That data base can be found in this repository named `[megalocytivirus_sequence_data.xlsx](https://github.com/PollyHannah/Phylogenomic-study/blob/main/megalocytivirus_sequence_data.xlsx)`.
 
