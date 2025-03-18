@@ -11,7 +11,8 @@ Go to the file `setup.md` in this repository, for information about how to set-u
 * [TrimAL ](https://github.com/inab/trimal) (version 1.4.1r22) 
 * [IQ-TREE2](https://github.com/iqtree/iqtree2) (version 2.2.0.5)
 * [R Script](https://www.r-project.org/) (version 4.0.5)
-* [GNU Parallel](https://github.com/gitGNU/gnu_parallel)  
+* [GNU Parallel](https://github.com/gitGNU/gnu_parallel)
+* [BLAST+](https://www.ncbi.nlm.nih.gov/books/NBK279690/) (version 2.16.0).
 
 To identify the genetic sequence information for inclusion in this study i generated a database of available sequence data for the genus *Megalocytivirus* and other members of the family *Iridoviridae*. That data base can be found in this repository named [megalocytivirus_sequence_data.xlsx](https://github.com/PollyHannah/Phylogenomic-study/blob/main/megalocytivirus_sequence_data.xlsx).
 
@@ -70,7 +71,7 @@ Computers are great but they're not perfect. This is why I manually curate the P
 
 To save time, I didn't manually check every annotation for every genome. Head to the directory [`annotation_check`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/annotation_check) for information including; the annotations I manually checked for each genomes, how i decided which annotations I kept, edited or removed, a list of the annotations which I edited or removed, the genomes removed from my analysis due to assumed sequencing or assembly errors (and why), and how I processed proteome files to get them into a format ready for the next step of the pipeline. 
 
-## Part Two: Core gene analysis
+## Part Two: Gene analysis
 This is where we take the freshly re-annotated sequences and identify a set of core genes with the help of OrthoFinder.
 
 ### Sort proteome files by taxonomic level
@@ -100,7 +101,7 @@ The output files will be saved (respectively) into three new directories
 * `orthofinder_2_genus`, and
 * `orthofinder_2_species`.
 
-### Identify core genes 
+### Identify core and majority genes 
 We now use R to identify a set of core genes using the Orthofinder output. First we analyse using the script `orthogroup_analysis.R`. Then, we filter out set of core genes using the script `filter_orthogroups.R`. 
 
 #### 1. Analyse
@@ -200,7 +201,61 @@ You will now have three new directories containing trimmed multiple sequence ali
 
 Note that there are now only 31 files in the directory [alignments_family_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle5_edited_trimmed_25) This is beacasue I removed the family-level alignments which contained no taxa other than megalocytivirus taxa. That is because there is no additional information we can get from these alignments that aren't in the genus and species level alignments. The directory originally contained 114 files but I deleted 83 alignments, leaving 31. 
 
+#### 6. Assign orthogroup identities
+I assiged possible identities to orthogroups (i.e which genes they might be) by doing an NCBI BLASTp search which compares protein query sequences to a protein database. I did this on the command line using the BLAST+ suite. There is a good tutorial [here](https://conmeehan.github.io/blast+tutorial.html) on how to install and conduct a BLAST+ search. 
 
+When using BLAST+ you need a sequence database to BLAST against. NCBI has many pre-made databases you can use which are available for download [here](https://ftp.ncbi.nlm.nih.gov/blast/db/). I used the Swiss-Prot database which is a database of high-quality protein sequences from UniProtKB/Swiss-Prot. It is a smaller and more accurate version of the 'nr' database made available by NCBI. 
+
+##### 6.1 Upload NCBI sequence database
+To use the database I manually downloaded the files `swissprot.tar.gz` (compressed database) and `swissprot.tar.gz.md5` (checksum file) from [here](https://ftp.ncbi.nlm.nih.gov/blast/db/) and manually uploaded them to the mcv directory. Neither file are housed in this repository (together they are too large to store here). 
+
+##### 6.2 Check database integrity 
+I then used the checksum file (`swissprot.tar.gz.md5`) to verify the integrity of the compressed databade file .gz file (`swissprot.tar.gz`), which is good practice to verify that the .gz file hasn't been corrupted during the download.
+
+```bash
+md5sum -c swissprot.tar.gz.md5
+```
+
+If the database has not been corrupted during the download, you should recieve a mesage saying 'swissprot.tar.gz: OK'.
+
+##### 6.3 De-compress the database
+Now de-compress the database file `swissprot.tar.gz` in order to use it.
+```bash 
+tar -xvzf swissprot.tar.gz 
+``` 
+If successful, you should see several new files saved in the mcv directory with the name swissprot and taxdb with various file extentions. 
+
+##### 6.4 Prepare query sequences 
+I now used a script to extract the first amino acid sequence from each orthogroup multiple sequence alignment, and store it in a new .fasta file which will be used as the query sequence for the BLASTp search. The input files are those created in 5. Trim alignments (also listed below):
+* [alignments_family_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle5_edited_trimmed) (contains 31 files)
+* [alignments_genus_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle5_edited_trimmed) (contains 155 files)
+* [alignments_species_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle5_edited_trimmed) (contains 155 files)
+
+To run the script, go:
+```bash
+script_make_input_blastp.sh
+```
+
+You should now have three new directories (as listed below) created in the mcv directory containing `.fasta` files with one sequence in each file. Each sequence is named after the orthogroup it was extracted from:
+* [orthogroup_sequence_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthogroup_sequence_family) (contains 31 files)
+* [orthogroup_sequence_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthogroup_sequence_genus) (contains 155 files)
+* [orthogroup_sequence_species](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthogroup_sequence_species) (contains 155 files)
+
+##### 6.5 Run BLASTp search
+Now I ran BLASTp search on each of the query sequences generated in step 6.4 Prepare query sequences. The script i used in houses in this repository. To use it, run:
+```bash
+script_make_input_blastp.sh
+```
+You should now see three new directories in the mcv directory (listed below). Each directory should contain `.txt` file names with the results of the BLASTp search for each query sequence. 
+
+* [orthogroup_blastp_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthogroup_blastp_family)
+* [orthogroup_blastp_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthogroup_blastp_genus)
+* [orthogroup_blastp_species](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthogroup_sequence_family)
+
+Each .txt file will contain sequence match information as look similar to the image below. 
+
+
+    
 ### Generate gene trees
 To generate gene trees for each multiple sequence alignment using iqtree, first remove alignments for orthogroups for which you do not want to generate a gene tree (i.e. orthogroups not containing core genes of interest). 
 
@@ -223,6 +278,12 @@ script_TBC_sort_files.sh
 ```
 
 ## References
+Alejandro A. Schaffer, L. Aravind, Thomas L. Madden, Sergei Shavirin, John L. Spouge, Yuri
+I. Wolf, Eugene V. Koonin, and Stephen F. Altschul (2001),
+"Improving the accuracy of PSI-BLAST protein database searches with
+composition-based statistics and other refinements", Nucleic Acids
+Res. 29:2994-3005.
+
 Bui Quang Minh, Heiko A Schmidt, Olga Chernomor, Dominik Schrempf, Michael D Woodhams, Arndt von Haeseler, Robert Lanfear, IQ-TREE 2: New Models and Efficient Methods for Phylogenetic Inference in the Genomic Era, Molecular Biology and Evolution, Volume 37, Issue 5, May 2020, Pages 1530–1534,
 
 Edgar, RC (2021), MUSCLE v5 enables improved estimates of phylogenetic tree confidence by ensemble bootstrapping, bioRxiv 2021.06.20.449169. https://doi.org/10.1101/2021.06.20.449169.
@@ -231,7 +292,12 @@ R Core Team (2018). R: A language and environment for statistical computing. R F
 
 Salvador Capella-Gutierrez; Jose M. Silla-Martinez; Toni Gabaldon. Bioinformatics 2009 25: 1972-1973.
 
-Seemann T. Prokka: rapid prokaryotic genome annotation. Bioinformatics 2014 Jul 15;30(14):2068-9. PMID:24642063
+Seemann T. Prokka: rapid prokaryotic genome annotation. Bioinformatics 2014 Jul 15;30(14):2068-9. PMID:24642063.
+
+Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
+Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
+protein database search programs", Nucleic Acids Res. 25:3389-3402.
 
 Tange, O. (2021, March 22). GNU Parallel 20210322 ('2002-01-06') Available at: https://doi.org/10.5281/zenodo.4628277.
 
