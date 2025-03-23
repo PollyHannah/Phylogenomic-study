@@ -255,6 +255,15 @@ You should now see three new directories in the mcv directory (listed below). Ea
 Each .txt file will contain sequence match information as look similar to the image below. 
 ![BLASTP output](https://github.com/user-attachments/assets/1317a282-04e7-4ec6-a92f-850ff9ad2ca0)
 
+###### Interpreting BLASTp results
+The BLASTp search results are found in the `.txt` files linked above. The most important part of the results is the list of 'Sequences producing significant alignments'. A list of sequence names are provided along with an E-value and Score (Bits) for each sequence. 
+
+The E-value is the number of hits (alignments) equivalent to a hit (or alignment) that we would expect to see by chance. Smaller E-values represent better hits. The Score (Bits) summarises the sequence similarity between the query sequence and the database hit. A higher bit score indicates a better hit. More information can be found [here](https://genomicsaotearoa.github.io/hts_workshop_mpi/level1/43_blast_interpretation/#interpretting-the-results-of-blast-queries).
+
+A spreadsheet summarising the most probable identities of each orthogroup, based on the BLASTp results, can be found in `gene_identity.xlsx`. The 'most probable identity' was the sequence out of the 'Sequences producing significant alignments' in the BLASTp output with the  highest Score (bits) and lowest E- Value. 
+
+I highlighted cells in red which I'm not confident in, as they returned an have an E-value >1 and a Score (Bits) < 50. 
+
 ### Generate gene trees
 To generate gene trees for each multiple sequence alignment using iqtree, first remove alignments for orthogroups for which you do not want to generate a gene tree (i.e. orthogroups not containing core genes of interest). 
 
