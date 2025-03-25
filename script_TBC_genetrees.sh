@@ -27,7 +27,7 @@ for i in "${!alignment_folders[@]}"; do
 	iqtree2 -seed 1 -T $threads -S $prefix"_step1.best_model.nex" -te $prefix"_step1.treefile" --model-joint GTR20+FO --init-model LG -pre $prefix"_step2"
 
 	# extract the GTR20 model
-	grep -A 21 "can be used as input for IQ-TREE" train_virus.GTR20.iqtree | tail -n20 > "Q."$prefix
+	grep -A 21 "can be used as input for IQ-TREE" $prefix"_step2.iqtree" | tail -n20 > "Q."$prefix
 
 done
 
