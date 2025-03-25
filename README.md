@@ -13,6 +13,7 @@ Go to the file `setup.md` in this repository, for information about how to set-u
 * [R Script](https://www.r-project.org/) (version 4.0.5)
 * [GNU Parallel](https://github.com/gitGNU/gnu_parallel)
 * [BLAST+](https://www.ncbi.nlm.nih.gov/books/NBK279690/) (version 2.16.0).
+* [Mauve](https://github.com/koadman/mauve) (version 20150226)
 
 To identify the genetic sequence information for inclusion in this study i generated a database of available sequence data for the genus *Megalocytivirus* and other members of the family *Iridoviridae*. That data base can be found in this repository named [megalocytivirus_sequence_data.xlsx](https://github.com/PollyHannah/Phylogenomic-study/blob/main/megalocytivirus_sequence_data.xlsx).
 
@@ -73,6 +74,8 @@ To save time, I didn't manually check every annotation for every genome. Head to
 
 ## Part Two: Gene analysis
 This is where we take the freshly re-annotated sequences and identify a set of core genes with the help of OrthoFinder.
+
+By the way, I generated a whole genome alignment for all Megalocytivirus pagrus1 genomes part of my analysis, using the program Mauve. The alignment can be found  in this repository called `[alignment_mpagrus1.fas](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_mpagrus1.fas)`.
 
 ### Sort proteome files by taxonomic level
 We run Orthofinder three times - once each with genomes at the family, genus and species level. To do this we need to sort the proteomes we generated as part of 'Part One: re-annotation and quality check' into three sperate directories. 
