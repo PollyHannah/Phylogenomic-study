@@ -7,6 +7,14 @@ threads=31
 alignment_folders=("alignments_family_muscle5_edited_trimmed" "alignments_genus_muscle5_edited_trimmed")
 prefixes=("iridoviridae" "mcv")
 
+mkdir qmaker
+
+for folder in "${alignment_folders[@]}"; do
+	cp -r $folder "qmaker/$folder"
+done
+
+cd qmaker
+
 # remove the ' modified' part of the alignment names (IQ-TREE doesn't like it)
 for folder in "${alignment_folders[@]}"; do
 	cd $folder
@@ -14,7 +22,7 @@ for folder in "${alignment_folders[@]}"; do
 	cd ..
 done
 
-# make the models - one from each folder of alignments... it's feasible some won't work well, if there are too few substitutions
+# make the models - one from each folder of alignments... it's feasible some won't work well if there are too few substitutions
 for i in "${!alignment_folders[@]}"; do
     folder="${alignment_folders[i]}"
     prefix="${prefixes[i]}"
@@ -45,6 +53,7 @@ mset=$(IFS=, ; echo "${models[*]}")
 echo "-mset $mset"
 
 # get the gene trees, allowing for all three new models to be used
+# this is just to test whether the models fit the data best - they should since this is the data they were trained on!
 for i in "${!alignment_folders[@]}"; do
     folder="${alignment_folders[i]}"
     prefix="${prefixes[i]}"
