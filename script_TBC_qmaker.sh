@@ -66,5 +66,5 @@ done
 # add these files to the existing list of Q matrices
 # force overwrite with -f, in case we re-run this
 for prefix in "${prefixes[@]}"; do
-    cp -f "Q.$prefix" "iqtree_matrices/Q.$prefix"
+    cp -f "Q.$prefix" "../iqtree_matrices/Q.$prefix"
 done
