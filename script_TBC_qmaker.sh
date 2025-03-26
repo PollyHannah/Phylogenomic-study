@@ -61,3 +61,10 @@ for i in "${!alignment_folders[@]}"; do
 	iqtree2 -seed 1 -T $threads -S $folder -cmax 10 -pre $prefix"_final" -mset $mset 
 
 done
+
+
+# add these files to the existing list of Q matrices
+# force overwrite with -f, in case we re-run this
+for prefix in "${prefixes[@]}"; do
+    cp -f "Q.$prefix" "iqtree_matrices/Q.$prefix"
+done
