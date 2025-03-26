@@ -267,6 +267,44 @@ A spreadsheet summarising the most probable identities of each orthogroup, based
 
 I highlighted cells in red which I'm not confident in, as they returned an have an E-value >1 and a Score (Bits) < 50. 
 
+
+
+### Generate new Q matrices
+
+Subsitution patterns in iridoviridae and mcv are likely to be somewhat different from those captured in existing rate matrices like LG and WAG. So now we use [Qmaker](https://doi.org/10.1093/sysbio/syab010) to build two new substitution models - one for the iridoviridae as a whole (Q.iridoviridae), and one for megalocytiviruses (Q.mcv).
+
+There are two scripts to do this. The first builds the matrices themselves, and then applies them to the family level and genus level datasets as a sanity check. To run this, simply do this:
+
+```bash
+bash script_TBC_qmaker.sh
+```
+
+This script does the following:
+
+* copies over the family level and genus level alignments into the `/qmaker` folder
+* Builds `GTR20` models for each using the Qmaker protocol
+	* Q.mcv is built from genus level alignments
+	* Q.iridoviridae is built from the family level alignments
+* Uses ModelFinder to apply these two models, along with all other models in IQ-TREE, to the family and genus level alignments.
+
+The last step is a sanity check. If the models work, then Q.mcv should be the best model for most of the genus level alignments, and Q.iridoviridae should be the best model for most of the family level alignments. This is exactly what we see. The `qmaker/mcv_final.iqtree` file shows that 94/115 (i.e. 82%) of the genus level alignments are best fit by Q.mcv using the BIC, and `qmaker/iridoviridae_final.iqtree` shows that 27/31 (i.e. 87%) of the family level alignments are best fit by the Q.iridoviridae model.
+
+The next script compares these models to existing models with two PCA plots, similar to those found in the Qmaker paper linked above but including the two new matrices. 
+
+This script can be run after installing the necessary R libraries like this:
+
+```bash
+Rscript script_Q_PCA.R
+```
+
+This produces the following two PCA plots. The first shows the exchangeabilities, and the second the freuqency vectors. The new matrices are highlighted as red dots with black outlines. They reveal that the two matrices are distinct from each other, and from any previously estimated matrices. They nevertheless fall within the range of sensible values according to the PCA. Manual examination of the model files themselves in `iqtree_qmatrices/Q.mcv` and `iqtree_qmatrices/Q.iridoviridae` confirms that all estimted values are plausible, sensible, and not approaching any boundaries. All of this confirms that the models were estimated without issues.
+
+<p align="center">
+  <img src="iqtree_qmatrices/PCA_frequencies.png" alt="PCA of frequencies" width="400"/>
+  <img src="iqtree_qmatrices/PCA_exchangeabilities.png" alt="PCA of exchangeabilities" width="400"/>
+</p>
+
+
 ### Generate gene trees
 To generate gene trees for each multiple sequence alignment using iqtree, first remove alignments for orthogroups for which you do not want to generate a gene tree (i.e. orthogroups not containing core genes of interest). 
 

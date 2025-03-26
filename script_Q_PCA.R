@@ -83,7 +83,7 @@ plotQ <- ggplot(pcaQ$x, aes(x = PC1, y = PC2)) +
   labs(colour = "Matrix type") +
   theme_minimal()
 
-ggsave(file.path(qmatrix_dir, "PCA_exchangeabilities.pdf"), plotQ, width = 8, height = 6, device = "pdf")
+ggsave(file.path(qmatrix_dir, "PCA_exchangeabilities.png"), plotQ, width = 8, height = 6, device = "png")
 
 # PCA of frequencies
 pcaF <- prcomp(allF, scale = TRUE)
@@ -102,4 +102,4 @@ plotF <- ggplot(pcaF$x, aes(x = PC1, y = PC2)) +
   labs(colour = "Matrix type") +
   theme_minimal()
 
-ggsave(file.path(qmatrix_dir, "PCA_frequencies.pdf"), plotF, width = 8, height = 6, device = "pdf")
+ggsave(file.path(qmatrix_dir, "PCA_frequencies.png"), plotF, width = 8, height = 6, device = "png")
