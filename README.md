@@ -14,7 +14,7 @@ Go to the file `setup.md` in this repository, for information about how to set-u
 * [GNU Parallel](https://github.com/gitGNU/gnu_parallel)
 * [BLAST+](https://www.ncbi.nlm.nih.gov/books/NBK279690/) (version 2.16.0).
 * [Mauve](https://github.com/koadman/mauve) (version 20150226)
-* [QMaker] (https://academic.oup.com/sysbio/article/70/5/1046/6146362?login=true)
+* [QMaker](https://academic.oup.com/sysbio/article/70/5/1046/6146362?login=true)
 
 To identify the genetic sequence information for inclusion in this study i generated a database of available sequence data for the genus *Megalocytivirus* and other members of the family *Iridoviridae*. That data base can be found in this repository named [megalocytivirus_sequence_data.xlsx](https://github.com/PollyHannah/Phylogenomic-study/blob/main/megalocytivirus_sequence_data.xlsx).
 
