@@ -327,11 +327,9 @@ script_TBC_sort_files.sh
 ```
 
 ## References
-Alejandro A. Schaffer, L. Aravind, Thomas L. Madden, Sergei Shavirin, John L. Spouge, Yuri
-I. Wolf, Eugene V. Koonin, and Stephen F. Altschul (2001),
-"Improving the accuracy of PSI-BLAST protein database searches with
-composition-based statistics and other refinements", Nucleic Acids
-Res. 29:2994-3005.
+Alejandro A. Schaffer, L. Aravind, Thomas L. Madden, Sergei Shavirin, John L. Spouge, Yuri I. Wolf, Eugene V. Koonin, and Stephen F. Altschul (2001), "Improving the accuracy of PSI-BLAST protein database searches with composition-based statistics and other refinements", Nucleic Acids, Res. 29:2994-3005.
+
+Bui Quang Minh, Cuong Cao Dang, Le Sy Vinh, Robert Lanfear, QMaker: Fast and Accurate Method to Estimate Empirical Models of Protein Evolution, Systematic Biology, Volume 70, Issue 5, September 2021, Pages 1046–1060, https://doi.org/10.1093/sysbio/syab010
 
 Bui Quang Minh, Heiko A Schmidt, Olga Chernomor, Dominik Schrempf, Michael D Woodhams, Arndt von Haeseler, Robert Lanfear, IQ-TREE 2: New Models and Efficient Methods for Phylogenetic Inference in the Genomic Era, Molecular Biology and Evolution, Volume 37, Issue 5, May 2020, Pages 1530–1534,
 
@@ -343,10 +341,7 @@ Salvador Capella-Gutierrez; Jose M. Silla-Martinez; Toni Gabaldon. Bioinformatic
 
 Seemann T. Prokka: rapid prokaryotic genome annotation. Bioinformatics 2014 Jul 15;30(14):2068-9. PMID:24642063.
 
-Stephen F. Altschul, Thomas L. Madden, Alejandro A.
-Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
-Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
-protein database search programs", Nucleic Acids Res. 25:3389-3402.
+Stephen F. Altschul, Thomas L. Madden, Alejandro A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of protein database search programs", Nucleic Acids Res. 25:3389-3402.
 
 Tange, O. (2021, March 22). GNU Parallel 20210322 ('2002-01-06') Available at: https://doi.org/10.5281/zenodo.4628277.
 
