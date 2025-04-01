@@ -184,9 +184,11 @@ You will now have three new directories containing re-aligned multiple sequence 
 * [alignments_species_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species_muscle) (contains 155 files)
 
 #### 4. Editing alignments (by eye)
-I then uploaded the re-aligned multiple sequence alignments to Geneious Prime and edited them by eye. The changes I made and the reasons why can be found in [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx).
+I then uploaded the re-aligned multiple sequence alignments to Geneious Prime and edited them by eye. Where there was a low level of sequence conservation in one sequence compared to other closely related sequences (sequences of the same genotype) and increases in the alignment quality was not able to be achieved, I deleted these sequences. I also generated Neighbor-Joining gene trees in Geneious Prime using the Geneious Tree Builder, with the 'Jukes-Cantor' Genetic Distance Model. I removed taxa which had a branch lengths of >0.9 amino acid substitutions per site. 
 
-Where there was a low level of sequence conservation in one sequence compared to other closely related seuqneces (sequences of the same genotype) and increases in the alignment quality was not able to be achieved, I deleted these sequences.
+The changes I made and the reasons why can be found in [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx).
+
+For the family level alignments, *Daphniairidovirus daphnia1* sequences were removed from five seperate alignments (orthogroups OG000006, OG000010, OG000011, OG000014, and OG000018). Given that only one *Daphniairidovirus daphnia1* genome is currently publically available and included in this analysis, this meant that these orthogroups no longer qualified as 'core genes', which are genes present in every taxa part of the analysis. The alignments for these orthogroups are still included in the hand-edited alignment files below. 
 
 I saved the hand-edited alignments in the following directories in this repository.
 * [alignments_family_muscle_edited](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited) (contains 114 files)
