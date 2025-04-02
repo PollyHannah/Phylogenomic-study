@@ -325,9 +325,17 @@ The output files in each directory, will include the following for each gene tre
 4. `.fa.ckp.gz`, which is a checkpoint file used to resume the analysis if there is an interruption to the running of the program.
 
 ### Sort output files 
-IQ-TREE2 will generate several outputs for each input file with a variety of extensions. All outputs will be saved in the one output directory. You will need to please sort the output files into seperate directories based on orthogroup. Open the script saved to this repository `script_five_sort_files.sh` and update the file path to where the outputs are saved. Then, run the updated script.
+Now, for ease of reference, we want to sort the IQ-TREE output files so all the files related each orthogroup can be found in their own directory. Currently, the output files for all orthogroups are housed in the same directory for each orthogroup. 
+
+To sort the files, run the script `script_five_sort_files.sh` by going:
 ```bash
 script_TBC_sort_files.sh
+```
+
+Next we want to pull out the `.fa.treefiles` into seperate directories so they're easy to compare all at once. This script below will copy the gene trees (`.fa.treefile` files) for each taxaonomic level and save them in new directories, one for each taxonomic level. This is just so it's easier to look through all the gene trees one after the other. 
+
+```bash
+script_TBC_move_iqtree_files.sh
 ```
 
 ## References
