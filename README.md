@@ -9,7 +9,7 @@ Go to the file `setup.md` in this repository, for information about how to set-u
 * Geneious Prime (version 2020.2.5)
 * [MUSCLE5](https://github.com/rcedgar/muscle) (version 5.0.1428)
 * [TrimAL ](https://github.com/inab/trimal) (version 1.4.1r22) 
-* [IQ-TREE2](https://github.com/iqtree/iqtree2) (version 2.2.0.5)
+* [IQ-TREE](https://github.com/iqtree/iqtree2) (version 2.2.0.5)
 * [R Script](https://www.r-project.org/) (version 4.0.5)
 * [GNU Parallel](https://github.com/gitGNU/gnu_parallel)
 * [BLAST+](https://www.ncbi.nlm.nih.gov/books/NBK279690/) (version 2.16.0).
@@ -309,19 +309,20 @@ This produces the following two PCA plots. The first shows the exchangeabilities
 
 
 ### Generate gene trees
-To generate gene trees for each multiple sequence alignment using iqtree, first remove alignments for orthogroups for which you do not want to generate a gene tree (i.e. orthogroups not containing core genes of interest). 
-
-Then, open the script `script_four_iqtree.sh` and insert the file path to your MSA directory in the relevant sections (as indicated in the script). 
-
-Activate your conda environment 
+Now we generate gene trees for each multiple sequence alignment using IQ-TREE. A script to run IQ-TREE on each multiple sequence alignment at the family, genus, and species level, can be found below. The script will determine the best-fit substitution model for each alignment. The newly developed substitution models generated as part of the previous step (Q. iridoviridae and Q.mcv) will also be considered by IQ-TREE. Before you run the script, make sure you have the substitution models (available in this repository [here](https://github.com/PollyHannah/Phylogenomic-study/tree/main/qmaker)) in the directory from which you run the script. To run the script, go
 ```bash
-conda activate mcv
+bash script_TBC_iqtree.sh
 ```
+The script will create three new directories, one for each taxonomic level, containing several files:
+[iqtree_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family) 
+[iqtree_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus)
+[iqtree_species](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species)
 
-Run updated script:
-```bash
-script_TBC_iqtree.sh
-```
+The output files in each directory, will include the following for each gene tree: 
+1. `.fa.iqtree`, which is the main report file that is self-readable. You should look at this file to see the computational results. It also contains a textual representation of the final tree. 
+2. `.fa.treefile`, which is the gene tree in NEWICK format, which can be visualized in a tree viewer program. 
+3. `.fa.log` which is a log of the whole run.
+4. `.fa.ckp.gz`, which is a checkpoint file used to resume the analysis if there is an interruption to the running of the program.
 
 ### Sort output files 
 IQ-TREE2 will generate several outputs for each input file with a variety of extensions. All outputs will be saved in the one output directory. You will need to please sort the output files into seperate directories based on orthogroup. Open the script saved to this repository `script_five_sort_files.sh` and update the file path to where the outputs are saved. Then, run the updated script.
