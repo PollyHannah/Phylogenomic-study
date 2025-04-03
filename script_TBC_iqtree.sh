@@ -1,36 +1,48 @@
+#!/bin/bash
+
 # The modules to load:
+
+# Load required modules
 module load iqtree/2.2.0.5
 module load parallel
 
-# Make a directory for the iqtree outputs
-mkdir -p iqtree
+# Define input directories and corresponding output directories
+declare -A directories=(
+    ["alignments_family_muscle5_edited_trimmed"]="iqtree_family"
+    ["alignments_genus_muscle5_edited_trimmed"]="iqtree_genus"
+    ["alignments_species_muscle5_edited_trimmed"]="iqtree_species"
+)
 
-# Establish files directory for input into parallel n
-files=$(ls ./3_mafft_alignments_clean/*.fasta)
+# Ensure the custom models are available
+custom_models=("Q.iridoviridae" "Q.mcv")   
 
-# Establish input and output directories
-input_dir="./3_mafft_alignments_clean"
-output_dir="iqtree"
+# Define model set including new models
+models=("Blosum62" "cpREV" "Dayhoff" "DCMut" "FLAVI" "FLU" "HIVb" "HIVw" "JTT" "JTTDCMut" "LG" "mtART" "mtMAM" "mtREV" "mtZOA" "mtMet" "mtVer" "mtInv" "PMB" "Q.bird" "Q.insect" "Q.mammal" "Q.pfam" "Q.plant" "Q.yeast" "rtREV" "VT" "WAG" "Q.iridoviridae" "Q.mcv")
 
-# Run iqtree
-#This script takes Multiple Sequence Alignment (MSA) .fa files as input and reconstructs a maximum-likelihood (ML) tree for each orthogroup. It will use ModelFinder to select the best-fit model to reconstruct the ML tree, and access branch supports using UFBoot (or 'UltraFast bootstrap').
-# -s option is used to specify the input alignment file or a directory of files.
-# -B to specify the number of replicates for the bootstraping
-# -T is to determine the number of CPU cores to speed up the analysis.
-# -m MFP option specifies to IQTREE to do an extended model selection followed by tree inference.
-# -pre option specifies the output directory / prefix of the output file names. 
+# Join array into comma-separated string
+mset=$(IFS=, ; echo "${models[*]}")
 
-#Create function
+# Function to run IQ-TREE2
 run_iqtree() {
     local file=$1
+    local output_dir=$2
     local basefile=$(basename "$file")
-    iqtree2 -s "$file" -B 1000 -m MFP -T 1 -pre "$output_dir/$basefile"
+    echo "Processing: $basefile"
+    iqtree2 -s "$file" -B 1000 -mset $mset -T 4 -pre "$output_dir/$basefile"
 }
 
-#Export function and input and output directories to be used by parallel. 
 export -f run_iqtree
-export input_dir
-export output_dir
+export mset
 
-# Run IQTREE2 on each file in parallel
-parallel -j 32 run_iqtree ::: "${files[@]}"
+# Loop through each directory pair and process files in parallel
+for input_dir in "${!directories[@]}"; do
+    output_dir="${directories[$input_dir]}"
+    mkdir -p "$output_dir"  # Create output directory if it doesn't exist
+    
+    files=("$input_dir"/*.fa)
+    if [[ -f "${files[0]}" ]]; then  # Check if directory contains .fa files
+        parallel -j 8 run_iqtree {} "$output_dir" ::: "${files[@]}"
+    else
+        echo "Warning: No .fa files found in $input_dir"
+    fi
+done
