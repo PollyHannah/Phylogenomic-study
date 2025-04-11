@@ -105,6 +105,18 @@ The output files will be saved (respectively) into three new directories
 * `orthofinder_2_genus`, and
 * `orthofinder_2_species`.
 
+### Match orthogroups across taxonomic levels
+The OrthoFrinder analysis for each taxonomic group has been run seperately. This means that the orthogroup assigned to each gene can differ in the ouputs for the species, genus and family level. For example, the orthogroup containing genes in the species-level analysis could be OG0000002, whereas the same set of genes in the genus level analysis could be orthogroup OG0000083. It's important we know the orthogroups assigned to each gene across each taxonomic level so we can analyse the data generated (for example, the gene trees) for the same gene at each level. 
+
+I wrote a script to do this, to run it go:
+```bash
+bash script_match_orthogroups.sh
+```
+
+The script will generate a `.txt` file like this one, [sequence_matches.txt](https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches.txt), which includes the orthogroups containing the same genes at each taxonomic level. R Studio wasn't behaving (likely user error) so I used ChatGBT to transform the file into a .xlsx file (found [here(https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches.xlsx)) so I could filter the columns. 
+
+***How does the script work?*** This script looks at the first sequence in each of the `.fa` files in the [`Orthogroup_Sequences`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthofinder_2_species/Results_Feb13/Orthogroup_Sequences) directory for the species level output, and matches it with the orthogroup containing the same sequence in the directories containing the `.fa` files for the [genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthofinder_2_genus/Results_Feb13) and [family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family) level Orthofinder output.
+
 ### Identify core and majority genes 
 We now use R to identify a set of core genes using the Orthofinder output. First we analyse using the script `orthogroup_analysis.R`. Then, we filter out set of core genes using the script `filter_orthogroups.R`. 
 
@@ -262,16 +274,19 @@ You should now see three new directories in the mcv directory (listed below). Ea
 Each .txt file will contain sequence match information as look similar to the image below. 
 ![BLASTP output](https://github.com/user-attachments/assets/1317a282-04e7-4ec6-a92f-850ff9ad2ca0)
 
-###### Interpreting BLASTp results
+##### 6.6 Interpreting BLASTp results
 The BLASTp search results are found in the `.txt` files linked above. The most important part of the results is the list of 'Sequences producing significant alignments'. A list of sequence names are provided along with an E-value and Score (Bits) for each sequence. 
 
 The E-value is the number of hits (alignments) equivalent to a hit (or alignment) that we would expect to see by chance. Smaller E-values represent better hits. The Score (Bits) summarises the sequence similarity between the query sequence and the database hit. A higher bit score indicates a better hit. More information can be found [here](https://genomicsaotearoa.github.io/hts_workshop_mpi/level1/43_blast_interpretation/#interpretting-the-results-of-blast-queries).
 
-A spreadsheet summarising the most probable identities of each orthogroup, based on the BLASTp results, can be found in `gene_identity.xlsx`. The 'most probable identity' was the sequence out of the 'Sequences producing significant alignments' in the BLASTp output with the  highest Score (bits) and lowest E- Value. 
+A spreadsheet summarising the most probable identities of each orthogroup, based on the BLASTp results, can be found in [`gene_identity.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/Gene_identity.xlsx). The 'most probable identity' was the sequence out of the 'Sequences producing significant alignments' in the BLASTp output with the  highest Score (bits) and lowest E- Value. 
 
 I highlighted cells in red which I'm not confident in, as they returned an have an E-value >1 and a Score (Bits) < 50. 
 
+### Assigning matching orthogroups, gene identities
+I combined the gene identity data above ([`gene_identity.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/Gene_identity.xlsx)) with the data generated earlier which matches orthogroups across taxonomic levels. This is so you can get a better idea for the putative gene identiy of each 'group' of orthogroups across taxonomic levels. I just used the filter function in excel to do this. 
 
+The combined data file can be found (here)[https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches_gene_identity.xlsx] and is called `sequence_matches_gene_identity.xlsx`.
 
 ### Generate new Q matrices
 
