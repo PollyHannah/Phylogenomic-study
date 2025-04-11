@@ -152,6 +152,7 @@ The `orthogroups_occpancy_histogram.pdf` file should look something like the ima
 The `orthogroups_occpancy.tsv` should look something like the image below. It includes the raw data used to generate the histogram along with the 'Occupancy' for each orthogroup.
 ![R script output](https://github.com/user-attachments/assets/5e71f5ee-b6c2-4b68-8a52-36acc6abe271)
 
+You can check out my output `orthogroups_occpancy.tsv` files here for the [family]([`orthogroups_occpancy.tsv`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/r_analysis_results/family/orthogroups_occpancy.tsv), [genus](https://github.com/PollyHannah/Phylogenomic-study/blob/main/r_analysis_results/genus/orthogroups_occpancy.tsv) and [species](https://github.com/PollyHannah/Phylogenomic-study/blob/main/r_analysis_results/genus/orthogroups_occpancy.tsv) level. 
 Have the files as shown above? Great! Now run the same analysis for the remaining two taxonomic levels (specifying the options as described above), and decide on a core gene criteria based on your results. 
 
 ##### Decide on a core gene criteria (occupancy threshold)
