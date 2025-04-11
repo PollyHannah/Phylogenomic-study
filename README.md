@@ -158,7 +158,7 @@ Have the files as shown above? Great! Now run the same analysis for the remainin
 ##### Decide on a core gene criteria (occupancy threshold)
 Based on the output files from the 'analyse' step above, you can decide on which orthogroups you would like to retain for further analysis. I did this based on the 'Occupancy Threshold' which is the minimum proprtion of genomes where a gene is present, for it to be retained for further analysis. The higher the occupancy threshold (i.e. the more genomes with the gene present) the less genes you'll retain. 
 
-Once you've decided on the occupancy threshold you can move on to next step.
+Once you've decided on the occupancy threshold you can move on to next step. I chose a 70% Occupancy Threshold for this study.
 
 #### 2. Collect multiple sequence alignments
 Now collect the multiple sequence alignment files for each orthogroup based on occupancy. 
@@ -172,7 +172,7 @@ You will now have three new directories containing multiple sequence alignment f
 * [alignments_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus) (contains 115 files)
 * [alignments_species](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species) (contains 115 files)
 
-Then, look at the `orthogroups_occpancy.tsv` for each taxonomic level and check out the occupany of each orthogroup. If the occupancy of an orthogroup is above or equal to the occupancy threshold you chose, them move it into the newly created directory for the relevant taxonomic level.  
+Then, look at the `orthogroups_occpancy.tsv` for each taxonomic level and check out the occupany of each orthogroup. If the occupancy of an orthogroup is above or equal to the occupancy threshold you chose, them move it into the newly created directory for the relevant taxonomic level. As my Occupancy Threshold was 70%, I moved all multiple sequence alignments which had an Occupancy Threshold of 70% or higher in the file `orthogroups_occpancy.tsv`, to the directories linked above.
 
 #### 3. Re-align alignments 
 I used [MUSCLE5](https://github.com/rcedgar/muscle) (version 5.0.1428) to re-align the mafft alignments to imporve the accuracy of the alignments. The script to do this is in this repository which saved the re-aligned files into three new directories. Run it like this:
