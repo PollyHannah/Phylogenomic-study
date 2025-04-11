@@ -201,11 +201,11 @@ Now use TrimAL to trim the multiple sequence alignments by removing columns wher
 script_TBC_trimal.sh
 ```
 You will now have three new directories containing trimmed multiple sequence alignment files (`.fa` files) as outlined below. 
-* [alignments_family_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle5_edited_trimmed) (contains 31 files)
+* [alignments_family_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle5_edited_trimmed) (contains 30 files)
 * [alignments_genus_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle5_edited_trimmed) (contains 155 files)
 * [alignments_species_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle5_edited_trimmed) (contains 155 files)
 
-Note that there are now only 31 files in the directory [alignments_family_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle5_edited_trimmed_25) This is beacasue I removed the family-level alignments which contained no taxa other than megalocytivirus taxa. That is because there is no additional information we can get from these alignments that aren't in the genus and species level alignments. The directory originally contained 114 files but I deleted 83 alignments, leaving 31. 
+Note that there are now only 30 files in the directory [alignments_family_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle5_edited_trimmed_25) This is beacasue I removed the family-level alignments which contained no taxa other than megalocytivirus taxa. That is because there is no additional information we can get from these alignments that aren't in the genus and species level alignments. The directory originally contained 114 files but I deleted 84 alignments, leaving 30. 
 
 #### 6. Assign orthogroup identities
 I assiged possible identities to orthogroups (i.e which genes they might be) by doing an NCBI BLASTp search which compares protein query sequences to a protein database. I did this on the command line using the BLAST+ suite. There is a good tutorial [here](https://conmeehan.github.io/blast+tutorial.html) on how to install and conduct a BLAST+ search. 
@@ -233,7 +233,7 @@ If successful, you should see several new files saved in the mcv directory with 
 
 ##### 6.4 Prepare query sequences 
 I now used a script to extract the first amino acid sequence from each orthogroup multiple sequence alignment, and store it in a new .fasta file which will be used as the query sequence for the BLASTp search. The input files are those created in 5. Trim alignments (also listed below):
-* [alignments_family_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle5_edited_trimmed) (contains 31 files)
+* [alignments_family_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle5_edited_trimmed) (contains 30 files)
 * [alignments_genus_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle5_edited_trimmed) (contains 155 files)
 * [alignments_species_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle5_edited_trimmed) (contains 155 files)
 
@@ -243,7 +243,7 @@ script_make_input_blastp.sh
 ```
 
 You should now have three new directories (as listed below) created in the mcv directory containing `.fasta` files with one sequence in each file. Each sequence is named after the orthogroup it was extracted from:
-* [orthogroup_sequence_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthogroup_sequence_family) (contains 31 files)
+* [orthogroup_sequence_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthogroup_sequence_family) (contains 30 files)
 * [orthogroup_sequence_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthogroup_sequence_genus) (contains 155 files)
 * [orthogroup_sequence_species](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthogroup_sequence_species) (contains 155 files)
 
@@ -254,7 +254,7 @@ script_make_input_blastp.sh
 ```
 You should now see three new directories in the mcv directory (listed below). Each directory should contain `.txt` file names with the results of the BLASTp search for each query sequence. 
 
-* [orthogroup_blastp_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthogroup_blastp_family) (contains 31 files)
+* [orthogroup_blastp_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthogroup_blastp_family) (contains 30 files)
 * [orthogroup_blastp_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthogroup_blastp_genus) (contains 155 files)
 * [orthogroup_blastp_species](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthogroup_sequence_family) (contains 155 files)
 
