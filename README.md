@@ -169,8 +169,8 @@ mkdir alignments_family alignments_genus alignments_species
 ```
 You will now have three new directories containing multiple sequence alignment files (`.fa` files) as outlined below. 
 * [alignments_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family) (contains 114 files)
-* [alignments_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus) (contains 155 files)
-* [alignments_species](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species) (contains 155 files)
+* [alignments_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus) (contains 115 files)
+* [alignments_species](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species) (contains 115 files)
 
 Then, look at the `orthogroups_occpancy.tsv` for each taxonomic level and check out the occupany of each orthogroup. If the occupancy of an orthogroup is above or equal to the occupancy threshold you chose, them move it into the newly created directory for the relevant taxonomic level.  
 
@@ -181,8 +181,8 @@ bash script_TBC_muscle.sh
 ```
 You will now have three new directories containing re-aligned multiple sequence alignment files (`.fa` files) as outlined below. 
 * [alignments_family_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family__muscle) (contains 114 files)
-* [alignments_genus_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle) (contains 155 files)
-* [alignments_species_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species_muscle) (contains 155 files)
+* [alignments_genus_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle) (contains 115 files)
+* [alignments_species_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species_muscle) (contains 115 files)
 
 #### 4. Editing alignments (by eye)
 I then uploaded the re-aligned multiple sequence alignments to Geneious Prime and edited them by eye. Where there was a low level of sequence conservation in one sequence compared to other closely related sequences (sequences of the same genotype) and increases in the alignment quality was not able to be achieved, I deleted these sequences. I also generated Neighbor-Joining gene trees in Geneious Prime using the Geneious Tree Builder, with the 'Jukes-Cantor' Genetic Distance Model. I removed taxa which had a branch lengths of >0.9 amino acid substitutions per site. 
@@ -193,8 +193,8 @@ For the family level alignments, *Daphniairidovirus daphnia1* sequences were rem
 
 I saved the hand-edited alignments in the following directories in this repository.
 * [alignments_family_muscle_edited](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited) (contains 114 files)
-* [alignments_genus_muscle_edited](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle_edited) (contains 155 files)
-* [alignments_species_muscle_edited](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species_muscle_edited) (contains 155 files)
+* [alignments_genus_muscle_edited](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle_edited) (contains 115 files)
+* [alignments_species_muscle_edited](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species_muscle_edited) (contains 115 files)
 
 #### 5. Trim alignments 
 Now use TrimAL to trim the multiple sequence alignments by removing columns where fewer than 25% of sequences contain an amino acid. The script I wrote to complete this trimming is saved in this repository. To run it, go:
@@ -203,8 +203,8 @@ script_TBC_trimal.sh
 ```
 You will now have three new directories containing trimmed multiple sequence alignment files (`.fa` files) as outlined below. 
 * [alignments_family_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle5_edited_trimmed) (contains 30 files)
-* [alignments_genus_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle5_edited_trimmed) (contains 155 files)
-* [alignments_species_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle5_edited_trimmed) (contains 155 files)
+* [alignments_genus_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle5_edited_trimmed) (contains 115 files)
+* [alignments_species_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle5_edited_trimmed) (contains 115 files)
 
 Note that there are now only 30 files in the directory [alignments_family_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle5_edited_trimmed_25) This is beacasue I removed the family-level alignments which contained no taxa other than megalocytivirus taxa. That is because there is no additional information we can get from these alignments that aren't in the genus and species level alignments. The directory originally contained 114 files but I deleted 84 alignments, leaving 30. 
 
