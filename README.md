@@ -371,9 +371,9 @@ I then re-ran IQTREE on the alignments which I edited as outlined above and incl
 
 I replaces the old IQTREE output files, and gene trees in the following directories in this repository:
 **IQTREE ouputs**
-[iqtree_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family) 
-[iqtree_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus)
-[iqtree_species](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species)
+* [iqtree_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family) 
+* [iqtree_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus)
+* [iqtree_species](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species)
 
 **IQTREE gene trees**
 * [iqtree_family_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family_trees)
