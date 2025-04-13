@@ -15,6 +15,7 @@ Go to the file `setup.md` in this repository, for information about how to set-u
 * [BLAST+](https://www.ncbi.nlm.nih.gov/books/NBK279690/) (version 2.16.0).
 * [Mauve](https://github.com/koadman/mauve) (version 20150226)
 * [QMaker](https://academic.oup.com/sysbio/article/70/5/1046/6146362?login=true)
+* [FigTree](https://github.com/rambaut/figtree/) (version 1.4.4) 
 
 To identify the genetic sequence information for inclusion in this study i generated a database of available sequence data for the genus *Megalocytivirus* and other members of the family *Iridoviridae*. That data base can be found in this repository named [megalocytivirus_sequence_data.xlsx](https://github.com/PollyHannah/Phylogenomic-study/blob/main/megalocytivirus_sequence_data.xlsx).
 
@@ -342,8 +343,7 @@ The output files in each directory, will include the following for each gene tre
 3. `.fa.log` which is a log of the whole run.
 4. `.fa.ckp.gz`, which is a checkpoint file used to resume the analysis if there is an interruption to the running of the program.
 
-### Sort output files 
-Now, for ease of reference, we want to sort the IQ-TREE output files so all the files related each orthogroup can be found in their own directory. Currently, the output files for all orthogroups are housed in the same directory for each orthogroup. 
+script_TBC_iqtree.shNow, for ease of reference, we want to sort the IQ-TREE output files so all the files related each orthogroup can be found in their own directory. Currently, the output files for all orthogroups are housed in the same directory for each orthogroup. 
 
 To sort the files, run the script `script_five_sort_files.sh` by going:
 ```bash
@@ -357,6 +357,25 @@ script_TBC_move_iqtree_files.sh
 ```
 
 This script will create three new directories containing the gene trees (`.fa.treefile` files) as below 
+* [iqtree_family_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family_trees)
+* [iqtree_genus_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus_trees)
+* [iqtree_species_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species_trees)
+
+### Review gene trees
+I opened each gene tree file (`.fa.treefile`) in FigTree to identify any further edits I wanted to make to the alignments, based on the tree. For the family-level gene trees a few long branches appeared again. Previous, I removed sequences on branches >0.9 amino acid substitutions per site. This was based on the gene trees generated in Geneious Prime (see section above '4. Editing alignments'). 
+
+The gene trees based on the new models of evolution included a a handful of branches significantly longer than the other taxa. They were all >2 amino acid substitutions per site. I went back to the alignments in the directories [`alignments_family_muscle_edited`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited) and [`alignments_family_muscle5_edited_trimmed`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle5_edited_trimmed) and removed the sequences on branches >2 amino acid substitutions per site. All the changes i made are included in the section above '4. Editing alignments' (see [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx`).  
+
+### Re-run IQTREE
+I then re-ran IQTREE on the alignments which I edited as outlined above and included in the file [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx`). I ran the same script as in the section anove 'Generate gene trees' called `script_TBC_iqtree.sh`. I just plonked the updated alignments in a new directory and updated the script to point to the new directory to take as input. I then sorted the IQTREE output files using the script above `script_TBC_iqtree.sh`. I just updated the script to point it at the new directory generated housing the IQTREE outputs. 
+
+I replaces the old IQTREE output files, and gene trees in the following directories in this repository:
+**IQTREE ouputs**
+[iqtree_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family) 
+[iqtree_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus)
+[iqtree_species](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species)
+
+**IQTREE gene trees**
 * [iqtree_family_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family_trees)
 * [iqtree_genus_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus_trees)
 * [iqtree_species_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species_trees)
