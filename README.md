@@ -15,6 +15,7 @@ Go to the file `setup.md` in this repository, for information about how to set-u
 * [BLAST+](https://www.ncbi.nlm.nih.gov/books/NBK279690/) (version 2.16.0).
 * [Mauve](https://github.com/koadman/mauve) (version 20150226)
 * [QMaker](https://academic.oup.com/sysbio/article/70/5/1046/6146362?login=true)
+* [FigTree](https://github.com/rambaut/figtree/) (version 1.4.4) 
 
 To identify the genetic sequence information for inclusion in this study i generated a database of available sequence data for the genus *Megalocytivirus* and other members of the family *Iridoviridae*. That data base can be found in this repository named [megalocytivirus_sequence_data.xlsx](https://github.com/PollyHannah/Phylogenomic-study/blob/main/megalocytivirus_sequence_data.xlsx).
 
@@ -196,15 +197,14 @@ You will now have three new directories containing re-aligned multiple sequence 
 * [alignments_genus_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle) (contains 115 files)
 * [alignments_species_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species_muscle) (contains 115 files)
 
-#### 4. Editing alignments (by eye)
-I then uploaded the re-aligned multiple sequence alignments to Geneious Prime and edited them by eye. Where there was a low level of sequence conservation in one sequence compared to other closely related sequences (sequences of the same genotype) and increases in the alignment quality was not able to be achieved, I deleted these sequences. I also generated Neighbor-Joining gene trees in Geneious Prime using the Geneious Tree Builder, with the 'Jukes-Cantor' Genetic Distance Model. I removed taxa which had a branch lengths of >0.9 amino acid substitutions per site. 
+#### 4. Editing alignments
 
-The changes I made and the reasons why can be found in [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx). 
+I then uploaded the re-aligned multiple sequence alignments to Geneious Prime and edited them by eye. Where there was a low level of sequence conservation in one sequence compared to other closely related sequences (sequences of the same genotype) and increases in the alignment quality was not able to be achieved, I deleted these sequences. I also generated Neighbor-Joining gene trees in Geneious Prime using the Geneious Tree Builder, with the 'Jukes-Cantor' Genetic Distance Model. I removed taxa which had a branch lengths of >0.9 amino acid substitutions per site. The changes I made and the reasons why can be found in [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx). 
 
 > [!IMPORTANT]  
-> Please note, I came back to do some more editing on these alignments once i had generated the IQTREE gene trees as outlined in the section below 'Generate gene trees'. This is because the IQTREE gene trees included some very long branches. I have noted in the spreasheet linked, which changes were made before running IQTREE, and which changes were made after running IQTREE. 
+> Please note, I came back to do some more editing on these alignments once I had generated the IQTREE gene trees as outlined in the section below 'Generate gene trees'. This is because the IQTREE gene trees included some very long branches (longer than those estimated using Geneious Prime. The longest branches in the family-level gene trees, which were substantially longer than all remaining branches in the family level gene trees, were >2 amino acid substitutions per site. I removed all branches with >2 amino acid substitutions per site. I have noted in the spreasheet linked, which changes were made before running IQTREE, and which changes were made after running IQTREE. 
 
-For the family level alignments, *Daphniairidovirus daphnia1* sequences were removed from five seperate alignments (orthogroups OG000006, OG000010, OG000011, OG000014, and OG000018). Given that only one *Daphniairidovirus daphnia1* genome is currently publically available and included in this analysis, this meant that these orthogroups no longer qualified as 'core genes', which are genes present in every taxa part of the analysis. The alignments for these orthogroups are still included in the hand-edited alignment files below. 
+For the family level alignments, *Daphniairidovirus daphnia1* sequences were removed from five seperate alignments (orthogroups OG000006, OG000010, OG000011, OG000012, OG000014, OG000015 and OG000018). The *Decapodiridovirus litopenaeus1* sequence was removed from one alignment, OG000002. Given that only one *D. daphnia1* genome and one *D. litopenaeus1* is currently publically available and included in this analysis, this meant that these orthogroups no longer qualified as 'core genes', which are genes present in every taxa part of the analysis. These genes are still considered 'phylogenetically useful genes' which are genes present in 70% of genomes part of this analysis. Further, given that both sequences from *Iridovirus armadillidium1* and *Chloriridovirus anopheles1* genomes were removed from OG0000024 were removed, this gene is also no longer considered a core gene, but is considered a phylogenetically useful gene.  The alignments for these orthogroups are still included in the hand-edited alignment files below. 
 
 I saved the hand-edited alignments in the following directories in this repository.
 * [alignments_family_muscle_edited](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited) (contains 114 files)
@@ -343,8 +343,7 @@ The output files in each directory, will include the following for each gene tre
 3. `.fa.log` which is a log of the whole run.
 4. `.fa.ckp.gz`, which is a checkpoint file used to resume the analysis if there is an interruption to the running of the program.
 
-### Sort output files 
-Now, for ease of reference, we want to sort the IQ-TREE output files so all the files related each orthogroup can be found in their own directory. Currently, the output files for all orthogroups are housed in the same directory for each orthogroup. 
+script_TBC_iqtree.shNow, for ease of reference, we want to sort the IQ-TREE output files so all the files related each orthogroup can be found in their own directory. Currently, the output files for all orthogroups are housed in the same directory for each orthogroup. 
 
 To sort the files, run the script `script_five_sort_files.sh` by going:
 ```bash
@@ -358,6 +357,26 @@ script_TBC_move_iqtree_files.sh
 ```
 
 This script will create three new directories containing the gene trees (`.fa.treefile` files) as below 
+* [iqtree_family_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family_trees)
+* [iqtree_genus_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus_trees)
+* [iqtree_species_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species_trees)
+
+### Review gene trees
+I opened each gene tree file (`.fa.treefile`) in FigTree to identify any further edits I wanted to make to the alignments, based on the tree. For the family-level gene trees a few long branches appeared again. Previous, I removed sequences on branches >0.9 amino acid substitutions per site. This was based on the gene trees generated in Geneious Prime (see section above '4. Editing alignments'). 
+
+The gene trees based on the new models of evolution included a a handful of branches significantly longer than the other taxa. They were all >2 amino acid substitutions per site. I went back to the alignments in the directories [`alignments_family_muscle_edited`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited) and [`alignments_family_muscle5_edited_trimmed`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle5_edited_trimmed) and removed the sequences on branches >2 amino acid substitutions per site. All the changes i made are included in the section above '4. Editing alignments' (see [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx`).  
+
+### Re-run IQTREE
+I then re-ran IQTREE on the alignments which I edited as outlined above and included in the file [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx`). I ran the same script as in the section anove 'Generate gene trees' called `script_TBC_iqtree.sh`. I just plonked the updated alignments in a new directory and updated the script to point to the new directory to take as input. I then sorted the IQTREE output files using the script above `script_TBC_iqtree.sh`. I just updated the script to point it at the new directory generated housing the IQTREE outputs. 
+
+I replaces the old IQTREE output files, and gene trees in the following directories in this repository:
+
+**IQTREE ouputs**
+* [iqtree_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family) 
+* [iqtree_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus)
+* [iqtree_species](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species)
+
+**IQTREE gene trees**
 * [iqtree_family_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family_trees)
 * [iqtree_genus_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus_trees)
 * [iqtree_species_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species_trees)
