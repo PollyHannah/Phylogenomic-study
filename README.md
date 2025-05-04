@@ -373,6 +373,7 @@ The gene trees based on the new models of evolution included a a handful of bran
 I then re-ran IQTREE on the alignments which I edited as outlined above and included in the file [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx`). I ran the same script as in the section anove 'Generate gene trees' called `script_TBC_iqtree.sh`. I just plonked the updated alignments in a new directory and updated the script to point to the new directory to take as input. I then sorted the IQTREE output files using the script above `script_TBC_iqtree.sh` (I just updated the script to point it at the new directory generated housing the new IQTREE outputs). 
 
 I then replaced the old IQTREE output files, and gene trees, in the following directories in this repository:
+
 **IQTREE ouputs**
 * [iqtree_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family) 
 * [iqtree_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus)
