@@ -362,15 +362,17 @@ This script will create three new directories containing the gene trees (`.fa.tr
 * [iqtree_species_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species_trees)
 
 ### Review gene trees
+The next step is to review each of the gene trees to select a set of gene which are approproate to concatonate to generate a family, genus and species tree. The goal of this step is to remove genomes from gene trees which might obsqure the true relationships between taxa (i.e. genomes on super long branches). It's also the step where we and flag genes which might share different histories or for which there is evidence of recombination. The genes that are flagged as part of this process tell us interesting information about the evolutionary history of these pathogens, but will not be included in the final family/genus or species tree. 
+
+#### Remove genomes on long branches
 I opened each gene tree file (`.fa.treefile`) in FigTree to identify any further edits I wanted to make to the alignments, based on the tree. For the family-level gene trees a few long branches appeared again. Previous, I removed sequences on branches >0.9 amino acid substitutions per site. This was based on the gene trees generated in Geneious Prime (see section above '4. Editing alignments'). 
 
 The gene trees based on the new models of evolution included a a handful of branches significantly longer than the other taxa. They were all >2 amino acid substitutions per site. I went back to the alignments in the directories [`alignments_family_muscle_edited`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited) and [`alignments_family_muscle5_edited_trimmed`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle5_edited_trimmed) and removed the sequences on branches >2 amino acid substitutions per site. All the changes i made are included in the section above '4. Editing alignments' (see [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx`).  
 
-### Re-run IQTREE
-I then re-ran IQTREE on the alignments which I edited as outlined above and included in the file [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx`). I ran the same script as in the section anove 'Generate gene trees' called `script_TBC_iqtree.sh`. I just plonked the updated alignments in a new directory and updated the script to point to the new directory to take as input. I then sorted the IQTREE output files using the script above `script_TBC_iqtree.sh`. I just updated the script to point it at the new directory generated housing the IQTREE outputs. 
+#### Re-run IQTREE with long branches removed
+I then re-ran IQTREE on the alignments which I edited as outlined above and included in the file [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx`). I ran the same script as in the section anove 'Generate gene trees' called `script_TBC_iqtree.sh`. I just plonked the updated alignments in a new directory and updated the script to point to the new directory to take as input. I then sorted the IQTREE output files using the script above `script_TBC_iqtree.sh` (I just updated the script to point it at the new directory generated housing the new IQTREE outputs). 
 
-I replaces the old IQTREE output files, and gene trees in the following directories in this repository:
-
+I then replaced the old IQTREE output files, and gene trees, in the following directories in this repository:
 **IQTREE ouputs**
 * [iqtree_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family) 
 * [iqtree_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus)
@@ -380,6 +382,33 @@ I replaces the old IQTREE output files, and gene trees in the following director
 * [iqtree_family_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family_trees)
 * [iqtree_genus_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus_trees)
 * [iqtree_species_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species_trees)
+
+#### Identify genes to omit from family/genus/species trees
+I reviewed gene trees based on a set criteria at the family, genus and species level (tabulated below). These criteria are listed below and the letters for each criterion correspond to the letters in the spreadsheet 
+[`gene_review.csv`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/gene_review.csv) which includes the results of the gene tree review process (either ‘TRUE’ or ‘FALSE’). 
+
+How did I review the gene trees? I opened each gene tree in FigTree, I then rooted it and assessed it based on the relevant criteria (tabulated below). The branches in the tree on which i rooted the family, genus and species-level trees are provided below. I then input the result of the assessment for the relevant criteria as either ‘TRUE’ or ‘FALSE’ into the spreadsheet [`gene_review.csv`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/gene_review.csv). 
+
+The three spined stickleback iridovirus (TSIV) (accession number PQ335173_PQ335174) was considered a separate species of megalocytivirus for the purpose of this review.
+
+##### Where did I root the gene trees?
+###### Family-level 
+I rooted the tree at the internal branch which split the *Megalocytivirus* genera from the other *Iridoviridae* genera. 
+
+###### Genus level 
+I rooted the trees at the internal branch which split TSIV, or where *Megalocytivirus lates1* genomes were present, TSIV and *M. lates1* genomes, from the *M. pagrus1* genomes (i.e. ISKNV, TRBIV and RSIV genomes). 
+
+###### Species-level 
+I rooted the trees at the internal branch which split majority of ISKNV genomes from the TRBIV and RSIV genomes. 
+
+##### Review criteria
+
+| Criteria | A | B  | C |
+|--------|-----------|-----------------------|-----------------|------|
+| Family gene trees | Genera not clustered together in the same clade.  | Megalocytivirus genomes on branch with >1.3 amino acid substitutions per site.| The only genomes now present in the gene tree were from the genus *Megalocytivirus*. This was done by runnning the script [`script_TBC_review_family_trees.sh`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_TBC_review_family_trees.sh) which looks for files which do not contain any of the following terms - Ranavirus, Daphniairidovirus , Decapodiridovirus, Lymphocystivirus, Iridovirus, or Chloriridovirus. |
+| Genus gene trees | Species not clustered together in the same clade. |  Ratio of substitutions per site, between longest branch and second longest branch >10. This analysis was done by running the R script [`script_review_trees.R`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_review_trees.R)  | The only genomes now present in the gene tree were from the species *Megalocytivirus pagrus1*. This was done by runnning the script [`script_TBC_review_genus_trees.sh`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_TBC_review_genus_trees.sh) which looks for files which do not contain any of the following terms - TSIV or SDDV (i.e. *Megalocytivirus lates1* genomes)|
+| Species gene trees | Genotypes not clustered together. |  Ratio of substitutions per site, between longest branch and second longest branch >10. This analysis was done by running the R script [`script_review_trees.R`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_review_trees.R) | Evidence of recombination from a seperate analysis using the program Recombination Detection Program (RDP4), for which the results can be found [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination_results_refined.csv) Note the results provide the genes included in recombination events and match those genes to orthogroups for the genus-level analysis. To work out the equivelant orthogrpups at the species level you will need to refer to this file [`sequence_matches_gene_identity.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches_gene_identity.xlsx)|
+
 
 ## References
 Alejandro A. Schaffer, L. Aravind, Thomas L. Madden, Sergei Shavirin, John L. Spouge, Yuri I. Wolf, Eugene V. Koonin, and Stephen F. Altschul (2001), "Improving the accuracy of PSI-BLAST protein database searches with composition-based statistics and other refinements", Nucleic Acids, Res. 29:2994-3005.
