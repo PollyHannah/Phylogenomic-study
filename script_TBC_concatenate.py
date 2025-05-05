@@ -5,22 +5,6 @@ import sys
 from collections import defaultdict
 from Bio import SeqIO
 
-# List of known accession IDs that contain underscores
-known_accessions_with_underscores = {
-    "PQ335173_PQ335174",
-    "NC_003494",
-    "NC_005946"
-}
-
-def get_accession(header):
-    # Extract the accession portion from the header
-    parts = header.split("_")
-    for i in range(len(parts), 0, -1):
-        candidate = "_".join(parts[:i])
-        if candidate in known_accessions_with_underscores:
-            return candidate
-    return parts[0]  # Fallback for general case
-
 def read_alignments(folder):
     alignments = []
     taxa = set()
@@ -29,16 +13,16 @@ def read_alignments(folder):
             path = os.path.join(folder, fname)
             seqs = {}
             for record in SeqIO.parse(path, "fasta"):
-                acc = get_accession(record.id)
-                seqs[acc] = str(record.seq)
-                taxa.add(acc)
+                taxon = record.id  # Use full sequence name
+                seqs[taxon] = str(record.seq)
+                taxa.add(taxon)
             alignments.append(seqs)
     return alignments, sorted(taxa)
 
 def concatenate_alignments(alignments, taxa):
     concatenated = defaultdict(str)
     for aln in alignments:
-        length = max(len(seq) for seq in aln.values())
+        length = max(len(seq) for seq in aln.values()) if aln else 0
         for taxon in taxa:
             concatenated[taxon] += aln.get(taxon, "-" * length)
     return concatenated
