@@ -362,7 +362,7 @@ This script will create three new directories containing the gene trees (`.fa.tr
 * [iqtree_species_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species_trees)
 
 ### Review gene trees
-The next step is to review each of the gene trees to select a set of gene which are approproate to concatonate to generate a family, genus and species tree. The goal of this step is to remove genomes from gene trees which might obsqure the true relationships between taxa (i.e. genomes on super long branches). It's also the step where we and flag genes which might share different histories or for which there is evidence of recombination. The genes that are flagged as part of this process tell us interesting information about the evolutionary history of these pathogens, but will not be included in the final family/genus or species tree. 
+The next step is to review each of the gene trees to select a set of gene which are approproate to concatenate to generate a family, genus and species tree. The goal of this step is to remove genomes from gene trees which might obsqure the true relationships between taxa (i.e. genomes on super long branches). It's also the step where we and flag genes which might share different histories or for which there is evidence of recombination. The genes that are flagged as part of this process tell us interesting information about the evolutionary history of these pathogens, but will not be included in the final family/genus or species tree. 
 
 #### Remove genomes on long branches
 I opened each gene tree file (`.fa.treefile`) in FigTree to identify any further edits I wanted to make to the alignments, based on the tree. For the family-level gene trees a few long branches appeared again. Previous, I removed sequences on branches >0.9 amino acid substitutions per site. This was based on the gene trees generated in Geneious Prime (see section above '4. Editing alignments'). 
@@ -411,10 +411,10 @@ I rooted the trees at the internal branch which split majority of ISKNV genomes 
 | Species gene trees | Genotypes not clustered together. |  Ratio of substitutions per site, between longest branch and second longest branch >10. This analysis was done by running the R script [`script_review_trees.R`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_review_trees.R) | Evidence of recombination from a seperate analysis using the program Recombination Detection Program (RDP4), for which the results can be found [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination_results_refined.csv). Please note that the results in this file provide the orthogroups includeded in putative recombination events as per the genus-level OrthoFinder analysis. To work out names of the species-level orthogroups for each of these genus-level orthogroups, you will need to refer to this file [`sequence_matches_gene_identity.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches_gene_identity.xlsx)|
 
 ## Part Three: Generate final trees
-This is the final part of the analysis where we generate a final family, genus, and species, based on a multiple sequence alignments of concatonated genes at each taxonomic level. The genes concatonates are those selected as part of Part Two: Gene analysis. 
+This is the final part of the analysis where we generate a final family, genus, and species, based on a multiple sequence alignments of concatenated genes at each taxonomic level. The genes concatenates are those selected as part of Part Two: Gene analysis. 
 
 ### Collect genes
-Now we collect the multiple seuqence alignments for the subset of genera chosen in Part Two: Gene analysis to concatonate, for each taxonomic level. To do this, I copied all the genes which recorded 'FALSE' results as per the file [`gene_review.csv`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/gene_review.csv) and included them in a script [`script_TBC_collect_concatonation_alignments.sh`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_TBC_collect_concatonation_alignments.sh). 
+Now we collect the multiple seuqence alignments for the subset of genera chosen in Part Two: Gene analysis to concatenate, for each taxonomic level. To do this, I copied all the genes which recorded 'FALSE' results as per the file [`gene_review.csv`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/gene_review.csv) and included them in a script [`script_TBC_collect_concatonation_alignments.sh`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_TBC_collect_concatonation_alignments.sh). 
 
 To run the script go:
 ```bash
@@ -427,18 +427,18 @@ The script script copies the relevant multiple sequence alignments to new direct
 * [`alignments_genus_muscle5_edited_trimmed_concatenation`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle5_edited_trimmed_concatenation) (contains alignments for 51 genes)
 * [`alignments_species_muscle5_edited_trimmed_concatenation`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species_muscle5_edited_trimmed_concatenation) (contains alignments for 44 genes)
 
-### Concatonate genes
-I drafted a python script to concatonate the genee (in order) for each taxonomic level. To run the script go:
+### concatenate genes
+I drafted a python script to concatenate the genee (in order) for each taxonomic level. To run the script go:
 ``` bash
 python script_TBC_concatenate.py
 ```
 
-The script generates a new multiple sequence alignment file of concatonated genes for each taxonomic level and saves them in the mcv directory. The files generated are as below:
+The script generates a new multiple sequence alignment file of concatenated genes for each taxonomic level and saves them in the mcv directory. The files generated are as below:
 *[`concatenated_alignment_family`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/concatenated_alignment_family.fasta)
 *[`concatenated_alignment_genus`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/concatenated_alignment_genus.fasta)
 *[`concatenated_alignment_species`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/concatenated_alignment_species.fasta)
 
-### Run IQTREE on concatonated alignments
+### Run IQTREE on concatenated alignments
 I drafted a script which runs IQTREE on each of the three concatenated alignments. 
 
 To run the script go:
