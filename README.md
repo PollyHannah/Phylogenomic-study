@@ -69,7 +69,7 @@ Computers are great but they're not perfect. This is why I manually curate the P
 2. Pairwise align the file with the .gb (Genbank Full) file in NCBI GenBank, for the same genome.
 3. Check each prokka annotation and decide to either keep it as-is, edit it or remove it.
 4. Create a directory `proteome_2_family`.
-5. Save all the manually curated proteome files for all genomes as .faa files into the `proteome_2_family` directory.
+5. Save all the manually curated proteome files for all genomes as .faa files into the directory above.
 6. If at any stage you spy something you think is an assembly or sequencing error in a genome - remove it from the analysis all-together. 
 
 To save time, I didn't manually check every annotation for every genome. Head to the directory [`annotation_check`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/annotation_check) for information including; the annotations I manually checked for each genomes, how i decided which annotations I kept, edited or removed, a list of the annotations which I edited or removed, the genomes removed from my analysis due to assumed sequencing or assembly errors (and why), and how I processed proteome files to get them into a format ready for the next step of the pipeline. 
@@ -80,7 +80,7 @@ This is where we take the freshly re-annotated sequences and identify a set of c
 By the way, I generated a whole genome alignment for all *Megalocytivirus pagrus1* genomes part of my analysis, using the program Mauve. The alignment can be found  in this repository called [`alignment_mpagrus1.fas`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_mpagrus1.fas).
 
 ### Sort proteome files by taxonomic level
-We run Orthofinder three times - once each with genomes at the family, genus and species level. To do this we need to sort the proteomes we generated as part of 'Part One: re-annotation and quality check' into three sperate directories. 
+We run Orthofinder three times - once each with genomes at the family, genus and species level. To do this we need to sort the proteomes we generated as part of 'Part One: re-annotation and quality check' into three seperate directories. 
 
 To do this, run the below script which will copy the proteomes in the directory `proteome_2_family` and save the the species proteomes to the `proteome_2_species` and the genus proteomes to `proteome_2_genus`. 
 The script uses the text files `file_list_genus.txt` and `file_list_species.txt` to do this.  
