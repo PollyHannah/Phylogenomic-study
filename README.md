@@ -433,9 +433,9 @@ I drafted a python script to concatenate the genee (in order) for each taxonomic
 python script_TBC_concatenate.py
 ```
 The script generates a new multiple sequence alignment file of concatenated genes for each taxonomic level and saves them in the mcv directory. The files generated are as below:
-*[`concatenated_alignment_family`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/concatenated_alignment_family.fasta)
-*[`concatenated_alignment_genus`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/concatenated_alignment_genus.fasta)
-*[`concatenated_alignment_species`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/concatenated_alignment_species.fasta)
+* [`concatenated_alignment_family`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/concatenated_alignment_family.fasta)
+* [`concatenated_alignment_genus`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/concatenated_alignment_genus.fasta)
+* [`concatenated_alignment_species`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/concatenated_alignment_species.fasta)
 
 ### Run IQTREE on concatenated alignments
 I drafted a script which runs IQTREE on each of the three concatenated alignments. 
