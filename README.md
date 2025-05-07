@@ -427,12 +427,11 @@ The script script copies the relevant multiple sequence alignments to new direct
 * [`alignments_genus_muscle5_edited_trimmed_concatenation`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle5_edited_trimmed_concatenation) (contains alignments for 51 genes)
 * [`alignments_species_muscle5_edited_trimmed_concatenation`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species_muscle5_edited_trimmed_concatenation) (contains alignments for 44 genes)
 
-### concatenate genes
+### Concatenate genes
 I drafted a python script to concatenate the genee (in order) for each taxonomic level. To run the script go:
 ``` bash
 python script_TBC_concatenate.py
 ```
-
 The script generates a new multiple sequence alignment file of concatenated genes for each taxonomic level and saves them in the mcv directory. The files generated are as below:
 *[`concatenated_alignment_family`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/concatenated_alignment_family.fasta)
 *[`concatenated_alignment_genus`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/concatenated_alignment_genus.fasta)
@@ -442,7 +441,13 @@ The script generates a new multiple sequence alignment file of concatenated gene
 I drafted a script which runs IQTREE on each of the three concatenated alignments. 
 
 To run the script go:
-
+```bash
+script_TBC_iqtree_2.sh
+```
+The script will produce three new directories, containing the iqtree outputs for each alignment. These directories and outputs are available here in this repository, and are called:
+* [iqtree_family_concatenated](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family_concatenated)
+* [iqtree_genus_concatenated](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus_concatenated)
+* [iqtree_species_concatenated](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species_concatenated)
 
 
 ## References
