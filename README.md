@@ -17,7 +17,7 @@ Go to the file `setup.md` in this repository, for information about how to set-u
 * [QMaker](https://academic.oup.com/sysbio/article/70/5/1046/6146362?login=true)
 * [FigTree](https://github.com/rambaut/figtree/) (version 1.4.4) 
 
-To identify the genetic sequence information for inclusion in this study i generated a database of available sequence data for the genus *Megalocytivirus* and other members of the family *Iridoviridae*. That data base can be found in this repository named [megalocytivirus_sequence_data.xlsx](https://github.com/PollyHannah/Phylogenomic-study/blob/main/megalocytivirus_sequence_data.xlsx).
+To identify the genetic sequence information for inclusion in this study I generated a database of available sequence data for the genus *Megalocytivirus* and other members of the family *Iridoviridae*. That data base can be found in this repository named [megalocytivirus_sequence_data.xlsx](https://github.com/PollyHannah/Phylogenomic-study/blob/main/megalocytivirus_sequence_data.xlsx).
 
 ## Part one: re-annotation and quality check
 Part one is where we collect, quality check, and re-annotate genomes for input into Part two: core gene analysis. The genomes in National Centre for Biotechnology Information (NCBI) Genbank have annotations, but they are of differing quality, and done using various methods. This part aims to check and update annotations to maximise the quality of the data for phylogenetic inference.
@@ -28,9 +28,9 @@ mkdir mcv
 cd mcv
 ```
 ### Save genomes to mcv directory
-Download `genomes_1` directory and its contents from this repository and save the folder and contents to the mcv directory. This folder contains 66 megalocytivirus and 10 iridoviridae genomes in FASTA format (76 genomes total). 
+Download `genomes_1` directory and its contents from this repository and save the folder and contents to the mcv directory. This folder contains 67 megalocytivirus and 10 iridoviridae genomes in FASTA format (77 genomes total). 
 
-Details about each genome can be found in the `taxonomy.csv` file in this repository. There is information for 78 genomes in `taxonomy.csv` given genomes L63545 and KC138895 are included which are not included in the `genomes_1` directory due to them not being the expected length. You can read more about this in the next section. Please read my [`Classification protocol`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/classification/classification%20protocol.md) to understand how i classified megalocytivirus genomes included in this study.
+Details about each genome can be found in the `taxonomy.csv` file in this repository. There is information for 79 genomes in `taxonomy.csv` given genomes L63545 and KC138895 are included which are not included in the `genomes_1` directory due to them not being the expected length. You can read more about this in the next section. Please read my [`Classification protocol`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/classification/classification%20protocol.md) to understand how i classified megalocytivirus genomes included in this study.
 
 #### Which genomes are included and exluded from the `genomes_1` directory?
 I included all megalocytivirus genomes saved as 'complete' genomes under the genus *Megalocytivirus* in the [NCBI GenBank Taxonomy Browser](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi), which were the expected length. This included genomes entered into NCBI Genbank as 'unclassified' at the species level. 
@@ -50,7 +50,7 @@ I've sequenced, assembled and annotated two novel genomes for inclusion in this 
 | 2 | Not yet created | 23-04361-0005 | 2 November |  Platys (*Xiphophorus maculatus*) |
 
 ### Run Prokka on genomes
-Now we've collected and have checked the length of the genomes, we re-annotate them using Prokka using the below script. This script will save the output files to a directory `prokka_outputs_1`. This directory (including the outputs) can be found in this repository. The directory contains 76 Prokka output directories for for 76 genomes.
+Now we've collected and have checked the length of the genomes, we re-annotate them using Prokka using the below script. This script will save the output files to a directory `prokka_outputs_1`. This directory (including the outputs) can be found in this repository. The directory contains 77 Prokka output directories for for 77 genomes.
 ```bash
 bash script_one_prokka.sh
 ```
