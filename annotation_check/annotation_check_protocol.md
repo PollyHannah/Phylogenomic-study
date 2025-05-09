@@ -7,13 +7,11 @@ You will need the following software:
 * [Prokka](https://github.com/tseemann/prokka) (version 1.14.5)
 
 ## Which annotations did I manually check?
-The annotations I chose to manually check differed depending on whether the genome was a megalocytivirus genome, an 'unclassified' megalocytivirus genome (genomes entered into [National Centre for Biotechnology Information NCBI GenBank Taxonomy Browser](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi) under the genus 'megalocytivirus' as 'Unclassified'), or a genome from a different iridovirid genus (i.e. not a megalocytivirus). The annotations I checked for each of these groups is provided below. I didn't check every annotation for every genomes in order to save time. 
+The annotations I chose to manually check differed depending on whether the genome was a megalocytivirus genome, an 'unclassified' megalocytivirus genome (genomes entered into [National Centre for Biotechnology Information NCBI GenBank Taxonomy Browser](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi) under the genus 'megalocytivirus' as 'Unclassified'), or a genome from a different iridovirid genus (i.e. not a megalocytivirus). The annotations I checked for each of these groups is provided below. I didn't check every annotation for every genome. This was done to save time. 
 
 ### Megalocytivirus genomes
 #### Classified genomes
 I collected five genomes (tabulated below). For each of these five genomes, I checked every annotation which Prokka had assigned. I chose one genome from each of the three *Megalocytivirus pagrus1* genotypes (infectious spleen and kidney necrosis virus or 'ISKNV', red sea bream iridovirus or 'RSIV', and turbot reddish body iridovirus or 'TRBIV') and one *Megalocytivirus lates1* or 'scale drop disease syndrome' genome. 
-
-I also included the only whole genome published for a three-spined stickleback virus (TSIV), which is is a megalocytivirus which infects threespine stickleback (*Gasterosteus aculeatus*). Based on phylogenetic analysis of iridovirus core genes (Yoximer et al. 2023), TSIV does not group with either of the existing megalocytivirus species and may represent a novel species of megalocytivirus. 
 
 Where there were multiple genomes published, I chose a representitive genome which was published in a peer reviewed journal and was available on NCBI Genbank as fully annotated. I used these genomes as refererece genomes to classify the remaining genomes down to the species / genotype level as desribed in the `classification` directory.
 
@@ -25,17 +23,13 @@ Where there were multiple genomes published, I chose a representitive genome whi
 | TRBIV | GQ273492 | 10.1186/1743-422X-7-159 |
 | TSIV | PQ335173_PQ335174 | https://doi.org/10.3390/v16111663 |
 | SDDV | OM037668 | https://doi.org/10.3390/v13081617 |
+| ECIV | MK637631 | https://doi.org/10.3390/v11050440 |
 
-I transferred the annotations from the manually curated genomes (above) onto the remaining genomes of the same genotype (if there were any).For example, I transferred the manually curated  ISKNV annotations onto the remaining ISKNV genomes, and all the manually curated SDDV annotations onto the remaining SDDV gemomes. Below is a table showing the genomes which I transferred annotations from/to. There is only one published TRBIV and TSIV genome therefore the annotations curated for these genomes were not transferred onto any other genomes.
+I created a database containing all the re-annotated genomes abovein Geneious Prime, and used the 'Live Annotate and Predict' menu and 'Annotate From' option to annotate the remaining genomes from the database with the minimum % identity for the transfer of each annotation set at 85% (i.e. annotations which were less than 85% similar did not transfer).   
 
-| Genotype or species | Annotations tranferred from (accession number) | Annotations transferred to (accession number) |
-|--------------------|------------------------------------------------|-----------------------------------------------|
-| ISKNV | AF371960 |  MK689685, MN432490, MT926123, MT986830, OP009387 |
-| RSIV | MK689686 | AY894343, BD143114, KC244182, KT804738, MK098187, MK098185, MK098186, MW139932, OK042108, OK042109, ON075463, ON740976, ON743042, OL774653, OL774654, OL774655, MT798582, AY532606*, AY779031* |
-| TRBIV | GQ273492 | none |
-| TSIV | PQ335173_PQ335174 | none |
-| SDDV | OM037668 | MN562489, MT521409, NC_027778* |
-
+| Database genomes: Genotype or species (accession number) | Annotations transferred to (accession number) |
+|--------------------|------------------------------------------------|
+| ISKNV (AF371960), RSIV (MK689686), TRBIV (TRBIV), TSIV (Q335173_PQ335174), SDDV (OM037668), ECIV (MK637631) | MK689685, MN432490, MT926123, MT986830, OP009387, AY894343, BD143114, KC244182, KT804738, MK098187, MK098185, MK098186, MW139932, OK042108, OK042109, ON075463, ON740976, ON743042, OL774653, OL774654, OL774655, MT798582, AY532606*, AY779031*, MN562489, MT521409, NC_027778* |
 *Genome removed due to stop codons being present in >5 annotations.
 
 I transferred annotations using the 'Annotate From' option in the'Live Annotate and Predict tab' in Geneious Prime. I set the transfer threshold for percent similarity at 85%. This meant that annotated sequences which were less than 85% similar to the sequence being annotated did not transfer. 
