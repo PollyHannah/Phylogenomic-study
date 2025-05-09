@@ -93,8 +93,8 @@ The script uses the text files `file_list_genus.txt` and `file_list_species.txt`
 script_TBC_sort_proteome_files.sh
 ```
 You should have:
-* 72 files in the directory `proteome_2_family`, and
-* 62 files in a directory `proteome_2_genus`, and
+* 73 files in the directory `proteome_2_family`, and
+* 63 files in a directory `proteome_2_genus`, and
 * 58 files in a directory `proteome_2_species`.
 
 ### Run OrthoFinder
