@@ -30,6 +30,7 @@ I created a database containing all the re-annotated genomes abovein Geneious Pr
 | Database genomes: Genotype or species (accession number) | Annotations transferred to (accession number) |
 |--------------------|------------------------------------------------|
 | ISKNV (AF371960), RSIV (MK689686), TRBIV (TRBIV), TSIV (Q335173_PQ335174), SDDV (OM037668), ECIV (MK637631) | MK689685, MN432490, MT926123, MT986830, OP009387, AY894343, BD143114, KC244182, KT804738, MK098187, MK098185, MK098186, MW139932, OK042108, OK042109, ON075463, ON740976, ON743042, OL774653, OL774654, OL774655, MT798582, AY532606*, AY779031*, MN562489, MT521409, NC_027778* |
+
 *Genome removed due to stop codons being present in >5 annotations.
 
 I transferred annotations using the 'Annotate From' option in the'Live Annotate and Predict tab' in Geneious Prime. I set the transfer threshold for percent similarity at 85%. This meant that annotated sequences which were less than 85% similar to the sequence being annotated did not transfer. 
