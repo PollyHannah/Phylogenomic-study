@@ -25,15 +25,13 @@ Where there were multiple genomes published, I chose a representitive genome whi
 | SDDV | OM037668 | https://doi.org/10.3390/v13081617 |
 | ECIV | MK637631 | https://doi.org/10.3390/v11050440 |
 
-I created a database containing all the re-annotated genomes abovein Geneious Prime, and used the 'Live Annotate and Predict' menu and 'Annotate From' option to annotate the remaining genomes from the database with the minimum % identity for the transfer of each annotation set at 85% (i.e. annotations which were less than 85% similar did not transfer).   
+I created a database containing all the re-annotated genomes abovein Geneious Prime, and used the 'Live Annotate and Predict' menu and 'Annotate From' option to annotate the remaining genomes with the minimum % identity for the transfer of each annotation set at 85% (i.e. annotations which were less than 85% similar did not transfer).   
 
 | Genomes included in annotation database (Genotype or species  andaccession number) | Genomes annotated from database (accession number) |
 |--------------------|------------------------------------------------|
 | ISKNV (AF371960), RSIV (MK689686), TRBIV (GQ273492), TSIV (Q335173_PQ335174), SDDV (OM037668), ECIV (MK637631) | MK689685, MN432490, MT926123, MT986830, OP009387, AY894343, BD143114, KC244182, KT804738, MK098187, MK098185, MK098186, MW139932, OK042108, OK042109, ON075463, ON740976, ON743042, OL774653, OL774654, OL774655, MT798582, AY532606*, AY779031*, MN562489, MT521409, NC_027778* |
 
 *Genome removed due to stop codons being present in >5 annotations.
-
-I transferred annotations using the 'Annotate From' option in the'Live Annotate and Predict tab' in Geneious Prime. I set the transfer threshold for percent similarity at 85%. This meant that annotated sequences which were less than 85% similar to the sequence being annotated did not transfer. 
 
 Once the annotations were transferred, checked each transferred annotation for stop codons and ensured the annotation started with the amino acid Methionine (M). 
 * If the annotation did not start with M I removed it.
