@@ -20,7 +20,7 @@ Where there were multiple genomes published, I chose a representitive genome whi
 |--------------------|-----------|-----------------|
 | ISKNV | AF371960 | https://doi.org/10.1006/viro.2001.1208 |
 | RSIV | MK689686 | https://doi.org/10.3354/dao03499 |
-| TRBIV | GQ273492 | 10.1186/1743-422X-7-159 |
+| TRBIV | GQ273492 | [10.1186/1743-422X-7-159](https://virologyj.biomedcentral.com/articles/10.1186/1743-422X-7-159) |
 | TSIV | PQ335173_PQ335174 | https://doi.org/10.3390/v16111663 |
 | SDDV | OM037668 | https://doi.org/10.3390/v13081617 |
 | ECIV | MK637631 | https://doi.org/10.3390/v11050440 |
