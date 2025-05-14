@@ -113,14 +113,16 @@ The output files will be saved (respectively) into three new directories
 * `orthofinder_2_species`.
 
 ### Match orthogroups across taxonomic levels
-The OrthoFrinder analysis for each taxonomic group has been run seperately. This means that the orthogroup assigned to each gene can differ in the ouputs for the species, genus and family level. For example, the orthogroup containing genes in the species-level analysis could be OG0000002, whereas the same set of genes in the genus level analysis could be orthogroup OG0000083. It's important we know the orthogroups assigned to each gene across each taxonomic level so we can analyse the data generated (for example, the gene trees) for the same gene at each level. 
+The OrthoFrinder analysis for each taxonomic group has been run seperately. This means that the orthogroup assigned to each gene can differ in the ouputs for the species, genus and family level. For example, the orthogroup containing genes in the species-level analysis could be OG0000002, whereas the same set of genes in the genus level analysis could be orthogroup OG0000083. 
+
+It's important we know the orthogroups assigned to each gene across each taxonomic level so we can analyse the data generated (for example, the gene trees) for the same gene at each level. 
 
 I wrote a script to do this, to run it go:
 ```bash
 bash script_match_orthogroups.sh
 ```
 
-The script will generate a `.txt` file like this one, [sequence_matches.txt](https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches.txt), which includes the orthogroups containing the same genes at each taxonomic level. R Studio wasn't behaving (likely user error) so I used ChatGBT to transform the file into a .xlsx file (found [here(https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches.xlsx)) so I could filter the columns. 
+The script will generate a `.txt` file like this one, [sequence_matches.txt](https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches.txt)/ The file includes the orthogroups containing the same genes at each taxonomic level. I used ChatGBT to transform the file into a .xlsx file (found [here(https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches.xlsx)) so I could filter the columns. You could also write a simple R script to do this. 
 
 ***How does the script work?*** This script looks at the first sequence in each of the `.fa` files in the [`Orthogroup_Sequences`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthofinder_2_species/Results_Feb13/Orthogroup_Sequences) directory for the species level output, and matches it with the orthogroup containing the same sequence in the directories containing the `.fa` files for the [genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthofinder_2_genus/Results_Feb13) and [family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family) level Orthofinder output.
 
