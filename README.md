@@ -30,7 +30,7 @@ cd mcv
 ### Save genomes to mcv directory
 Download `genomes_1` directory and its contents from this repository and save the folder and contents to the mcv directory. This folder contains 67 megalocytivirus and 10 iridoviridae genomes in FASTA format (77 genomes total). 
 
-Details about each genome can be found in the `taxonomy.csv` file in this repository. There is information for 79 genomes in `taxonomy.csv` given genomes L63545 and KC138895 are included which are not included in the `genomes_1` directory due to them not being the expected length. You can read more about this in the next section. Please read my [`Classification protocol`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/classification/classification%20protocol.md) to understand how i classified megalocytivirus genomes included in this study.
+Details about each genome can be found in the `taxonomy.csv` file in this repository. There is information for 79 genomes in `taxonomy.csv` given genomes L63545 and KC138895 are included which are not included in the `genomes_1` directory due to them not being the expected length. You can read more about this in the next section. Please read my [`Classification protocol`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/classification/classification%20protocol.md) to understand how I classified megalocytivirus genomes included in this study.
 
 #### Which genomes are included and exluded from the `genomes_1` directory?
 I included all megalocytivirus genomes saved as 'complete' genomes under the genus *Megalocytivirus* in the [NCBI GenBank Taxonomy Browser](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi), which were the expected length. This included genomes entered into NCBI Genbank as 'unclassified' at the species level. 
@@ -77,7 +77,7 @@ Computers are great but they're not perfect. This is why I manually curate the P
 5. Save all the manually curated proteome files for all genomes as .faa files into the directory above.
 6. If at any stage you spy something you think is an assembly or sequencing error in a genome - remove it from the analysis all-together. 
 
-To save time, I didn't manually check every annotation for every genome. Head to the directory [`annotation_check`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/annotation_check) for information including; the annotations I manually checked for each genomes, how i decided which annotations I kept, edited or removed, a list of the annotations which I edited or removed, the genomes removed from my analysis due to assumed sequencing or assembly errors (and why), and how I processed proteome files to get them into a format ready for the next step of the pipeline. 
+To save time, I didn't manually check every annotation for every genome. Head to the directory [`annotation_check`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/annotation_check) for information including; the annotations I manually checked for each genomes, how I decided which annotations I kept, edited or removed, a list of the annotations which I edited or removed, the genomes removed from my analysis due to assumed sequencing or assembly errors (and why), and how I processed proteome files to get them into a format ready for the next step of the pipeline. 
 
 ## Part Two: Gene analysis
 This is where we take the freshly re-annotated sequences and identify a set of core genes with the help of OrthoFinder.
@@ -269,7 +269,7 @@ You should now have three new directories (as listed below) created in the mcv d
 * [orthogroup_sequence_species](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthogroup_sequence_species) (contains 155 files)
 
 ##### 6.5 Run BLASTp search
-Now I ran BLASTp search on each of the query sequences generated in step 6.4 Prepare query sequences. The script i used in houses in this repository. To use it, run:
+Now I ran BLASTp search on each of the query sequences generated in step 6.4 Prepare query sequences. The script I used in houses in this repository. To use it, run:
 ```bash
 script_make_input_blastp.sh
 ```
@@ -372,7 +372,7 @@ The next step is to review each of the gene trees to select a set of gene which 
 #### Remove genomes on long branches
 I opened each gene tree file (`.fa.treefile`) in FigTree to identify any further edits I wanted to make to the alignments, based on the tree. For the family-level gene trees a few long branches appeared again. Previous, I removed sequences on branches >0.9 amino acid substitutions per site. This was based on the gene trees generated in Geneious Prime (see section above '4. Editing alignments'). 
 
-The gene trees based on the new models of evolution included a a handful of branches significantly longer than the other taxa. They were all >2 amino acid substitutions per site. I went back to the alignments in the directories [`alignments_family_muscle_edited`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited) and [`alignments_family_muscle5_edited_trimmed`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle5_edited_trimmed) and removed the sequences on branches >2 amino acid substitutions per site. All the changes i made are included in the section above '4. Editing alignments' (see [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx`).  
+The gene trees based on the new models of evolution included a a handful of branches significantly longer than the other taxa. They were all >2 amino acid substitutions per site. I went back to the alignments in the directories [`alignments_family_muscle_edited`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited) and [`alignments_family_muscle5_edited_trimmed`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle5_edited_trimmed) and removed the sequences on branches >2 amino acid substitutions per site. All the changes I made are included in the section above '4. Editing alignments' (see [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx`).  
 
 #### Re-run IQTREE with long branches removed
 I then re-ran IQTREE on the alignments which I edited as outlined above and included in the file [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx`). I ran the same script as in the section anove 'Generate gene trees' called `script_TBC_iqtree.sh`. I just plonked the updated alignments in a new directory and updated the script to point to the new directory to take as input. I then sorted the IQTREE output files using the script above `script_TBC_iqtree.sh` (I just updated the script to point it at the new directory generated housing the new IQTREE outputs). 
@@ -393,7 +393,7 @@ I then replaced the old IQTREE output files, and gene trees, in the following di
 I reviewed gene trees based on a set criteria at the family, genus and species level (tabulated below). These criteria are listed below and the letters for each criterion correspond to the letters in the spreadsheet 
 [`gene_review.csv`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/gene_review.csv) which includes the results of the gene tree review process (either ‘TRUE’ or ‘FALSE’). 
 
-How did I review the gene trees? I opened each gene tree in FigTree, I then rooted it and assessed it based on the relevant criteria (tabulated below). The branches in the tree on which i rooted the family, genus and species-level trees are provided below. I then input the result of the assessment for the relevant criteria as either ‘TRUE’ or ‘FALSE’ into the spreadsheet [`gene_review.csv`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/gene_review.csv). 
+How did I review the gene trees? I opened each gene tree in FigTree, I then rooted it and assessed it based on the relevant criteria (tabulated below). The branches in the tree on which I rooted the family, genus and species-level trees are provided below. I then input the result of the assessment for the relevant criteria as either ‘TRUE’ or ‘FALSE’ into the spreadsheet [`gene_review.csv`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/gene_review.csv). 
 
 The three spined stickleback iridovirus (TSIV) (accession number PQ335173_PQ335174) was considered a separate species of megalocytivirus for the purpose of this review.
 
