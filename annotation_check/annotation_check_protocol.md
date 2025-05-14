@@ -71,10 +71,10 @@ bash script_three_orthofinder.sh
 ```
 
 ## How did I decide whether to keep, edit, or delete annotations?
-I started by downloading the General Feature File (.gff) produced by Prokka for every genome I annotated and pairwise aligned the file in Genenious Prime (version 2020.2.5) with the GenBank (.gb) file from NCBI GenBank Database for the corresponding genome. I moved through the genome looking at each annotation and did the following:
+I started by downloading the General Feature File (.gff) produced by Prokka for every genome I annotated and pairwise aligned the file in Genenious Prime with the GenBank (.gb) file from NCBI GenBank Database for the corresponding genome. I moved through the genome looking at each annotation and did the following:
 * Where the Prokka and GenBank annotations matched, I kept the annotation as-is. Where the annotations did not match, I did a A BLASTp search of both annotations on the the NCBI GenBank Database. I favoured annotations with a higher number of matches, % identity to matches, and % query cover.
 * I then checked whether stop codons were present in the annotation. If a 'favoured annotation' (as described above) had ≤5 stop codons I kept the annotation and removed the stop codons. Yet if a 'favoured annotation' had >5 stop codons I kept the less-favoured annotation (if there was one). If the annotation had >5 stop codons and there was no 'favored annotation' (i.e. there was no alternative annotation option in the .gff file or .gb file) I deleted the annotation all together. 
-* I then exported out of from Geneious Prime (version 2020.2.5), a list of the annotations (amino acid sequences) for each genome. 
+* I then exported out of from Geneious Prime, a list of the annotations (amino acid sequences) for each genome. 
 * I then exported the list as a .csv file and converted it to a .txt file. I used this text file to input into the next Orthofinder run described in the `README.md` file for Part Two: Core gene analysis.
 
 ## Which genomes were removed due to sequencing or assembly errors? 
