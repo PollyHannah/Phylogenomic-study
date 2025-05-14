@@ -5,7 +5,7 @@ This repository houses the details of my bioinformatic pipeline for my phylogene
 
 Go to the file `setup.md` in this repository, for information about how to set-up a conda environment. The same file houses information on how to complete basic tasks like transfering files and fixing errors you might receive while completeing this analysis. You will need the following software:
 * [Prokka](https://github.com/tseemann/prokka) (version 1.14.5)
-* [OrthoFinder](https://github.com/davidemms/OrthoFinder) (version 2.5.4)
+* [OrthoFinder](https://github.com/davidemms/Orthofinder) (version 2.5.4)
 * Geneious Prime (version 2020.2.5)
 * [MUSCLE5](https://github.com/rcedgar/muscle) (version 5.0.1428)
 * [TrimAL ](https://github.com/inab/trimal) (version 1.4.1r22) 
@@ -86,7 +86,7 @@ It's not used in this pipeline, but if interested, I generated a whole genome al
 This is where we take the freshly re-annotated sequences and identify a set of core genes with the help of OrthoFinder.
 
 ### Sort proteome files by taxonomic level
-We run Orthofinder three times - once each with genomes at the family, genus and species level. To do this we need to sort the proteomes we generated as part of 'Part One: re-annotation and quality check' into three seperate directories. 
+We run OrthoFinder three times - once each with genomes at the family, genus and species level. To do this we need to sort the proteomes we generated as part of 'Part One: re-annotation and quality check' into three seperate directories. 
 
 To do this, run the below script which will copy the proteomes in the directory `proteome_2_family` and save the the species proteomes to the `proteome_2_species` and the genus proteomes to `proteome_2_genus`. 
 The script uses the text files `file_list_genus.txt` and `file_list_species.txt` to do this.  
@@ -99,16 +99,16 @@ You should have:
 * 58 files in a directory `proteome_2_species`.
 
 ### Run OrthoFinder
-Now, using one script, we run Orthofinder three times (once each on the proteome files in the directories). 
+Now, using one script, we run OrthoFinder three times (once each on the proteome files in the directories). 
 * `proteome_2_family`,
 * `proteome_2_genus`, and
 * `proteome_2_species`.
 ```bash
-script_TBC_orthofinder.sh
+script_TBC_Orthofinder.sh
 ```
 
 The output files will be saved (respectively) into three new directories 
-* `orthofinder_2_family`,
+* `Orthofinder_2_family`,
 * `orthofinder_2_genus`, and
 * `orthofinder_2_species`.
 
@@ -124,13 +124,13 @@ bash script_match_orthogroups.sh
 
 The script will generate a `.txt` file like this one, [sequence_matches.txt](https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches.txt). The file includes the orthogroups containing the same genes at each taxonomic level. I used ChatGBT to transform the file into a .xlsx file (found [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches.xlsx)) so I could filter the columns. You could also write a simple R script to do this. 
 
-***How does the script work?*** This script looks at the first sequence in each of the `.fa` files in the [Orthogroup_Sequences/](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthofinder_2_species/Results_Feb13/Orthogroup_Sequences) directory for the species level output, and matches it with the orthogroup containing the same sequence in the directories containing the `.fa` files for the [genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthofinder_2_genus/Results_Feb13) and [family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family) level Orthofinder output.
+***How does the script work?*** This script looks at the first sequence in each of the `.fa` files in the [Orthogroup_Sequences/](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthofinder_2_species/Results_Feb13/Orthogroup_Sequences) directory for the species level output, and matches it with the orthogroup containing the same sequence in the directories containing the `.fa` files for the [genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthofinder_2_genus/Results_Feb13) and [family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family) level OrthoFinder output.
 
 ### Identify core and majority genes 
-We now use R to identify a set of core genes using the Orthofinder output. First we analyse using the script `orthogroup_analysis.R`. Then, we filter out set of core genes using the script `filter_orthogroups.R`. 
+We now use R to identify a set of core genes using the OrthoFinder output. First we analyse using the script `orthogroup_analysis.R`. Then, we filter out set of core genes using the script `filter_orthogroups.R`. 
 
 #### 1. Analyse
-First we analyse the Orthofinder output to help us make a decision about which genes we consider to be 'core genes'. To do this, move the files `taxonomy.csv`and `Orthogroups.tsv` (an output file from Orthofinder), and script `script_TBC_r_analysis.R` into a directory. 
+First we analyse the OrthoFinder output to help us make a decision about which genes we consider to be 'core genes'. To do this, move the files `taxonomy.csv`and `Orthogroups.tsv` (an output file from OrthoFinder), and script `script_TBC_r_analysis.R` into a directory. 
 
 Before we do this analysis, set up three directories to store the results at each taxonomic level:
 ```bash
@@ -155,7 +155,7 @@ Now that's done, run the script as so:
 Rscript script_TBC_r_analysis.R -o Orthogroups.tsv -t taxonomy.csv
 ```
 
-An output file should now be saved in your current directory. The file will be `orthogroups_occpancy.tsv`. This .tsv file contains the Orthofinder output for the relevant taxonomic level (family, genus or species) as well as a column on the far right which provided the 'Occupancy' for each Orthogroup. The Occupancy is provided for each orthogroup, and is the percentage of genomes with an ortholog assigned to the orthogroup. 
+An output file should now be saved in your current directory. The file will be `orthogroups_occpancy.tsv`. This .tsv file contains the OrthoFinder output for the relevant taxonomic level (family, genus or species) as well as a column on the far right which provided the 'Occupancy' for each Orthogroup. The Occupancy is provided for each orthogroup, and is the percentage of genomes with an ortholog assigned to the orthogroup. 
 
 Each time you run the script, use the mv (move) command to save your output files into the relevant directory in the newly created `r_analysis_results` directory. For exmaple, if you have just ran the first R script using family level data, go:
 ```bash
