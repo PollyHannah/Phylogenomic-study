@@ -2,7 +2,7 @@
 This page includes on the annotations I manually checked and for which genomes, how I decided on which annotations I would keep, edit or remove, a list of the annotations which I edited or removed, the genomes which I removed from my analysis due to assumed sequencing or assembly errors (and why), and how I processed proteome files to get them into a format ready for the next step of the pipeline.
 
 You will need the following software:
-* Geneious Prime (Version 2020.2.5).
+* Geneious Prime (version 2020.2.5).
 * [OrthoFinder](https://github.com/davidemms/OrthoFinder) (version 2.5.4)
 * [Prokka](https://github.com/tseemann/prokka) (version 1.14.5)
 
@@ -20,14 +20,14 @@ Where there were multiple genomes published, I chose a representitive genome whi
 |--------------------|-----------|-----------------|
 | ISKNV | AF371960 | https://doi.org/10.1006/viro.2001.1208 |
 | RSIV | MK689686 | https://doi.org/10.3354/dao03499 |
-| TRBIV | GQ273492 | 10.1186/1743-422X-7-159 |
+| TRBIV | GQ273492 | [10.1186/1743-422X-7-159](https://virologyj.biomedcentral.com/articles/10.1186/1743-422X-7-159) |
 | TSIV | PQ335173_PQ335174 | https://doi.org/10.3390/v16111663 |
 | SDDV | OM037668 | https://doi.org/10.3390/v13081617 |
 | ECIV | MK637631 | https://doi.org/10.3390/v11050440 |
 
 I created a database containing all the re-annotated genomes abovein Geneious Prime, and used the 'Live Annotate and Predict' menu and 'Annotate From' option to annotate the remaining genomes with the minimum % identity for the transfer of each annotation set at 85% (i.e. annotations which were less than 85% similar did not transfer).   
 
-| Genomes included in annotation database (Genotype or species  andaccession number) | Genomes annotated from database (accession number) |
+| Genomes included in annotation database (Genotype or species  and accession number) | Genomes annotated from database (accession number) |
 |--------------------|------------------------------------------------|
 | ISKNV (AF371960), RSIV (MK689686), TRBIV (GQ273492), TSIV (Q335173_PQ335174), SDDV (OM037668), ECIV (MK637631) | MK689685, MN432490, MT926123, MT986830, OP009387, AY894343, BD143114, KC244182, KT804738, MK098187, MK098185, MK098186, MW139932, OK042108, OK042109, ON075463, ON740976, ON743042, OL774653, OL774654, OL774655, MT798582, AY532606*, AY779031*, MN562489, MT521409, NC_027778* |
 
@@ -71,10 +71,10 @@ bash script_three_orthofinder.sh
 ```
 
 ## How did I decide whether to keep, edit, or delete annotations?
-I started by downloading the General Feature File (.gff) produced by Prokka for every genome I annotated and pairwise aligned the file in Genenious Prime (version 2020.2.5) with the GenBank (.gb) file from NCBI GenBank Database for the corresponding genome. I moved through the genome looking at each annotation and did the following:
+I started by downloading the General Feature File (.gff) produced by Prokka for every genome I annotated and pairwise aligned the file in Genenious Prime with the GenBank (.gb) file from NCBI GenBank Database for the corresponding genome. I moved through the genome looking at each annotation and did the following:
 * Where the Prokka and GenBank annotations matched, I kept the annotation as-is. Where the annotations did not match, I did a A BLASTp search of both annotations on the the NCBI GenBank Database. I favoured annotations with a higher number of matches, % identity to matches, and % query cover.
 * I then checked whether stop codons were present in the annotation. If a 'favoured annotation' (as described above) had ≤5 stop codons I kept the annotation and removed the stop codons. Yet if a 'favoured annotation' had >5 stop codons I kept the less-favoured annotation (if there was one). If the annotation had >5 stop codons and there was no 'favored annotation' (i.e. there was no alternative annotation option in the .gff file or .gb file) I deleted the annotation all together. 
-* I then exported out of from Geneious Prime (version 2020.2.5), a list of the annotations (amino acid sequences) for each genome. 
+* I then exported out of from Geneious Prime, a list of the annotations (amino acid sequences) for each genome. 
 * I then exported the list as a .csv file and converted it to a .txt file. I used this text file to input into the next Orthofinder run described in the `README.md` file for Part Two: Core gene analysis.
 
 ## Which genomes were removed due to sequencing or assembly errors? 

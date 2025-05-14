@@ -5,7 +5,7 @@ This repository houses the details of my bioinformatic pipeline for my phylogene
 
 Go to the file `setup.md` in this repository, for information about how to set-up a conda environment. The same file houses information on how to complete basic tasks like transfering files and fixing errors you might receive while completeing this analysis. You will need the following software:
 * [Prokka](https://github.com/tseemann/prokka) (version 1.14.5)
-* [OrthoFinder](https://github.com/davidemms/OrthoFinder) (version 2.5.4)
+* [OrthoFinder](https://github.com/davidemms/Orthofinder) (version 2.5.4)
 * Geneious Prime (version 2020.2.5)
 * [MUSCLE5](https://github.com/rcedgar/muscle) (version 5.0.1428)
 * [TrimAL ](https://github.com/inab/trimal) (version 1.4.1r22) 
@@ -30,7 +30,7 @@ cd mcv
 ### Save genomes to mcv directory
 Download `genomes_1` directory and its contents from this repository and save the folder and contents to the mcv directory. This folder contains 67 megalocytivirus and 10 iridoviridae genomes in FASTA format (77 genomes total). 
 
-Details about each genome can be found in the `taxonomy.csv` file in this repository. There is information for 79 genomes in `taxonomy.csv` given genomes L63545 and KC138895 are included which are not included in the `genomes_1` directory due to them not being the expected length. You can read more about this in the next section. Please read my [`Classification protocol`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/classification/classification%20protocol.md) to understand how i classified megalocytivirus genomes included in this study.
+Details about each genome can be found in the `taxonomy.csv` file in this repository. There is information for 79 genomes in `taxonomy.csv` given genomes L63545 and KC138895 are included which are not included in the `genomes_1` directory due to them not being the expected length. You can read more about this in the next section. Please read my [`Classification protocol`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/classification/classification%20protocol.md) to understand how I classified megalocytivirus genomes included in this study.
 
 #### Which genomes are included and exluded from the `genomes_1` directory?
 I included all megalocytivirus genomes saved as 'complete' genomes under the genus *Megalocytivirus* in the [NCBI GenBank Taxonomy Browser](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi), which were the expected length. This included genomes entered into NCBI Genbank as 'unclassified' at the species level. 
@@ -77,15 +77,16 @@ Computers are great but they're not perfect. This is why I manually curate the P
 5. Save all the manually curated proteome files for all genomes as .faa files into the directory above.
 6. If at any stage you spy something you think is an assembly or sequencing error in a genome - remove it from the analysis all-together. 
 
-To save time, I didn't manually check every annotation for every genome. Head to the directory [`annotation_check`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/annotation_check) for information including; the annotations I manually checked for each genomes, how i decided which annotations I kept, edited or removed, a list of the annotations which I edited or removed, the genomes removed from my analysis due to assumed sequencing or assembly errors (and why), and how I processed proteome files to get them into a format ready for the next step of the pipeline. 
+To save time, I didn't manually check every annotation for every genome. Head to the directory [`annotation_check`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/annotation_check) for information including; the annotations I manually checked for each genomes, how I decided which annotations I kept, edited or removed, a list of the annotations which I edited or removed, the genomes removed from my analysis due to assumed sequencing or assembly errors (and why), and how I processed proteome files to get them into a format ready for the next step of the pipeline. 
+
+### Whole genome alignment
+It's not used in this pipeline, but if interested, I generated a whole genome alignment for all *Megalocytivirus pagrus1* genomes part of my analysis, using the program Mauve. The alignment can be found  in this repository called [`alignment_mpagrus1.fas`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_mpagrus1.fas).
 
 ## Part Two: Gene analysis
 This is where we take the freshly re-annotated sequences and identify a set of core genes with the help of OrthoFinder.
 
-By the way, I generated a whole genome alignment for all *Megalocytivirus pagrus1* genomes part of my analysis, using the program Mauve. The alignment can be found  in this repository called [`alignment_mpagrus1.fas`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_mpagrus1.fas).
-
 ### Sort proteome files by taxonomic level
-We run Orthofinder three times - once each with genomes at the family, genus and species level. To do this we need to sort the proteomes we generated as part of 'Part One: re-annotation and quality check' into three seperate directories. 
+We run OrthoFinder three times - once each with genomes at the family, genus and species level. To do this we need to sort the proteomes we generated as part of 'Part One: re-annotation and quality check' into three seperate directories. 
 
 To do this, run the below script which will copy the proteomes in the directory `proteome_2_family` and save the the species proteomes to the `proteome_2_species` and the genus proteomes to `proteome_2_genus`. 
 The script uses the text files `file_list_genus.txt` and `file_list_species.txt` to do this.  
@@ -93,41 +94,43 @@ The script uses the text files `file_list_genus.txt` and `file_list_species.txt`
 script_TBC_sort_proteome_files.sh
 ```
 You should have:
-* 72 files in the directory `proteome_2_family`, and
-* 62 files in a directory `proteome_2_genus`, and
+* 73 files in the directory `proteome_2_family`, and
+* 63 files in a directory `proteome_2_genus`, and
 * 58 files in a directory `proteome_2_species`.
 
 ### Run OrthoFinder
-Now, using one script, we run Orthofinder three times (once each on the proteome files in the directories). 
+Now, using one script, we run OrthoFinder three times (once each on the proteome files in the directories). 
 * `proteome_2_family`,
 * `proteome_2_genus`, and
 * `proteome_2_species`.
 ```bash
-script_TBC_orthofinder.sh
+script_TBC_Orthofinder.sh
 ```
 
 The output files will be saved (respectively) into three new directories 
-* `orthofinder_2_family`,
+* `Orthofinder_2_family`,
 * `orthofinder_2_genus`, and
 * `orthofinder_2_species`.
 
 ### Match orthogroups across taxonomic levels
-The OrthoFrinder analysis for each taxonomic group has been run seperately. This means that the orthogroup assigned to each gene can differ in the ouputs for the species, genus and family level. For example, the orthogroup containing genes in the species-level analysis could be OG0000002, whereas the same set of genes in the genus level analysis could be orthogroup OG0000083. It's important we know the orthogroups assigned to each gene across each taxonomic level so we can analyse the data generated (for example, the gene trees) for the same gene at each level. 
+The OrthoFrinder analysis for each taxonomic group has been run seperately. This means that the orthogroup assigned to each gene can differ in the ouputs for the species, genus and family level. For example, the orthogroup containing genes in the species-level analysis could be OG0000002, whereas the same set of genes in the genus level analysis could be orthogroup OG0000083. 
+
+It's important we know the orthogroups assigned to each gene across each taxonomic level so we can analyse the data generated (for example, the gene trees) for the same gene at each level. 
 
 I wrote a script to do this, to run it go:
 ```bash
 bash script_match_orthogroups.sh
 ```
 
-The script will generate a `.txt` file like this one, [sequence_matches.txt](https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches.txt), which includes the orthogroups containing the same genes at each taxonomic level. R Studio wasn't behaving (likely user error) so I used ChatGBT to transform the file into a .xlsx file (found [here(https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches.xlsx)) so I could filter the columns. 
+The script will generate a `.txt` file like this one, [sequence_matches.txt](https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches.txt). The file includes the orthogroups containing the same genes at each taxonomic level. I used ChatGBT to transform the file into a .xlsx file (found [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches.xlsx)) so I could filter the columns. You could also write a simple R script to do this. 
 
-***How does the script work?*** This script looks at the first sequence in each of the `.fa` files in the [`Orthogroup_Sequences`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthofinder_2_species/Results_Feb13/Orthogroup_Sequences) directory for the species level output, and matches it with the orthogroup containing the same sequence in the directories containing the `.fa` files for the [genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthofinder_2_genus/Results_Feb13) and [family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family) level Orthofinder output.
+***How does the script work?*** This script looks at the first sequence in each of the `.fa` files in the [Orthogroup_Sequences/](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthofinder_2_species/Results_Feb13/Orthogroup_Sequences) directory for the species level output, and matches it with the orthogroup containing the same sequence in the directories containing the `.fa` files for the [genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthofinder_2_genus/Results_Feb13) and [family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family) level OrthoFinder output.
 
 ### Identify core and majority genes 
-We now use R to identify a set of core genes using the Orthofinder output. First we analyse using the script `orthogroup_analysis.R`. Then, we filter out set of core genes using the script `filter_orthogroups.R`. 
+We now use R to identify a set of core genes using the OrthoFinder output. First we analyse using the script `orthogroup_analysis.R`. Then, we filter out set of core genes using the script `filter_orthogroups.R`. 
 
 #### 1. Analyse
-First we analyse the Orthofinder output to help us make a decision about which genes we consider to be 'core genes'. To do this, move the files `taxonomy.csv`and `Orthogroups.tsv` (an output file from Orthofinder), and script `script_TBC_r_analysis.R` into a directory. 
+First we analyse the OrthoFinder output to help us make a decision about which genes we consider to be 'core genes'. To do this, move the files `taxonomy.csv`and `Orthogroups.tsv` (an output file from OrthoFinder), and script `script_TBC_r_analysis.R` into a directory. 
 
 Before we do this analysis, set up three directories to store the results at each taxonomic level:
 ```bash
@@ -152,7 +155,7 @@ Now that's done, run the script as so:
 Rscript script_TBC_r_analysis.R -o Orthogroups.tsv -t taxonomy.csv
 ```
 
-An output file should now be saved in your current directory. The file will be `orthogroups_occpancy.tsv`. This .tsv file contains the Orthofinder output for the relevant taxonomic level (family, genus or species) as well as a column on the far right which provided the 'Occupancy' for each Orthogroup. The Occupancy is provided for each orthogroup, and is the percentage of genomes with an ortholog assigned to the orthogroup. 
+An output file should now be saved in your current directory. The file will be `orthogroups_occpancy.tsv`. This .tsv file contains the OrthoFinder output for the relevant taxonomic level (family, genus or species) as well as a column on the far right which provided the 'Occupancy' for each Orthogroup. The Occupancy is provided for each orthogroup, and is the percentage of genomes with an ortholog assigned to the orthogroup. 
 
 Each time you run the script, use the mv (move) command to save your output files into the relevant directory in the newly created `r_analysis_results` directory. For exmaple, if you have just ran the first R script using family level data, go:
 ```bash
@@ -269,7 +272,7 @@ You should now have three new directories (as listed below) created in the mcv d
 * [orthogroup_sequence_species](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthogroup_sequence_species) (contains 155 files)
 
 ##### 6.5 Run BLASTp search
-Now I ran BLASTp search on each of the query sequences generated in step 6.4 Prepare query sequences. The script i used in houses in this repository. To use it, run:
+Now I ran BLASTp search on each of the query sequences generated in step 6.4 Prepare query sequences. The script I used in houses in this repository. To use it, run:
 ```bash
 script_make_input_blastp.sh
 ```
@@ -372,7 +375,7 @@ The next step is to review each of the gene trees to select a set of gene which 
 #### Remove genomes on long branches
 I opened each gene tree file (`.fa.treefile`) in FigTree to identify any further edits I wanted to make to the alignments, based on the tree. For the family-level gene trees a few long branches appeared again. Previous, I removed sequences on branches >0.9 amino acid substitutions per site. This was based on the gene trees generated in Geneious Prime (see section above '4. Editing alignments'). 
 
-The gene trees based on the new models of evolution included a a handful of branches significantly longer than the other taxa. They were all >2 amino acid substitutions per site. I went back to the alignments in the directories [`alignments_family_muscle_edited`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited) and [`alignments_family_muscle5_edited_trimmed`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle5_edited_trimmed) and removed the sequences on branches >2 amino acid substitutions per site. All the changes i made are included in the section above '4. Editing alignments' (see [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx`).  
+The gene trees based on the new models of evolution included a a handful of branches significantly longer than the other taxa. They were all >2 amino acid substitutions per site. I went back to the alignments in the directories [`alignments_family_muscle_edited`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited) and [`alignments_family_muscle5_edited_trimmed`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle5_edited_trimmed) and removed the sequences on branches >2 amino acid substitutions per site. All the changes I made are included in the section above '4. Editing alignments' (see [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx`).  
 
 #### Re-run IQTREE with long branches removed
 I then re-ran IQTREE on the alignments which I edited as outlined above and included in the file [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx`). I ran the same script as in the section anove 'Generate gene trees' called `script_TBC_iqtree.sh`. I just plonked the updated alignments in a new directory and updated the script to point to the new directory to take as input. I then sorted the IQTREE output files using the script above `script_TBC_iqtree.sh` (I just updated the script to point it at the new directory generated housing the new IQTREE outputs). 
@@ -393,7 +396,7 @@ I then replaced the old IQTREE output files, and gene trees, in the following di
 I reviewed gene trees based on a set criteria at the family, genus and species level (tabulated below). These criteria are listed below and the letters for each criterion correspond to the letters in the spreadsheet 
 [`gene_review.csv`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/gene_review.csv) which includes the results of the gene tree review process (either ‘TRUE’ or ‘FALSE’). 
 
-How did I review the gene trees? I opened each gene tree in FigTree, I then rooted it and assessed it based on the relevant criteria (tabulated below). The branches in the tree on which i rooted the family, genus and species-level trees are provided below. I then input the result of the assessment for the relevant criteria as either ‘TRUE’ or ‘FALSE’ into the spreadsheet [`gene_review.csv`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/gene_review.csv). 
+How did I review the gene trees? I opened each gene tree in FigTree, I then rooted it and assessed it based on the relevant criteria (tabulated below). The branches in the tree on which I rooted the family, genus and species-level trees are provided below. I then input the result of the assessment for the relevant criteria as either ‘TRUE’ or ‘FALSE’ into the spreadsheet [`gene_review.csv`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/gene_review.csv). 
 
 The three spined stickleback iridovirus (TSIV) (accession number PQ335173_PQ335174) was considered a separate species of megalocytivirus for the purpose of this review.
 
@@ -411,9 +414,14 @@ I rooted the trees at the internal branch which split majority of ISKNV genomes 
 
 | Criteria | A | B  | C |
 |--------|-----------|-----------------------|-----------------|
-| Family gene trees | Genera not clustered together in the same clade.  | Megalocytivirus genomes on branch with >1.3 amino acid substitutions per site.| The only genomes now present in the gene tree were from the genus *Megalocytivirus*. This was done by runnning the script [`script_TBC_review_family_trees.sh`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_TBC_review_family_trees.sh) which looks for files which do not contain any of the following terms - Ranavirus, Daphniairidovirus , Decapodiridovirus, Lymphocystivirus, Iridovirus, or Chloriridovirus. |
-| Genus gene trees | Species not clustered together in the same clade. |  Ratio of substitutions per site, between longest branch and second longest branch >10. This analysis was done by running the R script [`script_review_trees.R`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_review_trees.R)  | The only genomes now present in the gene tree were from the species *Megalocytivirus pagrus1*. This was done by runnning the script [`script_TBC_review_genus_trees.sh`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_TBC_review_genus_trees.sh) which looks for files which do not contain any of the following terms - TSIV or SDDV (i.e. *Megalocytivirus lates1* genomes)|
-| Species gene trees | Genotypes not clustered together. |  Ratio of substitutions per site, between longest branch and second longest branch >10. This analysis was done by running the R script [`script_review_trees.R`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_review_trees.R) | Evidence of recombination from a seperate analysis using the program Recombination Detection Program (RDP4), for which the results can be found [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination_results_refined.csv). Please note that the results in this file provide the orthogroups includeded in putative recombination events as per the genus-level OrthoFinder analysis. To work out names of the species-level orthogroups for each of these genus-level orthogroups, you will need to refer to this file [`sequence_matches_gene_identity.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches_gene_identity.xlsx)|
+| Family gene trees | International Committee for the Taxonomy of Viruses (ICTV)-recognised genera* not clustered together, seperate from other ICTV-reocgnised genera  | Megalocytivirus genomes on branch with >1.3 amino acid substitutions per site.| The only genomes now present in the gene tree were from the genus *Megalocytivirus*. This was done by runnning the script [`script_TBC_review_family_trees.sh`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_TBC_review_family_trees.sh) which looks for files which do not contain any of the following terms - Ranavirus, Daphniairidovirus , Decapodiridovirus, Lymphocystivirus, Iridovirus, or Chloriridovirus. |
+| Genus gene trees | International Committee for the Taxonomy of Viruses (ICTV)-recognised species* not clustered together, seperate from other ICTV-recognised species. |  Ratio of substitutions per site, between longest branch and second longest branch >10. This analysis was done by running the R script [`script_review_trees.R`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_review_trees.R), after setting the folder path to `folder_path <- "./iqtree_genus_trees/"`  | The only genomes now present in the gene tree were from the species *Megalocytivirus pagrus1*. This was done by runnning the script [`script_TBC_review_genus_trees.sh`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_TBC_review_genus_trees.sh) which looks for files which do not contain any of the following terms - TSIV, or SDDV (i.e. *Megalocytivirus lates1* genomes)|
+| Species gene trees | Genotypes not clustered together. |  Ratio of substitutions per site, between longest branch and second longest branch >10. This analysis was done by running the R script [`script_review_trees.R`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_review_trees.R) after setting the folder path to `folder_path <- "./iqtree_species_trees/"`| Evidence of recombination from a seperate analysis using the program Recombination Detection Program (RDP4), for which the results can be found [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination_results_refined.csv). Please note that the results in this file provide the orthogroups includeded in putative recombination events as per the genus-level OrthoFinder analysis. To work out names of the species-level orthogroups for each of these genus-level orthogroups, you will need to refer to this file [`sequence_matches_gene_identity.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches_gene_identity.xlsx)|
+
+*Genera currently recognised by the ICTV as part of the Family *Iridoviridae* are: *Megalocytivirus*, *Ranavirus*, *Lymphocystivirus*, *Iridovirus*, *Chloriridovirus*, and *Decapodiridovirus*. The virus *Daphnia iridescent virus 1* is reocgnised by the ICTV as a 'Related, unclassified virus'.
+
+*Species currently recognised by the ICTV as part of the Genus *Megalocytivirus* are: *Megalocytivirus pagrus1* and *Megalocytivirus lates1*. European chub iridovirus is reocgnised by the ICTV as a 'Related, unclassified virus' part of the genera *Megalocytivirus*. Three spined stickleback virus is not yet classified by the ICTV as part of the Genus *Megalocytivirus*.
+
 
 ## Part Three: Generate final trees
 This is the final part of the analysis where we generate a final family, genus, and species, based on a multiple sequence alignments of concatenated genes at each taxonomic level. The genes concatenates are those selected as part of Part Two: Gene analysis. 
