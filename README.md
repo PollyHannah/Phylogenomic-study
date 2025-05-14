@@ -79,10 +79,11 @@ Computers are great but they're not perfect. This is why I manually curate the P
 
 To save time, I didn't manually check every annotation for every genome. Head to the directory [`annotation_check`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/annotation_check) for information including; the annotations I manually checked for each genomes, how I decided which annotations I kept, edited or removed, a list of the annotations which I edited or removed, the genomes removed from my analysis due to assumed sequencing or assembly errors (and why), and how I processed proteome files to get them into a format ready for the next step of the pipeline. 
 
+### Whole genome alignment
+It's not used in this pipeline, but if interested, I generated a whole genome alignment for all *Megalocytivirus pagrus1* genomes part of my analysis, using the program Mauve. The alignment can be found  in this repository called [`alignment_mpagrus1.fas`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_mpagrus1.fas).
+
 ## Part Two: Gene analysis
 This is where we take the freshly re-annotated sequences and identify a set of core genes with the help of OrthoFinder.
-
-By the way, I generated a whole genome alignment for all *Megalocytivirus pagrus1* genomes part of my analysis, using the program Mauve. The alignment can be found  in this repository called [`alignment_mpagrus1.fas`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_mpagrus1.fas).
 
 ### Sort proteome files by taxonomic level
 We run Orthofinder three times - once each with genomes at the family, genus and species level. To do this we need to sort the proteomes we generated as part of 'Part One: re-annotation and quality check' into three seperate directories. 
