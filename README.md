@@ -112,7 +112,7 @@ The output files will be saved (respectively) into three new directories
 * `orthofinder_2_genus`, and
 * `orthofinder_2_species`.
 
-[!NOTE TEST]
+>[!NOTE TEST]
 >By the way, I added the genome European chub iridovirus or 'ECIV' (accession number MK637631) *after* completing the OrthoFinder run for the family, genus and species-level. The first set of OrthoFinder runs were done on 13 February 2025 and OrthoFinder automatically called the output directory for those runs `Results_Feb13/`. The second set of OrthoFinder runs, now including ECIV were done 9 May 2025 and therefore OrthoFinder automatically called the output directory for those runs `Results_May09/`. There is no species-level analysis which includes the genome ECIV. That's because the species level analysis only included M. pagrus1 genomes (which ECIV is not!). 
 
 ### Match orthogroups across taxonomic levels
