@@ -2,7 +2,7 @@
 This page includes on the annotations I manually checked and for which genomes, how I decided on which annotations I would keep, edit or remove, a list of the annotations which I edited or removed, the genomes which I removed from my analysis due to assumed sequencing or assembly errors (and why), and how I processed proteome files to get them into a format ready for the next step of the pipeline.
 
 You will need the following software:
-* Geneious Prime (Version 2020.2.5).
+* Geneious Prime (version 2020.2.5).
 * [OrthoFinder](https://github.com/davidemms/OrthoFinder) (version 2.5.4)
 * [Prokka](https://github.com/tseemann/prokka) (version 1.14.5)
 
