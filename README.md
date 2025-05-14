@@ -113,7 +113,7 @@ The output files will be saved (respectively) into three new directories
 * `orthofinder_2_species`.
 
 >[!NOTE]
->By the way, I added the genome European chub iridovirus or 'ECIV' (accession number MK637631) after completing the OrthoFinder run for the family, genus and species-level. The first set of OrthoFinder runs were done on 13 February 2025 and OrthoFinder automatically called the output directory for those runs `Results_Feb13/`. The second set of OrthoFinder runs, now including ECIV were done 9 May 2025 and therefore OrthoFinder automatically called the output directory for those runs `Results_May09/`. There is no species-level analysis which includes the genome ECIV. That's because the species level analysis only included M. pagrus1 genomes (which ECIV is not!). 
+>By the way, I added the genome European chub iridovirus or 'ECIV' (accession number MK637631) after completing the OrthoFinder run for the family, genus and species-level. The first set of OrthoFinder runs were done on 13 February 2025 and OrthoFinder automatically called the output directory for those runs `Results_Feb13/`. The second set of OrthoFinder runs, now including ECIV were done 9 May 2025 and therefore OrthoFinder automatically called the output directory for those runs `Results_May09/`. There is no species-level analysis which includes the genome ECIV. That's because the species level analysis only included M. pagrus1 genomes (which ECIV is not!). Whilst the remainder of this analysis is based on the OrthoFinder which did not include ECIV, I insert the ECIV sequence information into the multiple sequence alignments later down the track.  
 
 ### Match orthogroups across taxonomic levels
 The OrthoFrinder analysis for each taxonomic group has been run seperately. This means that the orthogroup assigned to each gene can differ in the ouputs for the species, genus and family level. For example, the orthogroup containing genes in the species-level analysis could be OG0000002, whereas the same set of genes in the genus level analysis could be orthogroup OG0000083. 
@@ -180,7 +180,7 @@ You can check out my output `orthogroups_occpancy.tsv` files here for the [famil
 Have the files as shown above? Great! Now run the same analysis for the remaining two taxonomic levels (specifying the options as described above), and decide on a core gene criteria based on your results. 
 
 >[!NOTE]
->The R analysis results for the family and genus level OrthoFinder output which included the ECIV genome (accession number MK637631) which can be found in this repository for the [family](https://github.com/PollyHannah/Phylogenomic-study/blob/main/r_analysis_results/family_eciv) and [genus](https://github.com/PollyHannah/Phylogenomic-study/blob/main/r_analysis_results/genus_eciv) levels. Be aware though - OrthoFinder re-assigns orthogroups every time it is run. Therefore, the orthogroup OG0000002 in the family level analysis without ECIV included, is not necessarily the same as OG0000002 in the family level analysis with ECIV included. I explain a little later how I worked out which orthogroups match.    
+>The R analysis results for the family and genus level OrthoFinder output which included the ECIV genome (accession number MK637631) which can be found in this repository for the [family](https://github.com/PollyHannah/Phylogenomic-study/blob/main/r_analysis_results/family_eciv) and [genus](https://github.com/PollyHannah/Phylogenomic-study/blob/main/r_analysis_results/genus_eciv) levels. Beaware, OrthoFinder re-assigns orthogroups every time it's run. Therefore, the orthogroup OG0000002 in the family level analysis without ECIV included, is not necessarily the same as OG0000002 in the family level analysis with ECIV included. I explain a little later how I worked out which orthogroups match.    
 
 ##### Decide on a core gene criteria (occupancy threshold)
 Based on the output files from the 'analyse' step above, you can decide on which orthogroups you would like to retain for further analysis. I did this based on the 'Occupancy Threshold' which is the minimum proprtion of genomes where a gene is present, for it to be retained for further analysis. The higher the occupancy threshold (i.e. the more genomes with the gene present) the less genes you'll retain. 
@@ -236,6 +236,9 @@ You will now have three new directories containing trimmed multiple sequence ali
 * [alignments_species_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle5_edited_trimmed) (contains 115 files)
 
 Note that there are now only 30 files in the directory [alignments_family_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle5_edited_trimmed_25) This is beacasue I removed the family-level alignments which contained no taxa other than megalocytivirus taxa. That is because there is no additional information we can get from these alignments that aren't in the genus and species level alignments. The directory originally contained 114 files but I deleted 84 alignments, leaving 30. 
+
+>[!NOTE]
+> Here is where I took the ECIV sequence for a select set of orthogroups and inserted it into the re-aligned, edited and trimmed alignments. I inserted the ECIV gene sequence into 27 family level alignments and 51 genus level alignments. To work out which orthogroups matched which between OrthoFinder runs, I ran the bash script [script_match_orthogroups_2](https://github.com/PollyHannah/Phylogenomic-study/blob/main/eciv/script_match_orthogroups_2.sh). The script matched the sequences across OrthoFinder runs in the output file [`sequence_matches.txt`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/eciv/sequence_matches.txt). I transformed the data in Microsoft Excel and saved the file as [`sequence_matches_2.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/eciv/sequence_matches_2.xlsx). To understand which alignments I chose to insert ECIV sequences into, head to the section below 'Identify genes to omit from family/genus/species trees'.
 
 #### 6. Assign orthogroup identities
 I assiged possible identities to orthogroups (i.e which genes they might be) by doing an NCBI BLASTp search which compares protein query sequences to a protein database. I did this on the command line using the BLAST+ suite. There is a good tutorial [here](https://conmeehan.github.io/blast+tutorial.html) on how to install and conduct a BLAST+ search. 
@@ -306,7 +309,6 @@ I combined the gene identity data above ([`gene_identity.xlsx`](https://github.c
 The combined data file can be found (here)[https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches_gene_identity.xlsx] and is called `sequence_matches_gene_identity.xlsx`.
 
 ### Generate new Q matrices
-
 Subsitution patterns in iridoviridae and mcv are likely to be somewhat different from those captured in existing rate matrices like LG and WAG. So now we use [Qmaker](https://doi.org/10.1093/sysbio/syab010) to build two new substitution models - one for the iridoviridae as a whole (Q.iridoviridae), and one for megalocytiviruses (Q.mcv).
 
 There are two scripts to do this. The first builds the matrices themselves, and then applies them to the family level and genus level datasets as a sanity check. To run this, simply do this:
@@ -426,6 +428,8 @@ I rooted the trees at the internal branch which split majority of ISKNV genomes 
 
 *Species currently recognised by the ICTV as part of the Genus *Megalocytivirus* are: *Megalocytivirus pagrus1* and *Megalocytivirus lates1*. European chub iridovirus is reocgnised by the ICTV as a 'Related, unclassified virus' part of the genera *Megalocytivirus*. Three spined stickleback virus is not yet classified by the ICTV as part of the Genus *Megalocytivirus*.
 
+>[NOTE!]
+> The 21 family level alignments and 51 genus level alignments I chose to insert ECIV sequences into, were those which formed the basis of gene trees which recorded 'FALSE' against each of the three criteria for the relevant taxonomic level using the data from the original OrthoFinder output. I knew the remaining alignments were not going to make it into the final concatonated trees and therefore did not bother to include the ECIV sequence in them. Once i had inserted the ECIV sequence into the alignments, I re-did the criteria assessment above. A small number of genes at the family level went from 'FALSE' to 'TRUE'. The results in the document `gene_review.xlsx` include the results for all the alignments, including those with ECIV included.
 
 ## Part Three: Generate final trees
 This is the final part of the analysis where we generate a final family, genus, and species, based on a multiple sequence alignments of concatenated genes at each taxonomic level. The genes concatenates are those selected as part of Part Two: Gene analysis. 
