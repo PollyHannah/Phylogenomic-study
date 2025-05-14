@@ -108,9 +108,12 @@ script_TBC_Orthofinder.sh
 ```
 
 The output files will be saved (respectively) into three new directories 
-* `Orthofinder_2_family`,
+* `orthofinder_2_family`,
 * `orthofinder_2_genus`, and
 * `orthofinder_2_species`.
+
+[!NOTE TEST]
+By the way, I added the genome European chub iridovirus or 'ECIV' (accession number MK637631) *after* completing the OrthoFinder run for the family, genus and species-level. The first set of OrthoFinder runs were done on 13 February 2025 and OrthoFinder automatically called the output directory for those runs `Results_Feb13/`. The second set of OrthoFinder runs, now including ECIV were done 9 May 2025 and therefore OrthoFinder automatically called the output directory for those runs `Results_May09/`. There is no species-level analysis which includes the genome ECIV. That's because the species level analysis only included M. pagrus1 genomes (which ECIV is not!). 
 
 ### Match orthogroups across taxonomic levels
 The OrthoFrinder analysis for each taxonomic group has been run seperately. This means that the orthogroup assigned to each gene can differ in the ouputs for the species, genus and family level. For example, the orthogroup containing genes in the species-level analysis could be OG0000002, whereas the same set of genes in the genus level analysis could be orthogroup OG0000083. 
@@ -173,8 +176,10 @@ The `orthogroups_occpancy_histogram.pdf` file should look something like the ima
 The `orthogroups_occpancy.tsv` should look something like the image below. It includes the raw data used to generate the histogram along with the 'Occupancy' for each orthogroup.
 ![R script output](https://github.com/user-attachments/assets/5e71f5ee-b6c2-4b68-8a52-36acc6abe271)
 
-You can check out my output `orthogroups_occpancy.tsv` files here for the [family]([`orthogroups_occpancy.tsv`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/r_analysis_results/family/orthogroups_occpancy.tsv), [genus](https://github.com/PollyHannah/Phylogenomic-study/blob/main/r_analysis_results/genus/orthogroups_occpancy.tsv) and [species](https://github.com/PollyHannah/Phylogenomic-study/blob/main/r_analysis_results/genus/orthogroups_occpancy.tsv) level. 
+You can check out my output `orthogroups_occpancy.tsv` files here for the [family](https://github.com/PollyHannah/Phylogenomic-study/blob/main/r_analysis_results/family/orthogroups_occpancy.tsv), [genus](https://github.com/PollyHannah/Phylogenomic-study/blob/main/r_analysis_results/genus/orthogroups_occpancy.tsv) and [species](https://github.com/PollyHannah/Phylogenomic-study/blob/main/r_analysis_results/genus/orthogroups_occpancy.tsv) level. 
 Have the files as shown above? Great! Now run the same analysis for the remaining two taxonomic levels (specifying the options as described above), and decide on a core gene criteria based on your results. 
+
+
 
 ##### Decide on a core gene criteria (occupancy threshold)
 Based on the output files from the 'analyse' step above, you can decide on which orthogroups you would like to retain for further analysis. I did this based on the 'Occupancy Threshold' which is the minimum proprtion of genomes where a gene is present, for it to be retained for further analysis. The higher the occupancy threshold (i.e. the more genomes with the gene present) the less genes you'll retain. 
@@ -351,7 +356,7 @@ The output files in each directory, will include the following for each gene tre
 3. `.fa.log` which is a log of the whole run.
 4. `.fa.ckp.gz`, which is a checkpoint file used to resume the analysis if there is an interruption to the running of the program.
 
-script_TBC_iqtree.shNow, for ease of reference, we want to sort the IQ-TREE output files so all the files related each orthogroup can be found in their own directory. Currently, the output files for all orthogroups are housed in the same directory for each orthogroup. 
+Now, for ease of reference, we want to sort the IQ-TREE output files so all the files related each orthogroup can be found in their own directory. Currently, the output files for all orthogroups are housed in the same directory for each orthogroup. 
 
 To sort the files, run the script `script_five_sort_files.sh` by going:
 ```bash
@@ -398,14 +403,12 @@ I reviewed gene trees based on a set criteria at the family, genus and species l
 
 How did I review the gene trees? I opened each gene tree in FigTree, I then rooted it and assessed it based on the relevant criteria (tabulated below). The branches in the tree on which I rooted the family, genus and species-level trees are provided below. I then input the result of the assessment for the relevant criteria as either ‘TRUE’ or ‘FALSE’ into the spreadsheet [`gene_review.csv`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/gene_review.csv). 
 
-The three spined stickleback iridovirus (TSIV) (accession number PQ335173_PQ335174) was considered a separate species of megalocytivirus for the purpose of this review.
-
 ##### Where did I root the gene trees?
 ###### Family-level 
 I rooted the tree at the internal branch which split the *Megalocytivirus* genera from the other *Iridoviridae* genera. 
 
 ###### Genus level 
-I rooted the trees at the internal branch which split TSIV, or where *Megalocytivirus lates1* genomes were present, TSIV and *M. lates1* genomes, from the *M. pagrus1* genomes (i.e. ISKNV, TRBIV and RSIV genomes). 
+I rooted the trees at the internal branch which split TSIV, ECIV and *Megalocytivirus lates1* genomes (where present), from the *M. pagrus1* genomes (i.e. ISKNV, TRBIV and RSIV genomes). 
 
 ###### Species-level 
 I rooted the trees at the internal branch which split majority of ISKNV genomes from the TRBIV and RSIV genomes. 
