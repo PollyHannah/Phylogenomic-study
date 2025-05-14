@@ -12,7 +12,7 @@ There are currently two species of megalocytivirus recognised by the Internation
 
 You need to classify *M. pagrus1* genomes to the genotype level to complete this study. This classification is important for Part one: re-annotation and quality check, as well as Part Two: Core gene analysis. 
 
-## How did i classify megalocytivirus genomes?
+## How did I classify megalocytivirus genomes?
 I classified *Megalocytivirus* genomes down to the species / genotype level based on sequence similarity. To do this, I chose a reference genome from each of the three *M. pagrus1* genotypes and one for the *M. lates1* species (tabulated below). I chose these genomes given they were published in a peer reviewed journals and were available on NCBI Genbank as fully annotated genomes.
 
 | Genotype or species | Accession | Publication DOI |
