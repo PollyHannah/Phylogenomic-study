@@ -23,7 +23,7 @@ I classified *Megalocytivirus* genomes down to the species / genotype level base
 | SDDV | OM037668 | https://doi.org/10.3390/v13081617 |
 
 ### FastANI
-I then used FastANI (version 1.34) to compute the sequence similarity between all the genomes included in my study and each of the reference genomes tabulated above. 
+I then used FastANI to compute the sequence similarity between all the genomes included in my study and each of the reference genomes tabulated above. 
 
 FastANI computes whole-genome Average Nucleotide Identity (ANI) which is the mean nucleotide identity of orthologous gene pairs shared between two genomes.
 
