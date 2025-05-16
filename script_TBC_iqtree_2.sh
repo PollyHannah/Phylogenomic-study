@@ -1,15 +1,4 @@
 #!/bin/bash
-#SBATCH --account=OD-220983
-#SBATCH --job-name="2025-05-04_iqtree_array"
-#SBATCH --partition=io
-#SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=16
-#SBATCH --mem-per-cpu=1G
-#SBATCH --mail-type=FAIL,BEGIN,END
-#SBATCH --mail-user=polly.hannaford@csiro.au
-#SBATCH --time=01-00:00:00
-#SBATCH --array=0-2
 
 module load iqtree/2.2.0.5
 

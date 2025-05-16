@@ -2,9 +2,9 @@
 
 # Define source and target directory pairs
 declare -A dir_pairs=(
-  ["alignments_family_muscle5_edited_trimmed"]="alignments_family_muscle5_edited_trimmed_concatonation"
-  ["alignments_genus_muscle5_edited_trimmed"]="alignments_genus_muscle5_edited_trimmed_concatonation"
-  ["alignments_species_muscle5_edited_trimmed"]="alignments_species_muscle5_edited_trimmed_concatonation"
+  ["alignments_family_muscle5_edited_trimmed"]="alignments_family_muscle5_edited_trimmed_concatenation"
+  ["alignments_genus_muscle5_edited_trimmed"]="alignments_genus_muscle5_edited_trimmed_concatoenation"
+  ["alignments_species_muscle5_edited_trimmed"]="alignments_species_muscle5_edited_trimmed_concatenation"
 )
 
 # Define OG lists
@@ -55,10 +55,10 @@ copy_files() {
 
 # Run the copy for each set
 copy_files "alignments_family_muscle5_edited_trimmed" \
-           "alignments_family_muscle5_edited_trimmed_concatonation" "${family_ogs[@]}"
+           "alignments_family_muscle5_edited_trimmed_concatenation" "${family_ogs[@]}"
 
 copy_files "alignments_genus_muscle5_edited_trimmed" \
-           "alignments_genus_muscle5_edited_trimmed_concatonation" "${genus_ogs[@]}"
+           "alignments_genus_muscle5_edited_trimmed_concatenation" "${genus_ogs[@]}"
 
 copy_files "alignments_species_muscle5_edited_trimmed" \
-           "alignments_species_muscle5_edited_trimmed_concatonation" "${species_ogs[@]}"
+           "alignments_species_muscle5_edited_trimmed_concatenation" "${species_ogs[@]}"
