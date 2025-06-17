@@ -194,7 +194,7 @@ First make three directories:
 ```bash
 mkdir alignments_family alignments_genus alignments_species
 ```
-Then, look at the `orthogroups_occpancy.tsv` for each taxonomic level and check out the occupany of each orthogroup. If the occupancy of an orthogroup is above or equal to the occupancy threshold you chose, them move it into the newly created directory for the relevant taxonomic level. As my Occupancy Threshold was 70%, I moved all multiple sequence alignments which had an Occupancy Threshold of 70% or higher in the file `orthogroups_occpancy.tsv`, to the directories linked above.
+Then, look at the `orthogroups_occpancy.tsv` for each taxonomic level and check out the occupany of each orthogroup. If the occupancy of an orthogroup is above or equal to the occupancy threshold you chose, them move it into the newly created directory for the relevant taxonomic level. As my Occupancy Threshold was 70%, I moved all multiple sequence alignments which had an Occupancy Threshold of 70% or higher in the file `orthogroups_occpancy.tsv`, to the directories linked below.
 
 You will now have three new directories containing multiple sequence alignment files (`.fa` files) as outlined below. 
 * [alignments_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family) (contains 114 files)
