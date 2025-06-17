@@ -441,14 +441,14 @@ bash script_TBC_collect_concatenation_alignments.sh
 
 The script script copies the relevant multiple sequence alignments to new directories:
 
-* [`alignments_family_muscle_edited_trimmed_concatenation`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited_trimmed_concatenation) (contains alignments for 27 genes)
+* [`alignments_family_muscle_edited_trimmed_concatenation`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited_trimmed_concatenation) (contains alignments for 22 genes)
 * [`alignments_genus_muscle_edited_trimmed_concatenation`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle_edited_trimmed_concatenation) (contains alignments for 51 genes)
 * [`alignments_species_muscle_edited_trimmed_concatenation`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species_muscle_edited_trimmed_concatenation) (contains alignments for 44 genes)
 
 ### Concatenate genes
-I drafted a python script to concatenate the genee (in order) for each taxonomic level. To run the script go:
+I drafted a python script to concatenate the gene for each taxonomic level. You need to specify the input folder when you run the script as well as the name of the output .fasta file. For exmaple. to run the script for the family level, go:
 ``` bash
-python script_TBC_concatenate.py
+python script_TBC_concatenate.py alignments_family_muscle_edited_trimmed_concatenation concatenated_alignment_family
 ```
 The script generates a new multiple sequence alignment file of concatenated genes for each taxonomic level and saves them in the mcv directory. The files generated are as below:
 * [`concatenated_alignment_family`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/concatenated_alignment_family.fasta)
