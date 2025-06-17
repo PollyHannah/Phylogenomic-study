@@ -198,11 +198,11 @@ Then, look at the `orthogroups_occpancy.tsv` for each taxonomic level and check 
 
 You will now have three new directories containing multiple sequence alignment files (`.fa` files) as outlined below. 
 * [alignments_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family) (contains 115 files, OG....0 to OG..114)
-* [alignments_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus) (contains 115 files)
+* [alignments_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus) (contains 116 files, OG....0 to OG..115)
 * [alignments_species](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species) (contains 115 files)
 
 #### 3. Re-align alignments 
-I used [MUSCLE5](https://github.com/rcedgar/muscle) (version 5.0.1428) to re-align the mafft alignments to imporve the accuracy of the alignments. The script to do this is in this repository which saved the re-aligned files into three new directories. Run it like this:
+I used [MUSCLE5](https://github.com/rcedgar/muscle) (version 5.0.1428) to re-align the mafft alignments to improve the accuracy of the alignments. The script to do this is saved in this repository. The script saves the re-aligned files into three new directories. Run it like this:
 ```bash
 bash script_TBC_muscle.sh
 ```
