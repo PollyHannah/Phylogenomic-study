@@ -8,7 +8,7 @@ Go to the file `setup.md` in this repository, for information about how to set-u
 * [OrthoFinder](https://github.com/davidemms/Orthofinder) (version 2.5.4)
 * Geneious Prime (version 2020.2.5)
 * [MUSCLE5](https://github.com/rcedgar/muscle) (version 5.0.1428)
-* [TrimAL ](https://github.com/inab/trimal) (version 1.4.1r22) 
+* [TrimAl ](https://github.com/inab/trimal) (version 1.4.1r22) 
 * [IQ-TREE](https://github.com/iqtree/iqtree2) (version 2.2.0.5)
 * [R Script](https://www.r-project.org/) (version 4.0.5)
 * [GNU Parallel](https://github.com/gitGNU/gnu_parallel)
@@ -208,8 +208,8 @@ bash script_TBC_muscle.sh
 ```
 You will now have three new directories containing re-aligned multiple sequence alignment files (`.fa` files) as outlined below. 
 * [alignments_family_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family__muscle) (contains 31 files)
-* [alignments_genus_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle) (contains 115 files)
-* [alignments_species_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species_muscle) (contains 115 files)
+* [alignments_genus_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle) (contains 116 files)
+* [alignments_species_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species_muscle) (contains 116 files)
 
 Note that there are now only 31 files in the directory [alignments_family_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle) This is beacasue I removed the family-level alignments which contained no taxa other than megalocytivirus taxa. That is because there is no additional information we can get from these alignments that aren't in the genus and species level alignments. The directory originally contained 115 files but I deleted 84 alignments, leaving 31. 
 
@@ -228,7 +228,7 @@ I saved the hand-edited alignments in the following directories in this reposito
 * [alignments_species_muscle_edited](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species_muscle_edited) (contains 115 files)
 
 #### 5. Trim alignments 
-Now use TrimAL to trim the multiple sequence alignments by removing columns where fewer than 25% of sequences contain an amino acid. The script I wrote to complete this trimming is saved in this repository. To run it, go:
+Now use TrimAl to trim the multiple sequence alignments by removing columns where fewer than 25% of sequences contain an amino acid. The script I wrote to complete this trimming is saved in this repository. To run it, go:
 ```bash
 script_TBC_trimal.sh
 ```
