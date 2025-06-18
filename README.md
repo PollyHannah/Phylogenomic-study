@@ -202,7 +202,7 @@ You will now have three new directories containing multiple sequence alignment f
 * [alignments_species](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species) (contains 116 files, OG....0 to OG..115)
 
 #### 3. Re-align alignments 
-I used [MUSCLE5](https://github.com/rcedgar/muscle) (version 5.0.1428) to re-align the mafft alignments to improve the accuracy of the alignments. The script to do this is saved in this repository. The script saves the re-aligned files into three new directories. Run it like this:
+I used MUSCLE5 to re-align the mafft alignments to improve the accuracy of the alignments. The script to do this is saved in this repository. The script saves the re-aligned files into three new directories. Run it like this:
 ```bash
 bash script_TBC_muscle.sh
 ```
@@ -211,16 +211,16 @@ You will now have three new directories containing re-aligned multiple sequence 
 * [alignments_genus_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle) (contains 116 files)
 * [alignments_species_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species_muscle) (contains 116 files)
 
-Note that there are now only 31 files in the directory [alignments_family_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle) This is beacasue I removed the family-level alignments which contained no taxa other than megalocytivirus taxa. That is because there is no additional information we can get from these alignments that aren't in the genus and species level alignments. The directory originally contained 115 files but I deleted 84 alignments, leaving 31. 
+Note that there are now only 31 files in the directory [alignments_family_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle) This is beacasue I removed the family-level alignments which contained no taxa other than taxa belonging to the genus *Megalocytivirus*. That is because there is no additional information we can get from these alignments that isn't already in the genus and species level alignments for these genes. The directory originally contained 115 files but I deleted 84 alignments, leaving 31. 
 
 #### 4. Editing alignments
 
-I then uploaded the re-aligned multiple sequence alignments to Geneious Prime and edited them by eye. Where there was a low level of sequence conservation in one sequence compared to other closely related sequences (sequences of the same genotype) and increases in the alignment quality was not able to be achieved, I deleted these sequences. I also generated Neighbor-Joining gene trees in Geneious Prime using the Geneious Tree Builder, with the 'Jukes-Cantor' Genetic Distance Model. I removed taxa which had a branch lengths of >0.9 amino acid substitutions per site. The changes I made and the reasons why can be found in [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx). 
+I then uploaded the re-aligned multiple sequence alignments to Geneious Prime and edited them by eye. Where there was a low level of sequence conservation in one sequence compared to other closely related sequences (sequences of the same genotype), and any improvement in the alignment quality could not be improved by manually shifting sequences, I deleted these sequence. I also generated Neighbor-Joining gene trees in Geneious Prime using the Geneious Tree Builder, with the 'Jukes-Cantor' Genetic Distance Model. I removed taxa which had a branch lengths of >0.9 amino acid substitutions per site. The changes I made and the reasons why can be found in [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx). 
 
 > [!IMPORTANT]  
 > Please note, I came back to do some more editing on these alignments once I had generated the IQTREE gene trees as outlined in the section below 'Generate gene trees'. This is because the IQTREE gene trees included some very long branches (longer than those estimated using Geneious Prime. The longest branches in the family-level gene trees, which were substantially longer than all remaining branches in the family level gene trees, were >2 amino acid substitutions per site. I removed all branches with >2 amino acid substitutions per site. I have noted in the spreasheet linked, which changes were made before running IQTREE, and which changes were made after running IQTREE. 
 
-For the family level alignments, *Daphniairidovirus daphnia1* sequences were removed from five seperate alignments (orthogroups OG000006, OG000010, OG000011, OG000012, OG000014, OG000015 and OG000018). The *Decapodiridovirus litopenaeus1* sequence was removed from one alignment, OG000002. Given that only one *D. daphnia1* genome and one *D. litopenaeus1* is currently publically available and included in this analysis, this meant that these orthogroups no longer qualified as 'core genes', which are genes present in every taxa part of the analysis. These genes are still considered 'phylogenetically useful genes' which are genes present in 70% of genomes part of this analysis. Further, given that both sequences from *Iridovirus armadillidium1* and *Chloriridovirus anopheles1* genomes were removed from OG0000024 were removed, this gene is also no longer considered a core gene, but is considered a phylogenetically useful gene.  The alignments for these orthogroups are still included in the hand-edited alignment files below. 
+For the family level alignments, *Daphniairidovirus daphnia1* sequences were removed from five seperate alignments (orthogroups OG000006, OG000010, OG000011, OG000012, OG000014, OG000015 and OG000018). The *Decapodiridovirus litopenaeus1* sequence was removed from one alignment, OG000002. Given that only one *D. daphnia1* genome and one *D. litopenaeus1* is currently publically available and included in this analysis, this meant that these orthogroups no longer qualified as 'core genes', which are genes present in every taxa part of the analysis. These genes are still considered 'phylogenetically useful genes' which are genes present in 70% or more of genomes included of this analysis. Further, given that both sequences from *Iridovirus armadillidium1* and *Chloriridovirus anopheles1* genomes were removed from OG0000024 were removed, this gene is also no longer considered a core gene, but is considered a phylogenetically useful gene. The alignments for these orthogroups are still included in the hand-edited alignment files below. 
 
 I saved the hand-edited alignments in the following directories in this repository.
 * [alignments_family_muscle_edited](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited) (contains 31 files)
@@ -238,7 +238,7 @@ You will now have three new directories containing trimmed multiple sequence ali
 * [alignments_species_muscle_edited_trimmed](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle_edited_trimmed) (contains 116 files)
 
 >[!NOTE]
-> Here is where I took the ECIV sequence for a select set of orthogroups and inserted it into the re-aligned, edited and trimmed alignments. I inserted the ECIV gene sequence into 27 family level alignments and 51 genus level alignments. To work out which orthogroups matched which between OrthoFinder runs, I ran the bash script [script_match_orthogroups_2](https://github.com/PollyHannah/Phylogenomic-study/blob/main/eciv/script_match_orthogroups_2.sh). The script matched the sequences across OrthoFinder runs in the output file [`sequence_matches.txt`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/eciv/sequence_matches.txt). I transformed the data in Microsoft Excel and saved the file as [`sequence_matches_2.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/eciv/sequence_matches_2.xlsx). I ran the script [`extract_eciv_sequences.sh`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/eciv/extract_eciv_sequences.sh) to pull out the ECIV sequences for each orthogroup, ready to insert into the multiple sequence alignments. To understand which alignments I chose to insert ECIV sequences into, head to the section below 'Identify genes to omit from family/genus/species trees'.
+> Here is where I took the ECIV sequence for a select set of orthogroups and inserted it into the re-aligned, edited and trimmed alignments. To work out which orthogroups matched which between OrthoFinder runs, I ran the bash script [script_match_orthogroups_2](https://github.com/PollyHannah/Phylogenomic-study/blob/main/eciv/script_match_orthogroups_2.sh). The script matched the sequences across OrthoFinder runs in the output file [`sequence_matches.txt`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/eciv/sequence_matches.txt). I transformed the data in Microsoft Excel and saved the file as [`sequence_matches_2.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/eciv/sequence_matches_2.xlsx). I ran the script [`extract_eciv_sequences.sh`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/eciv/extract_eciv_sequences.sh) to pull out the ECIV sequences for each orthogroup, ready to insert into the multiple sequence alignments. To understand which alignments I chose to insert ECIV sequences into, head to the section below 'Identify genes to omit from family/genus/species trees'.
 
 #### 6. Assign orthogroup identities
 I assiged possible identities to orthogroups (i.e which genes they might be) by doing an NCBI BLASTp search which compares protein query sequences to a protein database. I did this on the command line using the BLAST+ suite. There is a good tutorial [here](https://conmeehan.github.io/blast+tutorial.html) on how to install and conduct a BLAST+ search. 
@@ -288,7 +288,7 @@ You should now see three new directories in the mcv directory (listed below). Ea
 * [orthogroup_blastp_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthogroup_blastp_genus) (contains 116 files)
 * [orthogroup_blastp_species](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthogroup_sequence_family) (contains 116 files)
 
-Each .txt file will contain sequence match information as look similar to the image below. 
+Each `.txt` file will contain sequence match information as look similar to the image below. 
 ![BLASTP output](https://github.com/user-attachments/assets/1317a282-04e7-4ec6-a92f-850ff9ad2ca0)
 
 ##### 6.6 Interpreting BLASTp results
@@ -296,9 +296,7 @@ The BLASTp search results are found in the `.txt` files linked above. The most i
 
 The E-value is the number of hits (alignments) equivalent to a hit (or alignment) that we would expect to see by chance. Smaller E-values represent better hits. The Score (Bits) summarises the sequence similarity between the query sequence and the database hit. A higher bit score indicates a better hit. More information can be found [here](https://genomicsaotearoa.github.io/hts_workshop_mpi/level1/43_blast_interpretation/#interpretting-the-results-of-blast-queries).
 
-A spreadsheet summarising the most probable identities of each orthogroup, based on the BLASTp results, can be found in [`gene_identity.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/Gene_identity.xlsx). The 'most probable identity' was the sequence out of the 'Sequences producing significant alignments' in the BLASTp output with the  highest Score (bits) and lowest E- Value. 
-
-I highlighted cells in red which I'm not confident in, as they returned an have an E-value >1 and a Score (Bits) < 50. 
+A spreadsheet summarising the most probable identities of each orthogroup, based on the BLASTp results, can be found in [`gene_identity.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/Gene_identity.xlsx). The 'most probable identity' was the sequence out of the 'Sequences producing significant alignments' in the BLASTp output with the  highest Score (bits) and lowest E- Value. I highlighted cells in red which I'm not confident in, as they returned an have an E-value >1 and a Score (Bits) < 50. 
 
 ### Assigning matching orthogroups, gene identities
 I combined the gene identity data above ([`gene_identity.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/Gene_identity.xlsx)) with the data generated earlier which matches orthogroups across taxonomic levels. This is so you can get a better idea for the putative gene identiy of each 'group' of orthogroups across taxonomic levels. I just used the filter function in excel to do this. 
@@ -341,14 +339,14 @@ This produces the following two PCA plots. The first shows the exchangeabilities
 
 
 ### Generate gene trees
-Now we generate gene trees for each multiple sequence alignment using IQ-TREE. A script to run IQ-TREE on each multiple sequence alignment at the family, genus, and species level, can be found below. The script will determine the best-fit substitution model for each alignment usnig ModelFinder with 1000 bootstraps using ultrafast bootstrap (UFboot). The newly developed substitution models generated as part of the previous step (Q. iridoviridae and Q.mcv) will also be considered by IQ-TREE. Before you run the script, make sure you have the substitution models (available in this repository [here](https://github.com/PollyHannah/Phylogenomic-study/tree/main/qmaker)) in the directory from which you run the script. To run the script, go
+Now we generate gene trees for each multiple sequence alignment using IQ-TREE. A script to run IQ-TREE on each multiple sequence alignment at the family, genus, and species level, can be found below. The script will determine the best-fit substitution model for each alignment usnig ModelFinder with 1000 bootstraps using ultrafast bootstrap (UFboot). The newly developed substitution models generated as part of the previous step (Q. iridoviridae and Q.mcv) will also be considered by IQ-TREE. Before you run the script, make sure you have the substitution models (available in this repository [here](https://github.com/PollyHannah/Phylogenomic-study/tree/main/qmaker) in the directory from which you run the script. To run the script, go
 ```bash
 bash script_TBC_iqtree.sh
 ```
 The script will create three new directories, one for each taxonomic level, containing several files:
-[iqtree_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family) 
-[iqtree_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus)
-[iqtree_species](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species)
+[iqtree_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family) (contains 31 directories)
+[iqtree_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus) (contains 116 directories)
+[iqtree_species](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species) (contains 116 directories)
 
 The output files in each directory, will include the following for each gene tree: 
 1. `.fa.iqtree`, which is the main report file that is self-readable. You should look at this file to see the computational results. It also contains a textual representation of the final tree. 
@@ -370,36 +368,35 @@ script_TBC_move_iqtree_files.sh
 ```
 
 This script will create three new directories containing the gene trees (`.fa.treefile` files) as below 
-* [iqtree_family_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family_trees)
-* [iqtree_genus_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus_trees)
-* [iqtree_species_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species_trees)
+* [iqtree_family_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family_trees) (contains 31 files)
+* [iqtree_genus_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus_trees) (contains 116 files)
+* [iqtree_species_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species_trees) (contains 116 files)
 
 ### Review gene trees
 The next step is to review each of the gene trees to select a set of gene which are approproate to concatenate to generate a family, genus and species tree. The goal of this step is to remove genomes from gene trees which might obsqure the true relationships between taxa (i.e. genomes on super long branches). It's also the step where we and flag genes which might share different histories or for which there is evidence of recombination. The genes that are flagged as part of this process tell us interesting information about the evolutionary history of these pathogens, but will not be included in the final family/genus or species tree. 
 
 #### Remove genomes on long branches
-I opened each gene tree file (`.fa.treefile`) in FigTree to identify any further edits I wanted to make to the alignments, based on the tree. For the family-level gene trees a few long branches appeared again. Previous, I removed sequences on branches >0.9 amino acid substitutions per site. This was based on the gene trees generated in Geneious Prime (see section above '4. Editing alignments'). 
+I opened each gene tree file (`.fa.treefile`) in FigTree to identify any further edits I wanted to make to the alignments, based on the tree. For the family-level gene trees a few long branches appeared again. Previously, I removed sequences on branches >0.9 amino acid substitutions per site (see section above '4. Editing alignments'). This was based on the gene trees generated in Geneious Prime. 
 
 The gene trees based on the new models of evolution included a a handful of branches significantly longer than the other taxa. They were all >2 amino acid substitutions per site. I went back to the alignments in the directories [`alignments_family_muscle_edited`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited) and [`alignments_family_muscle_edited_trimmed`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited_trimmed) and removed the sequences on branches >2 amino acid substitutions per site. All the changes I made are included in the section above '4. Editing alignments' (see [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx`).  
 
 #### Re-run IQTREE with long branches removed
-I then re-ran IQTREE on the alignments which I edited as outlined above and included in the file [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx`). I ran the same script as in the section anove 'Generate gene trees' called `script_TBC_iqtree.sh`. I just plonked the updated alignments in a new directory and updated the script to point to the new directory to take as input. I then sorted the IQTREE output files using the script above `script_TBC_iqtree.sh` (I just updated the script to point it at the new directory generated housing the new IQTREE outputs). 
+I then re-ran IQTREE on the alignments which I edited as outlined above and included in the file [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx`). I ran the same script as in the section anove 'Generate gene trees' called `script_TBC_iqtree.sh`. I just plonked the updated alignments in a new directory and updated the script to point to the new directory to take as input. I then sorted the IQTREE output files using the script above `script_TBC_iqtree.sh`. I just updated the script to point it at the new directory generated housing the new IQTREE outputs. 
 
 I then replaced the old IQTREE output files, and gene trees, in the following directories in this repository:
 
 **IQTREE ouputs**
-* [iqtree_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family) 
-* [iqtree_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus)
-* [iqtree_species](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species)
+* [iqtree_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family) (contains 31 directories)
+* [iqtree_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus) (contains 116 directories)
+* [iqtree_species](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species) (contains 116 directories)
 
 **IQTREE gene trees**
-* [iqtree_family_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family_trees)
-* [iqtree_genus_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus_trees)
-* [iqtree_species_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species_trees)
+* [iqtree_family_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family_trees) (contains 31 files)
+* [iqtree_genus_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus_trees) (contains 116 files)
+* [iqtree_species_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species_trees) (contains 116 files)
 
 #### Identify genes to omit from family/genus/species trees
-I reviewed gene trees based on a set criteria at the family, genus and species level (tabulated below). These criteria are listed below and the letters for each criterion correspond to the letters in the spreadsheet 
-[`gene_review.csv`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/gene_review.csv) which includes the results of the gene tree review process (either ‘TRUE’ or ‘FALSE’). 
+I reviewed gene trees based on a set criteria at the family, genus and species level (tabulated below). These criteria are listed below and the letters for each criterion correspond to the letters in the spreadsheet [`gene_review.csv`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/gene_review.csv), includes the results of the gene tree review process (either ‘TRUE’ or ‘FALSE’). 
 
 How did I review the gene trees? I opened each gene tree in FigTree, I then rooted it and assessed it based on the relevant criteria (tabulated below). The branches in the tree on which I rooted the family, genus and species-level trees are provided below. I then input the result of the assessment for the relevant criteria as either ‘TRUE’ or ‘FALSE’ into the spreadsheet [`gene_review.csv`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/gene_review.csv). 
 
@@ -426,7 +423,7 @@ I rooted the trees at the internal branch which split majority of ISKNV genomes 
 *Species currently recognised by the ICTV as part of the Genus *Megalocytivirus* are: *Megalocytivirus pagrus1* and *Megalocytivirus lates1*. European chub iridovirus is reocgnised by the ICTV as a 'Related, unclassified virus' part of the genera *Megalocytivirus*. Three spined stickleback virus is not yet classified by the ICTV as part of the Genus *Megalocytivirus*.
 
 >[!NOTE]
-> The 21 family level alignments and 51 genus level alignments I chose to insert ECIV sequences into, were those which formed the basis of gene trees which recorded 'FALSE' against each of the three criteria for the relevant taxonomic level using the data from the original OrthoFinder output. I knew the remaining alignments were not going to make it into the final concatenated trees and therefore did not bother to include the ECIV sequence in them. Once I had inserted the ECIV sequence into the alignments, I re-did the criteria assessment above. A small number of genes at the family level went from 'FALSE' to 'TRUE'. The results in the document `gene_review.xlsx` include the results for all the alignments, including those with ECIV included. A list of the multiple sequence alignments which has ECIV sequences inserted can be found here for both levels of analysis (orthogroup names are as per original OrthoFinder runs: [family](https://github.com/PollyHannah/Phylogenomic-study/blob/main/eciv/family_list.txt) [genus](https://github.com/PollyHannah/Phylogenomic-study/blob/main/eciv/genus_list.txt). 
+> The family and genus level alignments I chose to insert ECIV sequences into, were those which formed the basis of gene trees which recorded 'FALSE' against each of the three criteria for the relevant taxonomic level using the data from the original OrthoFinder output. I knew the remaining alignments were not going to make it into the final concatenated trees and therefore did not bother to include the ECIV sequence in them. Once I had inserted the ECIV sequence into the alignments, I re-did the criteria assessment above. A small number of genes at the family level went from 'FALSE' to 'TRUE'. The results in the document `gene_review.xlsx` include the results for all the alignments, including those with ECIV included. A list of the multiple sequence alignments which has ECIV sequences inserted can be found here for both levels of analysis (orthogroup names are as per original OrthoFinder runs: [family](https://github.com/PollyHannah/Phylogenomic-study/blob/main/eciv/family_list.txt) [genus](https://github.com/PollyHannah/Phylogenomic-study/blob/main/eciv/genus_list.txt). 
 
 ## Part Three: Generate final trees
 This is the final part of the analysis where we generate a final family, genus, and species, based on a multiple sequence alignments of concatenated genes at each taxonomic level. The genes concatenates are those selected as part of Part Two: Gene analysis. 
