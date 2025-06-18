@@ -21,8 +21,8 @@ I classified *Megalocytivirus* genomes down to the species / genotype level base
 | RSIV | MK689686 | https://doi.org/10.3354/dao03499 |
 | TRBIV | GQ273492 | [10.1186/1743-422X-7-159](https://virologyj.biomedcentral.com/articles/10.1186/1743-422X-7-159) |
 | SDDV | OM037668 | https://doi.org/10.3390/v13081617 |
-| TSIV | PQ335173_PQ335174 | 10.3390/v16111663 |
-| ECIV | MK637631 | 10.3390/v11050440 |
+| TSIV | PQ335173_PQ335174 | [10.3390/v16111663](https://pubmed.ncbi.nlm.nih.gov/39599778/) |
+| ECIV | MK637631 | [10.3390/v11050440](https://pubmed.ncbi.nlm.nih.gov/31096590/) |
 
 ### FastANI
 I then used FastANI to compute the sequence similarity between all the genomes included in my study and each of the reference genomes tabulated above. 
