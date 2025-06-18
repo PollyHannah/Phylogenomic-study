@@ -201,6 +201,13 @@ You will now have three new directories containing multiple sequence alignment f
 * [alignments_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus) (contains 116 files, OG....0 to OG..115)
 * [alignments_species](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species) (contains 116 files, OG....0 to OG..115)
 
+##### 2.1 Update sequence names
+The sequence names allocated by OrthoFinder are updated here to simplify and unify them. I have written a script to update the sequence names in the directories above. All you need is the [`taxonomy.csv`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/taxonomy.csv) file and the directories listed above in the mcv directory. Then, from the mcv directorry, run:
+```bash
+bash script_TBC_update_sequence_names.sh
+```
+The names of each sequence in each of the files will be updated to the following syntax accession `number_genus_species_abbreviation`. 
+
 #### 3. Re-align alignments 
 I used MUSCLE5 to re-align the mafft alignments to improve the accuracy of the alignments. The script to do this is saved in this repository. The script saves the re-aligned files into three new directories. Run it like this:
 ```bash
