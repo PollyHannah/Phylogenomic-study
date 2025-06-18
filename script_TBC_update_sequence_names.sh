@@ -8,9 +8,9 @@ dirs <- c("alignments_family",
           "alignments_genus", 
           "alignments_species")
 
-output_dirs <- c("alignments_family_sequence_updated_2", 
-                 "alignments_genus_sequence_updated_2", 
-                 "alignments_species_sequence_updated_2")
+output_dirs <- c("alignments_family_sequence_updated", 
+                 "alignments_genus_sequence_updated", 
+                 "alignments_species_sequence_updated")
 
 # Load the taxonomy CSV file (make sure it's in the correct path)
 taxonomy_file <- "taxonomy.csv"  # Path to the taxonomy file

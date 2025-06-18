@@ -8,9 +8,9 @@ module load parallel
 
 # Define input directories and corresponding output directories
 declare -A directories=(
-    ["alignments_family_muscle5_edited_trimmed"]="iqtree_family"
-    ["alignments_genus_muscle5_edited_trimmed"]="iqtree_genus"
-    ["alignments_species_muscle5_edited_trimmed"]="iqtree_species"
+    ["alignments_family_muscle_edited_trimmed"]="iqtree_family"
+    ["alignments_genus_muscle_edited_trimmed"]="iqtree_genus"
+    ["alignments_species_muscle_edited_trimmed"]="iqtree_species"
 )
 
 # Ensure the custom models are available
