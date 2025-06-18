@@ -13,7 +13,7 @@ There are currently two species of megalocytivirus recognised by the Internation
 You need to classify *M. pagrus1* genomes to the genotype level to complete this study. This classification is important for Part one: re-annotation and quality check, as well as Part Two: Core gene analysis. 
 
 ## How did I classify megalocytivirus genomes?
-I classified *Megalocytivirus* genomes down to the species / genotype level based on sequence similarity. To do this, I chose a reference genome from each of the three *M. pagrus1* genotypes and one for the *M. lates1* species (tabulated below). I chose these genomes given they were published in a peer reviewed journals and were available on NCBI Genbank as fully annotated genomes.
+I classified *Megalocytivirus* genomes down to the species / genotype level based on sequence similarity. To do this, I chose a reference genome from each of the three *M. pagrus1* genotypes and one for the *M. lates1* species (tabulated below). I chose these genomes given they were published in a peer reviewed journals and were available on NCBI Genbank as fully annotated genomes. I also added the only two published genomes for European Chub iridovirus (ECIV), and Three-spined stickleback virus (TSIV) which are unclassifed megalocytiviruses.
 
 | Genotype or species | Accession | Publication DOI |
 |--------------------|-----------|-----------------|
@@ -21,6 +21,8 @@ I classified *Megalocytivirus* genomes down to the species / genotype level base
 | RSIV | MK689686 | https://doi.org/10.3354/dao03499 |
 | TRBIV | GQ273492 | [10.1186/1743-422X-7-159](https://virologyj.biomedcentral.com/articles/10.1186/1743-422X-7-159) |
 | SDDV | OM037668 | https://doi.org/10.3390/v13081617 |
+| TSIV | PQ335173_PQ335174 | 10.3390/v16111663 |
+| ECIV | MK637631 | 10.3390/v11050440 |
 
 ### FastANI
 I then used FastANI to compute the sequence similarity between all the genomes included in my study and each of the reference genomes tabulated above. 
