@@ -305,6 +305,8 @@ The E-value is the number of hits (alignments) equivalent to a hit (or alignment
 
 A spreadsheet summarising the most probable identities of each orthogroup, based on the BLASTp results, can be found in [`gene_identity.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/Gene_identity.xlsx). The 'most probable identity' was the sequence out of the 'Sequences producing significant alignments' in the BLASTp output with the  highest Score (bits) and lowest E- Value. I highlighted cells in red which I'm not confident in, as they returned an have an E-value >1 and a Score (Bits) < 50. 
 
+There were a few identities which stood out as unlikely, for exmaple 'Snake endothelial growth factor'. For those, I manually completed a NCBI BLASTp search on the online database [here](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastp&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome) and re-assigned the putative identity based on the results. The results of previous reports of the putative identities of core iridoviridae and megalocytivirus genes (Eaton et al. 2007; Chinchar et al. 2017; Fusianto et al. 2023).   
+
 ### Assigning matching orthogroups, gene identities
 I combined the gene identity data above ([`gene_identity.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/Gene_identity.xlsx)) with the data generated earlier which matches orthogroups across taxonomic levels. This is so you can get a better idea for the putative gene identiy of each 'group' of orthogroups across taxonomic levels. I just used the filter function in excel to do this. 
 
@@ -479,9 +481,15 @@ Bui Quang Minh, Cuong Cao Dang, Le Sy Vinh, Robert Lanfear (2021) QMaker: Fast a
 
 Bui Quang Minh, Heiko A Schmidt, Olga Chernomor, Dominik Schrempf, Michael D Woodhams, Arndt von Haeseler, Robert Lanfear (2020), IQ-TREE 2: New Models and Efficient Methods for Phylogenetic Inference in the Genomic Era, Molecular Biology and Evolution, Volume 37, Issue 5, Pages 1530–1534.
 
+Chinchar V. G., Hick P., Ince I. A., Jancovich J. K., Marschang R., Qin Q., Subramaniam K., Waltzek T. B., Whittington R., Williams T., Zhang Q.-Y., and Consortium I. R., ICTV virus taxonomy profile: Iridoviridae, Journal of General Virology. (2017) 98, 890–891.
+
 Diep Thi Hoang, Olga Chernomor, Arndt von Haeseler, Bui Quang Minh,and Le Sy Vinh (2018) UFBoot2: Improving the ultrafast bootstrapapproximation. Mol. Biol. Evol., 35:518â€“522. https://doi.org/10.1093/molbev/msx281
 
+Eaton H. E., Metcalf J., Penny E., Tcherepanov V., Upton C., and Brunetti C. R., Comparative genomic analysis of the family Iridoviridae: re-annotating and defining the core set of iridovirus genes, Virology Journal. (2007) 4, no. 1, https://doi.org/10.1186/1743-422x-4-11, 2-s2.0-33846848887.
+
 Edgar, RC (2021), MUSCLE v5 enables improved estimates of phylogenetic tree confidence by ensemble bootstrapping, bioRxiv 2021.06.20.449169. https://doi.org/10.1101/2021.06.20.449169.
+
+Fusianto, C. K., Becker, J. A., Subramaniam, K., Whittington, R. J., Koda, S. A., Waltzek, T. B., ... & Hick, P. M. (2023). Genotypic characterization of infectious spleen and kidney necrosis virus (ISKNV) in southeast Asian aquaculture. Transboundary and Emerging Diseases, 2023(1), 6643006.
 
 Halaly MA, Subramaniam K, Koda SA, Popov VL, Stone D, Way K, Waltzek TB. Characterization of a Novel Megalocytivirus Isolated from European Chub (Squalius cephalus). Viruses. 2019; 11(5):440. https://doi.org/10.3390/v11050440
 
