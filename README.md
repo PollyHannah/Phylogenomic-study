@@ -437,12 +437,36 @@ I rooted the trees at the internal branch which split majority of ISKNV genomes 
 >[!NOTE]
 > I used the program called 'snipit' (see tool here https://github.com/aineniamh/snipit) to plot the recombinant regions of *M. pagrus1* genomes. All the files i used to generate the snipit plots are saved in this repository [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination/). Upload `extract_sets.txt` and `Whole_genome_alignment_mauve_rdp.fasta` to the mcv directory and run `script_snipit_extract_trim.sh`as follows to extract the gene regions you want plotted.
 >``` bash
->script_snipit_extract_trim.sh
+>bash script_snipit_extract_trim.sh
 >```
 >The script will generate a directory called `alignments` which house a multiple sequence alignment files of the specified region from the whole genome alignment, for only the sequences I want plottted.
 >Then run `script_snipit.sh` on each alignment (as seen below), to generate the snipit plots. You just need to update the input/output file names in the script depending on the alignment file you're working on.
 >```bash
->script_snipit.sh
+>bash script_snipit.sh
+>```
+>As some of the regions recombinant regions were pretty large, I subsampled the alignments using the script `script_subsample.sh`. Before you run it though, you  need to update the name of the alignment file you want to subsample, and the amount of subsampling you want done under 'Step'. I subsampled by 2, 5, 10 or 20 depending on the size of the region.
+>
+>| Recombination event number | Subsample (Step) value |
+>|----------------------------|---------------------_--|
+>|1 | 10 |
+>|2 | 10 |
+>|3 | 10 |
+>|4 | 10 |
+>|5 | 10 |
+>|6 | 10 |
+>|7 | 5 |
+>|9 | 2 |
+>|10 | 2 |
+>|11 | 2 |
+>|20 | 20 |
+>|26 | 2 |
+>|31 | 2 |
+>|33 | 2 |
+>|34 | 2 |
+>
+>To run script:
+>```bash
+>bash script_subsample.sh
 >```
 
 ## Part Three: Generate final trees
