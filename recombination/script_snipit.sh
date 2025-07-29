@@ -1,0 +1,1 @@
+snipit alignments/1.fasta --colour-palette ugene --output-file 1.snipit --format svg
