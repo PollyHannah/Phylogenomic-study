@@ -469,6 +469,7 @@ I rooted the trees at the internal branch which split majority of ISKNV genomes 
 >```bash
 >bash script_subsample.sh
 >```
+>The file plots are saved [here]((https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination/plots) 
 
 ## Part Three: Generate final trees
 This is the final part of the analysis where we generate a final family, genus, and species, based on a multiple sequence alignments of concatenated genes at each taxonomic level. The genes concatenates are those selected as part of Part Two: Gene analysis. 
