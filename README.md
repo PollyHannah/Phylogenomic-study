@@ -447,7 +447,7 @@ I rooted the trees at the internal branch which split majority of ISKNV genomes 
 >As some of the regions recombinant regions were pretty large, I subsampled the alignments using the script `script_subsample.sh`. Before you run it though, you  need to update the name of the alignment file you want to subsample, and the amount of subsampling you want done under 'Step'. I subsampled by 2, 5, 10 or 20 depending on the size of the region.
 >
 >| Recombination event number | Subsample (Step) value |
->|----------------------------|---------------------_--|
+>|----------------------------|------------------------|
 >|1 | 10 |
 >|2 | 10 |
 >|3 | 10 |
