@@ -423,27 +423,52 @@ I rooted the trees at the internal branch which split majority of ISKNV genomes 
 
 | Criteria | A | B  | C |
 |--------|-----------|-----------------------|-----------------|
-| Family gene trees | International Committee for the Taxonomy of Viruses (ICTV)-recognised genera* not clustered together, seperate from other ICTV-reocgnised genera  | Megalocytivirus genomes on branch with >1.3 amino acid substitutions per site.| The only genomes now present in the gene tree were from the genus *Megalocytivirus*. This was done by runnning the script [`script_TBC_review_family_trees.sh`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_TBC_review_family_trees.sh) which looks for files which do not contain any of the following terms - Ranavirus, Daphniairidovirus , Decapodiridovirus, Lymphocystivirus, Iridovirus, or Chloriridovirus. |
-| Genus gene trees | International Committee for the Taxonomy of Viruses (ICTV)-recognised species* not clustered together, seperate from other ICTV-recognised species. |  Ratio of substitutions per site, between longest branch and second longest branch >10. This analysis was done by running the R script [`script_review_trees.R`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_review_trees.R), after setting the folder path to `folder_path <- "./iqtree_genus_trees/"`  | The only genomes now present in the gene tree were from the species *Megalocytivirus pagrus1*. This was done by runnning the script [`script_TBC_review_genus_trees.sh`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_TBC_review_genus_trees.sh) which looks for files which do not contain any of the following terms - TSIV, or SDDV (i.e. *Megalocytivirus lates1* genomes)|
-| Species gene trees | Genotypes not clustered together. |  Ratio of substitutions per site, between longest branch and second longest branch >10. This analysis was done by running the R script [`script_review_trees.R`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_review_trees.R) after setting the folder path to `folder_path <- "./iqtree_species_trees/"`| Evidence of recombination from a seperate analysis using the program Recombination Detection Program (RDP4), for which the results can be found [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination/recombination_results_refined.csv). Please note that the results in this file provide the orthogroups included in putative recombination events as per the genus-level OrthoFinder analysis. To work out names of the species-level orthogroups for each of these genus-level orthogroups, you will need to refer to this file [`sequence_matches_gene_identity.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches_gene_identity.xlsx)|
+| Family gene trees | *Genera not clustered together, seperate from other genera  | Megalocytivirus genomes on branch with >1.3 amino acid substitutions per site.| The only genomes now present in the gene tree were from the genus *Megalocytivirus*. This was done by runnning the script [`script_TBC_review_family_trees.sh`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_TBC_review_family_trees.sh) which looks for files which do not contain any of the following terms - Ranavirus, Daphniairidovirus , Decapodiridovirus, Lymphocystivirus, Iridovirus, or Chloriridovirus. |
+| Genus gene trees | *Species not clustered together, seperate from other species. |  Ratio of substitutions per site, between longest internal branch and second longest internal branch >10. This analysis was done by running the R script [`script_review_trees.R`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_review_trees.R), after setting the folder path to `folder_path <- "./iqtree_genus_trees/"`  | The only genomes now present in the gene tree were from the species *Megalocytivirus pagrus1*. This was done by runnning the script [`script_TBC_review_genus_trees.sh`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_TBC_review_genus_trees.sh) which looks for files which do not contain any of the following terms - TSIV, or SDDV (i.e. *Megalocytivirus lates1* genomes)|
+| Species gene trees | Genotypes not clustered together. |  Ratio of substitutions per site, between longest internal branch and second longest internal branch >10. This analysis was done by running the R script [`script_review_trees.R`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_review_trees.R) after setting the folder path to `folder_path <- "./iqtree_species_trees/"`| Evidence of recombination from a seperate analysis using the program Recombination Detection Program (RDP4), for which the results can be found [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination/recombination_results_refined.csv). Please note that the results in this file provide the orthogroups included in putative recombination events as per the genus-level OrthoFinder analysis. To work out names of the species-level orthogroups for each of these genus-level orthogroups, you will need to refer to this file [`sequence_matches_gene_identity.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches_gene_identity.xlsx)|
 
-*Genera currently recognised by the ICTV as part of the Family *Iridoviridae* are: *Megalocytivirus*, *Ranavirus*, *Lymphocystivirus*, *Iridovirus*, *Chloriridovirus*, and *Decapodiridovirus*. The virus *Daphnia iridescent virus 1* is reocgnised by the ICTV as a 'Related, unclassified virus'.
-
-*Species currently recognised by the ICTV as part of the Genus *Megalocytivirus* are: *Megalocytivirus pagrus1* and *Megalocytivirus lates1*. European chub iridovirus is reocgnised by the ICTV as a 'Related, unclassified virus' part of the genera *Megalocytivirus*. Three spined stickleback virus is not yet classified by the ICTV as part of the Genus *Megalocytivirus*.
+*For the purpose of this study, the Iridoviridae genera are *Iridoviridae* are: *Megalocytivirus*, *Ranavirus*, *Lymphocystivirus*, *Iridovirus*, *Chloriridovirus*, *Daphniairidovirus* and *Decapodiridovirus*. 
+*For the purpose of this study, the *Megalocytivirus* species are: *Megalocytivirus pagrus1* and *Megalocytivirus lates1*, European chub iridovirus and Three spined stickleback virus. 
 
 >[!NOTE]
 > The family and genus level alignments I chose to insert ECIV sequences into, were those which formed the basis of gene trees which recorded 'FALSE' against each of the three criteria for the relevant taxonomic level using the data from the original OrthoFinder output. I knew the remaining alignments were not going to make it into the final concatenated trees and therefore did not bother to include the ECIV sequence in them. Once I had inserted the ECIV sequence into the alignments, I re-did the criteria assessment above. A small number of genes at the family level went from 'FALSE' to 'TRUE'. The results in the document `gene_review.xlsx` include the results for all the alignments, including those with ECIV included. A list of the multiple sequence alignments which has ECIV sequences inserted can be found here for both levels of analysis (orthogroup names are as per original OrthoFinder runs: [family](https://github.com/PollyHannah/Phylogenomic-study/blob/main/eciv/family_list.txt) [genus](https://github.com/PollyHannah/Phylogenomic-study/blob/main/eciv/genus_list.txt).
 
 >[!NOTE]
+>##### snipit
 > I used the program called 'snipit' (see tool here https://github.com/aineniamh/snipit) to plot the recombinant regions of *M. pagrus1* genomes. All the files i used to generate the snipit plots are saved in this repository [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination/). Upload `extract_sets.txt` and `Whole_genome_alignment_mauve_rdp.fasta` to the mcv directory and run `script_snipit_extract_trim.sh`as follows to extract the gene regions you want plotted.
 >``` bash
->script_snipit_extract_trim.sh
+>bash script_snipit_extract_trim.sh
 >```
 >The script will generate a directory called `alignments` which house a multiple sequence alignment files of the specified region from the whole genome alignment, for only the sequences I want plottted.
 >Then run `script_snipit.sh` on each alignment (as seen below), to generate the snipit plots. You just need to update the input/output file names in the script depending on the alignment file you're working on.
 >```bash
->script_snipit.sh
+>bash script_snipit.sh
 >```
+>As some of the regions recombinant regions were pretty large, I subsampled the alignments using the script `script_subsample.sh`. Before you run it though, you  need to update the name of the alignment file you want to subsample, and the amount of subsampling you want done under 'Step'. I subsampled by 2, 5, 10 or 20 depending on the size of the region.
+>
+>| Recombination event number | Subsample (Step) value |
+>|----------------------------|------------------------|
+>|1 | 10 |
+>|2 | 10 |
+>|3 | 10 |
+>|4 | 10 |
+>|5 | 10 |
+>|6 | 10 |
+>|7 | 5 |
+>|9 | 2 |
+>|10 | 2 |
+>|11 | 2 |
+>|20 | 20 |
+>|26 | 2 |
+>|31 | 2 |
+>|33 | 2 |
+>|34 | 2 |
+>
+>To run script:
+>```bash
+>bash script_subsample.sh
+>```
+>The file plots are saved [here]((https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination/plots) 
 
 ## Part Three: Generate final trees
 This is the final part of the analysis where we generate a final family, genus, and species, based on a multiple sequence alignments of concatenated genes at each taxonomic level. The genes concatenates are those selected as part of Part Two: Gene analysis. 
