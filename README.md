@@ -442,11 +442,13 @@ I rooted the trees at the internal branch which split majority of ISKNV genomes 
 >[!NOTE]
 >##### snipit
 > I used the program called 'snipit' (see tool here https://github.com/aineniamh/snipit) to plot the recombinant regions of *M. pagrus1* genomes. All the files i used to generate the snipit plots are saved in this repository [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination/). Upload `extract_sets.txt` and `Whole_genome_alignment_mauve_rdp.fasta` to the mcv directory and run `script_snipit_extract_trim.sh`as follows to extract the gene regions you want plotted.
+>To run it go:
 >``` bash
 >bash script_snipit_extract_trim.sh
 >```
 >The script will generate a directory called `alignments` which house a multiple sequence alignment files of the specified region from the whole genome alignment, for only the sequences I want plottted.
 >Then run `script_snipit.sh` on each alignment (as seen below), to generate the snipit plots. You just need to update the input/output file names in the script depending on the alignment file you're working on.
+>To run the script, go:
 >```bash
 >bash script_snipit.sh
 >```
@@ -474,7 +476,7 @@ I rooted the trees at the internal branch which split majority of ISKNV genomes 
 >```bash
 >bash script_subsample.sh
 >```
->The file plots are saved [here]((https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination/plots) 
+>The file plots are saved [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination/plots) 
 
 ## Part Three: Generate final trees
 This is the final part of the analysis where we generate a final family, genus, and species, based on a multiple sequence alignments of concatenated genes at each taxonomic level. The genes concatenates are those selected as part of 'Part Two: Gene analysis'. 
