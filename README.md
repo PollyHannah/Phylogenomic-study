@@ -355,7 +355,7 @@ This produces the following two PCA plots. The first shows the exchangeabilities
 ### Generate gene trees
 Now we generate gene trees for each multiple sequence alignment using IQ-TREE. A script to run IQ-TREE on each multiple sequence alignment at the family, genus, and species level, can be found below. The script will determine the best-fit substitution model for each alignment usnig ModelFinder with 1000 bootstraps using ultrafast bootstrap (UFboot). The newly developed substitution models generated as part of the previous step (Q. iridoviridae and Q.mcv) will also be considered by IQ-TREE. Before you run the script, make sure you have the substitution models (available in this repository [here](https://github.com/PollyHannah/Phylogenomic-study/tree/main/qmaker) in the directory from which you run the script. To run the script, go
 ```bash
-bash script_13_iqtree.sh
+bash script_14_iqtree.sh
 ```
 The script will create three new directories, one for each taxonomic level, containing several files:
 [iqtree_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family) (contains 31 directories)
@@ -372,14 +372,14 @@ Now, for ease of reference, we want to sort the IQ-TREE output files so all the 
 
 To sort the files, run the script `script_five_sort_files.sh` by going:
 ```bash
-script_14_sort_files.sh
+script_15_sort_files.sh
 ```
 
 Next we want to pull out the `.fa.treefiles` into seperate directories so they're easy to compare all at once. This script below will copy the gene trees (`.fa.treefile` files) for each taxaonomic level and save them in new directories, one for each taxonomic level. This is just so it's easier to look through all the gene trees one after the other. 
 
 To run it go:
 ```bash
-script_15_move_iqtree_files.sh
+script_16_move_iqtree_files.sh
 ```
 
 This script will create three new directories containing the gene trees (`.fa.treefile` files) as below 
@@ -429,9 +429,9 @@ I rooted the trees at the internal branch which split majority of ISKNV genomes 
 
 | Criteria | A | B  | C |
 |--------|-----------|-----------------------|-----------------|
-| Family gene trees | *Genera not clustered together, seperate from other genera  | Megalocytivirus genomes on branch with >1.3 amino acid substitutions per site.| The only genomes now present in the gene tree were from the genus *Megalocytivirus*. This was done by runnning the script [`script_16_review_family_trees.sh`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_TBC_review_family_trees.sh) which looks for files which do not contain any of the following terms - Ranavirus, Daphniairidovirus , Decapodiridovirus, Lymphocystivirus, Iridovirus, or Chloriridovirus. |
-| Genus gene trees | *Species not clustered together, seperate from other species. |  Ratio of substitutions per site, between longest internal branch and second longest internal branch >10. This analysis was done by running the R script [`script_17_review_trees.R`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_review_trees.R), after setting the folder path to `folder_path <- "./iqtree_genus_trees/"`  | The only genomes now present in the gene tree were from the species *Megalocytivirus pagrus1*. This was done by runnning the script [`script_18_review_genus_trees.sh`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_TBC_review_genus_trees.sh) which looks for files which do not contain any of the following terms - TSIV, or SDDV (i.e. *Megalocytivirus lates1* genomes)|
-| Species gene trees | Genotypes not clustered together. |  Ratio of substitutions per site, between longest internal branch and second longest internal branch >10. This analysis was done by running the R script [`script_17_review_trees.R`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_review_trees.R) after setting the folder path to `folder_path <- "./iqtree_species_trees/"`| Evidence of recombination from a seperate analysis using the program Recombination Detection Program (RDP4), for which the results can be found [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination/recombination_results_refined.csv). Please note that the results in this file provide the orthogroups included in putative recombination events as per the genus-level OrthoFinder analysis. To work out names of the species-level orthogroups for each of these genus-level orthogroups, you will need to refer to this file [`sequence_matches_gene_identity.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches_gene_identity.xlsx)|
+| Family gene trees | *Genera not clustered together, seperate from other genera  | Megalocytivirus genomes on branch with >1.3 amino acid substitutions per site.| The only genomes now present in the gene tree were from the genus *Megalocytivirus*. This was done by runnning the script [`script_17_review_family_trees.sh`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_TBC_review_family_trees.sh) which looks for files which do not contain any of the following terms - Ranavirus, Daphniairidovirus , Decapodiridovirus, Lymphocystivirus, Iridovirus, or Chloriridovirus. |
+| Genus gene trees | *Species not clustered together, seperate from other species. |  Ratio of substitutions per site, between longest internal branch and second longest internal branch >10. This analysis was done by running the R script [`script_18_review_trees.R`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_review_trees.R), after setting the folder path to `folder_path <- "./iqtree_genus_trees/"`  | The only genomes now present in the gene tree were from the species *Megalocytivirus pagrus1*. This was done by runnning the script [`script_19_review_genus_trees.sh`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_TBC_review_genus_trees.sh) which looks for files which do not contain any of the following terms - TSIV, or SDDV (i.e. *Megalocytivirus lates1* genomes)|
+| Species gene trees | Genotypes not clustered together. |  Ratio of substitutions per site, between longest internal branch and second longest internal branch >10. This analysis was done by running the R script [`script_18_review_trees.R`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/script_review_trees.R) after setting the folder path to `folder_path <- "./iqtree_species_trees/"`| Evidence of recombination from a seperate analysis using the program Recombination Detection Program (RDP4), for which the results can be found [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination/recombination_results_refined.csv). Please note that the results in this file provide the orthogroups included in putative recombination events as per the genus-level OrthoFinder analysis. To work out names of the species-level orthogroups for each of these genus-level orthogroups, you will need to refer to this file [`sequence_matches_gene_identity.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches_gene_identity.xlsx)|
 
 *For the purpose of this study, the Iridoviridae genera are *Iridoviridae* are: *Megalocytivirus*, *Ranavirus*, *Lymphocystivirus*, *Iridovirus*, *Chloriridovirus*, *Daphniairidovirus* and *Decapodiridovirus*. 
 *For the purpose of this study, the *Megalocytivirus* species are: *Megalocytivirus pagrus1* and *Megalocytivirus lates1*, European chub iridovirus and Three spined stickleback virus. 
@@ -484,7 +484,7 @@ Now we collect the multiple seuqence alignments for the subset of genera chosen 
 
 To run the script go:
 ```bash
-bash script_19_collect_concatenation_alignments.sh
+bash script_20_collect_concatenation_alignments.sh
 ```
 
 The script script copies the relevant multiple sequence alignments to new directories:
@@ -495,7 +495,7 @@ The script script copies the relevant multiple sequence alignments to new direct
 ### Concatenate genes
 I drafted a python script to concatenate the genes for each taxonomic level. You need to specify the input folder when you run the script as well as the name of the output .fasta file. For exmaple, to run the script for the family level, go:
 ``` bash
-python script_20_concatenate.py alignments_family_muscle_edited_trimmed_concatenation concatenated_alignment_family
+python script_21_concatenate.py alignments_family_muscle_edited_trimmed_concatenation concatenated_alignment_family
 ```
 The script generates a new multiple sequence alignment file of concatenated genes for each taxonomic level and saves them in the mcv directory. The files generated are as below:
 * [`concatenated_alignment_family`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/concatenated_alignment_family.fasta)
@@ -506,7 +506,7 @@ The script generates a new multiple sequence alignment file of concatenated gene
 I drafted a script which runs IQTREE on each of the three concatenated alignments. 
 To run the script go:
 ```bash
-script_21_iqtree_2.sh
+script_22_iqtree_2.sh
 ```
 The script will produce three new directories, containing the iqtree outputs for each alignment. These directories and outputs are available in this repository, and are called:
 * [iqtree_family_concatenated](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family_concatenated)
