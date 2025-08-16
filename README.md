@@ -33,7 +33,7 @@ Download `genomes_1` directory and its contents from this repository and save th
 
 Details about each genome can be found in the `taxonomy.csv` file in this repository. There is information for 79 genomes in `taxonomy.csv` given genomes L63545 and KC138895 are included which are not included in the `genomes_1` directory. This is due to them not being the expected length. You can read more about this in the next section. Please read my [`Classification protocol`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/classification/classification%20protocol.md) to understand how I classified megalocytivirus genomes included in this study.
 
-#### Which genomes are included and exluded from the `genomes_1` directory?
+#### Which genomes are included and excluded from the `genomes_1` directory?
 I included all megalocytivirus genomes saved as 'complete' genomes under the genus *Megalocytivirus* in the [NCBI GenBank Taxonomy Browser](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi), which were the expected length. This included genomes entered into NCBI Genbank as 'unclassified' at the species level. 
 
 After realising that not all megalocytivirus genomes are neatly filed away in the right spot in NCBI GenBank, I progressively added megalocytivirus genomes which I identified in the literature to my study, where they were not already added. I also included two genomes proposed as new species of megalocytivirus. They are: 
@@ -78,9 +78,6 @@ Computers are great but they're not perfect. This is why I manually curate the P
 6. If at any stage you spy something you think is an assembly or sequencing error in a genome, remove it from the analysis all-together. 
 
 To save time, I didn't manually check every annotation for every genome. Head to the directory [`annotation_check`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/annotation_check) for information including; the annotations I manually checked for each genomes, how I decided which annotations I kept, edited or removed, a list of the annotations which I edited or removed, the genomes removed from my analysis due to assumed sequencing or assembly errors (and why), and how I processed proteome files to get them into a format ready for the next step of the pipeline. 
-
-### Whole genome alignment
-It's not used in this pipeline, but if interested, I generated a whole genome alignment for all *Megalocytivirus pagrus1* genomes part of my analysis, using the program Mauve. The alignment can be found  in this repository called [`alignment_mpagrus1.fas`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_mpagrus1.fas).
 
 ## Part Two: Gene analysis
 This is where we take the freshly re-annotated sequences and identify a set of possibly orthologous genes with the help of OrthoFinder.
