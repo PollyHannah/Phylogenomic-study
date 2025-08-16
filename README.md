@@ -341,7 +341,7 @@ The next script compares these models to existing models with two PCA plots, sim
 
 This script can be run after installing the necessary R libraries like this:
 ```bash
-Rscript script_Q_PCA.R
+Rscript script_13_Q_PCA.R
 ```
 
 This produces the following two PCA plots. The first shows the exchangeabilities, and the second the freuqency vectors. The new matrices are highlighted as red dots with black outlines. They reveal that the two matrices are distinct from each other, and from any previously estimated matrices. They nevertheless fall within the range of sensible values according to the PCA. Manual examination of the model files themselves in `iqtree_qmatrices/Q.mcv` and `iqtree_qmatrices/Q.iridoviridae` confirms that all estimted values are plausible, sensible, and not approaching any boundaries. All of this confirms that the models were estimated without issues.
