@@ -25,7 +25,7 @@ Program options:
 The RDP program found 136 recombination events, with some events occurring in more than one sequence. The results can be found in this document `recombination_results.rdp`.
 
 #### Refine results
-I followed the instructions in the RDP manual Section 10.4 ‘Testing and Refining Preliminary Recombination Hypothesis’ (see manual [here] (http://web.cbio.uct.ac.za/~darren/RDP5Manual.pdf.)) to analyse the results and decide which recombination events I would consider true recombination events, and those which I would not. 
+I followed the instructions in the RDP manual Section 10.4 ‘Testing and Refining Preliminary Recombination Hypothesis’ (see manual [here](http://web.cbio.uct.ac.za/~darren/RDP5Manual.pdf.)) to analyse the results and decide which recombination events I would consider true recombination events, and those which I would not. 
 
 I progressively refined the recombination event results but rejecting some events and not others as follows:
 * All events not detected by all five methods were rejected.
