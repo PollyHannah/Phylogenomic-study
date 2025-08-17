@@ -438,7 +438,7 @@ I rooted the trees at the internal branch which split majority of ISKNV genomes 
 
 >[!NOTE]
 >##### snipit
-> I used the program called 'snipit' (see tool here https://github.com/aineniamh/snipit) to plot the recombinant regions of *M. pagrus1* genomes. All the files i used to generate the snipit plots are saved in this repository [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination/). Upload `extract_sets.txt` and `Whole_genome_alignment_mauve_rdp.fasta` to the mcv directory and run `script_snipit_extract_trim.sh`as follows to extract the gene regions you want plotted.
+> I used the program called 'snipit' (see tool here https://github.com/aineniamh/snipit) to plot the recombinant regions of *M. pagrus1* genomes. All the files I used to generate the snipit plots are saved in the repository [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination/). Upload `extract_sets.txt` and `Whole_genome_alignment_mauve_rdp.fasta` to the mcv directory and run `script_snipit_extract_trim.sh` as follows to extract the gene regions you want plotted.
 >To run it go:
 >``` bash
 >bash script_snipit_extract_trim.sh
