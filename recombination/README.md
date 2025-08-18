@@ -1,42 +1,49 @@
 
 # Recombination detection with RDP4
-This is where I ran the program RDP4 to detect recombination amoung the species *Megalocytivirus pagrus1*, the only group for which a whole genome alignment was feasible (which is required to run the program RDP4). 
-
-I followed the [RDP4 Instruction Manual](https://web.cbio.uct.ac.za/~darren/RDP4Manual.pdf) to complete the analysis. RDP4 detects recombination using five different methods; RDP, GENECONV, Maxchi, Chimaera, and 3Seq. 
+I ran the program RDP4 to detect recombination amoung the species *Megalocytivirus pagrus1*, the only group for which a whole genome alignment was feasible, as required to run the program. RDP4 detects recombination using five different methods; RDP, GENECONV, Maxchi, Chimaera, and 3Seq. 
 You will need the following software:
 * RDP4 (version RDP4.101) (Martin et al. 2015)
 * Geneious Prime (version 2020.2.5)
 * Mauve (version 20150226)
 
+I followed the [RDP4 Instruction Manual](https://web.cbio.uct.ac.za/~darren/RDP4Manual.pdf) to complete this analysis. 
+
 ## Step 1: Generate whole genome alignment
-I generated a whole genome alignment for all *M. pagrus1* genomes part of my analysis, using the program Mauve with default parameters. The alignment can be found  in this repository called `mauve_whole_genome_alignment.xmfa`.
+I generated a whole genome alignment for all 58 *M. pagrus1* genomes part of my phylogenetic study using the program Mauve with default parameters. The alignment can be found  in this repository and is called `mauve_whole_genome_alignment.xmfa`.
 
 ### Transform alignment from .xfma to .fas
-Oddly the .xfma file did not show the whole alignment when uploaded in Geneious Prime. I needed to see the whole alignment so I uploaded it to RDP4. It uploaded the whole alignment so I could look at it. 
-
-Although, I wanted to analyse it in Geneious Prime because It’s much easier to see similarities / differences in sequences in Geneious. I exported the alignment in RDP by going: Save > Save entire alignment. This exported the alignment in .fas format. I saved this file and dragged and dropped it into Geneious Prime which worked. The file is saved in this repository as `whole_genome_alignment_mpagrus1.fas`. 
+Oddly, the .xfma file did not show the whole alignment when uploaded in Geneious Prime. I wanted to analyse it in Geneious Prime because It’s much easier to see similarities / differences in sequences in Geneious Prime. I exported the alignment in RDP4 by going: Save > Save entire alignment. This exported the alignment in .fas format. I saved this file and dragged and dropped it into Geneious Prime. The exported file is saved in this repository as `whole_genome_alignment_mpagrus1.fas`. 
 
 ## Step 2: Run RDP4
-I opened RDP and followed the instructions for ‘Step-by-Step-guide to using RDP’ (page 38) for the RDP4 instruction manual [here](http://web.cbio.uct.ac.za/~darren/RDP5Manual.pdf). I used the whole genome alignment generated above as input. 
+I opened RDP and followed the instructions for ‘Step-by-Step-guide to using RDP’ (page 38) for the RDP4 instruction manual [here](http://web.cbio.uct.ac.za/~darren/RDP5Manual.pdf). I used the whole genome alignment generated above as input (whole_genome_alignment_mpagrus1.fas). 
 
 Program options:
 · I specified the sequences as being linear.
 · I ran the program with ‘disentangle overlapping events’ not selected.
 
 ## Results 
-The RDP program found 136 recombination events, with some events occurring in more than one sequence. The results can be found in this document `recombination_results.rdp`.
+The RDP program found a total of 136 recombination events, with some events occurring in more than one sequence. The results can be found in this document `recombination_results.rdp`. 
 
 #### Refine results
-I followed the instructions in the RDP manual Section 10.4 ‘Testing and Refining Preliminary Recombination Hypothesis’ (see manual [here](http://web.cbio.uct.ac.za/~darren/RDP5Manual.pdf.)) to analyse the results and decide which recombination events I would consider true recombination events, and those which I would not. 
+I followed the instructions in the RDP manual Section 10.4 ‘Testing and Refining Preliminary Recombination Hypothesis’ (see manual [here](http://web.cbio.uct.ac.za/~darren/RDP5Manual.pdf.)) to decide which recombination events I would consider true recombination events, and those which I would not. 
 
-I progressively refined the recombination event results but rejecting some events and not others as follows:
-* All events not detected by all five methods were rejected.
-* Where the trees did not make sense, or the recombination signal in 2/3 of the detection methods was weak (as outlined in the RDP4 instruction manual) I rejected the event.
-* I rejected recombination events I could not see in the multiple sequence alignment by-eye. I did this by checking the whole genome alignment file `Whole_genome_alignment_mauve_rdp.fasta` (provided here in this repository).
+I progressively refined the recombination event results rejecting some and not others as follows:
+* All events not detected by all five detection methods were rejected.
+* Where I could not see any evidence of recombination in the phylogenetic tree generated by RDP4, or the recombination signal in 2/5 of the detection methods was weak (as outlined in the RDP4 instruction manual) I rejected the event.
+* I rejected recombination events I could not see in the multiple sequence alignment by-eye. I did this by checking the whole genome alignment file `whole_genome_alignment_mpagrus1.fas` (provided here in this repository).
 
-## Step 3: Annotate recombination events
-A file containing the details of the recombination events which I retained can be found here `recombination_results_refined.xlsx`. 
+This left me with 28 recombination events, with some events occurring in more than one sequence (see next section for details). 
 
+## Step 3: Annotate refined results
+A file containing the details of the 28 recombination events which I retained can be found here `recombination_results_refined.xlsx` (a `.csv` file version of this document can be found in this repository also). 
+
+The file includes the putative genes included in each recombination event. These are provided under the column headings 'Gene locus tag(s)' and 'Orthogroup (genus-level OrthoFinder output)'. 'Gene locus tag(s)' are the locus tags of genes included in the relevant recombination events, as per the annotations assigned as part of this study (see [here](https://github.com/PollyHannah/Phylogenomic-study/tree/main/proteome_2_species). 'Orthogroup (genus-level OrthoFinder output)' provides the orthogroups for each of the putative genes assigned as part of this study, as per the Genus-level OrthoFinder output (see [here](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthofinder_2_genus)
+
+To identify the locus tags and orthogroups included in recombination events, I took the breakpoints of each recombinant sequence (as per the RDP4 ouput `recombination_results_refined.xlsx`). This was a under ‘Breakpoints’, ‘In Recombinant Genome’.
+
+In Geneious Prime, I then extracted the relevant recombinant sequence from the whole genome alignment `whole_genome_alignment_mpagrus1.fas` and saved it in a separate file. I looked up the breakpoints in that sequence to identify the locus tags included in putative recombination events. I could then find the orthogroups for those genes using the information provided in the OrthoFinder output files [here](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthofinder_2_genus). Specifically, the file [`Orthogroups.tsv`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/orthofinder_2_genus/Results_Feb13/Orthogroups/Orthogroups.tsv).
+
+I had to extract the sequence from the whole genome alignment, because the sequencing numbers (i.e. positions of nucleotide bases) were different in the whole genomes part of my analysis (which RDP4 used as input) compared to the versions downloaded directly from GenBank. As such, the nucleotide potisions provided by RDP4 related to the positions in the recombinant genomes extracted from the whole genome alignment. 
 
 # Reference:
 Martin DP, Murrell B, Golden M, Khoosal A, Muhire B. RDP4: Detection and analysis of recombination patterns in virus genomes. Virus Evol. 2015 May 26;1(1):vev003. doi: 10.1093/ve/vev003. PMID: 27774277; PMCID: PMC5014473.
