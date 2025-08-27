@@ -14,7 +14,7 @@ Go to the file `setup.md` in this repository, for information about how to set-u
 * [GNU Parallel](https://github.com/gitGNU/gnu_parallel)
 * [BLAST+](https://www.ncbi.nlm.nih.gov/books/NBK279690/) (version 2.16.0).
 * [Mauve](https://github.com/koadman/mauve) (version 20150226)
-* [QMaker](https://academic.oup.com/sysbio/article/70/5/1046/6146362?login=true)
+* [QMaker](https://academic.oup.com/sysbio/article/70/5/1046/6146362?login=true) (version 1)
 * [FigTree](https://github.com/rambaut/figtree/) (version 1.4.4) 
 
 ## Part one: re-annotation and quality check
