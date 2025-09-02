@@ -477,6 +477,19 @@ First we put all MSAs with no evidence of recombination into new directories:
 * [`alignments_genus_muscle_edited_trimmed_concatenation`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle_edited_trimmed_concatenation) (contains alignments for 116 genes)
 * [`alignments_species_muscle_edited_trimmed_concatenation`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species_muscle_edited_trimmed_concatenation) (contains alignments for 68 genes)
 
+
+For the family level loci, a small number of loci were discovered that were split in some non-megalocytivirus taxa. These were removed from the family level locus alignments as they were not of interest here. Note that these affect a very small number of specific sequences from specific loci.
+
+These sequences are:
+
+```
+HF920637_Iridovirus_armadillidium1_n/a_2
+AF303741_Iridovirus_chilo1_n/a_2
+MF599468_Decapodiridovirus_litopenaeus1_n/a_1
+MF599468_Decapodiridovirus_litopenaeus1_n/a_2
+
+```
+
 ### Run IQTREE to generate concatenated trees and gCFs
 I drafted a script which runs IQTREE on each of the three concatenated alignments. 
 To run the script go:
