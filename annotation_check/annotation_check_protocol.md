@@ -96,6 +96,7 @@ Most of the files used/generated for each stage of the process above can be foun
 4. The **73** Genbank (.gb) files post stop codon check can be found in this repository at `annotation_check_results`/`2_genomes_post_stop_codon_check`.
 5. The **73** Genbank (.gb) files as lists of annotations post stop codon check can be found in this repository at `annotation_check_results`/`3_annotations_post_stop_codon_check`.
 6. The **73** Genbank (.txt) files as lists of annotations post stop codon check can be found in this repository at `annotation_check_results`/`4_annotations_post_stop_codon_check_txt_files`.
+7. The **73** XXXXX (.XXX) files as annotated sequences post stop codon check can be found in this repository at `XXXXXXX`
 
 All edits made for each annotations are can be found in the file `annotation_check_results`/annotations_manual_file`.xlsx. 
 
