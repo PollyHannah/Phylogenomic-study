@@ -464,14 +464,24 @@ I rooted the trees at the internal branch which split majority of ISKNV genomes 
 >```bash
 >bash script_subsample.sh
 >```
->The file plots are saved [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination/plots) 
+>The final plots are saved [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination/plots) 
+
+##### Identify alignments with insufficient sequence information
+Next up, we looked at the family- and genus-level alignments to identify those which did not contain any additional sequence information to the alignment for the same loci at at the taxonomic level below. In other words, we looked for family level alignments which only contained *Megalocytivirus* genus sequence information, and genus level alignments which only contained *Megalocytivirus pagrus1* sequence information. We flagged these to ensure we didn't include them in the final (concatenate) family and genus level alignments. We already removed a 84 loci from the family level analysis for this reason (see '3. Re-align alignments'). However, since the alignment editing step, sequences were removed and additional alignments contained insufficient sequence information. For the genus level, we just didn't think of doing this ealier in the process (like we did for the family level alignments), so we did it at this step instead. The loci removed as part of this step are tabulated below. 
+
+No species level alignments were removed as there is no taxonomic level below species part of this analysis.
+
+| | Family | Genus | Species |
+| Total number of loci removed | 4 | 20 | n/a |
+| Orthogroup names for loci removed | OG0000024, OG0000028, OG0000029, OG0000030 | OG0000082, OG0000084, OG0000086, OG0000089 ,OG0000092 ,OG0000093, OG0000094, OG0000095, OG0000096, OG0000097, OG0000099, OG0000100, OG0000101, OG0000102, OG0000103, OG0000104, OG0000105, OG0000107, OG0000110, OG0000112 | n/a |
+
 
 ## Part Three: Generate final trees
-This is the final part of the analysis where we generate a final family, genus, and species, based on a multiple sequence alignments of concatenated genes at each taxonomic level. For this analysis, we only used genes where there was no evidence of recombination. (See Supplementary Table 2 in the main manuscript). 
+This is the final part of the analysis where we generate a final family, genus, and species, based on a multiple sequence alignments of concatenated genes at each taxonomic level. For this analysis, we only used genes where there was no evidence of recombination. (See Supplementary Table 2 in the main manuscript). We also only included genes where the alignments contained additional sequence information to the alignment for the same loci at the taxonomic level below (see section above 'Identify alignments with insufficient sequence information').
 
 ### Collect genes
 
-First we put all MSAs with no evidence of recombination into new directories:
+First we put all MSAs we wanted to concatenate into new directories:
 
 * [`alignments_family_muscle_edited_trimmed_concatenation`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited_trimmed_concatenation) (contains alignments for 28 genes)
 * [`alignments_genus_muscle_edited_trimmed_concatenation`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle_edited_trimmed_concatenation) (contains alignments for 116 genes)
