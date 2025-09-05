@@ -467,14 +467,16 @@ I rooted the trees at the internal branch which split majority of ISKNV genomes 
 >The final plots are saved [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination/plots) 
 
 ##### Identify alignments with insufficient sequence information
-Next up, we looked at the family- and genus-level alignments to identify those which did not contain any additional sequence information to the alignment for the same loci at at the taxonomic level below. In other words, we looked for family level alignments which only contained *Megalocytivirus* genus sequence information, and genus level alignments which only contained *Megalocytivirus pagrus1* sequence information. We flagged these to ensure we didn't include them in the final (concatenate) family and genus level alignments. We already removed a 84 loci from the family level analysis for this reason (see '3. Re-align alignments'). However, since the alignment editing step, sequences were removed and additional alignments contained insufficient sequence information. For the genus level, we just didn't think of doing this ealier in the process (like we did for the family level alignments), so we did it at this step instead. The loci removed as part of this step are tabulated below. 
+Next up, we looked at the family- and genus-level alignments to identify those which did not contain any additional sequence information to the alignment for the same loci at at the taxonomic level below. In other words, we looked for family level alignments which only contained *Megalocytivirus* genus sequence information, and genus level alignments which only contained *Megalocytivirus pagrus1* sequence information. 
+
+We flagged these to ensure we didn't include them in the final (concatenate) family and genus level alignments. We already removed a 84 loci from the family level analysis for this reason (see '3. Re-align alignments'). However, since the alignment editing step, sequences were removed and additional alignments contained insufficient sequence information. For the genus level, we just didn't think of doing this ealier in the process (like we did for the family level alignments), so we did it at this step instead. The loci removed as part of this step are tabulated below. 
 
 No species level alignments were removed as there is no taxonomic level below species part of this analysis.
 
 | | Family | Genus | Species |
 |--|-------|-------|---------|
 | **Number of loci removed** | 4 | 20 | n/a |
-| **Orthogroup names for removed loci** | OG0000024, OG0000028, OG0000029, OG0000030 | OG0000082, OG0000084, OG0000086, OG0000089 ,OG0000092 ,OG0000093, OG0000094, OG0000095, OG0000096, OG0000097, OG0000099, OG0000100, OG0000101, OG0000102, OG0000103, OG0000104, OG0000105, OG0000107, OG0000110, OG0000112 | n/a |
+| **Orthogroup names for removed loci** | OG0000024, OG0000028, OG0000029, OG0000030 | OG0000082, OG0000084, OG0000086, OG0000089, OG0000092, OG0000093, OG0000094, OG0000095, OG0000096, OG0000097, OG0000099, OG0000100, OG0000101, OG0000102, OG0000103, OG0000104, OG0000105, OG0000107, OG0000110, OG0000112 | n/a |
 
 
 ## Part Three: Generate final trees
