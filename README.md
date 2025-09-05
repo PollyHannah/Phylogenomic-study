@@ -472,6 +472,7 @@ Next up, we looked at the family- and genus-level alignments to identify those w
 No species level alignments were removed as there is no taxonomic level below species part of this analysis.
 
 | | Family | Genus | Species |
+|--|-------|-------|---------|
 | Total number of loci removed | 4 | 20 | n/a |
 | Orthogroup names for loci removed | OG0000024, OG0000028, OG0000029, OG0000030 | OG0000082, OG0000084, OG0000086, OG0000089 ,OG0000092 ,OG0000093, OG0000094, OG0000095, OG0000096, OG0000097, OG0000099, OG0000100, OG0000101, OG0000102, OG0000103, OG0000104, OG0000105, OG0000107, OG0000110, OG0000112 | n/a |
 
