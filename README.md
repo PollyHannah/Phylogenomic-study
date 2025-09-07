@@ -493,7 +493,7 @@ First we put all MSAs we wanted to concatenate into new directories:
 * [`alignments_species_muscle_edited_trimmed_concatenation`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species_muscle_edited_trimmed_concatenation) (contains alignments for 68 genes)
 
 
-For the family level loci, the following sequences were removed from the alignment "OG00000000 modified.fa":
+For the family level loci, the following sequences were removed from the putative DNA-directed RNA polymerase alignment (`OG00000000 modified.fa`):
 
 ```
 HF920637_Iridovirus_armadillidium1_n/a_1
@@ -506,7 +506,7 @@ MF599468_Decapodiridovirus_litopenaeus1_n/a_2
 
 This locus was found to be divided into two ORFS in all three of these species (see the gene tree for this locus for more information).
 
-### Run IQTREE to generate concatenated trees and gCFs
+### Run IQTREE to generate concatenated trees and concordance factors
 I drafted a script which runs IQTREE on each of the three concatenated alignments. 
 To run the script go:
 ```bash
