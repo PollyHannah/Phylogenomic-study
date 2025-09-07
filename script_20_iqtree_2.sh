@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+module load iqtree
 
 models=(
     "Blosum62" "cpREV" "Dayhoff" "DCMut" "FLAVI" "FLU" "HIVb" "HIVw"
