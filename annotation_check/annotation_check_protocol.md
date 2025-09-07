@@ -112,6 +112,8 @@ The freshly re-annotated sequences are used to identify core genes as part of Pa
 
    * You will also find a script in this repository named `script_reformat_annotations` which reformats annotations in the form of nucleotide sequences (instead of amino acid sequences). This script isn't used as part   of my pipeline but may come in useful if you want to do further analysis using nucleotide sequences.
 
+A file containing all re-annotated sequences as General Feature Format files (.gff files) can be found in this repository called [`annotated_genome_sequences.geneious`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/annotated_genome_sequences.geneious). 
+
 ## References
 Seemann T. Prokka: rapid prokaryotic genome annotation. Bioinformatics 2014 Jul 15;30(14):2068-9. PMID:24642063
 

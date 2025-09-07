@@ -77,6 +77,8 @@ Computers are great but they're not perfect. This is why I manually curate the P
 
 To save time, I didn't manually check every annotation for every genome. Head to the directory [`annotation_check`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/annotation_check) for information including; the annotations I manually checked for each genomes, how I decided which annotations I kept, edited or removed, a list of the annotations which I edited or removed, the genomes removed from my analysis due to assumed sequencing or assembly errors (and why), and how I processed proteome files to get them into a format ready for the next step of the pipeline. 
 
+A file containing all re-annotated sequences as General Feature Format files (.gff files) can be found in this repository called [`annotated_genome_sequences.geneious`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/annotated_genome_sequences.geneious). 
+
 ## Part Two: Gene analysis
 This is where we take the freshly re-annotated sequences and identify a set of possibly orthologous genes with the help of OrthoFinder.
 
@@ -491,7 +493,7 @@ First we put all MSAs we wanted to concatenate into new directories:
 * [`alignments_species_muscle_edited_trimmed_concatenation`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species_muscle_edited_trimmed_concatenation) (contains alignments for 68 genes)
 
 
-For the family level loci, the following sequences were removed from the alignment "OG00000000 modified.fa":
+For the family level loci, the following sequences were removed from the putative DNA-directed RNA polymerase alignment (`OG00000000 modified.fa`):
 
 ```
 HF920637_Iridovirus_armadillidium1_n/a_1
@@ -504,7 +506,7 @@ MF599468_Decapodiridovirus_litopenaeus1_n/a_2
 
 This locus was found to be divided into two ORFS in all three of these species (see the gene tree for this locus for more information).
 
-### Run IQTREE to generate concatenated trees and gCFs
+### Run IQTREE to generate concatenated trees and concordance factors
 I drafted a script which runs IQTREE on each of the three concatenated alignments. 
 To run the script go:
 ```bash
