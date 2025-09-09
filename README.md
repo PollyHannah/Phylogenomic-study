@@ -17,7 +17,7 @@ Go to the file `setup.md` in this repository, for information about how to set-u
 * [QMaker](https://academic.oup.com/sysbio/article/70/5/1046/6146362?login=true) (version 1)
 * [FigTree](https://github.com/rambaut/figtree/) (version 1.4.4) 
 
-## Part one: re-annotation and quality check
+## Part one: Data collection and review
 Part one is where we collect, quality check, and re-annotate genomes for input into Part two: gene analysis. The genomes in National Centre for Biotechnology Information (NCBI) Genbank have annotations, but they are of differing quality, and done using various methods. This part aims to check and update annotations to maximise the quality of the data for phylogenetic inference.
 
 ### Create a directory for this work
