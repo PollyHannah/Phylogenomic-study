@@ -89,12 +89,12 @@ Extract the contents of a compressed file (a tarbell file in this instance).
 tar xzf diamond-linux64.tar.gz
 ```
 
-Copy the executable to the relevant directory in your system path
+Copy the executable to the relevant directory in your system path.
 ```bash
 sudo cp diamond /file/path/saved/to/clipboard
 ```
 
-If you get an error that one of the installed OrthoFinder dependencies (i.e. modules, like DIAMOND or blast+) cannot be located, load the module yourself. For example
+If you get an error that one of the installed OrthoFinder dependencies (i.e. modules, like DIAMOND or blast+) cannot be located, load the module yourself. For example:
 ```bash
 module load blast+
 ```
