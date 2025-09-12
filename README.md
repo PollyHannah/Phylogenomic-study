@@ -410,6 +410,8 @@ We then reviewed each of the final gene trees at the family and genus level to l
 
 2. Trees in which the megalocytivirus genomes were on a very long branch separating them from other genera (see details in manuscript), indicating possible recombination with taxa from outside the iridoviridae.
 
+**POLLY INSERT DATA TABLE HERE SUMMARISING YOUR FINDINGS FOR EACH LOCI**.
+
 ### AU test
 
 We identified a single locus (OG0000002 at the family level) with well-supported non-monophyly of the megalocytivirus genomes. We used an AU test to ask whether monophyly could be rejected. Details, including command lines, are in the folder [iqtree_AU_test](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_AU_test). Briefly, it involves running a constrained ML tree search in which the megalocytivirus genomes are forced to be monophyletic, then asking whether this tree can be rejected in favour of the tree in which they are not monophyletic. The results show that we cannot reject monophyly, so there is no evidence of recombination at this locus. 
