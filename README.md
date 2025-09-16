@@ -17,8 +17,8 @@ Go to the file `setup.md` in this repository, for information about how to set-u
 * [QMaker](https://academic.oup.com/sysbio/article/70/5/1046/6146362?login=true) (version 1)
 * [FigTree](https://github.com/rambaut/figtree/) (version 1.4.4) 
 
-## Part one: re-annotation and quality check
-Part one is where we collect, quality check, and re-annotate genomes for input into Part two: gene analysis. The genomes in National Centre for Biotechnology Information (NCBI) Genbank have annotations, but they are of differing quality, and done using various methods. This part aims to check and update annotations to maximise the quality of the data for phylogenetic inference.
+## Part one: Data collection, review, and genome annotation 
+Part one is where we collect, quality check, and re-annotate genomes. The genomes in National Centre for Biotechnology Information (NCBI) Genbank have annotations, but they are of differing quality, and done using various methods. This part aims to check and update annotations to maximise the quality of the data for phylogenetic inference.
 
 ### Create a directory for this work
 ```bash
@@ -27,9 +27,9 @@ cd mcv
 ```
 
 ### Save genomes to mcv directory
-Download `genomes_1` directory and its contents from this repository and save the folder and contents to the mcv directory. This folder contains 67 megalocytivirus and 10 iridoviridae genomes in FASTA format (77 genomes total). 
+Download [`genomes_1`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/genomes_1) directory and its contents from this repository and save the folder and contents to the mcv directory. This folder contains 67 megalocytivirus and 10 iridoviridae genomes in FASTA format (77 genomes total). 
 
-Details about each genome can be found in the `taxonomy.csv` file in this repository. There is information for 79 genomes in `taxonomy.csv` given genomes L63545 and KC138895 are included which are not included in the `genomes_1` directory. This is due to them not being the expected length. You can read more about this in the next section. Please read my [`Classification protocol`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/classification/classification%20protocol.md) to understand how I classified megalocytivirus genomes included in this study.
+Details about each genome can be found in the `taxonomy.csv` file in this repository. There is information for 79 genomes in `taxonomy.csv` given genomes L63545 and KC138895 are included which are not included in the `genomes_1`directory. This is due to them not being the expected length. You can read more about this in the next section. Please read my [`Classification protocol`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/classification/classification%20protocol.md) to understand how I classified the megalocytivirus genomes included in this study.
 
 #### Which genomes are included and excluded from the `genomes_1` directory?
 I included all megalocytivirus genomes saved as 'complete' genomes under the genus *Megalocytivirus* in the [NCBI GenBank Taxonomy Browser](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi), which were the expected length. This included genomes entered into NCBI Genbank as 'unclassified' at the species level. 
@@ -79,11 +79,11 @@ To save time, I didn't manually check every annotation for every genome. Head to
 
 A file containing all re-annotated sequences as General Feature Format files (.gff files) can be found in this repository called [`annotated_genome_sequences.geneious`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/annotated_genome_sequences.geneious). 
 
-## Part Two: Gene analysis
+## Part Two: Orthologue detection
 This is where we take the freshly re-annotated sequences and identify a set of possibly orthologous genes with the help of OrthoFinder.
 
 ### Sort proteome files by taxonomic level
-We run OrthoFinder three times - once each with genomes at the family, genus and species level. To do this we need to sort the proteomes we generated as part of 'Part One: re-annotation and quality check' into three seperate directories. 
+We run OrthoFinder three times - once each with genomes at the family, genus and species level. To do this we need to sort the proteomes we generated as part of 'Part one: Data collection, review, and genome annotation ' into three seperate directories. 
 
 To do this, run the below script which will copy the proteomes in the directory `proteome_2_family` and save the the species proteomes to the `proteome_2_species` and the genus proteomes to `proteome_2_genus`. 
 The script uses the text files `file_list_genus.txt` and `file_list_species.txt`, to make sure you have them in the repository from which you run the script:
@@ -117,7 +117,7 @@ The output files will be saved (respectively) into three new directories
 >The second set of OrthoFinder runs, now including ECIV, were done 9 May 2025. Therefore OrthoFinder automatically called the output directory for those runs `Results_May09/`. There is no species-level analysis which includes the genome ECIV. That's because the species level analysis only included *M. pagrus1* genomes (which ECIV is not). Whilst the remainder of this analysis is based on the OrthoFinder run which did not include ECIV, I insert the ECIV sequence information into the relevant multiple sequence alignments later down the track (read on for details as to how I did that).  
 
 ### Match orthogroups across taxonomic levels
-The OrthoFrinder analysis for each taxonomic group has been run seperately. This means that the orthogroup assigned to each gene can differ in the ouputs for the species, genus and family level. For example, the orthogroup containing genes in the species-level analysis could be OG0000002, whereas the same set of genes in the genus level analysis could be orthogroup OG0000083. 
+The OrthoFinder analysis for each taxonomic group has been run seperately. This means that the orthogroup assigned to each gene can differ in the ouputs for the species, genus and family level. For example, the orthogroup containing genes in the species-level analysis could be OG0000002, whereas the same set of genes in the genus level analysis could be orthogroup OG0000083. 
 
 It's important we know the orthogroups assigned to each gene across taxonomic levels so we can analyse the data generated.
 
@@ -183,7 +183,7 @@ Have the files as shown above? Great! Now run the same analysis for the remainin
 >[!NOTE]
 >The R analysis results for the family and genus level OrthoFinder output which included the ECIV genome (accession number MK637631) can be found in this repository for the [family](https://github.com/PollyHannah/Phylogenomic-study/blob/main/r_analysis_results/family_eciv) and [genus](https://github.com/PollyHannah/Phylogenomic-study/blob/main/r_analysis_results/genus_eciv) levels. Beaware though, OrthoFinder re-assigns orthogroups every time it's run. Therefore, the orthogroup OG0000002 in the family level analysis without ECIV included, is not necessarily the same as OG0000002 in the family level analysis with ECIV included. I explain a little later how I worked out which orthogroups match..    
 
-##### Decide on a core gene criteria (occupancy threshold)
+##### Decide on 'Occupancy Threshold'
 Based on the output files from the 'analyse' step above, you can decide on which orthogroups you would like to retain for further analysis (i.e. which you consider 'conserved'). I did this based on the 'Occupancy Threshold' which is the minimum proprtion of genomes where a gene is present, for it to be retained for further analysis. The higher the occupancy threshold (i.e. the more genomes with the gene present) the less genes you'll retain. 
 
 Once you've decided on the occupancy threshold you can move on to next step. I chose a 70% Occupancy Threshold for this study.
@@ -219,7 +219,7 @@ You will now have three new directories containing re-aligned multiple sequence 
 * [alignments_genus_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle) (contains 116 files)
 * [alignments_species_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species_muscle) (contains 116 files)
 
-Note that there are now only 31 files in the directory [alignments_family_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle) This is beacasue I removed the family-level alignments which contained no taxa other than taxa belonging to the genus *Megalocytivirus*. That's because there is no additional information we can get from these alignments that isn't already in the genus and species level alignments for these genes. The directory originally contained 115 files but I deleted 84 alignments, leaving 31. 
+Note that there are now only 31 files in the directory [alignments_family_muscle](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle) This is because I removed the family-level alignments which contained no taxa other than taxa belonging to the genus *Megalocytivirus*. That's because there is no additional information we can get from these alignments that isn't already in the genus and species level alignments for these genes. The directory originally contained 115 files but I deleted 84 alignments, leaving 31. 
 
 #### 4. Editing alignments
 I then uploaded the re-aligned multiple sequence alignments to Geneious Prime and edited them by eye. Where there was a low level of sequence conservation in one sequence compared to other closely related sequences (sequences of the same genotype), and the alignment quality could not be improved by manually shifting sequences, I deleted these sequence. I also generated Neighbor-Joining gene trees in Geneious Prime using the Geneious Tree Builder, with the 'Jukes-Cantor' Genetic Distance Model. I removed taxa which had a branch lengths of >0.9 amino acid substitutions per site. The changes I made and the reasons why can be found in [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx). 
@@ -348,8 +348,7 @@ This produces the following two PCA plots. The first shows the exchangeabilities
   <img src="iqtree_qmatrices/PCA_exchangeabilities.png" alt="PCA of exchangeabilities" width="400"/>
 </p>
 
-
-### Generate gene trees
+## Gene tree estimation
 Now we generate gene trees for each multiple sequence alignment using IQ-TREE. A script to run IQ-TREE on each multiple sequence alignment at the family, genus, and species level, can be found below. The script will determine the best-fit substitution model for each alignment using ModelFinder with 1000 bootstraps using ultrafast bootstrap (UFboot). The newly developed substitution models generated as part of the previous step (Q. iridoviridae and Q.mcv) will also be considered by IQ-TREE. Before you run the script, make sure you have the substitution models (available in this repository [here](https://github.com/PollyHannah/Phylogenomic-study/tree/main/qmaker) in the directory from which you run the script. To run the script, go
 ```bash
 bash script_14_iqtree.sh
@@ -383,11 +382,8 @@ This script will create three new directories containing the gene trees (`.fa.tr
 * [iqtree_family_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family_trees) (contains 31 files)
 * [iqtree_genus_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus_trees) (contains 116 files)
 * [iqtree_species_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species_trees) (contains 116 files)
-
-### Review gene trees
-The next step is to review each of the gene trees to select a set of genes which are approproate to concatenate to generate a family, genus and species tree. The goal of this step is to remove genomes from gene trees which might obsqure the true relationships between taxa (i.e. genomes on super long branches). It's also the step where we and flag genes which might share different histories or for which there is evidence of recombination. The genes that are flagged as part of this process tell us interesting information about the evolutionary history of these pathogens, but will not be included in the final family/genus or species tree. 
-
-#### Remove genomes on long branches
+ 
+### Remove genomes on long branches
 I opened each gene tree file (`.fa.treefile`) in FigTree to identify any further edits I wanted to make to the alignments, based on the tree. For the family-level gene trees a few long branches appeared again. Previously, I removed sequences on branches >0.9 amino acid substitutions per site (see section above '4. Editing alignments'). This was based on the gene trees generated in Geneious Prime. 
 
 The gene trees based on the new models of evolution included a handful of branches significantly longer than the other taxa. They were all >2 amino acid substitutions per site. I went back to the alignments in the directories [`alignments_family_muscle_edited`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited) and [`alignments_family_muscle_edited_trimmed`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited_trimmed) and removed the sequences on branches >2 amino acid substitutions per site. All the changes I made are included in the section above '4. Editing alignments' (see [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx`).  
@@ -407,30 +403,32 @@ I then replaced the old IQTREE output files, and gene trees, in the following di
 * [iqtree_genus_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus_trees) (contains 116 files)
 * [iqtree_species_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species_trees) (contains 116 files)
 
-#### Identify genes with evidence of recombination
+## Part Three: Recombination analysis
 We then reviewed each of the final gene trees at the family and genus level to look for evidence of recombination. Specifically, this involved two criteria: 
 
 1. Well-supported topological differences in which the *Megalocytivirus* genus (in the case of the family-level tree) or the megalocytivirus species (in the case of the genus level tree) were not monophyletic. These were further examined with an AU test (see below).
 
 2. Trees in which the megalocytivirus genomes were on a very long branch separating them from other genera (see details in manuscript), indicating possible recombination with taxa from outside the iridoviridae.
 
-##### AU test
+**POLLY INSERT DATA TABLE HERE SUMMARISING YOUR FINDINGS FOR EACH LOCI**.
+
+### AU test
 
 We identified a single locus (OG0000002 at the family level) with well-supported non-monophyly of the megalocytivirus genomes. We used an AU test to ask whether monophyly could be rejected. Details, including command lines, are in the folder [iqtree_AU_test](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_AU_test). Briefly, it involves running a constrained ML tree search in which the megalocytivirus genomes are forced to be monophyletic, then asking whether this tree can be rejected in favour of the tree in which they are not monophyletic. The results show that we cannot reject monophyly, so there is no evidence of recombination at this locus. 
 
-##### Where did I root the gene trees?
-###### Family-level 
+### Where did I root the gene trees?
+#### Family-level 
 I rooted the tree at the internal branch which split the *Megalocytivirus*, *Lymphocystivirus* and *Ranavirus* genera from the other *Iridoviridae* genera. This was as per the International Committee for the Taxonomy of Viruses (ICTV) - see [here](https://ictv.global/report/chapter/iridoviridae/iridoviridae). 
 
-###### Genus level 
+#### Genus level 
 I rooted the trees at the internal branch which split TSIV, ECIV and *Megalocytivirus lates1* genomes (where present), from the *M. pagrus1* genomes (i.e. ISKNV, TRBIV and RSIV genomes). 
 
-###### Species-level 
+#### Species-level 
 I rooted the trees at the internal branch which split majority of ISKNV genomes from the TRBIV and RSIV genomes. 
 
 
 >[!NOTE]
->##### snipit
+>#### snipit
 > I used the program called 'snipit' (see tool here https://github.com/aineniamh/snipit) to plot the recombinant regions of *M. pagrus1* genomes. All the files I used to generate the snipit plots are saved in the repository [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination/). Upload `extract_sets.txt` and `Whole_genome_alignment_mauve_rdp.fasta` to the mcv directory and run `script_snipit_extract_trim.sh` as follows to extract the gene regions you want plotted.
 >To run it go:
 >``` bash
@@ -468,7 +466,7 @@ I rooted the trees at the internal branch which split majority of ISKNV genomes 
 >```
 >The final plots are saved [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination/plots) 
 
-##### Identify alignments with insufficient sequence information
+### Identify alignments with insufficient sequence information
 Next up, we looked at the family- and genus-level alignments to identify those which did not contain any additional sequence information to the alignment for the same loci at at the taxonomic level below. In other words, we looked for family level alignments which only contained *Megalocytivirus* genus sequence information, and genus level alignments which only contained *Megalocytivirus pagrus1* sequence information. 
 
 We flagged these to ensure we didn't include them in the final (concatenate) family and genus level alignments. We already removed a 84 loci from the family level analysis for this reason (see '3. Re-align alignments'). However, since the alignment editing step, sequences were removed and additional alignments contained insufficient sequence information. For the genus level, we just didn't think of doing this ealier in the process (like we did for the family level alignments), so we did it at this step instead. The loci removed as part of this step are tabulated below. 
@@ -481,7 +479,7 @@ No species level alignments were removed as there is no taxonomic level below sp
 | **Orthogroup names for removed loci** | OG0000024, OG0000028, OG0000029, OG0000030 | OG0000082, OG0000084, OG0000086, OG0000089, OG0000092, OG0000093, OG0000094, OG0000095, OG0000096, OG0000097, OG0000099, OG0000100, OG0000101, OG0000102, OG0000103, OG0000104, OG0000105, OG0000107, OG0000110, OG0000112 | n/a |
 
 
-## Part Three: Generate final trees
+## Part Four: Generate final trees
 This is the final part of the analysis where we generate a final family, genus, and species, based on a multiple sequence alignments of concatenated genes at each taxonomic level. For this analysis, we only used genes where there was no evidence of recombination. (See Supplementary Table 2 in the main manuscript). We also only included genes where the alignments contained additional sequence information to the alignment for the same loci at the taxonomic level below (see section above 'Identify alignments with insufficient sequence information').
 
 ### Collect genes
