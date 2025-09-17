@@ -93,10 +93,8 @@ Most of the files used/generated for each stage of the process above can be foun
   * One genome (OL310752) was removed from the analysis due to assumed sequencing of assembly error. 
 3. The **76** GenBank (.gb) files before the stop codon check can be found in this repository at `annotation_check_results`/`1_genomes_before_stop_codon_check`.
   * Three genomes were removed as part of this step for having too many stop codons in some annotations (AY532606, AY779031 and NC_027778). 
-4. The **73** Genbank (.gb) files post stop codon check can be found in this repository at `annotation_check_results`/`2_genomes_post_stop_codon_check`.
-5. The **73** Genbank (.gb) files as lists of annotations post stop codon check can be found in this repository at `annotation_check_results`/`3_annotations_post_stop_codon_check`.
-6. The **73** Genbank (.txt) files as lists of annotations post stop codon check can be found in this repository at `annotation_check_results`/`4_annotations_post_stop_codon_check_txt_files`.
-7. The **73** XXXXX (.XXX) files as annotated sequences post stop codon check can be found in this repository at `XXXXXXX`
+4. The **73** Genbank (.gff) files post stop codon check can be found in this repository at `annotation_check_results`/`2_genomes_post_stop_codon_check`. Geneious Prime did not provide an option for me to export `.gb` versions of these files.
+5. The **73** Genbank files as lists of annotations post stop codon check can be found in this repository at `annotation_check_results`/`3_annotations_post_stop_codon_check` as a combined `.gb` file which can be dragged and dropped into Geneious Prime. Again, the options provided by Geneious Prime were limited in terms of the file format In which I could export these files. 
 
 All edits made for each annotations are can be found in the file `annotation_check_results`/annotations_manual_file`.xlsx. 
 
