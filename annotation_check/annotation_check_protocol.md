@@ -97,7 +97,9 @@ Most of the files used/generated for each stage of the process above can be foun
 5. The **73** Genbank (.gb) files as lists of annotations post stop codon check can be found in this repository at `annotation_check_results`/`3_annotations_post_stop_codon_check`.
 
 > [!IMPORTANT]
-> The genome 23043610003 has 120 CDS assigned in this study, however you'll fid the version uploaded to NCBI GenBank has only 119 CDS. This is because NCBI GenBank does not accept putative CDS with stop codons within the sequence. Sequence GQ273492.1_00004 in genome 23043610003 included two stop codons, and therefore could not be uploaded to NCBI GenBank. 
+> The genome 23043610003 has 120 CDS assigned in this study. However you'll find the version uploaded to NCBI GenBank has only 119 CDS. This is because NCBI GenBank does not accept putative CDS with stop codons. Sequence GQ273492.1_00004 in genome 23043610003 included two stop codons, and therefore could not be uploaded to NCBI GenBank.
+>
+> Seperately, some of the 'start' and stop' positions of the CDS in the file on NCBI GenBank differ the version housed in this repository. This is due to the way in which GenBank interprets and reads nucleotide sequence data when uploading genomes to GenBank.  
 
 ## How did I process the files ready for the next OrthoFinder run? 
 The freshly re-annotated sequences are used to identify core genes as part of Part Two: core gene analysis as described in `README.md`. To do this, you have to get the annotations out of Geneious Prime and into a format which OrthoFinder recognises. Below is how did this:
