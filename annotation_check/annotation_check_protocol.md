@@ -93,8 +93,8 @@ Most of the files used/generated for each stage of the process above can be foun
    * One genome (OL310752) was removed from the analysis due to assumed sequencing of assembly error. 
 3. The **76** GenBank (.gb) files before the stop codon check can be found in this repository at `annotation_check_results`/`1_genomes_before_stop_codon_check`.
    * Three genomes were removed as part of this step for having too many stop codons in some annotations (AY532606, AY779031 and NC_027778). 
-4. The **73** Genbank (.gff) files post stop codon check can be found in this repository at `annotation_check_results`/`2_genomes_post_stop_codon_check`. Geneious Prime did not provide an option for me to export `.gb` versions of these files.
-5. The **73** Genbank files as lists of annotations post stop codon check can be found in this repository at `annotation_check_results`/`3_annotations_post_stop_codon_check` as a combined `.gb` file which can be dragged and dropped into Geneious Prime. Again, the options provided by Geneious Prime were limited in terms of the file format In which I could export these files. 
+4. The **73** Genbank (.gb) files post stop codon check can be found in this repository at `annotation_check_results`/`2_genomes_post_stop_codon_check`.
+5. The **73** Genbank (.gb) files as lists of annotations post stop codon check can be found in this repository at `annotation_check_results`/`3_annotations_post_stop_codon_check`.
 
 ## How did I process the files ready for the next OrthoFinder run? 
 The freshly re-annotated sequences are used to identify core genes as part of Part Two: core gene analysis as described in `README.md`. To do this, you have to get the annotations out of Geneious Prime and into a format which OrthoFinder recognises. Below is how did this:
