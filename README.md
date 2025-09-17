@@ -77,7 +77,7 @@ Computers are great but they're not perfect. This is why I manually curate the P
 
 To save time, I didn't manually check every annotation for every genome. Head to the directory [`annotation_check`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/annotation_check) for information including; the annotations I manually checked for each genomes, how I decided which annotations I kept, edited or removed, a list of the annotations which I edited or removed, the genomes removed from my analysis due to assumed sequencing or assembly errors (and why), and how I processed proteome files to get them into a format ready for the next step of the pipeline. 
 
-A file containing all re-annotated sequences as General Feature Format files (.gff files) can be found in this repository called [`annotated_genome_sequences.geneious`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/annotated_genome_sequences.geneious). 
+All the re-annotated sequences used in this study are provided in the directory [`2_genomes_post_stop_codon_check`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/annotation_check/2_genomes_post_stop_codon_check). Just drag and drop the (.gb) files into Geneious prime to look at them. 
 
 ## Part Two: Orthologue detection
 This is where we take the freshly re-annotated sequences and identify a set of possibly orthologous genes with the help of OrthoFinder.

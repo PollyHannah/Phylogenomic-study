@@ -90,15 +90,11 @@ Throughout this manual annotation check process, I identified four genomes which
 ## Where are my results? 
 Most of the files used/generated for each stage of the process above can be found in this repository.
 1. The **76** Genbank (.gb) files included in this analysis initially can be found in genomes_1 directory.
-  * One genome (OL310752) was removed from the analysis due to assumed sequencing of assembly error. 
+   * One genome (OL310752) was removed from the analysis due to assumed sequencing of assembly error. 
 3. The **76** GenBank (.gb) files before the stop codon check can be found in this repository at `annotation_check_results`/`1_genomes_before_stop_codon_check`.
-  * Three genomes were removed as part of this step for having too many stop codons in some annotations (AY532606, AY779031 and NC_027778). 
+   * Three genomes were removed as part of this step for having too many stop codons in some annotations (AY532606, AY779031 and NC_027778). 
 4. The **73** Genbank (.gb) files post stop codon check can be found in this repository at `annotation_check_results`/`2_genomes_post_stop_codon_check`.
 5. The **73** Genbank (.gb) files as lists of annotations post stop codon check can be found in this repository at `annotation_check_results`/`3_annotations_post_stop_codon_check`.
-6. The **73** Genbank (.txt) files as lists of annotations post stop codon check can be found in this repository at `annotation_check_results`/`4_annotations_post_stop_codon_check_txt_files`.
-7. The **73** XXXXX (.XXX) files as annotated sequences post stop codon check can be found in this repository at `XXXXXXX`
-
-All edits made for each annotations are can be found in the file `annotation_check_results`/annotations_manual_file`.xlsx. 
 
 ## How did I process the files ready for the next OrthoFinder run? 
 The freshly re-annotated sequences are used to identify core genes as part of Part Two: core gene analysis as described in `README.md`. To do this, you have to get the annotations out of Geneious Prime and into a format which OrthoFinder recognises. Below is how did this:
