@@ -96,8 +96,6 @@ Most of the files used/generated for each stage of the process above can be foun
 4. The **73** Genbank (.gff) files post stop codon check can be found in this repository at `annotation_check_results`/`2_genomes_post_stop_codon_check`. Geneious Prime did not provide an option for me to export `.gb` versions of these files.
 5. The **73** Genbank files as lists of annotations post stop codon check can be found in this repository at `annotation_check_results`/`3_annotations_post_stop_codon_check` as a combined `.gb` file which can be dragged and dropped into Geneious Prime. Again, the options provided by Geneious Prime were limited in terms of the file format In which I could export these files. 
 
-All edits made for each annotations are can be found in the file `annotation_check_results`/annotations_manual_file`.xlsx. 
-
 ## How did I process the files ready for the next OrthoFinder run? 
 The freshly re-annotated sequences are used to identify core genes as part of Part Two: core gene analysis as described in `README.md`. To do this, you have to get the annotations out of Geneious Prime and into a format which OrthoFinder recognises. Below is how did this:
 1. Go to the annotations tab in Genenious Prime for the freshly re-annotated genome. Format the table - go to columns and sort them by clicking th smallest 'min' to largest 'min' to make sure the locus tags are all in order. Move the columns around to ensure they're in the following order: 1, Locus tag 2, Product Name 3, Product sequence.  
