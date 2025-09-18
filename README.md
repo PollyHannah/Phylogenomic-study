@@ -486,7 +486,7 @@ This is the final part of the analysis where we generate a final family, genus, 
 
 First we put all MSAs we wanted to concatenate into new directories:
 
-* [`alignments_family_muscle_edited_trimmed_concatenation`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited_trimmed_concatenation) (contains alignments for 23 genes)
+* [`alignments_family_muscle_edited_trimmed_concatenation`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited_trimmed_concatenation) (contains alignments for 24 genes)
 * [`alignments_genus_muscle_edited_trimmed_concatenation`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle_edited_trimmed_concatenation) (contains alignments for 96 genes)
 * [`alignments_species_muscle_edited_trimmed_concatenation`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species_muscle_edited_trimmed_concatenation) (contains alignments for 68 genes)
 
