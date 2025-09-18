@@ -15,7 +15,8 @@ Go to the file `setup.md` in this repository, for information about how to set-u
 * [BLAST+](https://www.ncbi.nlm.nih.gov/books/NBK279690/) (version 2.16.0).
 * [Mauve](https://github.com/koadman/mauve) (version 20150226)
 * [QMaker](https://academic.oup.com/sysbio/article/70/5/1046/6146362?login=true) (version 1)
-* [FigTree](https://github.com/rambaut/figtree/) (version 1.4.4) 
+* [FigTree](https://github.com/rambaut/figtree/) (version 1.4.4)
+* [RDP4](https://davidrasm.github.io/MolEpi/tutorials/rdp4-week8/) (version RDP4.101)
 
 ## Part one: Data collection, review, and genome annotation 
 Part one is where we collect, quality check, and re-annotate genomes. The genomes in National Centre for Biotechnology Information (NCBI) Genbank have annotations, but they are of differing quality, and done using various methods. Part one aims to check the quality of, and update annotations where neccessary, to maximise the quality of the data for phylogenetic inference.
@@ -253,7 +254,7 @@ You will now have three new directories containing trimmed multiple sequence ali
 > ECIV was inserted into 27 family level multiple sequence alignments and 51 genus level multiple sequence alignments. A list of the multiple sequence alignments which has ECIV sequences inserted can be found here for both levels of analysis (orthogroup names are as per original OrthoFinder runs): [family](https://github.com/PollyHannah/Phylogenomic-study/blob/main/eciv/family_list.txt), [genus](https://github.com/PollyHannah/Phylogenomic-study/blob/main/eciv/genus_list.txt). 
 
 #### 6. Assign orthogroup identities
-I assiged possible identities to orthogroups (i.e which genes they might be) by doing an NCBI BLASTp search which compares protein query sequences to a protein database. I did this on the command line using the BLAST+ suite. There is a good tutorial [here](https://conmeehan.github.io/blast+tutorial.html) on how to install BLAST+ and conduct a BLAST+ search. 
+I assigned possible identities to orthogroups (i.e which genes they might be) by doing an NCBI BLASTp search which compares protein query sequences to a protein database. I did this on the command line using the BLAST+ suite. There is a good tutorial [here](https://conmeehan.github.io/blast+tutorial.html) on how to install BLAST+ and conduct a BLAST+ search. 
 
 When using BLAST+ you need a sequence database to search against. NCBI has many pre-made databases you can use which are available for download [here](https://ftp.ncbi.nlm.nih.gov/blast/db/). I used the Swiss-Prot database which is a database of high-quality protein sequences from UniProtKB/Swiss-Prot. It is a smaller and more accurate version of the 'nr' database made available by NCBI. 
 
@@ -282,7 +283,7 @@ I now used a script to extract the first amino acid sequence from each orthogrou
 
 To run the script, go:
 ```bash
-script_10_make_input_blastp.sh
+bash script_10_make_input_blastp.sh
 ```
 
 You should now have three new directories (as listed below) created in the mcv directory containing `.fasta` files with one sequence in each file. Each sequence is named after the orthogroup it was extracted from:
@@ -293,48 +294,45 @@ You should now have three new directories (as listed below) created in the mcv d
 ##### 6.5 Run BLASTp search
 Now I ran BLASTp search on each of the query sequences generated in step '6.4 Prepare query sequences'. The script I used is housed in this repository. To use it, run:
 ```bash
-script_11_blastp.sh
+bash script_11_blastp.sh
 ```
-You should now see three new directories in the mcv directory (listed below). Each directory should contain `.txt` file names with the results of the BLASTp search for each query sequence. 
+You should now see three new directories in the mcv directory (listed below). Each directory should contain .tx` file names with the results of the BLASTp search for each query sequence. 
 
 * [orthogroup_blastp_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthogroup_blastp_family) (contains 31 files)
 * [orthogroup_blastp_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthogroup_blastp_genus) (contains 116 files)
 * [orthogroup_blastp_species](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthogroup_sequence_family) (contains 116 files)
 
-Each `.txt` file will contain sequence match information as look similar to the image below. 
+Each .txt file will contain sequence match information as look similar to the image below. 
 ![BLASTP output](https://github.com/user-attachments/assets/1317a282-04e7-4ec6-a92f-850ff9ad2ca0)
 
 ##### 6.6 Interpreting BLASTp results
-The BLASTp search results are found in the `.txt` files linked above. The most important part of the results is the list of 'Sequences producing significant alignments'. A list of sequence names are provided along with an E-value and Score (Bits) for each sequence. 
+The BLASTp search results are found in the .txt files linked above. The most important part of the results is the list of 'Sequences producing significant alignments'. A list of sequence names are provided along with an E-value and Score (Bits) for each sequence. 
 
 The E-value is the number of hits (alignments) equivalent to a hit (or alignment) that we would expect to see by chance. Smaller E-values represent better hits. The Score (Bits) summarises the sequence similarity between the query sequence and the database hit. A higher bit score indicates a better hit. More information can be found [here](https://genomicsaotearoa.github.io/hts_workshop_mpi/level1/43_blast_interpretation/#interpretting-the-results-of-blast-queries).
 
 A spreadsheet summarising the most probable identities of each orthogroup, based on the BLASTp results, can be found in [`gene_identity.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/Gene_identity.xlsx). The 'most probable identity' was the sequence out of the 'Sequences producing significant alignments' in the BLASTp output with the  highest Score (bits) and lowest E- Value. 
 
-There were a few identities which stood out as unlikely, for example 'Snake endothelial growth factor'. For those, I manually completed a NCBI BLASTp search on the online database [here](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastp&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome) and re-assigned the putative identity based on the results. The results of previous reports of the putative identities of core iridoviridae and megalocytivirus genes (Eaton et al. 2007; Chinchar et al. 2017; Fusianto et al. 2023).   
+There were a few identities which stood out as unlikely, for example 'Snake endothelial growth factor'. For those, I manually completed a NCBI BLASTp search on the online database [here](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastp&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome). I then manually re-assigned the putative identity based on the results, and the results of previous reports of the putative identities of core iridoviridae and megalocytivirus genes (Eaton et al. 2007; Chinchar et al. 2017; Fusianto et al. 2023).   
 
 ### Assigning matching orthogroups, gene identities
-I combined the gene identity data above ([`gene_identity.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/Gene_identity.xlsx)) with the data generated earlier which matches orthogroups across taxonomic levels. This is so you can get a better idea for the putative gene identity of each 'group' of orthogroups across taxonomic levels. I just used the filter function in excel to do this. 
-
-The combined data file can be found (here)[https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches_gene_identity.xlsx] and is called `sequence_matches_gene_identity.xlsx`.
+I combined the gene identity data above ([`gene_identity.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/Gene_identity.xlsx)) with the data generated earlier which matches orthogroups across taxonomic levels. This is so you can get a better idea for the putative gene identity of each 'group' of orthogroups across taxonomic levels. I used the filter function in excel to do this. The combined data file can be found (here)[https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches_gene_identity.xlsx] and is called `sequence_matches_gene_identity.xlsx`.
 
 ### Generate new Q matrices
 Subsitution patterns in iridoviridae and mcv are likely to be somewhat different from those captured in existing rate matrices like LG and WAG. So now we use [Qmaker](https://doi.org/10.1093/sysbio/syab010) to build two new substitution models - one for the iridoviridae as a whole (Q.iridoviridae), and one for megalocytiviruses (Q.mcv).
 
-There are two scripts to do this. The first builds the matrices themselves, and then applies them to the family level and genus level datasets as a sanity check. To run this, simply do this:
+There are two scripts to do this. The first builds the matrices themselves, and then applies them to the family level and genus level datasets as a sanity check. To run this, simply go:
 ```bash
 bash script_12_qmaker.sh
 ```
 
 This script does the following:
-* copies over the family level and genus level alignments into the `/qmaker` folder
-* Builds `GTR20` models for each using the Qmaker protocol
-	* Q.mcv is built from genus level alignments
-	* Q.iridoviridae is built from the family level alignments
+* Copies over the family and genus level alignments into the `/qmaker` folder.
+* Builds `GTR20` models for each using the Qmaker protocol.
+	* Q.mcv is built from genus level alignments.
+	* Q.iridoviridae is built from the family level alignments.
 * Uses ModelFinder to apply these two models, along with all other models in IQ-TREE, to the family and genus level alignments.
 
-The last step is a sanity check. If the models work, then Q.mcv should be the best model for most of the genus level alignments, and Q.iridoviridae should be the best model for most of the family level alignments. This is exactly what we see. The `qmaker/mcv_final.iqtree` file shows that 94/115 (i.e. 82%) of the genus level alignments are best fit by Q.mcv using the BIC, and `qmaker/iridoviridae_final.iqtree` shows that 27/31 (i.e. 87%) of the family level alignments are best fit by the Q.iridoviridae model.
-
+The last step is a sanity check. If the models work, then Q.mcv should be the best model for most of the genus level alignments, and Q.iridoviridae should be the best model for most of the family level alignments. This is exactly what we see.
 The next script compares these models to existing models with two PCA plots, similar to those found in the Qmaker paper linked above but including the two new matrices. 
 
 This script can be run after installing the necessary R libraries like this:
@@ -342,7 +340,7 @@ This script can be run after installing the necessary R libraries like this:
 Rscript script_13_Q_PCA.R
 ```
 
-This produces the following two PCA plots. The first shows the exchangeabilities, and the second the freuqency vectors. The new matrices are highlighted as red dots with black outlines. They reveal that the two matrices are distinct from each other, and from any previously estimated matrices. They nevertheless fall within the range of sensible values according to the PCA. Manual examination of the model files themselves in `iqtree_qmatrices/Q.mcv` and `iqtree_qmatrices/Q.iridoviridae` confirms that all estimted values are plausible, sensible, and not approaching any boundaries. All of this confirms that the models were estimated without issues.
+This produces the following two PCA plots. The first shows the exchangeabilities, and the second the freuqency vectors. The new matrices are highlighted as red dots with black outlines. They reveal that the two matrices are distinct from each other, and from any previously estimated matrices. They nevertheless fall within the range of sensible values according to the PCA. Manual examination of the model files themselves in [iqtree_qmatrices/Q.mcv](https://github.com/PollyHannah/Phylogenomic-study/blob/main/iqtree_qmatrices/Q.mcv) and [iqtree_qmatrices/Q.iridoviridae](https://github.com/PollyHannah/Phylogenomic-study/blob/main/iqtree_qmatrices/Q.iridoviridae) confirms that all estimted values are plausible, sensible, and not approaching any boundaries. All of this confirms that the models were estimated without issues.
 
 <p align="center">
   <img src="iqtree_qmatrices/PCA_frequencies.png" alt="PCA of frequencies" width="400"/>
@@ -354,6 +352,7 @@ Now we generate gene trees for each multiple sequence alignment using IQ-TREE. A
 ```bash
 bash script_14_iqtree.sh
 ```
+
 The script will create three new directories, one for each taxonomic level, containing several files:
 [iqtree_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family) (contains 31 directories)
 [iqtree_genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus) (contains 116 directories)
@@ -365,34 +364,34 @@ The output files in each directory, will include the following for each gene tre
 3. .fa.log which is a log of the whole run.
 4. .fa.ckp.gz, which is a checkpoint file used to resume the analysis if there is an interruption to the running of the program.
 
-Now, for ease of reference, we want to sort the IQ-TREE output files so all the files related each orthogroup can be found in their own directory. Currently, the output files for all orthogroups are housed in the same directory for each orthogroup. 
+Now, for ease of reference, we want to sort the IQ-TREE output files so all the files related each orthogroup are neatly filed within in their own directory. Currently, the output files for all orthogroups are housed in the same directory for each orthogroup. 
 
-To sort the files, run the script `script_five_sort_files.sh` by going:
+To sort the files, go:
 ```bash
-script_15_sort_files.sh
+bash script_15_sort_files.sh
 ```
 
-Next we want to pull out the `.fa.treefiles` into seperate directories so they're easy to compare all at once. This script below will copy the gene trees (`.fa.treefile` files) for each taxaonomic level and save them in new directories, one for each taxonomic level. This is just so it's easier to look through all the gene trees one after the other. 
+Next we want to pull out the gene trees (.fa.treefile) into seperate directories so they're easy to compare all at once. The script below will copy the gene trees for each taxaonomic level and save them in new directories - one for each taxonomic level. This is simply so it's easier to look through all the gene trees, one after the other. 
 
 To run it go:
 ```bash
-script_16_move_iqtree_files.sh
+bash script_16_move_iqtree_files.sh
 ```
 
-This script will create three new directories containing the gene trees (`.fa.treefile` files) as below 
+This script will create three new directories containing the gene trees (.fa.treefile) as below:
 * [iqtree_family_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family_trees) (contains 31 files)
 * [iqtree_genus_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_genus_trees) (contains 116 files)
 * [iqtree_species_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species_trees) (contains 116 files)
  
 ### Remove genomes on long branches
-I opened each gene tree file (`.fa.treefile`) in FigTree to identify any further edits I wanted to make to the alignments, based on the tree. For the family-level gene trees a few long branches appeared again. Previously, I removed sequences on branches >0.9 amino acid substitutions per site (see section above '4. Editing alignments'). This was based on the gene trees generated in Geneious Prime. 
+I opened each gene tree file (.fa.treefile) in FigTree to identify any further edits I wanted to make to the alignments, based on the tree. For the family-level gene trees a few long branches appeared again. Previously, I removed sequences on branches >0.9 amino acid substitutions per site (see section above '4. Editing alignments'). This was based on the gene trees generated in Geneious Prime using the Geneious Tree Builder, with the 'Jukes-Cantor' Genetic Distance Model. 
 
-The gene trees based on the new models of evolution included a handful of branches significantly longer than the other taxa. They were all >2 amino acid substitutions per site. I went back to the alignments in the directories [`alignments_family_muscle_edited`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited) and [`alignments_family_muscle_edited_trimmed`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited_trimmed) and removed the sequences on branches >2 amino acid substitutions per site. All the changes I made are included in the section above '4. Editing alignments' (see [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx`).  
+The gene trees based on the new models of evolution included a handful of branches significantly longer than the other taxa. They were all >2 amino acid substitutions per site. I went back to the alignments in the directories [`alignments_family_muscle_edited`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited) and [`alignments_family_muscle_edited_trimmed`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited_trimmed) and removed the sequences on branches >2 amino acid substitutions per site. For all the changes I made, see [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx`).  
 
 #### Re-run IQTREE with long branches removed
-I then re-ran IQTREE on the alignments which I edited as outlined above and included in the file [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx`). I ran the same script as in the section above 'Generate gene trees' called `script_13_iqtree.sh`. I just plonked the updated alignments in a new directory and updated the script to point to the new directory to take as input. I then sorted the IQTREE output files using the script above `script_13_iqtree.sh`. I just updated the script to point it at the new directory generated housing the new IQTREE outputs. 
+I then re-ran IQTREE on the alignments which I edited as outlined above and included in the file [`alignment_manual_changes.xlsx`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/alignment_manual_changes.xlsx`). I ran the same script as in the section above 'Gene tree estimation' called `script_14_iqtree.sh`. I just put the updated alignments in a new directory and updated the script to point to the new directory to take as input. I then sorted the IQTREE output files using the script above `script_14_iqtree.sh`. I just updated the script to point it at the new directory generated housing the new IQTREE outputs. 
 
-I then replaced the old IQTREE output files, and gene trees, in the following directories in this repository:
+I then replaced the old IQTREE output files, and gene trees (.fa.treefile), in the following directories:
 
 **IQTREE ouputs**
 * [iqtree_family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family) (contains 31 directories)
@@ -405,17 +404,28 @@ I then replaced the old IQTREE output files, and gene trees, in the following di
 * [iqtree_species_trees](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_species_trees) (contains 116 files)
 
 ## Part Three: Recombination analysis
-We then reviewed each of the final gene trees at the family and genus level to look for evidence of recombination. Specifically, this involved two criteria: 
+First-up, we used a whole genome alignment method to detect recombination using the program RDP4 at the species level for *M. pagrus1*. Detail about this analysis, including the results, can be found [here](https://github.com/PollyHannah/Phylogenomic-study/tree/main/recombination).
 
-1. Well-supported topological differences in which the *Megalocytivirus* genus (in the case of the family-level tree) or the megalocytivirus species (in the case of the genus level tree) were not monophyletic. These were further examined with an AU test (see below).
-
-2. Trees in which the megalocytivirus genomes were on a very long branch separating them from other genera (see details in manuscript), indicating possible recombination with taxa from outside the iridoviridae.
-
-**POLLY INSERT DATA TABLE HERE SUMMARISING YOUR FINDINGS FOR EACH LOCI**.
+Then, we reviewed each of the final gene tree at the family and genus level to look for evidence of recombination. Specifically, this involved two criteria: 
+1. Well-supported topological differences in which the *Megalocytivirus* genus (in the case of family-level trees) or the megalocytivirus species (in the case of genus level trees) were not monophyletic. These were further examined with an AU test (see below).
+2. Trees in which the megalocytivirus genomes were on a very long branch separating them from other genera (see details in manuscript), indicating possible recombination with taxa from outside the family *Iridoviridae* (see details below).
 
 ### AU test
-
 We identified a single locus (OG0000002 at the family level) with well-supported non-monophyly of the megalocytivirus genomes. We used an AU test to ask whether monophyly could be rejected. Details, including command lines, are in the folder [iqtree_AU_test](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_AU_test). Briefly, it involves running a constrained ML tree search in which the megalocytivirus genomes are forced to be monophyletic, then asking whether this tree can be rejected in favour of the tree in which they are not monophyletic. The results show that we cannot reject monophyly, so there is no evidence of recombination at this locus. 
+
+### Trees where megalocytivirus genomes were on a long branch
+We ran an R script to plot the distribution of branch lengths leading to the *Megalocytivirus* genus in family level trees, to collect the trees where the *Megalocytivirus* sat on an unualually long branch. We then looked at these loci in more detail using a tBLASTp search to compare the megalocytivirus sequences from that locus to all sequences contained in NCBI GenBank. We did this to ask whether there were close relatives to the megalocytivirus sequences which were not included in our alignments. 
+
+To run the script go:
+```bash
+Rscript script_16_branch_length_plot.R
+```
+The plot should look like the one below, where the outliers are in red, and those we chose to look at in more detail are labeled with their branch lengths (see below). 
+<img width="1266" height="997" alt="image" src="https://github.com/user-attachments/assets/71dc484d-963f-49b8-ad56-c516fb2dd073" />
+
+ | Putative gene identity | Branch Length (amino acid substitutions per site) | OrthoFinder-assigned orthogroup | tBLASTp results with >40% identity and an e value below 0.01 | Evidence of recombination (yes/no |
+ |------------------------|---------------|---------------------------------|----------------|-----------------------------------|
+ | Ribonuclease 3 | 1.384 | OG0000019 | AF371960 (Megalocytivirus pagrus1) returned results for megalocytivirus sequences only.  *Ranavirus rana 1* (accession NC_005946 returned results for members of the genus *Ranavirus* only | No|
 
 ### Where did I root the gene trees?
 #### Family-level 
@@ -427,45 +437,6 @@ I rooted the trees at the internal branch which split TSIV, ECIV and *Megalocyti
 #### Species-level 
 I rooted the trees at the internal branch which split majority of ISKNV genomes from the TRBIV and RSIV genomes. 
 
-
->[!NOTE]
->#### snipit
-> I used the program called 'snipit' (see tool here https://github.com/aineniamh/snipit) to plot the recombinant regions of *M. pagrus1* genomes. All the files I used to generate the snipit plots are saved in the repository [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination/). Upload `extract_sets.txt` and `Whole_genome_alignment_mauve_rdp.fasta` to the mcv directory and run `script_snipit_extract_trim.sh` as follows to extract the gene regions you want plotted.
->To run it go:
->``` bash
->bash script_snipit_extract_trim.sh
->```
->The script will generate a directory called `alignments` which house a multiple sequence alignment files of the specified region from the whole genome alignment, for only the sequences I want plottted.
->Then run `script_snipit.sh` on each alignment (as seen below), to generate the snipit plots. You just need to update the input/output file names in the script depending on the alignment file you're working on.
->To run the script, go:
->```bash
->bash script_snipit.sh
->```
->As some of the regions recombinant regions were pretty large, I subsampled the alignments using the script `script_subsample.sh`. Before you run it though, you  need to update the name of the alignment file you want to subsample, and the amount of subsampling you want done under 'Step'. I subsampled by 2, 5, 10 or 20 depending on the size of the region.
->
->| Recombination event number | Subsample (Step) value |
->|----------------------------|------------------------|
->|1 | 10 |
->|2 | 10 |
->|3 | 10 |
->|4 | 10 |
->|5 | 10 |
->|6 | 10 |
->|7 | 5 |
->|9 | 2 |
->|10 | 2 |
->|11 | 2 |
->|20 | 20 |
->|26 | 2 |
->|31 | 2 |
->|33 | 2 |
->|34 | 2 |
->
->To run script:
->```bash
->bash script_subsample.sh
->```
->The final plots are saved [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination/plots) 
 
 ### Identify alignments with insufficient sequence information
 Next up, we looked at the family- and genus-level alignments to identify those which did not contain any additional sequence information to the alignment for the same loci at at the taxonomic level below. In other words, we looked for family level alignments which only contained *Megalocytivirus* genus sequence information, and genus level alignments which only contained *Megalocytivirus pagrus1* sequence information. 
