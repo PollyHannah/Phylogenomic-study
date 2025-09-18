@@ -2,7 +2,7 @@
 # Recombination detection with RDP4
 I ran the program RDP4 to detect recombination amoung the species *Megalocytivirus pagrus1*, the only group for which a whole genome alignment was feasible, as required to run the program. RDP4 detects recombination using five different methods; RDP, GENECONV, Maxchi, Chimaera, and 3Seq. 
 You will need the following software:
-* RDP4 (version RDP4.101) (Martin et al. 2015)
+* [RDP4](https://davidrasm.github.io/MolEpi/tutorials/rdp4-week8/) (version RDP4.101) (Martin et al. 2015)
 * Geneious Prime (version 2020.2.5)
 * Mauve (version 20150226)
 
