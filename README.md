@@ -18,7 +18,7 @@ Go to the file `setup.md` in this repository, for information about how to set-u
 * [FigTree](https://github.com/rambaut/figtree/) (version 1.4.4) 
 
 ## Part one: Data collection, review, and genome annotation 
-Part one is where we collect, quality check, and re-annotate genomes. The genomes in National Centre for Biotechnology Information (NCBI) Genbank have annotations, but they are of differing quality, and done using various methods. This part aims to check and update annotations to maximise the quality of the data for phylogenetic inference.
+Part one is where we collect, quality check, and re-annotate genomes. The genomes in National Centre for Biotechnology Information (NCBI) Genbank have annotations, but they are of differing quality, and done using various methods. Part one aims to check the quality of, and update annotations where neccessary, to maximise the quality of the data for phylogenetic inference.
 
 ### Create a directory for this work
 ```bash
@@ -29,31 +29,31 @@ cd mcv
 ### Save genomes to mcv directory
 Download [`genomes_1`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/genomes_1) directory and its contents from this repository and save the folder and contents to the mcv directory. This folder contains 67 megalocytivirus and 10 iridoviridae genomes in FASTA format (77 genomes total). 
 
-Details about each genome can be found in the `taxonomy.csv` file in this repository. There is information for 79 genomes in `taxonomy.csv` given genomes L63545 and KC138895 are included which are not included in the `genomes_1`directory. This is due to them not being the expected length. You can read more about this in the next section. Please read my [`Classification protocol`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/classification/classification%20protocol.md) to understand how I classified the megalocytivirus genomes included in this study.
+Details about each genome can be found in the `taxonomy.csv` file in this repository. There is information for 79 genomes in `taxonomy.csv` given genomes L63545 and KC138895 are included which are not included in the `genomes_1` directory. This is due to them not being the expected length. You can read more about this in the next section. Please read my [`Classification protocol`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/classification/classification%20protocol.md) to understand how I classified the megalocytivirus genomes included in this study.
 
 #### Which genomes are included and excluded from the `genomes_1` directory?
 I included all megalocytivirus genomes saved as 'complete' genomes under the genus *Megalocytivirus* in the [NCBI GenBank Taxonomy Browser](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi), which were the expected length. This included genomes entered into NCBI Genbank as 'unclassified' at the species level. 
 
 After realising that not all megalocytivirus genomes are neatly filed away in the right spot in NCBI GenBank, I progressively added megalocytivirus genomes which I identified in the literature to my study, where they were not already added. I also included two genomes proposed as new species of megalocytivirus. They are: 
-* Three-spined stickleback virus (TSIV), which is is a megalocytivirus which infects threespine stickleback (*Gasterosteus aculeatus*). Based on phylogenetic analysis of iridovirus core genes (Yoximer et al. 2023), TSIV does not group with either of the existing megalocytivirus species and may represent a novel species of megalocytivirus.
-* European Chub iridovirus (ECIV), which is a megalocytivirus isolated from moribund European Chub (*Squalius cephalus*) in the United Kingdom in 2005. Based on phylogenetic analysis (Halaly et al. 2019), ECIV is most closely related to *Megalocytivirus lates1*, but may represent a new species of megalocytivirus. 
+* Three-spine stickleback virus (TSIV), which is is a megalocytivirus which infects threespine stickleback (*Gasterosteus aculeatus*). Based on phylogenetic analysis of iridovirus core genes (Yoximer et al. 2023), TSIV does not group with either of the existing megalocytivirus species and may represent a novel species of megalocytivirus.
+* European chub iridovirus (ECIV), which is a megalocytivirus isolated from moribund European chub (*Squalius cephalus*) in the United Kingdom in 2005. Based on phylogenetic analysis (Halaly et al. 2019), ECIV is most closely related to *Megalocytivirus lates1*, but may represent a new species of megalocytivirus. 
 
-I also included ten representative genomes from each of the six other iridovirid genera including two genomes from each genus where multiple genomes are available (two each from of the genera *Ranavirus*, *Lymphocystivirus*, *Iridovirus*, and *Chloriridovirus*; one each from of the genera *Decapodiridovirus* and *Daphniairidovirus*). These genomes were chosen to span the deepest node of the given clade shown in Zhao et al. (2022).  
+I also included ten representative genomes from each of the six other iridovirid genera including two genomes from each genus where multiple genomes are available (two each from of the genera *Ranavirus*, *Lymphocystivirus*, *Iridovirus*, and *Chloriridovirus*; one each from the genera *Decapodiridovirus* and *Daphniairidovirus*). These genomes were chosen to span the deepest node of the given clade shown in Zhao et al. (2022).  
 
-Genomes which I considered to be not the expected length, meant genomes which were half or twice the length of other genomes within the same genus. This goes for all genomes considered for inclusion in the `genomes_1` directory. There were two genomes which were not included in the `genomes_1` directory given they were not the expected length (as below):
-* One of the lymphocystivirus genomes initally chosen for inclusion, L63545, was half the expected length at 102,653 bp long. Lymphocystivirus genomes are typically around 200,000 bp in length. I replaced L63545 with another genome from the same genus (KX643370) which was the expected length (208,501 bp).
+There were two genomes which were not included in the `genomes_1` directory given they were not the expected length (listed below). Genomes which I considered to not be the expected length, meant genomes which were half or twice the length of other genomes within the same genus.
+* One of the lymphocystivirus genomes initally chosen for inclusion, accession L63545, was half the expected length at 102,653 bp long. Lymphocystivirus genomes are typically around 200,000 bp in length. I replaced L63545 with another genome from the same genus (accession KX643370) which was the expected length (208,501 bp).
 * One megalocytivirus genome was not included given it was smaller than the expected length (accession KC138895). KC138895 was 903 base pairs (bp) in length whereas megalocytiviruses are between 110,000 and 140,000 bp in length. 
 
 ##### Novel genomes
-I've sequenced, assembled and annotated two novel genomes for inclusion in this study, as tabulated below. The GitHub repository [`novel_genomes`](https://github.com/PollyHannah/novel_genomes) houses data associated with the assembly and annotation of these genomes, including the script and software I used. 
+I've sequenced, assembled, and annotated two novel genomes for inclusion in this study, as tabulated below. The GitHub repository [`novel_genomes`](https://github.com/PollyHannah/novel_genomes) houses data associated with the assembly and annotation of these genomes, including the script and software I used. 
 
-| Genome | Accession |Identification number  | Collection date | Host |
+| Genome | Accession | Identification number  | Collection date | Host |
 |--------|-----------|-----------------------|-----------------|------|
 | 1 | Not yet created | 23-04361-0003 | 2 November 2023 | Swordtail ornamental fish (*Xiphophorus helleri*) |
-| 2 | Not yet created | 23-04361-0005 | 2 November |  Platys (*Xiphophorus maculatus*) |
+| 2 | Not yet created | 23-04361-0005 | 2 November 2023 |  Platys (*Xiphophorus maculatus*) |
 
 ### Run Prokka on genomes
-Now we've collected and have checked the length of the genomes, we re-annotate them using Prokka using the below script. This script will save the output files to a directory `prokka_outputs_1`. This directory (including the outputs) can be found in this repository. The directory contains 77 Prokka output directories for for 77 genomes.
+Now we've collected and have checked the length of genomes, we re-annotate them using Prokka using the below script. This script will save the output files to a directory `prokka_outputs_1`. This directory (including the outputs) can be found in this repository. The directory contains 77 Prokka output directories for for 77 genomes.
 ```bash
 bash script_1_prokka.sh
 ```
@@ -83,12 +83,12 @@ All the re-annotated sequences used in this study are provided in the directory 
 This is where we take the freshly re-annotated sequences and identify a set of possibly orthologous genes with the help of OrthoFinder.
 
 ### Sort proteome files by taxonomic level
-We run OrthoFinder three times - once each with genomes at the family, genus and species level. To do this we need to sort the proteomes we generated as part of 'Part one: Data collection, review, and genome annotation ' into three seperate directories. 
+We run OrthoFinder three times - once each with genomes at the family, genus, and species level. To do this we need to sort the proteomes we generated as part of 'Part one: Data collection, review, and genome annotation ' into three seperate directories. 
 
-To do this, run the below script which will copy the proteomes in the directory `proteome_2_family` and save the the species proteomes to the `proteome_2_species` and the genus proteomes to `proteome_2_genus`. 
-The script uses the text files `file_list_genus.txt` and `file_list_species.txt`, to make sure you have them in the repository from which you run the script:
+To do this, run the below script which will copy the proteome files in the directory `proteome_2_family` and save the genus proteomes to the directory `proteome_2_genus` and the species proteomes to the directory `proteome_2_species`. 
+The script uses the text files `file_list_genus.txt` and `file_list_species.txt`, so make sure you have them in the repository from which you run the script:
 ```bash
-script_3_sort_proteome_files.sh
+bash script_3_sort_proteome_files.sh
 ```
 Now you should have:
 * 73 files in the directory `proteome_2_family`, and
@@ -96,14 +96,14 @@ Now you should have:
 * 58 files in a directory `proteome_2_species`.
 
 ### Run OrthoFinder
-Now, using one script we run OrthoFinder three times, once each on the proteome files in the directories:
+Now, using one script we run OrthoFinder three times, once each on the proteome files in the three directories:
 * `proteome_2_family`,
 * `proteome_2_genus`, and
 * `proteome_2_species`.
 
 To run it go:
 ```bash
-script_4_orthofinder.sh
+bash script_4_orthofinder.sh
 ```
 
 The output files will be saved (respectively) into three new directories 
@@ -112,9 +112,9 @@ The output files will be saved (respectively) into three new directories
 * `orthofinder_2_species`.
 
 >[!NOTE]
->I added the genome European chub iridovirus or 'ECIV' (accession number MK637631) after completing the OrthoFinder run for the family, genus and species-level. The first set of OrthoFinder runs were done on 13 February 2025 and OrthoFinder automatically called the output directory for those runs `Results_Feb13/`.
+>I added the genome European chub iridovirus or 'ECIV' (accession MK637631) after completing the OrthoFinder run for the family-, genus- and species-level. The first set of OrthoFinder runs were done on 13 February 2025 and OrthoFinder automatically called the output directory for those runs `Results_Feb13/`.
 >
->The second set of OrthoFinder runs, now including ECIV, were done 9 May 2025. Therefore OrthoFinder automatically called the output directory for those runs `Results_May09/`. There is no species-level analysis which includes the genome ECIV. That's because the species level analysis only included *M. pagrus1* genomes (which ECIV is not). Whilst the remainder of this analysis is based on the OrthoFinder run which did not include ECIV, I insert the ECIV sequence information into the relevant multiple sequence alignments later down the track (read on for details as to how I did that).  
+>The second set of OrthoFinder runs, now including ECIV, were done 9 May 2025. Therefore OrthoFinder automatically called the output directory for those runs `Results_May09/`. There is no species-level analysis which includes the genome ECIV. That's because the species level analysis only included *M. pagrus1* genomes (which ECIV is not). Whilst the remainder of this analysis is based on the OrthoFinder run which did not include ECIV, I insert the ECIV sequence information into the relevant multiple sequence alignments later down the track (read on for details as to how I did this).  
 
 ### Match orthogroups across taxonomic levels
 The OrthoFinder analysis for each taxonomic group has been run seperately. This means that the orthogroup assigned to each gene can differ in the ouputs for the species, genus and family level. For example, the orthogroup containing genes in the species-level analysis could be OG0000002, whereas the same set of genes in the genus level analysis could be orthogroup OG0000083. 
@@ -126,15 +126,15 @@ I wrote a script to do this. To run it, go:
 bash script_5_match_orthogroups.sh
 ```
 
-The script will generate a `.txt` file like this one, [sequence_matches.txt](https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches.txt). The file includes the orthogroups containing the same genes at each taxonomic level. I used ChatGBT to transform the file into a .xlsx file (found [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches.xlsx)) so I could filter the columns. You could also write a simple R script to do this. 
+The script will generate a .txt file like this one, [sequence_matches.txt](https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches.txt). The file includes the orthogroups containing the same genes at each taxonomic level. I used ChatGBT to transform the file into a .xlsx file (found [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/sequence_matches.xlsx)) so I could filter the columns. You could also write a simple R script to do this. 
 
-***How does the script work?*** This script looks at the first sequence in each of the `.fa` files in the [Orthogroup_Sequences/](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthofinder_2_species/Results_Feb13/Orthogroup_Sequences) directory for the species level output, and matches it with the orthogroup containing the same sequence in the directories containing the `.fa` files for the [genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthofinder_2_genus/Results_Feb13) and [family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family) level OrthoFinder output.
+***How does the script work?*** This script looks at the first sequence in each of the `.fa` files in the [Orthogroup_Sequences/](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthofinder_2_species/Results_Feb13/Orthogroup_Sequences) directory for the species level output, and matches it with the orthogroup containing the same sequence in the directories containing the .fa files for the [genus](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthofinder_2_genus/Results_Feb13) and [family](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_family) level OrthoFinder output.
 
 ### Identify conserved genes 
-We now use R to identify conserved genes using the OrthoFinder output. 
+We now use the program R to identify conserved genes using the OrthoFinder output. 
 
 #### 1. Analyse
-First we analyse the OrthoFinder output to help us make a decision about which genes we consider to be 'conserved'. To do this, move the files `taxonomy.csv`and `Orthogroups.tsv` (an output file from OrthoFinder), and script `script_6_r_analysis.R` into a directory. 
+First we analyse the OrthoFinder output to help us make a decision about which genes we consider to be 'conserved'. To do this, move the files `taxonomy.csv` and `Orthogroups.tsv` (an output file from OrthoFinder), and script `script_6_r_analysis.R` into a directory. 
 
 Before we do this analysis, set up three directories to store the results at each taxonomic level:
 ```bash
@@ -147,7 +147,7 @@ Load R module
 module load R
 ```
 
-Run the R script in this repository. To do this, you will need the `Orthogroups.tsv` file in the directory from which you run the script. I reccomend running it from the mcv directory. Use the cp (copy) command to copy the .tsv file from the relevant directory (either the `orthofinder_2_family`, `orthofinder_2_genus`, or `orthofinder_2_species` directory) to the mcv directory. 
+Run the R script in this repository. To do this, you will need the `Orthogroups.tsv` file in the directory from which you run the script. I recommend running it from the mcv directory. Use the cp (copy) command to copy the .tsv file from the relevant directory (either the `orthofinder_2_family`, `orthofinder_2_genus`, or `orthofinder_2_species` directory) to the mcv directory. 
 
 For example, if you were doing the analysis at the family level:
 ``` bash
@@ -181,10 +181,10 @@ You can check out my output `orthogroups_occpancy.tsv` files here for the [famil
 Have the files as shown above? Great! Now run the same analysis for the remaining two taxonomic levels (specifying the options as described above), and decide on a conserved gene criteria based on your results. 
 
 >[!NOTE]
->The R analysis results for the family and genus level OrthoFinder output which included the ECIV genome (accession number MK637631) can be found in this repository for the [family](https://github.com/PollyHannah/Phylogenomic-study/blob/main/r_analysis_results/family_eciv) and [genus](https://github.com/PollyHannah/Phylogenomic-study/blob/main/r_analysis_results/genus_eciv) levels. Beaware though, OrthoFinder re-assigns orthogroups every time it's run. Therefore, the orthogroup OG0000002 in the family level analysis without ECIV included, is not necessarily the same as OG0000002 in the family level analysis with ECIV included. I explain a little later how I worked out which orthogroups match..    
+>The R analysis results for the family and genus level OrthoFinder output which included the ECIV genome (accession MK637631) can be found in this repository for the [family](https://github.com/PollyHannah/Phylogenomic-study/blob/main/r_analysis_results/family_eciv) and [genus](https://github.com/PollyHannah/Phylogenomic-study/blob/main/r_analysis_results/genus_eciv) levels. Beaware though, OrthoFinder re-assigns orthogroups every time it's run. Therefore, the orthogroup OG0000002 in the family level analysis without ECIV included, is not necessarily the same as OG0000002 in the family level analysis with ECIV included. I explain a little later how I worked out which orthogroups match..    
 
 ##### Decide on 'Occupancy Threshold'
-Based on the output files from the 'analyse' step above, you can decide on which orthogroups you would like to retain for further analysis (i.e. which you consider 'conserved'). I did this based on the 'Occupancy Threshold' which is the minimum proprtion of genomes where a gene is present, for it to be retained for further analysis. The higher the occupancy threshold (i.e. the more genomes with the gene present) the less genes you'll retain. 
+Based on the output files from the 'analyse' step above, you can decide on which orthogroups you would like to retain for further analysis. I did this based on the 'Occupancy Threshold' which is the minimum proprtion of genomes where a gene is present, for it to be retained for further analysis. The higher the occupancy threshold (i.e. the more genomes with a gene present) the less genes you'll retain. 
 
 Once you've decided on the occupancy threshold you can move on to next step. I chose a 70% Occupancy Threshold for this study.
 
