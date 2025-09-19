@@ -410,6 +410,16 @@ Then, we reviewed each of the final gene tree at the family and genus level to l
 1. Well-supported topological differences in which the *Megalocytivirus* genus (in the case of family-level trees) or the megalocytivirus species (in the case of genus level trees) were not monophyletic. These were further examined with an AU test (see below).
 2. Trees in which the megalocytivirus genomes were on a very long branch separating them from other genera (see details in manuscript), indicating possible recombination with taxa from outside the family *Iridoviridae* (see details below).
 
+> [!IMPORTANT] Where did I root the gene trees?
+> #### Family-level 
+> I rooted the tree at the internal branch which split the *Megalocytivirus*, *Lymphocystivirus* and *Ranavirus* genera from the other *Iridoviridae* genera. This was as per the International Committee for the Taxonomy of Viruses (ICTV) - see [here]>(https://ictv.global/report/chapter/iridoviridae/iridoviridae). 
+
+> #### Genus level 
+> I rooted the trees at the internal branch which split TSIV, ECIV and *Megalocytivirus lates1* genomes (where present), from the *M. pagrus1* genomes (i.e. ISKNV, TRBIV and RSIV genomes). 
+
+> #### Species-level 
+> I rooted the trees at the internal branch which split majority of ISKNV genomes from the TRBIV and RSIV genomes. 
+
 ### AU test
 We identified a single locus (OG0000002 at the family level) with well-supported non-monophyly of the megalocytivirus genomes. We used an AU test to ask whether monophyly could be rejected. Details, including command lines, are in the folder [iqtree_AU_test](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_AU_test). Briefly, it involves running a constrained ML tree search in which the megalocytivirus genomes are forced to be monophyletic, then asking whether this tree can be rejected in favour of the tree in which they are not monophyletic. The results show that we cannot reject monophyly, so there is no evidence of recombination at this locus. 
 
@@ -429,16 +439,6 @@ The plot should look like the one below, where the outliers are in red, and thos
  | Kinase | 1.671 | OG0000021 | *Megalocytivirus pagrus1* (accession AF371960) returned results for bacteria *Ranavirus rana 1* (accession NC_005946) returned results for members of the genus *Ranavirus* only.  See results [here](https://github.com/PollyHannah/Phylogenomic-study/tree/main/recombination/tBLASTp%20results/OG0000021) | Yes |
  | Transcription factor S | 1.812 | OG0000007 | *Megalocytivirus pagrus1* (accession AF371960) returned results for Blastocystis species (protists),  Mimiviridae (viruses), Rhizophagus (fungi) *Syngnathus scovelli* (pipefish). *Ranavirus rana 1* (accession NC_005946) returned results for members of the genus *Ranavirus* only [here](https://github.com/PollyHannah/Phylogenomic-study/tree/main/recombination/tBLASTp%20results/OG0000007) | Yes |
  | Ribonucleoside-diphosphate reductase small subunit | 2.669 | OG0000017 |  *Megalocytivirus pagrus1* (accession AF371960) returned results for *Littorina saxatilis* (periwinkle sea snail), *Capitella spp.* (Annelid), *Spisula spp.* (clam), *Asiatic spp.* (toad) *Batillaria spp.* (snail), *Corythoichthys intestinalis* (scribbled pipefish), and many other fish species including species susceptible to megalocytiviruses. See results [here](https://github.com/PollyHannah/Phylogenomic-study/tree/main/recombination/tBLASTp%20results/OG0000017) | Yes |
-
-### Where did I root the gene trees?
-#### Family-level 
-I rooted the tree at the internal branch which split the *Megalocytivirus*, *Lymphocystivirus* and *Ranavirus* genera from the other *Iridoviridae* genera. This was as per the International Committee for the Taxonomy of Viruses (ICTV) - see [here](https://ictv.global/report/chapter/iridoviridae/iridoviridae). 
-
-#### Genus level 
-I rooted the trees at the internal branch which split TSIV, ECIV and *Megalocytivirus lates1* genomes (where present), from the *M. pagrus1* genomes (i.e. ISKNV, TRBIV and RSIV genomes). 
-
-#### Species-level 
-I rooted the trees at the internal branch which split majority of ISKNV genomes from the TRBIV and RSIV genomes. 
 
 
 ### Identify alignments with insufficient sequence information
