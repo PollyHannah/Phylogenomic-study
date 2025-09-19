@@ -420,12 +420,13 @@ To run the script go:
 ```bash
 Rscript script_16_branch_length_plot.R
 ```
-The plot should look like the one below, where the outliers are in red, and those we chose to look at in more detail are labeled with their branch lengths (see below). 
+The plot should look like the one below, where the outliers are in red, and those we chose to look at in more detail are labeled with their branch lengths (tabulated below). 
 <img width="1266" height="997" alt="image" src="https://github.com/user-attachments/assets/71dc484d-963f-49b8-ad56-c516fb2dd073" />
 
- | Putative gene identity | Branch Length (amino acid substitutions per site) | OrthoFinder-assigned orthogroup | tBLASTp results with >40% identity and an e value below 0.01 | Evidence of recombination (yes/no |
+ | Putative gene identity | Branch Length (amino acid substitutions per site) | OrthoFinder-assigned orthogroup | tBLASTp results with >40% identity and an e value below 0.01 | Evidence of recombination (yes/no | 
  |------------------------|---------------|---------------------------------|----------------|-----------------------------------|
- | Ribonuclease 3 | 1.384 | OG0000019 | AF371960 (Megalocytivirus pagrus1) returned results for megalocytivirus sequences only.  *Ranavirus rana 1* (accession NC_005946 returned results for members of the genus *Ranavirus* only | No|
+ | Ribonuclease 3 | 1.384 | OG0000019 | *Megalocytivirus pagrus1* (accession AF371960) returned results for megalocytivirus sequences only.  *Ranavirus rana 1* (accession NC_005946) returned results for members of the genus *Ranavirus* only. see results here | No|
+ | Kinase | 1.671 | OG0000021 | 
 
 ### Where did I root the gene trees?
 #### Family-level 
