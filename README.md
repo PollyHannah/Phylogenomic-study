@@ -410,6 +410,16 @@ Then, we reviewed each of the final gene tree at the family and genus level to l
 1. Well-supported topological differences in which the *Megalocytivirus* genus (in the case of family-level trees) or the megalocytivirus species (in the case of genus level trees) were not monophyletic. These were further examined with an AU test (see below).
 2. Trees in which the megalocytivirus genomes were on a very long branch separating them from other genera (see details in manuscript), indicating possible recombination with taxa from outside the family *Iridoviridae* (see details below).
 
+> Where did I root the gene trees?
+> #### Family-level 
+> I rooted the tree at the internal branch which split the *Megalocytivirus*, *Lymphocystivirus* and *Ranavirus* genera from the other *Iridoviridae* genera. This was as per the International Committee for the Taxonomy of Viruses (ICTV) - see [here]>(https://ictv.global/report/chapter/iridoviridae/iridoviridae). 
+
+> #### Genus level 
+> I rooted the trees at the internal branch which split TSIV, ECIV and *Megalocytivirus lates1* genomes (where present), from the *M. pagrus1* genomes (i.e. ISKNV, TRBIV and RSIV genomes). 
+
+> #### Species-level 
+> I rooted the trees at the internal branch which split majority of ISKNV genomes from the TRBIV and RSIV genomes. 
+
 ### AU test
 We identified a single locus (OG0000002 at the family level) with well-supported non-monophyly of the megalocytivirus genomes. We used an AU test to ask whether monophyly could be rejected. Details, including command lines, are in the folder [iqtree_AU_test](https://github.com/PollyHannah/Phylogenomic-study/tree/main/iqtree_AU_test). Briefly, it involves running a constrained ML tree search in which the megalocytivirus genomes are forced to be monophyletic, then asking whether this tree can be rejected in favour of the tree in which they are not monophyletic. The results show that we cannot reject monophyly, so there is no evidence of recombination at this locus. 
 
@@ -425,26 +435,27 @@ The plot should look like the one below, where the outliers are in red, and thos
 
  | Putative gene identity | Branch Length (amino acid substitutions per site) | OrthoFinder-assigned orthogroup | tBLASTp results with >40% identity and an e value below 0.01 | Evidence of recombination (yes/no | 
  |------------------------|---------------|---------------------------------|----------------|-----------------------------------|
- | Ribonuclease 3 | 1.384 | OG0000019 | *Megalocytivirus pagrus1* (accession AF371960) returned results for megalocytivirus sequences only.  *Ranavirus rana 1* (accession NC_005946) returned results for members of the genus *Ranavirus* only. see results here | No|
- | Kinase | 1.671 | OG0000021 | 
-
-### Where did I root the gene trees?
-#### Family-level 
-I rooted the tree at the internal branch which split the *Megalocytivirus*, *Lymphocystivirus* and *Ranavirus* genera from the other *Iridoviridae* genera. This was as per the International Committee for the Taxonomy of Viruses (ICTV) - see [here](https://ictv.global/report/chapter/iridoviridae/iridoviridae). 
-
-#### Genus level 
-I rooted the trees at the internal branch which split TSIV, ECIV and *Megalocytivirus lates1* genomes (where present), from the *M. pagrus1* genomes (i.e. ISKNV, TRBIV and RSIV genomes). 
-
-#### Species-level 
-I rooted the trees at the internal branch which split majority of ISKNV genomes from the TRBIV and RSIV genomes. 
+ | Ribonuclease 3 | 1.384 | OG0000019 | *Megalocytivirus pagrus1* (accession AF371960) returned results for megalocytivirus sequences only.  *Ranavirus rana 1* (accession NC_005946) returned results for members of the genus *Ranavirus* only. See results[here](https://github.com/PollyHannah/Phylogenomic-study/tree/main/recombination/tBLASTp%20results/OG0000019). | No |
+ | Kinase | 1.671 | OG0000021 | *Megalocytivirus pagrus1* (accession AF371960) returned results for bacteria *Ranavirus rana 1* (accession NC_005946) returned results for members of the genus *Ranavirus* only.  See results [here](https://github.com/PollyHannah/Phylogenomic-study/tree/main/recombination/tBLASTp%20results/OG0000021). | Yes |
+ | Transcription factor S | 1.812 | OG0000007 | *Megalocytivirus pagrus1* (accession AF371960) returned results for Blastocystis species (protists),  Mimiviridae (viruses), Rhizophagus (fungi) *Syngnathus scovelli* (pipefish). *Ranavirus rana 1* (accession NC_005946) returned results for members of the genus *Ranavirus* only [here](https://github.com/PollyHannah/Phylogenomic-study/tree/main/recombination/tBLASTp%20results/OG0000007). | Yes |
+ | Ribonucleoside-diphosphate reductase small subunit | 2.669 | OG0000017 |  *Megalocytivirus pagrus1* (accession AF371960) returned results for *Littorina saxatilis* (periwinkle sea snail), *Capitella spp.* (Annelid), *Spisula spp.* (clam), *Asiatic spp.* (toad) *Batillaria spp.* (snail), *Corythoichthys intestinalis* (scribbled pipefish), and many other fish species including species susceptible to megalocytiviruses. See results [here](https://github.com/PollyHannah/Phylogenomic-study/tree/main/recombination/tBLASTp%20results/OG0000017). | Yes |
 
 
 ### Identify alignments with insufficient sequence information
 Next up, we looked at the family- and genus-level alignments to identify those which did not contain any additional sequence information to the alignment for the same loci at at the taxonomic level below. In other words, we looked for family level alignments which only contained *Megalocytivirus* genus sequence information, and genus level alignments which only contained *Megalocytivirus pagrus1* sequence information. 
 
-We flagged these to ensure we didn't include them in the final (concatenate) family and genus level alignments. We already removed a 84 loci from the family level analysis for this reason (see '3. Re-align alignments'). However, since the alignment editing step, sequences were removed and additional alignments contained insufficient sequence information. For the genus level, we just didn't think of doing this ealier in the process (like we did for the family level alignments), so we did it at this step instead. The loci removed as part of this step are tabulated below. 
+We flagged these to ensure we didn't include them in the final (concatenate) family and genus level alignments. We already removed a 84 loci from the family level analysis for this reason (see '3. Re-align alignments'). However, since the alignment editing step, sequences were removed and additional alignments contained insufficient sequence information. For the genus level, we just didn't think of doing this ealier in the process (like we did for the family level alignments), so we did it at this step instead. 
 
-No species level alignments were removed as there is no taxonomic level below species part of this analysis.
+We ran the following script to identify alignments with insufficient sequence information at the family level:
+```bash
+bash script_18_review_family_trees.sh
+```
+
+We ran the following script to identify alignments with insufficient sequence information at the genus level:
+``` bash
+bash script_19_review_genus_trees.sh
+```
+The loci removed as part of this step are tabulated below. No species level alignments were removed as there is no taxonomic level below species part of this analysis.
 
 | | Family | Genus | Species |
 |--|-------|-------|---------|
@@ -453,19 +464,17 @@ No species level alignments were removed as there is no taxonomic level below sp
 
 
 ## Part Four: Generate final trees
-This is the final part of the analysis where we generate a final family, genus, and species, based on a multiple sequence alignments of concatenated genes at each taxonomic level. For this analysis, we only used genes where there was no evidence of recombination. (See Supplementary Table 2 in the main manuscript). We also only included genes where the alignments contained additional sequence information to the alignment for the same loci at the taxonomic level below (see section above 'Identify alignments with insufficient sequence information').
+This is the final part of the analysis where we generate a final family, genus, and species, based on a multiple sequence alignments of concatenated genes at each taxonomic level. For this analysis, we only used genes where there was no evidence of recombination. (See Supplementary Table 2 in the main manuscript). This was except genes showing evidence of intra-genotypic recombination (recombination within *M. pagrus1* clades) as identified by RDP4 (version 101) (Martin et al. 2015). We included these genes in the concatenated gene alignment for the species-level to maximise the volume of to estimate genetic relationships between genotypes. We were unable to exclude loci with evidence of recombination between clades, because this would have excluded all phylogenetically informative loci. We also only included genes where the alignments contained additional sequence information to the alignment for the same loci at the taxonomic level below (see section above 'Identify alignments with insufficient sequence information').
 
 ### Collect genes
 
 First we put all MSAs we wanted to concatenate into new directories:
-
 * [`alignments_family_muscle_edited_trimmed_concatenation`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_family_muscle_edited_trimmed_concatenation) (contains alignments for 24 genes)
 * [`alignments_genus_muscle_edited_trimmed_concatenation`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_genus_muscle_edited_trimmed_concatenation) (contains alignments for 96 genes)
 * [`alignments_species_muscle_edited_trimmed_concatenation`](https://github.com/PollyHannah/Phylogenomic-study/tree/main/alignments_species_muscle_edited_trimmed_concatenation) (contains alignments for 68 genes)
 
 
 For the family level loci, the following sequences were removed from the putative DNA-directed RNA polymerase alignment (`OG00000000 modified.fa`):
-
 ```
 HF920637_Iridovirus_armadillidium1_n/a_1
 HF920637_Iridovirus_armadillidium1_n/a_2
@@ -478,10 +487,10 @@ MF599468_Decapodiridovirus_litopenaeus1_n/a_2
 This locus was found to be divided into two ORFS in all three of these species (see the gene tree for this locus for more information).
 
 ### Run IQTREE to generate concatenated trees and concordance factors
-I drafted a script which runs IQTREE on each of the three concatenated alignments. 
+I drafted a script which concatenates the alignments and runs IQTREE on the concatenated alignment for each taxonomic level. 
 To run the script go:
 ```bash
-script_20_iqtree_2.sh
+bash script_20_iqtree_2.sh
 ```
 
 The script will produce three new directories, containing the iqtree outputs for each alignment. These directories and outputs are available in this repository, and are called:
