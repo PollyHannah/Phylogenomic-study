@@ -2,7 +2,7 @@
 # Recombination detection with RDP4
 I ran the program RDP4 to detect recombination amoung the species *Megalocytivirus pagrus1*, the only group for which a whole genome alignment was feasible, as required to run the program. RDP4 detects recombination using five different methods; RDP, GENECONV, Maxchi, Chimaera, and 3Seq. 
 You will need the following software:
-* RDP4 (version RDP4.101) (Martin et al. 2015)
+* [RDP4](https://davidrasm.github.io/MolEpi/tutorials/rdp4-week8/) (version RDP4.101) (Martin et al. 2015)
 * Geneious Prime (version 2020.2.5)
 * Mauve (version 20150226)
 
@@ -45,6 +45,45 @@ To identify the locus tags and orthogroups included in recombination events, I t
 In Geneious Prime, I then extracted the relevant recombinant sequence from the whole genome alignment `whole_genome_alignment_mpagrus1.fas` and saved it in a separate file. I looked up the breakpoints in that sequence to identify the locus tags included in putative recombination events. I could then find the orthogroups for those genes using the information provided in the OrthoFinder output files [here](https://github.com/PollyHannah/Phylogenomic-study/tree/main/orthofinder_2_genus). Specifically, the file [`Orthogroups.tsv`](https://github.com/PollyHannah/Phylogenomic-study/blob/main/orthofinder_2_genus/Results_Feb13/Orthogroups/Orthogroups.tsv).
 
 I had to extract the sequence from the whole genome alignment, because the sequencing numbers (i.e. positions of nucleotide bases) were different in the whole genomes part of my analysis (which RDP4 used as input) compared to the versions downloaded directly from GenBank. As such, the nucleotide potisions provided by RDP4 related to the positions in the recombinant genomes extracted from the whole genome alignment. 
+
+>[!NOTE]
+>#### snipit
+> I used the program called 'snipit' (see tool here https://github.com/aineniamh/snipit) to plot the recombinant regions of *M. pagrus1* genomes. All the files I used to generate the snipit plots are saved in the repository [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination/). Upload `extract_sets.txt` and `Whole_genome_alignment_mauve_rdp.fasta` to the mcv directory and run `script_snipit_extract_trim.sh` as follows to extract the gene regions you want plotted.
+>To run it go:
+>``` bash
+>bash script_snipit_extract_trim.sh
+>```
+>The script will generate a directory called `alignments` which house a multiple sequence alignment files of the specified region from the whole genome alignment, for only the sequences I want plottted.
+>Then run `script_snipit.sh` on each alignment (as seen below), to generate the snipit plots. You just need to update the input/output file names in the script depending on the alignment file you're working on.
+>To run the script, go:
+>```bash
+>bash script_snipit.sh
+>```
+>As some of the regions recombinant regions were pretty large, I subsampled the alignments using the script `script_subsample.sh`. Before you run it though, you  need to update the name of the alignment file you want to subsample, and the amount of subsampling you want done under 'Step'. I subsampled by 2, 5, 10 or 20 depending on the size of the region.
+>
+>| Recombination event number | Subsample (Step) value |
+>|----------------------------|------------------------|
+>|1 | 10 |
+>|2 | 10 |
+>|3 | 10 |
+>|4 | 10 |
+>|5 | 10 |
+>|6 | 10 |
+>|7 | 5 |
+>|9 | 2 |
+>|10 | 2 |
+>|11 | 2 |
+>|20 | 20 |
+>|26 | 2 |
+>|31 | 2 |
+>|33 | 2 |
+>|34 | 2 |
+>
+>To run script:
+>```bash
+>bash script_subsample.sh
+>```
+>The final plots are saved [here](https://github.com/PollyHannah/Phylogenomic-study/blob/main/recombination/plots) 
 
 # Reference:
 Martin DP, Murrell B, Golden M, Khoosal A, Muhire B. RDP4: Detection and analysis of recombination patterns in virus genomes. Virus Evol. 2015 May 26;1(1):vev003. doi: 10.1093/ve/vev003. PMID: 27774277; PMCID: PMC5014473.
