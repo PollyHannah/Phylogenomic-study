@@ -444,9 +444,18 @@ The plot should look like the one below, where the outliers are in red, and thos
 ### Identify alignments with insufficient sequence information
 Next up, we looked at the family- and genus-level alignments to identify those which did not contain any additional sequence information to the alignment for the same loci at at the taxonomic level below. In other words, we looked for family level alignments which only contained *Megalocytivirus* genus sequence information, and genus level alignments which only contained *Megalocytivirus pagrus1* sequence information. 
 
-We flagged these to ensure we didn't include them in the final (concatenate) family and genus level alignments. We already removed a 84 loci from the family level analysis for this reason (see '3. Re-align alignments'). However, since the alignment editing step, sequences were removed and additional alignments contained insufficient sequence information. For the genus level, we just didn't think of doing this ealier in the process (like we did for the family level alignments), so we did it at this step instead. The loci removed as part of this step are tabulated below. 
+We flagged these to ensure we didn't include them in the final (concatenate) family and genus level alignments. We already removed a 84 loci from the family level analysis for this reason (see '3. Re-align alignments'). However, since the alignment editing step, sequences were removed and additional alignments contained insufficient sequence information. For the genus level, we just didn't think of doing this ealier in the process (like we did for the family level alignments), so we did it at this step instead. 
 
-No species level alignments were removed as there is no taxonomic level below species part of this analysis.
+We ran the following script to identify alignments with insufficient sequence information at the family level:
+```bash
+bash script_18_review_family_trees.sh
+```
+
+We ran the following script to identify alignments with insufficient sequence information at the genus level:
+``` bash
+bash script_19_review_genus_trees.sh
+```
+The loci removed as part of this step are tabulated below. No species level alignments were removed as there is no taxonomic level below species part of this analysis.
 
 | | Family | Genus | Species |
 |--|-------|-------|---------|
@@ -478,10 +487,10 @@ MF599468_Decapodiridovirus_litopenaeus1_n/a_2
 This locus was found to be divided into two ORFS in all three of these species (see the gene tree for this locus for more information).
 
 ### Run IQTREE to generate concatenated trees and concordance factors
-I drafted a script which runs IQTREE on each of the three concatenated alignments. 
+I drafted a script which concatenates the alignments and runs IQTREE on the concatenated alignment for each taxonomic level. 
 To run the script go:
 ```bash
-script_17_iqtree_2.sh
+bash script_20_iqtree_2.sh
 ```
 
 The script will produce three new directories, containing the iqtree outputs for each alignment. These directories and outputs are available in this repository, and are called:
