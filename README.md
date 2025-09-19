@@ -412,7 +412,7 @@ Then, we reviewed each of the final gene tree at the family and genus level to l
 
 > Where did I root the gene trees?
 > #### Family-level 
-> I rooted the tree at the internal branch which split the *Megalocytivirus*, *Lymphocystivirus* and *Ranavirus* genera from the other *Iridoviridae* genera. This was as per the International Committee for the Taxonomy of Viruses (ICTV) - see [here]>(https://ictv.global/report/chapter/iridoviridae/iridoviridae). 
+> I rooted the tree at the internal branch which split the *Megalocytivirus*, *Lymphocystivirus* and *Ranavirus* genera from the other *Iridoviridae* genera. This was as per the International Committee for the Taxonomy of Viruses (ICTV) - see [here](https://ictv.global/report/chapter/iridoviridae/iridoviridae). 
 
 > #### Genus level 
 > I rooted the trees at the internal branch which split TSIV, ECIV and *Megalocytivirus lates1* genomes (where present), from the *M. pagrus1* genomes (i.e. ISKNV, TRBIV and RSIV genomes). 
