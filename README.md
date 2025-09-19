@@ -410,7 +410,7 @@ Then, we reviewed each of the final gene tree at the family and genus level to l
 1. Well-supported topological differences in which the *Megalocytivirus* genus (in the case of family-level trees) or the megalocytivirus species (in the case of genus level trees) were not monophyletic. These were further examined with an AU test (see below).
 2. Trees in which the megalocytivirus genomes were on a very long branch separating them from other genera (see details in manuscript), indicating possible recombination with taxa from outside the family *Iridoviridae* (see details below).
 
-> [!IMPORTANT] Where did I root the gene trees?
+> Where did I root the gene trees?
 > #### Family-level 
 > I rooted the tree at the internal branch which split the *Megalocytivirus*, *Lymphocystivirus* and *Ranavirus* genera from the other *Iridoviridae* genera. This was as per the International Committee for the Taxonomy of Viruses (ICTV) - see [here]>(https://ictv.global/report/chapter/iridoviridae/iridoviridae). 
 
