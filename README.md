@@ -425,8 +425,10 @@ The plot should look like the one below, where the outliers are in red, and thos
 
  | Putative gene identity | Branch Length (amino acid substitutions per site) | OrthoFinder-assigned orthogroup | tBLASTp results with >40% identity and an e value below 0.01 | Evidence of recombination (yes/no | 
  |------------------------|---------------|---------------------------------|----------------|-----------------------------------|
- | Ribonuclease 3 | 1.384 | OG0000019 | *Megalocytivirus pagrus1* (accession AF371960) returned results for megalocytivirus sequences only.  *Ranavirus rana 1* (accession NC_005946) returned results for members of the genus *Ranavirus* only. see results here | No|
- | Kinase | 1.671 | OG0000021 | 
+ | Ribonuclease 3 | 1.384 | OG0000019 | *Megalocytivirus pagrus1* (accession AF371960) returned results for megalocytivirus sequences only.  *Ranavirus rana 1* (accession NC_005946) returned results for members of the genus *Ranavirus* only. See results [here](https://github.com/PollyHannah/Phylogenomic-study/tree/main/recombination/tBLASTp%20results/OG0000019) | No |
+ | Kinase | 1.671 | OG0000021 | *Megalocytivirus pagrus1* (accession AF371960) returned results for bacteria *Ranavirus rana 1* (accession NC_005946) returned results for members of the genus *Ranavirus* only.  See results [here](https://github.com/PollyHannah/Phylogenomic-study/tree/main/recombination/tBLASTp%20results/OG0000021) | Yes |
+ | Transcription factor S | 1.812 | OG0000007 | *Megalocytivirus pagrus1* (accession AF371960) returned results for Blastocystis species (protists),  Mimiviridae (viruses), Rhizophagus (fungi) *Syngnathus scovelli* (pipefish). *Ranavirus rana 1* (accession NC_005946) returned results for members of the genus *Ranavirus* only [here](https://github.com/PollyHannah/Phylogenomic-study/tree/main/recombination/tBLASTp%20results/OG0000007) | Yes |
+ | Ribonucleoside-diphosphate reductase small subunit | 2.669 | OG0000017 |  *Megalocytivirus pagrus1* (accession AF371960) returned results for *Littorina saxatilis* (periwinkle sea snail), *Capitella spp.* (Annelid), *Spisula spp.* (clam), *Asiatic spp.* (toad) *Batillaria spp.* (snail), *Corythoichthys intestinalis* (scribbled pipefish), and many other fish species including species susceptible to megalocytiviruses. See results [here](https://github.com/PollyHannah/Phylogenomic-study/tree/main/recombination/tBLASTp%20results/OG0000017) | Yes |
 
 ### Where did I root the gene trees?
 #### Family-level 
