@@ -368,7 +368,7 @@ Now, for ease of reference, we want to sort the IQ-TREE output files so all the 
 
 To sort the files, go:
 ```bash
-bash script_15_sort_files.sh
+bash script_15_sort_iqtree.sh
 ```
 
 Next we want to pull out the gene trees (.fa.treefile) into seperate directories so they're easy to compare all at once. The script below will copy the gene trees for each taxaonomic level and save them in new directories - one for each taxonomic level. This is simply so it's easier to look through all the gene trees, one after the other. 
