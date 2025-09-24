@@ -98,9 +98,9 @@ Most of the files used/generated for each stage of the process above can be foun
 
 > [!IMPORTANT]
 > **The number of CDS in the genomes in the novel genome differs from the GenBank NCBI versions**
-> The genome 23043610003 has 120 CDS assigned in this study. However you'll find the version uploaded to NCBI GenBank has only 119 CDS. This is because NCBI GenBank does not accept putative CDS with stop codons. Sequence GQ273492.1_00004 in genome 23043610003 included two stop codons, and therefore could not be uploaded to NCBI GenBank.
+> The genome 23043610003 has 120 CDS assigned in this study. However you'll find the version uploaded to NCBI GenBank has only 119 CDS. This is because NCBI GenBank does not accept putative CDS with stop codons. Sequence GQ273492.1_00004 in genome 23043610003 included two internal stop codons, and therefore could not be uploaded to NCBI GenBank.
 >
-> The genome 23043610005 has 118 CDS assigned in this study. However you'll find the version uploaded to NCBI GenBank has only 117 CDS. This is because NCBI GenBank does not accept putative CDS with stop codons. Sequence GQ273492.1_00010 in genome 23043610005 included one stop codon, and therefore could not be uploaded to NCBI GenBank.
+> The genome 23043610005 has 118 CDS assigned in this study. However you'll find the version uploaded to NCBI GenBank has only 117 CDS. This is because NCBI GenBank does not accept putative CDS with stop codons. Sequence GQ273492.1_00010 in genome 23043610005 included one internal stop codon, and therefore could not be uploaded to NCBI GenBank.
 >
 > Seperately, some of the 'start' and stop' positions of the CDS in the file on NCBI GenBank differ the version housed in this repository. This is due to the way in which GenBank interprets and reads nucleotide sequence data when uploading genomes to GenBank.  
 
