@@ -5,7 +5,7 @@ This repository houses the details of my bioinformatic pipeline for my phylogene
 
 Go to the file `setup.md` in this repository, for information about how to set-up a conda environment. The same file houses information on how to complete basic tasks like transfering files and fixing errors you might receive while completeing this analysis. You will need the following software:
 * [Prokka](https://github.com/tseemann/prokka) (version 1.14.5)
-* [OrthoFinder](https://github.com/davidemms/Orthofinder) (version 2.5.4)
+* [OrthoFinder](https://github.com/OrthoFinder/OrthoFinder) (version 2.5.4)
 * Geneious Prime (version 2020.2.5)
 * [MUSCLE5](https://github.com/rcedgar/muscle) (version 5.0.1428)
 * [TrimAl ](https://github.com/inab/trimal) (version 1.4.1r22) 
