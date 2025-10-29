@@ -3,6 +3,8 @@
 ## About 
 This repository houses the details of my bioinformatic pipeline for my phylogenetic analyses of megalocytiviruses (a group of fish pathogens) and other members of the family *Iridoviridae*. A set of phylogenetically useful genes are first identified followed by phylogenetic analysis of the those genes. 
 
+A pre-print article for this project is available on BioRxiv [here](https://www.biorxiv.org/content/10.1101/2025.10.27.684589v1). 
+
 Go to the file `setup.md` in this repository, for information about how to set-up a conda environment. The same file houses information on how to complete basic tasks like transfering files and fixing errors you might receive while completeing this analysis. You will need the following software:
 * [Prokka](https://github.com/tseemann/prokka) (version 1.14.5)
 * [OrthoFinder](https://github.com/OrthoFinder/OrthoFinder) (version 2.5.4)
@@ -408,7 +410,7 @@ First-up, we used a whole genome alignment method to detect recombination using 
 
 Then, we reviewed each of the final gene tree at the family and genus level to look for evidence of recombination. Specifically, this involved two criteria: 
 1. Well-supported topological differences in which the *Megalocytivirus* genus (in the case of family-level trees) or the megalocytivirus species (in the case of genus level trees) were not monophyletic. These were further examined with an AU test (see below).
-2. Trees in which the megalocytivirus genomes were on a very long branch separating them from other genera (see details in manuscript), indicating possible recombination with taxa from outside the family *Iridoviridae* (see details below).
+2. Trees in which the megalocytivirus genomes were on a very long branch separating them from other genera (see details in manuscript [here](https://www.biorxiv.org/content/10.1101/2025.10.27.684589v1)), indicating possible recombination with taxa from outside the family *Iridoviridae* (see details below).
 
 > Where did I root the gene trees?
 > #### Family-level 
@@ -464,7 +466,7 @@ The loci removed as part of this step are tabulated below. No species level alig
 
 
 ## Part Four: Generate final trees
-This is the final part of the analysis where we generate a final family, genus, and species, based on a multiple sequence alignments of concatenated genes at each taxonomic level. For this analysis, we only used genes where there was no evidence of recombination. (See Supplementary Table 2 in the main manuscript). This was except genes showing evidence of intra-genotypic recombination (recombination within *M. pagrus1* clades) as identified by RDP4 (version 101) (Martin et al. 2015). 
+This is the final part of the analysis where we generate a final family, genus, and species, based on a multiple sequence alignments of concatenated genes at each taxonomic level. For this analysis, we only used genes where there was no evidence of recombination. (See supplementary table 2 in the main manuscript [here](https://www.biorxiv.org/content/10.1101/2025.10.27.684589v1)). This was except genes showing evidence of intra-genotypic recombination (recombination within *M. pagrus1* clades) as identified by RDP4 (version 101) (Martin et al. 2015). 
 
 We included these genes in the concatenated gene alignment for the species-level to maximise the volume of to estimate genetic relationships between genotypes. We were unable to exclude loci with evidence of recombination between clades, because this would have excluded all phylogenetically informative loci. We also only included genes where the alignments contained additional sequence information to the alignment for the same loci at the taxonomic level below (see section above 'Identify alignments with insufficient sequence information').
 
